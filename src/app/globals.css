@@ -1,26 +1,148 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Sacred Cartography color palette */
+  --color-background: #0A0F1A;
+  --color-foreground: #F5F0E8;
+  --color-gold: #C8A84E;
+  --color-gold-light: #D4B96A;
+  --color-gold-dark: #A68B3D;
+  --color-teal: #2DD4BF;
+  --color-teal-light: #5EEAD4;
+  --color-teal-dark: #14B8A6;
+  --color-cream: #F5F0E8;
+  --color-cream-muted: #E8E3DB;
+  --color-navy: #0A0F1A;
+  --color-navy-light: #1A2332;
+  --color-navy-lighter: #2A3342;
+
+  /* Typography */
+  --font-arabic: 'Amiri', serif;
+  --font-heading: 'Cormorant Garamond', serif;
+  --font-body: 'Source Sans 3', sans-serif;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background: var(--color-background);
+  --color-foreground: var(--color-foreground);
+  --color-gold: var(--color-gold);
+  --color-gold-light: var(--color-gold-light);
+  --color-gold-dark: var(--color-gold-dark);
+  --color-teal: var(--color-teal);
+  --color-teal-light: var(--color-teal-light);
+  --color-teal-dark: var(--color-teal-dark);
+  --color-cream: var(--color-cream);
+  --color-cream-muted: var(--color-cream-muted);
+  --color-navy: var(--color-navy);
+  --color-navy-light: var(--color-navy-light);
+  --color-navy-lighter: var(--color-navy-lighter);
+
+  --font-arabic: var(--font-arabic);
+  --font-heading: var(--font-heading);
+  --font-body: var(--font-body);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Mapbox overrides for dark theme */
+.mapboxgl-map {
+  font-family: var(--font-body) !important;
+}
+
+.mapboxgl-ctrl-logo {
+  opacity: 0.5;
+}
+
+.mapboxgl-ctrl-attrib {
+  background: rgba(10, 15, 26, 0.8) !important;
+  color: var(--color-cream-muted) !important;
+  font-size: 10px !important;
+}
+
+.mapboxgl-ctrl-attrib a {
+  color: var(--color-gold) !important;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-navy-light);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-navy-lighter);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold-dark);
+}
+
+/* Marker pulse animation */
+@keyframes pulse-gold {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(200, 168, 78, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 0 12px rgba(200, 168, 78, 0);
+  }
+}
+
+@keyframes pulse-teal {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(45, 212, 191, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 0 12px rgba(45, 212, 191, 0);
+  }
+}
+
+.marker-makki {
+  animation: pulse-gold 2s ease-in-out infinite;
+}
+
+.marker-madani {
+  animation: pulse-teal 2s ease-in-out infinite;
+}
+
+/* Radix UI Slider overrides */
+[data-radix-slider-track] {
+  background: var(--color-navy-lighter);
+}
+
+[data-radix-slider-range] {
+  background: linear-gradient(90deg, var(--color-gold), var(--color-teal));
+}
+
+[data-radix-slider-thumb] {
+  background: var(--color-cream);
+  border: 2px solid var(--color-gold);
+}
+
+[data-radix-slider-thumb]:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(200, 168, 78, 0.3);
 }

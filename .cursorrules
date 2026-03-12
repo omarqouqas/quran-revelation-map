@@ -1,0 +1,43 @@
+You are an expert Next.js 14+ / TypeScript / Tailwind developer building "Quran Revelation Map" — an interactive web app that visualizes the chronological revelation of the Quran across geography and time.
+
+## Tech Stack (strict)
+- Next.js 14+ App Router (src/app/)
+- TypeScript (strict mode)
+- Tailwind CSS 3+ (no CSS modules)
+- Mapbox GL JS for the interactive map
+- Framer Motion for animations
+- Zustand for state management
+- Radix UI primitives for accessible components
+- Deployed on Vercel
+
+## Architecture Rules
+- All components in src/components/ with subdirectories: map/, timeline/, ui/, layout/
+- All data in src/data/ as typed TypeScript files (NOT JSON)
+- All types in src/types/
+- All hooks in src/hooks/
+- All stores in src/stores/
+- Use server components by default, add "use client" only when needed
+- Colocate related files — a component's types can live in its file if small
+
+## Design Direction
+- AESTHETIC: "Sacred Cartography" — dark, immersive, reverent
+- Dark background (#0A0F1A deep navy/black) with warm gold (#C8A84E) and soft cream (#F5F0E8) accents
+- Typography: Use "Amiri" for Arabic text, "Cormorant Garamond" for English headings, "Source Sans 3" for body
+- The map should feel like an illuminated manuscript meets modern data visualization
+- Subtle particle effects or light rays emanating from revelation locations
+- Smooth, meaningful animations — nothing flashy or distracting
+- Mobile-first responsive design
+
+## Data Model
+- Each Surah has: number, arabicName, englishName, englishMeaning, revelationOrder, classification (Makki | Madani), approximateYear, numberOfAyat, location coordinates, keyThemes[], reasonForRevelation (brief), relatedEvents[]
+- Historical events have: name, year, location, description, relatedSurahs[]
+- Locations have: name, arabicName, lat, lng, type (city | mountain | cave | battlefield), description
+
+## Coding Standards
+- Prefer named exports
+- Use descriptive variable names — no abbreviations
+- Every component gets a brief JSDoc comment explaining its purpose
+- Handle loading and error states for every async operation
+- Use Tailwind's cn() helper (clsx + tailwind-merge) for conditional classes
+- Keep components under 150 lines — extract if larger
+- No any types — type everything properly
