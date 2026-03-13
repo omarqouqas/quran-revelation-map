@@ -20,6 +20,7 @@ import {
   Sparkles,
 } from 'lucide-react';
 import { useMapStore } from '@/stores/useMapStore';
+import { useProgressStore } from '@/stores/useProgressStore';
 import { getCompleteSurahData } from '@/data/surah-locations';
 import { getTanzilNote } from '@/data/tanzil-notes';
 import { getEventsForSurah } from '@/data/events';
@@ -32,7 +33,15 @@ export function SurahDetailPanel() {
   const selectSurah = useMapStore((state) => state.selectSurah);
   const selectEvent = useMapStore((state) => state.selectEvent);
   const setCurrentYear = useMapStore((state) => state.setCurrentYear);
+  const markSurahExplored = useProgressStore((state) => state.markSurahExplored);
   const [showAllEvents, setShowAllEvents] = useState(false);
+
+  // Mark surah as explored when panel opens
+  useEffect(() => {
+    if (selectedSurahNumber) {
+      markSurahExplored(selectedSurahNumber);
+    }
+  }, [selectedSurahNumber, markSurahExplored]);
 
   // Close on Escape key
   useEffect(() => {

@@ -9,6 +9,7 @@ import { useEffect, useRef, useCallback, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { useMapStore } from '@/stores/useMapStore';
+import { useProgressStore } from '@/stores/useProgressStore';
 import { getAllCompleteSurahs, LOCATIONS, type CompleteSurahData } from '@/data/surah-locations';
 import { events, type HistoricalEvent } from '@/data/events';
 import { JOURNEY_ROUTES, type JourneyRoute } from '@/data/routes';
@@ -74,17 +75,18 @@ export function MapContainer() {
   const selectSurah = useMapStore((state) => state.selectSurah);
   const selectEvent = useMapStore((state) => state.selectEvent);
   const hoverSurah = useMapStore((state) => state.hoverSurah);
+  const exploredSurahs = useProgressStore((state) => state.exploredSurahs);
 
   // Get all surahs once
   const allSurahs = useRef(getAllCompleteSurahs());
 
   /** Create a marker element for a surah */
   const createMarkerElement = useCallback(
-    (surah: CompleteSurahData, isSelected: boolean): HTMLDivElement => {
+    (surah: CompleteSurahData, isSelected: boolean, isExplored: boolean): HTMLDivElement => {
       const el = document.createElement('div');
       const isMakki = surah.isMeccan;
 
-      const baseSize = isSelected ? 18 : 8;
+      const baseSize = isSelected ? 18 : isExplored ? 10 : 8;
       const color = isMakki ? '#C8A84E' : '#2EC4B6';
       const borderColor = isMakki ? '#D4B96A' : '#5EEAD4';
 
@@ -97,8 +99,14 @@ export function MapContainer() {
       el.style.transition = 'all 0.2s ease-out';
       el.className = isMakki ? 'marker-makki' : 'marker-madani';
 
+      // Add glow effect for explored surahs
+      if (isExplored && !isSelected) {
+        el.style.boxShadow = `0 0 6px ${color}, 0 0 12px ${color}40`;
+      }
+
       el.setAttribute('data-surah', surah.number.toString());
-      el.setAttribute('title', `${surah.englishName} (${surah.arabicName})`);
+      el.setAttribute('data-explored', isExplored.toString());
+      el.setAttribute('title', `${surah.englishName} (${surah.arabicName})${isExplored ? ' ✓' : ''}`);
 
       // Hover effects
       el.addEventListener('mouseenter', () => {
@@ -108,8 +116,9 @@ export function MapContainer() {
       });
 
       el.addEventListener('mouseleave', () => {
-        el.style.width = isSelected ? '18px' : '8px';
-        el.style.height = isSelected ? '18px' : '8px';
+        const size = isSelected ? '18px' : isExplored ? '10px' : '8px';
+        el.style.width = size;
+        el.style.height = size;
         hoverSurah(null);
       });
 
@@ -269,18 +278,26 @@ export function MapContainer() {
     // Add or update markers for visible surahs
     visibleSurahs.forEach((surah) => {
       const isSelected = surah.number === selectedSurahNumber;
+      const isExplored = exploredSurahs.includes(surah.number);
       const existingMarker = markersRef.current.get(surah.number);
 
       if (existingMarker) {
-        // Update existing marker if selection changed
+        // Update existing marker if selection or explored state changed
         const el = existingMarker.getElement();
-        const size = isSelected ? '18px' : '8px';
+        const size = isSelected ? '18px' : isExplored ? '10px' : '8px';
         el.style.width = size;
         el.style.height = size;
+
+        // Update glow for explored
+        const color = surah.isMeccan ? '#C8A84E' : '#2EC4B6';
+        el.style.boxShadow = (isExplored && !isSelected)
+          ? `0 0 6px ${color}, 0 0 12px ${color}40`
+          : '';
+        el.setAttribute('data-explored', isExplored.toString());
         return;
       }
 
-      const el = createMarkerElement(surah, isSelected);
+      const el = createMarkerElement(surah, isSelected, isExplored);
 
       el.addEventListener('click', () => {
         selectSurah(surah.number);
@@ -298,6 +315,7 @@ export function MapContainer() {
     showMakki,
     showMadani,
     selectedSurahNumber,
+    exploredSurahs,
     createMarkerElement,
     selectSurah,
   ]);

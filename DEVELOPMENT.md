@@ -148,6 +148,9 @@ src/
 | Shortcuts Help Modal | Press `?` to see all keyboard shortcuts | `KeyboardShortcutsModal.tsx` |
 | Opening Verses | Arabic + English for all 114 surahs | `opening-verses.ts` |
 | Journey Routes | Animated route lines (Hijra, Abyssinia, Taif) | `routes.ts`, `MapContainer.tsx` |
+| Progress Tracking | Track explored surahs/events with localStorage | `useProgressStore.ts` |
+| Progress Stats | Visual progress bar, streak tracking, stats | `ProgressStats.tsx` |
+| Explored Indicators | Glow effect on explored surah markers | `MapContainer.tsx` |
 
 ### Keyboard Shortcuts
 
@@ -270,7 +273,7 @@ src/
 - [x] URL routing (`/surah/1` for deep-linking) ✓
 - [x] Keyboard shortcuts (arrows for timeline, Cmd+K for search) ✓
 - [x] Animated journey routes (Hijra, Abyssinia, Taif) ✓
-- [ ] Progress tracking (remember explored surahs)
+- [x] Progress tracking (remember explored surahs) ✓
 
 ### Medium Effort
 - [ ] Audio recitation (play opening ayat via Quran.com API)

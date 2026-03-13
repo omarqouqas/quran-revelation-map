@@ -14,6 +14,7 @@ import { SurahDetailPanel } from '@/components/layout/SurahDetailPanel';
 import { EventDetailModal } from '@/components/layout/EventDetailModal';
 import { LandingOverlay } from '@/components/layout/LandingOverlay';
 import { KeyboardShortcutsModal } from '@/components/layout/KeyboardShortcutsModal';
+import { ProgressStats } from '@/components/layout/ProgressStats';
 import { SurahExplorer } from '@/components/explorer';
 import { useExplorerStore } from '@/stores/useExplorerStore';
 import { useMapStore } from '@/stores/useMapStore';
@@ -132,6 +133,9 @@ export function QuranMapApp({ initialSurahNumber }: QuranMapAppProps) {
 
       {/* Surah explorer panel */}
       <SurahExplorer />
+
+      {/* Progress stats */}
+      <ProgressStats />
 
       {/* Landing overlay (shows until first interaction) */}
       <LandingOverlay />
