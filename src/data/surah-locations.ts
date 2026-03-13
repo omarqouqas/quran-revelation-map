@@ -3,7 +3,7 @@
  * This is Layer 3 of our data architecture - manually curated interpretive data
  */
 
-import { getQuranMetaSurah } from '@/lib/quran-data';
+import { getQuranMetaSurah, SURAH_MEANINGS } from '@/lib/quran-data';
 
 /** Key geographic locations during the revelation period */
 export const LOCATIONS = {
@@ -274,7 +274,6 @@ export interface CompleteSurahData {
  */
 export function getCompleteSurahData(surahNumber: number): CompleteSurahData {
   // Layer 1: Canonical data from quran-meta
-  const { SURAH_MEANINGS } = require('@/lib/quran-data');
   const canonical = getQuranMetaSurah(surahNumber);
 
   // Layer 3: Location and context data
