@@ -10,6 +10,7 @@ import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { useMapStore } from '@/stores/useMapStore';
 import { getAllCompleteSurahs, LOCATIONS, type CompleteSurahData } from '@/data/surah-locations';
+import { events, type HistoricalEvent } from '@/data/events';
 
 // Initialize Mapbox access token
 mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN || '';
@@ -37,17 +38,40 @@ const LOCATION_LABELS = [
   { name: 'Hudaybiyyah', arabicName: 'الحديبية', ...LOCATIONS.HUDAYBIYYAH },
 ];
 
+/** Get event category for styling */
+function getEventCategory(event: HistoricalEvent): 'battle' | 'migration' | 'revelation' | 'treaty' | 'milestone' {
+  const id = event.id;
+  if (id.includes('badr') || id.includes('uhud') || id.includes('trench') || id.includes('hunayn') || id.includes('khaybar')) return 'battle';
+  if (id.includes('abyssinia') || id.includes('hijra') || id.includes('taif')) return 'migration';
+  if (id.includes('revelation') || id.includes('isra')) return 'revelation';
+  if (id.includes('hudaybiyyah') || id.includes('aqabah') || id.includes('constitution')) return 'treaty';
+  return 'milestone';
+}
+
+/** Event category colors */
+const EVENT_COLORS = {
+  battle: { bg: '#EF4444', border: '#FCA5A5' },      // Red
+  migration: { bg: '#3B82F6', border: '#93C5FD' },   // Blue
+  revelation: { bg: '#F59E0B', border: '#FCD34D' },  // Amber
+  treaty: { bg: '#10B981', border: '#6EE7B7' },      // Green
+  milestone: { bg: '#8B5CF6', border: '#C4B5FD' },   // Purple
+};
+
 export function MapContainer() {
   const mapContainer = useRef<HTMLDivElement>(null);
   const map = useRef<mapboxgl.Map | null>(null);
   const markersRef = useRef<Map<number, mapboxgl.Marker>>(new Map());
+  const eventMarkersRef = useRef<Map<string, mapboxgl.Marker>>(new Map());
   const [mapLoaded, setMapLoaded] = useState(false);
 
   const currentYear = useMapStore((state) => state.currentYear);
   const showMakki = useMapStore((state) => state.showMakki);
   const showMadani = useMapStore((state) => state.showMadani);
+  const showEvents = useMapStore((state) => state.showEvents);
   const selectedSurahNumber = useMapStore((state) => state.selectedSurahNumber);
+  const selectedEventId = useMapStore((state) => state.selectedEventId);
   const selectSurah = useMapStore((state) => state.selectSurah);
+  const selectEvent = useMapStore((state) => state.selectEvent);
   const hoverSurah = useMapStore((state) => state.hoverSurah);
 
   // Get all surahs once
@@ -91,6 +115,56 @@ export function MapContainer() {
       return el;
     },
     [hoverSurah]
+  );
+
+  /** Create an event marker element (diamond shape) */
+  const createEventMarkerElement = useCallback(
+    (event: HistoricalEvent, isSelected: boolean, isCurrentYear: boolean): HTMLDivElement => {
+      const el = document.createElement('div');
+      const category = getEventCategory(event);
+      const colors = EVENT_COLORS[category];
+
+      const size = isSelected ? 24 : 16;
+
+      // Outer container for rotation
+      el.style.width = `${size}px`;
+      el.style.height = `${size}px`;
+      el.style.transform = 'rotate(45deg)';
+      el.style.backgroundColor = colors.bg;
+      el.style.border = `2px solid ${colors.border}`;
+      el.style.borderRadius = '3px';
+      el.style.cursor = 'pointer';
+      el.style.transition = 'all 0.2s ease-out';
+      el.style.boxShadow = isCurrentYear
+        ? `0 0 12px ${colors.bg}, 0 0 24px ${colors.bg}40`
+        : `0 2px 8px rgba(0,0,0,0.3)`;
+
+      // Pulsing animation for current year events
+      if (isCurrentYear) {
+        el.style.animation = 'pulse 2s infinite';
+      }
+
+      el.setAttribute('data-event', event.id);
+      el.setAttribute('title', event.name);
+
+      // Hover effects
+      el.addEventListener('mouseenter', () => {
+        el.style.width = '20px';
+        el.style.height = '20px';
+        el.style.boxShadow = `0 0 16px ${colors.bg}, 0 0 32px ${colors.bg}60`;
+      });
+
+      el.addEventListener('mouseleave', () => {
+        el.style.width = isSelected ? '24px' : '16px';
+        el.style.height = isSelected ? '24px' : '16px';
+        el.style.boxShadow = isCurrentYear
+          ? `0 0 12px ${colors.bg}, 0 0 24px ${colors.bg}40`
+          : `0 2px 8px rgba(0,0,0,0.3)`;
+      });
+
+      return el;
+    },
+    []
   );
 
   /** Create a location label element */
@@ -222,6 +296,72 @@ export function MapContainer() {
     selectedSurahNumber,
     createMarkerElement,
     selectSurah,
+  ]);
+
+  /** Update event markers based on current year and visibility toggle */
+  useEffect(() => {
+    if (!map.current || !mapLoaded) return;
+
+    // If events are hidden, remove all event markers
+    if (!showEvents) {
+      eventMarkersRef.current.forEach((marker) => marker.remove());
+      eventMarkersRef.current.clear();
+      return;
+    }
+
+    // Get events up to current year
+    const visibleEvents = events.filter((e) => e.year <= currentYear);
+    const visibleIds = new Set(visibleEvents.map((e) => e.id));
+
+    // Remove markers that should no longer be visible
+    eventMarkersRef.current.forEach((marker, eventId) => {
+      if (!visibleIds.has(eventId)) {
+        marker.remove();
+        eventMarkersRef.current.delete(eventId);
+      }
+    });
+
+    // Add or update markers for visible events
+    visibleEvents.forEach((event) => {
+      const isSelected = event.id === selectedEventId;
+      const isCurrentYear = event.year === currentYear;
+      const existingMarker = eventMarkersRef.current.get(event.id);
+
+      if (existingMarker) {
+        // Update existing marker if selection or year changed
+        const el = existingMarker.getElement();
+        const size = isSelected ? '24px' : '16px';
+        el.style.width = size;
+        el.style.height = size;
+
+        const category = getEventCategory(event);
+        const colors = EVENT_COLORS[category];
+        el.style.boxShadow = isCurrentYear
+          ? `0 0 12px ${colors.bg}, 0 0 24px ${colors.bg}40`
+          : `0 2px 8px rgba(0,0,0,0.3)`;
+        el.style.animation = isCurrentYear ? 'pulse 2s infinite' : 'none';
+        return;
+      }
+
+      const el = createEventMarkerElement(event, isSelected, isCurrentYear);
+
+      el.addEventListener('click', () => {
+        selectEvent(event.id);
+      });
+
+      const marker = new mapboxgl.Marker({ element: el })
+        .setLngLat([event.location.lng, event.location.lat])
+        .addTo(map.current!);
+
+      eventMarkersRef.current.set(event.id, marker);
+    });
+  }, [
+    currentYear,
+    mapLoaded,
+    showEvents,
+    selectedEventId,
+    createEventMarkerElement,
+    selectEvent,
   ]);
 
   return (

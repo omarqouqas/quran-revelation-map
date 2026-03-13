@@ -306,3 +306,11 @@ export function getSurahsByRevelationOrder(): AppSurahData[] {
 export function getSurahMeaning(surahNumber: number): string {
   return SURAH_MEANINGS[surahNumber] || '';
 }
+
+/**
+ * Get surah data by number (alias for getQuranMetaSurah)
+ */
+export function getSurahByNumber(surahNumber: number): AppSurahData | null {
+  if (surahNumber < 1 || surahNumber > 114) return null;
+  return getQuranMetaSurah(surahNumber);
+}

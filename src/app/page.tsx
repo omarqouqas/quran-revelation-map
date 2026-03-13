@@ -5,18 +5,21 @@
  * Renders the immersive full-screen map experience with timeline controls
  */
 
-import { Search } from 'lucide-react';
+import { Search, Sparkles } from 'lucide-react';
 import { MapContainer } from '@/components/map/MapContainer';
 import { TimelineSlider } from '@/components/timeline/TimelineSlider';
 import { SurahDetailPanel } from '@/components/layout/SurahDetailPanel';
+import { EventDetailModal } from '@/components/layout/EventDetailModal';
 import { LandingOverlay } from '@/components/layout/LandingOverlay';
 import { SurahExplorer } from '@/components/explorer';
 import { useExplorerStore } from '@/stores/useExplorerStore';
-import { cn } from '@/lib/utils';
+import { useMapStore } from '@/stores/useMapStore';
 
 export default function Home() {
   const isExplorerOpen = useExplorerStore((state) => state.isExplorerOpen);
   const openExplorer = useExplorerStore((state) => state.openExplorer);
+  const showEvents = useMapStore((state) => state.showEvents);
+  const setShowEvents = useMapStore((state) => state.setShowEvents);
 
   return (
     <main className="relative h-screen w-screen overflow-hidden bg-[#0A0F1A]">
@@ -54,16 +57,29 @@ export default function Home() {
         )}
       </div>
 
-      {/* Legend - positioned below map controls, no pointer events */}
-      <div className="absolute top-32 right-3 z-10 flex flex-col gap-2 text-xs px-3 py-2 rounded-lg bg-[#1A2332]/90 backdrop-blur-sm border border-[#2A3342] pointer-events-none">
-        <div className="flex items-center gap-2">
+      {/* Legend - positioned below map controls */}
+      <div className="absolute top-32 right-3 z-10 flex flex-col gap-2 text-xs px-3 py-2.5 rounded-lg bg-[#1A2332]/90 backdrop-blur-sm border border-[#2A3342]">
+        <div className="flex items-center gap-2 pointer-events-none">
           <span className="w-2.5 h-2.5 rounded-full bg-[#C8A84E]" />
           <span className="text-[#E8E3DB] opacity-80">Makki</span>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 pointer-events-none">
           <span className="w-2.5 h-2.5 rounded-full bg-[#2DD4BF]" />
           <span className="text-[#E8E3DB] opacity-80">Madani</span>
         </div>
+        <div className="border-t border-[#2A3342] my-1" />
+        <button
+          onClick={() => setShowEvents(!showEvents)}
+          style={{ pointerEvents: 'auto' }}
+          className={`flex items-center gap-2 transition-opacity ${showEvents ? 'opacity-100' : 'opacity-50'}`}
+        >
+          <span
+            className="w-2.5 h-2.5 rotate-45 rounded-sm"
+            style={{ backgroundColor: showEvents ? '#8B5CF6' : '#4B5563' }}
+          />
+          <span className="text-[#E8E3DB]">Events</span>
+          <Sparkles className="w-3 h-3 text-[#8B5CF6]" />
+        </button>
       </div>
 
       {/* Timeline panel */}
@@ -80,6 +96,9 @@ export default function Home() {
 
       {/* Surah detail panel */}
       <SurahDetailPanel />
+
+      {/* Event detail modal */}
+      <EventDetailModal />
 
       {/* Surah explorer panel */}
       <SurahExplorer />

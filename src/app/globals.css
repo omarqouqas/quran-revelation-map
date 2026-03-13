@@ -128,6 +128,18 @@ body {
   animation: pulse-teal 2s ease-in-out infinite;
 }
 
+/* Event marker pulse animation */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: rotate(45deg) scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: rotate(45deg) scale(1.15);
+  }
+}
+
 /* Radix UI Slider overrides */
 [data-radix-slider-track] {
   background: var(--color-navy-lighter);
