@@ -4,17 +4,26 @@
  * Explorer panel header with search input
  */
 
-import { useCallback } from 'react';
+import { useRef, useEffect } from 'react';
 import { Search, X } from 'lucide-react';
 import { useExplorerStore } from '@/stores/useExplorerStore';
 
 export function ExplorerHeader() {
   const searchQuery = useExplorerStore((state) => state.searchQuery);
   const setSearchQuery = useExplorerStore((state) => state.setSearchQuery);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
 
-  // Use useCallback to ensure stable reference
-  const handleClose = useCallback(() => {
-    useExplorerStore.getState().closeExplorer();
+  // Attach click listener directly to DOM element to bypass React event system
+  useEffect(() => {
+    const button = closeButtonRef.current;
+    if (!button) return;
+
+    const handleClick = () => {
+      useExplorerStore.setState({ isExplorerOpen: false });
+    };
+
+    button.addEventListener('click', handleClick);
+    return () => button.removeEventListener('click', handleClick);
   }, []);
 
   return (
@@ -25,12 +34,8 @@ export function ExplorerHeader() {
           Explore Surahs
         </h2>
         <button
+          ref={closeButtonRef}
           type="button"
-          onClick={(e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            handleClose();
-          }}
           style={{
             padding: '8px',
             borderRadius: '10px',
@@ -40,7 +45,6 @@ export function ExplorerHeader() {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            WebkitTapHighlightColor: 'transparent',
           }}
           aria-label="Close explorer"
         >

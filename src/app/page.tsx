@@ -55,15 +55,15 @@ export default function Home() {
         )}
       </div>
 
-      {/* Legend */}
-      <div className="absolute top-5 right-4 sm:right-6 z-10 flex items-center gap-3 sm:gap-4 text-xs px-3 py-2 rounded-full bg-[#1A2332]/80 backdrop-blur-sm border border-[#2A3342]">
-        <div className="flex items-center gap-1.5">
+      {/* Legend - positioned below map controls */}
+      <div className="absolute top-28 right-3 z-10 flex flex-col gap-2 text-xs px-3 py-2 rounded-lg bg-[#1A2332]/90 backdrop-blur-sm border border-[#2A3342]">
+        <div className="flex items-center gap-2">
           <span className="w-2.5 h-2.5 rounded-full bg-[#C8A84E]" />
-          <span className="text-[#E8E3DB] opacity-70">Makki</span>
+          <span className="text-[#E8E3DB] opacity-80">Makki</span>
         </div>
-        <div className="flex items-center gap-1.5">
+        <div className="flex items-center gap-2">
           <span className="w-2.5 h-2.5 rounded-full bg-[#2DD4BF]" />
-          <span className="text-[#E8E3DB] opacity-70">Madani</span>
+          <span className="text-[#E8E3DB] opacity-80">Madani</span>
         </div>
       </div>
 
