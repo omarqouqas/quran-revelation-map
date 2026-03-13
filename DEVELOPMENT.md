@@ -151,6 +151,7 @@ src/
 | Progress Tracking | Track explored surahs/events with localStorage | `useProgressStore.ts` |
 | Progress Stats | Visual progress bar, streak tracking, stats | `ProgressStats.tsx` |
 | Explored Indicators | Glow effect on explored surah markers | `MapContainer.tsx` |
+| Day/Night Cycle | Atmospheric sky changes with timeline (dawn→dusk) | `MapContainer.tsx` |
 
 ### Keyboard Shortcuts
 

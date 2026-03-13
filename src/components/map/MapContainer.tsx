@@ -29,6 +29,102 @@ const MAP_BOUNDS: [[number, number], [number, number]] = [
   [45, 30], // Northeast
 ];
 
+/**
+ * Day/night cycle configuration
+ * Maps timeline years (610-632) to time of day
+ * Dawn (610) → Midday (621) → Dusk (632)
+ */
+interface DayCycleConfig {
+  sunAltitude: number;      // Sun angle above horizon (0-90)
+  sunAzimuth: number;       // Sun direction (0-360)
+  skyColor: string;         // Sky gradient top color
+  horizonColor: string;     // Sky gradient horizon color
+  fogColor: string;         // Atmospheric fog color
+  fogOpacity: number;       // Fog intensity (0-1)
+  starIntensity: number;    // Star visibility (0-1)
+}
+
+/** Calculate day cycle properties based on year */
+function getDayCycleConfig(year: number): DayCycleConfig {
+  // Normalize year to 0-1 range (610=0, 632=1)
+  const progress = (year - 610) / 22;
+
+  // Map to sun position (dawn → noon → dusk)
+  // Using sine curve for smooth transition
+  const sunProgress = Math.sin(progress * Math.PI);
+  const sunAltitude = 10 + sunProgress * 70; // 10° at dawn/dusk, 80° at noon
+
+  // Sun moves from east (90°) to west (270°)
+  const sunAzimuth = 90 + progress * 180;
+
+  // Color transitions
+  if (progress < 0.2) {
+    // Dawn (610-614): Golden/rose
+    const t = progress / 0.2;
+    return {
+      sunAltitude,
+      sunAzimuth,
+      skyColor: lerpColor('#1a1a2e', '#2d4a7c', t),
+      horizonColor: lerpColor('#ff9966', '#ffcc99', t),
+      fogColor: lerpColor('#ff9966', '#ffd699', t),
+      fogOpacity: 0.3 - t * 0.1,
+      starIntensity: 1 - t,
+    };
+  } else if (progress < 0.5) {
+    // Morning (614-621): Clear blue
+    const t = (progress - 0.2) / 0.3;
+    return {
+      sunAltitude,
+      sunAzimuth,
+      skyColor: lerpColor('#2d4a7c', '#1e3a5f', t),
+      horizonColor: lerpColor('#ffcc99', '#87ceeb', t),
+      fogColor: lerpColor('#ffd699', '#b0c4de', t),
+      fogOpacity: 0.2 - t * 0.1,
+      starIntensity: 0,
+    };
+  } else if (progress < 0.8) {
+    // Afternoon (621-628): Warm
+    const t = (progress - 0.5) / 0.3;
+    return {
+      sunAltitude,
+      sunAzimuth,
+      skyColor: lerpColor('#1e3a5f', '#2d4a7c', t),
+      horizonColor: lerpColor('#87ceeb', '#ffc299', t),
+      fogColor: lerpColor('#b0c4de', '#ffb366', t),
+      fogOpacity: 0.1 + t * 0.1,
+      starIntensity: 0,
+    };
+  } else {
+    // Dusk (628-632): Purple/gold
+    const t = (progress - 0.8) / 0.2;
+    return {
+      sunAltitude,
+      sunAzimuth,
+      skyColor: lerpColor('#2d4a7c', '#1a1a2e', t),
+      horizonColor: lerpColor('#ffc299', '#ff7744', t),
+      fogColor: lerpColor('#ffb366', '#cc6633', t),
+      fogOpacity: 0.2 + t * 0.15,
+      starIntensity: t * 0.5,
+    };
+  }
+}
+
+/** Linear interpolation between two hex colors */
+function lerpColor(color1: string, color2: string, t: number): string {
+  const r1 = parseInt(color1.slice(1, 3), 16);
+  const g1 = parseInt(color1.slice(3, 5), 16);
+  const b1 = parseInt(color1.slice(5, 7), 16);
+  const r2 = parseInt(color2.slice(1, 3), 16);
+  const g2 = parseInt(color2.slice(3, 5), 16);
+  const b2 = parseInt(color2.slice(5, 7), 16);
+
+  const r = Math.round(r1 + (r2 - r1) * t);
+  const g = Math.round(g1 + (g2 - g1) * t);
+  const b = Math.round(b1 + (b2 - b1) * t);
+
+  return `rgb(${r}, ${g}, ${b})`;
+}
+
 /** Location labels to display on the map */
 const LOCATION_LABELS = [
   { name: 'Makkah', arabicName: 'مكة', ...LOCATIONS.MAKKAH },
@@ -234,8 +330,39 @@ export function MapContainer() {
       'top-right'
     );
 
-    // Add location labels when map loads
+    // Add location labels and sky layer when map loads
     map.current.on('load', () => {
+      if (!map.current) return;
+
+      // Add sky layer for day/night cycle
+      map.current.addLayer({
+        id: 'sky',
+        type: 'sky',
+        paint: {
+          'sky-type': 'gradient',
+          'sky-gradient': [
+            'interpolate',
+            ['linear'],
+            ['sky-radial-progress'],
+            0.8, '#1a1a2e',
+            1, '#ff9966',
+          ],
+          'sky-gradient-center': [0, 0],
+          'sky-gradient-radius': 90,
+          'sky-opacity': 0.5,
+        },
+      });
+
+      // Add fog for atmospheric depth
+      map.current.setFog({
+        color: 'rgb(255, 153, 102)',
+        'high-color': 'rgb(40, 40, 60)',
+        'horizon-blend': 0.1,
+        'space-color': 'rgb(20, 20, 35)',
+        'star-intensity': 0.8,
+      });
+
+      // Add location labels
       LOCATION_LABELS.forEach((location) => {
         if (!map.current) return;
 
@@ -244,6 +371,7 @@ export function MapContainer() {
           .setLngLat([location.lng, location.lat])
           .addTo(map.current);
       });
+
       setMapLoaded(true);
     });
 
@@ -253,6 +381,33 @@ export function MapContainer() {
       setMapLoaded(false);
     };
   }, [createLocationLabelElement]);
+
+  /** Update day/night cycle based on current year */
+  useEffect(() => {
+    if (!map.current || !mapLoaded) return;
+
+    const config = getDayCycleConfig(currentYear);
+
+    // Update fog/atmosphere
+    map.current.setFog({
+      color: config.fogColor,
+      'high-color': config.skyColor,
+      'horizon-blend': 0.08 + config.fogOpacity * 0.15,
+      'space-color': 'rgb(15, 15, 25)',
+      'star-intensity': config.starIntensity,
+    });
+
+    // Update sky gradient if layer exists
+    if (map.current.getLayer('sky')) {
+      map.current.setPaintProperty('sky', 'sky-gradient', [
+        'interpolate',
+        ['linear'],
+        ['sky-radial-progress'],
+        0.7, config.skyColor,
+        1, config.horizonColor,
+      ]);
+    }
+  }, [currentYear, mapLoaded]);
 
   /** Update markers based on current year and filters */
   useEffect(() => {

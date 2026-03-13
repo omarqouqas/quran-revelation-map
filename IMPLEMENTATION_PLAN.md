@@ -105,7 +105,7 @@ After viewing a surah, occasionally show reflection questions connecting histori
 |-------------|--------|--------|------|-------|
 | **Animated route lines** | Low | High | Low | ✅ Implemented (Hijra, Abyssinia, Taif) |
 | **3D terrain** (Mapbox elevation) | Medium | High | Low | Mountains like Jabal al-Nour visible |
-| **Day/night cycle** on map | Low | Medium | Low | Atmospheric, matches timeline year |
+| **Day/night cycle** on map | Low | Medium | Low | ✅ Implemented (dawn→midday→dusk) |
 | **Particle effects** on surah reveal | Low | Medium | Low | Subtle sparkle when markers appear |
 | **Audio recitation embed** | Medium | High | Low | Play ayat in panel via Quran.com API |
 | **Connection lines** between surahs | Medium | High | Low | Visual graph of thematic links |
