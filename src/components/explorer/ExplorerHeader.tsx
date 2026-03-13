@@ -20,7 +20,8 @@ export function ExplorerHeader() {
           Explore Surahs
         </h2>
         <button
-          onClick={closeExplorer}
+          type="button"
+          onClick={() => closeExplorer()}
           style={{
             padding: '8px',
             borderRadius: '10px',
