@@ -12,8 +12,33 @@ export interface HistoricalEvent {
   year: number;
   endYear?: number;
   location: { lat: number; lng: number };
+  /** If event happened outside map bounds, this is the actual location name */
+  offMapLocation?: string;
   description: string;
   relatedSurahNumbers: number[];
+}
+
+/** Map bounds for reference - events outside these are shown at edge */
+const MAP_BOUNDS = {
+  minLat: 15,
+  maxLat: 30,
+  minLng: 35,
+  maxLng: 45,
+};
+
+/** Seeded random for deterministic jitter */
+function seededRandom(seed: number): number {
+  const x = Math.sin(seed * 9999) * 10000;
+  return x - Math.floor(x);
+}
+
+/** Add small jitter to prevent overlapping markers */
+function jitterLocation(location: { lat: number; lng: number }, seed: number): { lat: number; lng: number } {
+  const jitterAmount = 0.15; // ~15km
+  return {
+    lat: location.lat + (seededRandom(seed) - 0.5) * jitterAmount,
+    lng: location.lng + (seededRandom(seed + 100) - 0.5) * jitterAmount,
+  };
 }
 
 export const events: HistoricalEvent[] = [
@@ -33,7 +58,7 @@ export const events: HistoricalEvent[] = [
     arabicName: 'الدعوة السرية',
     year: 610,
     endYear: 613,
-    location: LOCATIONS.MAKKAH,
+    location: jitterLocation(LOCATIONS.MAKKAH, 6101),
     description:
       'The Prophet privately invited close family and friends to Islam. Early converts included Khadijah, Ali, Abu Bakr, and Zayd ibn Haritha.',
     relatedSurahNumbers: [],
@@ -43,7 +68,7 @@ export const events: HistoricalEvent[] = [
     name: 'Public Preaching Begins',
     arabicName: 'الجهر بالدعوة',
     year: 613,
-    location: LOCATIONS.MAKKAH,
+    location: jitterLocation(LOCATIONS.MAKKAH, 6131),
     description:
       'The Prophet stood on Mount Safa and publicly called the Quraysh to Islam, marking the beginning of open preaching.',
     relatedSurahNumbers: [111, 26],
@@ -54,7 +79,7 @@ export const events: HistoricalEvent[] = [
     arabicName: 'اضطهاد المسلمين',
     year: 614,
     endYear: 615,
-    location: LOCATIONS.MAKKAH,
+    location: jitterLocation(LOCATIONS.MAKKAH, 6141),
     description:
       'The Quraysh intensified persecution of Muslims. Believers like Bilal, Ammar, and Sumayyah were tortured for their faith.',
     relatedSurahNumbers: [85, 16],
@@ -64,7 +89,8 @@ export const events: HistoricalEvent[] = [
     name: 'First Migration to Abyssinia',
     arabicName: 'الهجرة الأولى إلى الحبشة',
     year: 615,
-    location: { lat: 14.1210, lng: 38.7278 }, // Axum, Ethiopia
+    location: jitterLocation(LOCATIONS.MAKKAH, 615), // Shown at departure point
+    offMapLocation: 'Axum, Ethiopia',
     description:
       'A group of Muslims fled persecution to the Christian kingdom of Abyssinia. Ja\'far ibn Abi Talib recited Surah Maryam to King Negus.',
     relatedSurahNumbers: [19],
@@ -74,7 +100,8 @@ export const events: HistoricalEvent[] = [
     name: 'Second Migration to Abyssinia',
     arabicName: 'الهجرة الثانية إلى الحبشة',
     year: 616,
-    location: { lat: 14.1210, lng: 38.7278 },
+    location: jitterLocation(LOCATIONS.MAKKAH, 616), // Shown at departure point
+    offMapLocation: 'Axum, Ethiopia',
     description:
       'A larger group of Muslims migrated to Abyssinia, seeking protection under King Negus from increasing persecution.',
     relatedSurahNumbers: [],
@@ -85,7 +112,7 @@ export const events: HistoricalEvent[] = [
     arabicName: 'حصار الشعب',
     year: 616,
     endYear: 619,
-    location: LOCATIONS.MAKKAH,
+    location: jitterLocation(LOCATIONS.MAKKAH, 6163),
     description:
       'The Quraysh imposed a complete social and economic boycott on Banu Hashim. Muslims suffered severe hardship for three years.',
     relatedSurahNumbers: [],
@@ -95,7 +122,7 @@ export const events: HistoricalEvent[] = [
     name: 'Year of Sorrow',
     arabicName: 'عام الحزن',
     year: 619,
-    location: LOCATIONS.MAKKAH,
+    location: jitterLocation(LOCATIONS.MAKKAH, 6191),
     description:
       'The Prophet lost both his beloved wife Khadijah and his uncle and protector Abu Talib within weeks of each other.',
     relatedSurahNumbers: [6, 12],
@@ -115,7 +142,7 @@ export const events: HistoricalEvent[] = [
     name: 'Isra and Mi\'raj',
     arabicName: 'الإسراء والمعراج',
     year: 621,
-    location: LOCATIONS.MAKKAH,
+    location: jitterLocation(LOCATIONS.MAKKAH, 6211),
     description:
       'The miraculous Night Journey from Makkah to Jerusalem and Ascension through the heavens. The five daily prayers were prescribed.',
     relatedSurahNumbers: [17, 53],
@@ -125,7 +152,7 @@ export const events: HistoricalEvent[] = [
     name: 'First Pledge of Aqabah',
     arabicName: 'بيعة العقبة الأولى',
     year: 621,
-    location: LOCATIONS.MINA,
+    location: jitterLocation(LOCATIONS.MINA, 6212),
     description:
       'Twelve men from Yathrib (Madinah) pledged allegiance to the Prophet at Aqabah during the pilgrimage season.',
     relatedSurahNumbers: [],
@@ -135,7 +162,7 @@ export const events: HistoricalEvent[] = [
     name: 'Second Pledge of Aqabah',
     arabicName: 'بيعة العقبة الثانية',
     year: 622,
-    location: LOCATIONS.MINA,
+    location: jitterLocation(LOCATIONS.MINA, 6221),
     description:
       'Seventy-three men and two women from Madinah pledged to protect the Prophet, preparing for the Hijra.',
     relatedSurahNumbers: [],
@@ -145,7 +172,7 @@ export const events: HistoricalEvent[] = [
     name: 'The Hijra to Madinah',
     arabicName: 'الهجرة إلى المدينة',
     year: 622,
-    location: LOCATIONS.MADINAH,
+    location: jitterLocation(LOCATIONS.MADINAH, 6222),
     description:
       'The Prophet and Abu Bakr migrated to Madinah, establishing the first Islamic state. This marks the beginning of the Islamic calendar.',
     relatedSurahNumbers: [2, 8, 47],
@@ -155,7 +182,7 @@ export const events: HistoricalEvent[] = [
     name: 'Constitution of Madinah',
     arabicName: 'صحيفة المدينة',
     year: 622,
-    location: LOCATIONS.MADINAH,
+    location: jitterLocation(LOCATIONS.MADINAH, 6223),
     description:
       'The Prophet established a constitutional agreement defining the rights and duties of all citizens of Madinah.',
     relatedSurahNumbers: [],
@@ -185,7 +212,7 @@ export const events: HistoricalEvent[] = [
     name: 'Expulsion of Banu Nadir',
     arabicName: 'إجلاء بني النضير',
     year: 625,
-    location: LOCATIONS.MADINAH,
+    location: jitterLocation(LOCATIONS.MADINAH, 6251),
     description:
       'The Jewish tribe of Banu Nadir was expelled from Madinah after plotting against the Prophet.',
     relatedSurahNumbers: [59],
@@ -195,7 +222,7 @@ export const events: HistoricalEvent[] = [
     name: 'Battle of the Trench',
     arabicName: 'غزوة الخندق',
     year: 627,
-    location: LOCATIONS.MADINAH,
+    location: jitterLocation(LOCATIONS.MADINAH, 6271),
     description:
       'A confederation of 10,000 enemies besieged Madinah. Muslims dug a trench on Salman al-Farisi\'s advice. The siege failed miraculously.',
     relatedSurahNumbers: [33],
@@ -225,7 +252,7 @@ export const events: HistoricalEvent[] = [
     name: 'Conquest of Makkah',
     arabicName: 'فتح مكة',
     year: 630,
-    location: LOCATIONS.MAKKAH,
+    location: jitterLocation(LOCATIONS.MAKKAH, 6301),
     description:
       'The Prophet entered Makkah peacefully with 10,000 Muslims. He cleansed the Kaaba of idols and declared general amnesty.',
     relatedSurahNumbers: [9, 110],
@@ -255,7 +282,7 @@ export const events: HistoricalEvent[] = [
     name: 'Death of the Prophet',
     arabicName: 'وفاة النبي ﷺ',
     year: 632,
-    location: LOCATIONS.MADINAH,
+    location: jitterLocation(LOCATIONS.MADINAH, 6321),
     description:
       'Prophet Muhammad (peace be upon him) passed away in Madinah, having completed his mission of delivering the Quran to humanity.',
     relatedSurahNumbers: [],

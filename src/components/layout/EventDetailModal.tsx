@@ -226,6 +226,23 @@ export function EventDetailModal() {
                     Jump to {event.year} CE
                   </button>
                 </div>
+                {event.offMapLocation && (
+                  <div
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '6px',
+                      padding: '4px 10px',
+                      borderRadius: '6px',
+                      backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                      border: '1px solid rgba(59, 130, 246, 0.3)',
+                    }}
+                  >
+                    <span style={{ fontSize: '12px', color: '#93C5FD' }}>
+                      📍 Actual location: {event.offMapLocation}
+                    </span>
+                  </div>
+                )}
               </div>
 
               {/* Description */}
