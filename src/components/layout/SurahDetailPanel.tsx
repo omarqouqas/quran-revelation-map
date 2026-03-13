@@ -23,42 +23,9 @@ import { useMapStore } from '@/stores/useMapStore';
 import { getCompleteSurahData } from '@/data/surah-locations';
 import { getTanzilNote } from '@/data/tanzil-notes';
 import { getEventsForSurah } from '@/data/events';
+import { getOpeningVerse } from '@/data/opening-verses';
 import { getSurahMeaning } from '@/lib/quran-data';
 import { cn } from '@/lib/utils';
-
-/** Opening verses for spotlight (curated selection) */
-const VERSE_SPOTLIGHTS: Record<number, { arabic: string; translation: string; ayah: string }> = {
-  1: {
-    arabic: 'بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ',
-    translation: 'In the name of Allah, the Most Gracious, the Most Merciful.',
-    ayah: '1:1',
-  },
-  2: {
-    arabic: 'ذَٰلِكَ الْكِتَابُ لَا رَيْبَ فِيهِ هُدًى لِّلْمُتَّقِينَ',
-    translation: 'This is the Book about which there is no doubt, a guidance for those conscious of Allah.',
-    ayah: '2:2',
-  },
-  3: {
-    arabic: 'إِنَّ اللَّهَ اصْطَفَىٰ آدَمَ وَنُوحًا وَآلَ إِبْرَاهِيمَ وَآلَ عِمْرَانَ عَلَى الْعَالَمِينَ',
-    translation: 'Indeed, Allah chose Adam and Noah and the family of Abraham and the family of Imran over the worlds.',
-    ayah: '3:33',
-  },
-  96: {
-    arabic: 'اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ',
-    translation: 'Read in the name of your Lord who created.',
-    ayah: '96:1',
-  },
-  112: {
-    arabic: 'قُلْ هُوَ اللَّهُ أَحَدٌ',
-    translation: 'Say, "He is Allah, [who is] One."',
-    ayah: '112:1',
-  },
-  114: {
-    arabic: 'قُلْ أَعُوذُ بِرَبِّ النَّاسِ',
-    translation: 'Say, "I seek refuge in the Lord of mankind."',
-    ayah: '114:1',
-  },
-};
 
 export function SurahDetailPanel() {
   const selectedSurahNumber = useMapStore((state) => state.selectedSurahNumber);
@@ -91,7 +58,7 @@ export function SurahDetailPanel() {
   const tanzilNote = selectedSurahNumber ? getTanzilNote(selectedSurahNumber) : '';
   const relatedEvents = selectedSurahNumber ? getEventsForSurah(selectedSurahNumber) : [];
   const englishMeaning = selectedSurahNumber ? getSurahMeaning(selectedSurahNumber) : '';
-  const verseSpotlight = selectedSurahNumber ? VERSE_SPOTLIGHTS[selectedSurahNumber] : null;
+  const openingVerse = selectedSurahNumber ? getOpeningVerse(selectedSurahNumber) : undefined;
 
   const isMakki = surah?.isMeccan;
   const accentColor = isMakki ? '#C8A84E' : '#2EC4B6';
@@ -207,7 +174,7 @@ export function SurahDetailPanel() {
               </div>
 
               {/* Action buttons */}
-              <div className="px-6 pb-4 flex gap-2">
+              <div className="px-6 pb-4 flex gap-3">
                 <a
                   href={quranComUrl}
                   target="_blank"
@@ -219,14 +186,14 @@ export function SurahDetailPanel() {
                   }}
                 >
                   <BookOpen className="w-4 h-4" />
-                  Read Surah
+                  Read
                   <ExternalLink className="w-3 h-3 opacity-60" />
                 </a>
                 <a
                   href={`https://quran.com/${selectedSurahNumber}?audio=7`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium border transition-all hover:bg-[#1A2332]"
+                  className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium border transition-all hover:bg-[#1A2332]"
                   style={{
                     borderColor: `${accentColor}40`,
                     color: accentColor,
@@ -234,41 +201,42 @@ export function SurahDetailPanel() {
                 >
                   <Play className="w-4 h-4" />
                   Listen
+                  <ExternalLink className="w-3 h-3 opacity-60" />
                 </a>
               </div>
             </div>
 
             {/* Content */}
-            <div className="px-6 py-5 space-y-6">
-              {/* Verse Spotlight */}
-              {verseSpotlight && (
+            <div className="px-6 py-6 space-y-8">
+              {/* Opening Verse */}
+              {openingVerse && (
                 <section
-                  className="p-4 rounded-xl border"
+                  className="p-5 rounded-xl border"
                   style={{
                     backgroundColor: `${accentColor}08`,
                     borderColor: `${accentColor}20`,
                   }}
                 >
-                  <div className="flex items-center gap-2 mb-3">
+                  <div className="flex items-center gap-2 mb-4">
                     <Sparkles className="w-4 h-4" style={{ color: accentColor }} />
                     <h3
-                      className="text-xs font-medium uppercase tracking-wider"
+                      className="text-xs font-semibold uppercase tracking-wider"
                       style={{ color: accentColor }}
                     >
                       Opening Verse
                     </h3>
                   </div>
                   <p
-                    className="text-2xl text-[#F5F0E8] leading-relaxed text-right mb-3"
+                    className="text-2xl text-[#F5F0E8] leading-loose text-right mb-4"
                     style={{ fontFamily: 'var(--font-arabic)' }}
                   >
-                    {verseSpotlight.arabic}
+                    {openingVerse.arabic}
                   </p>
                   <p className="text-sm text-[#E8E3DB] opacity-80 leading-relaxed italic">
-                    "{verseSpotlight.translation}"
+                    "{openingVerse.translation}"
                   </p>
-                  <p className="text-xs text-[#E8E3DB] opacity-40 mt-2">
-                    — {verseSpotlight.ayah}
+                  <p className="text-xs text-[#E8E3DB] opacity-50 mt-3">
+                    — {openingVerse.ayah}
                   </p>
                 </section>
               )}
@@ -289,12 +257,12 @@ export function SurahDetailPanel() {
               {/* Key themes */}
               <section>
                 <h3
-                  className="text-xs font-medium text-[#E8E3DB] opacity-50 uppercase tracking-wider mb-3"
+                  className="text-xs font-semibold text-[#E8E3DB] opacity-70 uppercase tracking-wider mb-4"
                   style={{ fontFamily: 'var(--font-heading)' }}
                 >
                   Key Themes
                 </h3>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2.5">
                   {surah.themes.map((theme, index) => (
                     <span
                       key={index}
@@ -314,27 +282,27 @@ export function SurahDetailPanel() {
               {/* Historical context */}
               <section>
                 <h3
-                  className="text-xs font-medium text-[#E8E3DB] opacity-50 uppercase tracking-wider mb-3"
+                  className="text-xs font-semibold text-[#E8E3DB] opacity-70 uppercase tracking-wider mb-4"
                   style={{ fontFamily: 'var(--font-heading)' }}
                 >
                   Historical Context
                 </h3>
-                <p className="text-sm text-[#E8E3DB] opacity-80 leading-relaxed">
+                <p className="text-[15px] text-[#E8E3DB] opacity-85 leading-relaxed">
                   {surah.context}
                 </p>
               </section>
 
               {/* Tanzil note */}
               {tanzilNote && (
-                <section className="p-4 rounded-xl bg-[#1A2332] border border-[#2A3342]">
+                <section className="p-5 rounded-xl bg-[#1A2332] border border-[#2A3342]">
                   <h4
-                    className="text-xs font-medium text-[#F5F0E8] mb-2 flex items-center gap-2"
+                    className="text-xs font-semibold text-[#F5F0E8] mb-3 flex items-center gap-2"
                     style={{ fontFamily: 'var(--font-heading)' }}
                   >
                     <BookOpen className="w-3.5 h-3.5" style={{ color: accentColor }} />
                     Scholarly Note
                   </h4>
-                  <p className="text-xs text-[#E8E3DB] opacity-70 leading-relaxed">
+                  <p className="text-sm text-[#E8E3DB] opacity-75 leading-relaxed">
                     {tanzilNote}
                   </p>
                 </section>
@@ -344,7 +312,7 @@ export function SurahDetailPanel() {
               {relatedEvents.length > 0 && (
                 <section>
                   <h3
-                    className="text-xs font-medium text-[#E8E3DB] opacity-50 uppercase tracking-wider mb-3"
+                    className="text-xs font-semibold text-[#E8E3DB] opacity-70 uppercase tracking-wider mb-4"
                     style={{ fontFamily: 'var(--font-heading)' }}
                   >
                     Related Events ({relatedEvents.length})
