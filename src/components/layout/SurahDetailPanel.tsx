@@ -2,11 +2,23 @@
 
 /**
  * Slide-in panel showing detailed information about a selected surah
+ * Redesigned for educational depth and visual clarity
  */
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, BookOpen, MapPin, Calendar, Hash, Info } from 'lucide-react';
+import {
+  X,
+  BookOpen,
+  MapPin,
+  Calendar,
+  Hash,
+  Play,
+  ExternalLink,
+  ChevronDown,
+  ChevronUp,
+  Sparkles,
+} from 'lucide-react';
 import { useMapStore } from '@/stores/useMapStore';
 import { getCompleteSurahData } from '@/data/surah-locations';
 import { getTanzilNote } from '@/data/tanzil-notes';
@@ -14,12 +26,48 @@ import { getEventsForSurah } from '@/data/events';
 import { getSurahMeaning } from '@/lib/quran-data';
 import { cn } from '@/lib/utils';
 
+/** Opening verses for spotlight (curated selection) */
+const VERSE_SPOTLIGHTS: Record<number, { arabic: string; translation: string; ayah: string }> = {
+  1: {
+    arabic: 'بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ',
+    translation: 'In the name of Allah, the Most Gracious, the Most Merciful.',
+    ayah: '1:1',
+  },
+  2: {
+    arabic: 'ذَٰلِكَ الْكِتَابُ لَا رَيْبَ فِيهِ هُدًى لِّلْمُتَّقِينَ',
+    translation: 'This is the Book about which there is no doubt, a guidance for those conscious of Allah.',
+    ayah: '2:2',
+  },
+  3: {
+    arabic: 'إِنَّ اللَّهَ اصْطَفَىٰ آدَمَ وَنُوحًا وَآلَ إِبْرَاهِيمَ وَآلَ عِمْرَانَ عَلَى الْعَالَمِينَ',
+    translation: 'Indeed, Allah chose Adam and Noah and the family of Abraham and the family of Imran over the worlds.',
+    ayah: '3:33',
+  },
+  96: {
+    arabic: 'اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ',
+    translation: 'Read in the name of your Lord who created.',
+    ayah: '96:1',
+  },
+  112: {
+    arabic: 'قُلْ هُوَ اللَّهُ أَحَدٌ',
+    translation: 'Say, "He is Allah, [who is] One."',
+    ayah: '112:1',
+  },
+  114: {
+    arabic: 'قُلْ أَعُوذُ بِرَبِّ النَّاسِ',
+    translation: 'Say, "I seek refuge in the Lord of mankind."',
+    ayah: '114:1',
+  },
+};
+
 export function SurahDetailPanel() {
   const selectedSurahNumber = useMapStore((state) => state.selectedSurahNumber);
   const selectSurah = useMapStore((state) => state.selectSurah);
+  const selectEvent = useMapStore((state) => state.selectEvent);
   const setCurrentYear = useMapStore((state) => state.setCurrentYear);
+  const [showAllEvents, setShowAllEvents] = useState(false);
 
-  // Close on Escape key (only when panel is open)
+  // Close on Escape key
   useEffect(() => {
     if (!selectedSurahNumber) return;
 
@@ -33,22 +81,26 @@ export function SurahDetailPanel() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [selectedSurahNumber, selectSurah]);
 
+  // Reset events expansion when surah changes
+  useEffect(() => {
+    setShowAllEvents(false);
+  }, [selectedSurahNumber]);
+
   // Get surah data
-  const surah = selectedSurahNumber
-    ? getCompleteSurahData(selectedSurahNumber)
-    : null;
-  const tanzilNote = selectedSurahNumber
-    ? getTanzilNote(selectedSurahNumber)
-    : '';
-  const relatedEvents = selectedSurahNumber
-    ? getEventsForSurah(selectedSurahNumber)
-    : [];
-  const englishMeaning = selectedSurahNumber
-    ? getSurahMeaning(selectedSurahNumber)
-    : '';
+  const surah = selectedSurahNumber ? getCompleteSurahData(selectedSurahNumber) : null;
+  const tanzilNote = selectedSurahNumber ? getTanzilNote(selectedSurahNumber) : '';
+  const relatedEvents = selectedSurahNumber ? getEventsForSurah(selectedSurahNumber) : [];
+  const englishMeaning = selectedSurahNumber ? getSurahMeaning(selectedSurahNumber) : '';
+  const verseSpotlight = selectedSurahNumber ? VERSE_SPOTLIGHTS[selectedSurahNumber] : null;
 
   const isMakki = surah?.isMeccan;
   const accentColor = isMakki ? '#C8A84E' : '#2EC4B6';
+  const accentColorLight = isMakki ? '#D4B96A' : '#5EEAD4';
+
+  // Quran.com URL
+  const quranComUrl = selectedSurahNumber
+    ? `https://quran.com/${selectedSurahNumber}`
+    : '#';
 
   return (
     <AnimatePresence>
@@ -72,120 +124,172 @@ export function SurahDetailPanel() {
             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
             className={cn(
               'fixed right-0 top-0 h-full z-50',
-              'w-full sm:w-[400px] max-w-full',
+              'w-full sm:w-[420px] max-w-full',
               'bg-[#0A0F1A]/95 backdrop-blur-xl',
               'border-l border-[#2A3342]',
               'overflow-y-auto'
             )}
           >
-            {/* Header */}
+            {/* Header with gradient accent */}
             <div
-              className="sticky top-0 z-10 px-6 py-5 border-b border-[#2A3342]"
+              className="sticky top-0 z-10 border-b border-[#2A3342]"
               style={{
-                background:
-                  'linear-gradient(180deg, #0A0F1A 0%, rgba(10, 15, 26, 0.95) 100%)',
+                background: `linear-gradient(135deg, ${accentColor}08 0%, transparent 50%), linear-gradient(180deg, #0A0F1A 0%, rgba(10, 15, 26, 0.95) 100%)`,
               }}
             >
+              {/* Close button */}
               <button
                 onClick={() => selectSurah(null)}
-                className="absolute right-4 top-4 p-2 rounded-full hover:bg-[#2A3342] transition-colors"
+                className="absolute right-4 top-4 p-2 rounded-full hover:bg-[#2A3342] transition-colors z-10"
                 aria-label="Close panel"
               >
                 <X className="w-5 h-5 text-[#E8E3DB]" />
               </button>
 
-              <div className="flex items-start gap-4">
-                <div
-                  className="flex items-center justify-center w-14 h-14 rounded-full text-lg font-semibold"
+              {/* Surah header */}
+              <div className="px-6 pt-5 pb-4">
+                <div className="flex items-start gap-4">
+                  {/* Number badge */}
+                  <div
+                    className="flex items-center justify-center w-16 h-16 rounded-2xl text-xl font-bold shadow-lg"
+                    style={{
+                      background: `linear-gradient(135deg, ${accentColor} 0%, ${accentColorLight} 100%)`,
+                      color: '#0A0F1A',
+                      fontFamily: 'var(--font-heading)',
+                    }}
+                  >
+                    {surah.number}
+                  </div>
+
+                  {/* Names */}
+                  <div className="flex-1 min-w-0 pt-1">
+                    <h2
+                      className="text-4xl text-[#F5F0E8] leading-tight mb-1"
+                      style={{ fontFamily: 'var(--font-arabic)' }}
+                    >
+                      {surah.arabicName}
+                    </h2>
+                    <p
+                      className="text-lg text-[#E8E3DB]"
+                      style={{ fontFamily: 'var(--font-heading)' }}
+                    >
+                      {surah.englishName}
+                    </p>
+                    <p className="text-sm text-[#E8E3DB] opacity-50 italic">
+                      "{englishMeaning}"
+                    </p>
+                  </div>
+                </div>
+
+                {/* Quick stats row */}
+                <div className="flex items-center gap-4 mt-4 text-sm">
+                  <div className="flex items-center gap-1.5">
+                    <Hash className="w-3.5 h-3.5" style={{ color: accentColor }} />
+                    <span className="text-[#E8E3DB] opacity-70">{surah.ayahCount} ayat</span>
+                  </div>
+                  <div className="w-px h-3 bg-[#2A3342]" />
+                  <div className="flex items-center gap-1.5">
+                    <Calendar className="w-3.5 h-3.5" style={{ color: accentColor }} />
+                    <span className="text-[#E8E3DB] opacity-70">~{surah.approximateYear} CE</span>
+                  </div>
+                  <div className="w-px h-3 bg-[#2A3342]" />
+                  <div
+                    className="flex items-center gap-1.5 px-2 py-0.5 rounded-full text-xs font-medium"
+                    style={{
+                      backgroundColor: `${accentColor}20`,
+                      color: accentColor,
+                    }}
+                  >
+                    <MapPin className="w-3 h-3" />
+                    {surah.classification}
+                  </div>
+                </div>
+              </div>
+
+              {/* Action buttons */}
+              <div className="px-6 pb-4 flex gap-2">
+                <a
+                  href={quranComUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all hover:scale-[1.02]"
                   style={{
-                    backgroundColor: `${accentColor}20`,
-                    color: accentColor,
-                    fontFamily: 'var(--font-heading)',
+                    backgroundColor: accentColor,
+                    color: '#0A0F1A',
                   }}
                 >
-                  {surah.number}
-                </div>
-                <div className="flex-1 min-w-0">
-                  <h2
-                    className="text-3xl text-[#F5F0E8] leading-tight"
-                    style={{ fontFamily: 'var(--font-arabic)' }}
-                  >
-                    {surah.arabicName}
-                  </h2>
-                  <p
-                    className="text-lg text-[#E8E3DB]"
-                    style={{ fontFamily: 'var(--font-heading)' }}
-                  >
-                    {surah.englishName}
-                  </p>
-                  <p className="text-sm text-[#E8E3DB] opacity-60">
-                    {englishMeaning}
-                  </p>
-                </div>
+                  <BookOpen className="w-4 h-4" />
+                  Read Surah
+                  <ExternalLink className="w-3 h-3 opacity-60" />
+                </a>
+                <a
+                  href={`https://quran.com/${selectedSurahNumber}?audio=7`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium border transition-all hover:bg-[#1A2332]"
+                  style={{
+                    borderColor: `${accentColor}40`,
+                    color: accentColor,
+                  }}
+                >
+                  <Play className="w-4 h-4" />
+                  Listen
+                </a>
               </div>
             </div>
 
             {/* Content */}
             <div className="px-6 py-5 space-y-6">
-              {/* Quick stats */}
-              <div className="grid grid-cols-2 gap-3">
-                <div className="flex items-center gap-2 text-sm">
-                  <Hash
-                    className="w-4 h-4 opacity-50"
-                    style={{ color: accentColor }}
-                  />
-                  <span className="text-[#E8E3DB] opacity-70">
-                    {surah.ayahCount} ayat
-                  </span>
-                </div>
-                <div className="flex items-center gap-2 text-sm">
-                  <Calendar
-                    className="w-4 h-4 opacity-50"
-                    style={{ color: accentColor }}
-                  />
-                  <span className="text-[#E8E3DB] opacity-70">
-                    ~{surah.approximateYear} CE
-                  </span>
-                </div>
-                <div className="flex items-center gap-2 text-sm">
-                  <BookOpen
-                    className="w-4 h-4 opacity-50"
-                    style={{ color: accentColor }}
-                  />
-                  <span className="text-[#E8E3DB] opacity-70">
-                    Revealed {surah.revelationOrder}
-                    {getOrdinalSuffix(surah.revelationOrder)}
-                  </span>
-                </div>
-                <div className="flex items-center gap-2 text-sm">
-                  <MapPin
-                    className="w-4 h-4 opacity-50"
-                    style={{ color: accentColor }}
-                  />
-                  <span style={{ color: accentColor }}>
-                    {surah.classification}
-                  </span>
-                </div>
-              </div>
+              {/* Verse Spotlight */}
+              {verseSpotlight && (
+                <section
+                  className="p-4 rounded-xl border"
+                  style={{
+                    backgroundColor: `${accentColor}08`,
+                    borderColor: `${accentColor}20`,
+                  }}
+                >
+                  <div className="flex items-center gap-2 mb-3">
+                    <Sparkles className="w-4 h-4" style={{ color: accentColor }} />
+                    <h3
+                      className="text-xs font-medium uppercase tracking-wider"
+                      style={{ color: accentColor }}
+                    >
+                      Opening Verse
+                    </h3>
+                  </div>
+                  <p
+                    className="text-2xl text-[#F5F0E8] leading-relaxed text-right mb-3"
+                    style={{ fontFamily: 'var(--font-arabic)' }}
+                  >
+                    {verseSpotlight.arabic}
+                  </p>
+                  <p className="text-sm text-[#E8E3DB] opacity-80 leading-relaxed italic">
+                    "{verseSpotlight.translation}"
+                  </p>
+                  <p className="text-xs text-[#E8E3DB] opacity-40 mt-2">
+                    — {verseSpotlight.ayah}
+                  </p>
+                </section>
+              )}
 
-              {/* Classification badge */}
-              <div
-                className="inline-flex items-center px-3 py-1.5 rounded-full text-sm"
-                style={{
-                  backgroundColor: `${accentColor}15`,
-                  color: accentColor,
-                  border: `1px solid ${accentColor}30`,
-                }}
-              >
-                {isMakki
-                  ? 'Revealed in Makkah Period'
-                  : 'Revealed in Madinah Period'}
+              {/* Revelation order badge */}
+              <div className="flex items-center gap-2 text-sm">
+                <BookOpen className="w-4 h-4" style={{ color: accentColor }} />
+                <span className="text-[#E8E3DB]">
+                  Revealed{' '}
+                  <span className="font-semibold" style={{ color: accentColor }}>
+                    {surah.revelationOrder}
+                    {getOrdinalSuffix(surah.revelationOrder)}
+                  </span>{' '}
+                  in chronological order
+                </span>
               </div>
 
               {/* Key themes */}
               <section>
                 <h3
-                  className="text-sm font-medium text-[#F5F0E8] mb-3"
+                  className="text-xs font-medium text-[#E8E3DB] opacity-50 uppercase tracking-wider mb-3"
                   style={{ fontFamily: 'var(--font-heading)' }}
                 >
                   Key Themes
@@ -194,7 +298,12 @@ export function SurahDetailPanel() {
                   {surah.themes.map((theme, index) => (
                     <span
                       key={index}
-                      className="px-3 py-1 rounded-full text-xs bg-[#2A3342] text-[#E8E3DB]"
+                      className="px-3 py-1.5 rounded-lg text-xs font-medium"
+                      style={{
+                        backgroundColor: `${accentColor}15`,
+                        color: accentColor,
+                        border: `1px solid ${accentColor}25`,
+                      }}
                     >
                       {theme}
                     </span>
@@ -205,7 +314,7 @@ export function SurahDetailPanel() {
               {/* Historical context */}
               <section>
                 <h3
-                  className="text-sm font-medium text-[#F5F0E8] mb-3"
+                  className="text-xs font-medium text-[#E8E3DB] opacity-50 uppercase tracking-wider mb-3"
                   style={{ fontFamily: 'var(--font-heading)' }}
                 >
                   Historical Context
@@ -217,26 +326,17 @@ export function SurahDetailPanel() {
 
               {/* Tanzil note */}
               {tanzilNote && (
-                <section>
-                  <div className="p-4 rounded-lg bg-[#1A2332] border border-[#2A3342]">
-                    <div className="flex items-start gap-3">
-                      <Info
-                        className="w-4 h-4 mt-0.5 flex-shrink-0"
-                        style={{ color: accentColor }}
-                      />
-                      <div>
-                        <h4
-                          className="text-xs font-medium text-[#F5F0E8] mb-1"
-                          style={{ fontFamily: 'var(--font-heading)' }}
-                        >
-                          Revelation Note
-                        </h4>
-                        <p className="text-xs text-[#E8E3DB] opacity-70 leading-relaxed">
-                          {tanzilNote}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
+                <section className="p-4 rounded-xl bg-[#1A2332] border border-[#2A3342]">
+                  <h4
+                    className="text-xs font-medium text-[#F5F0E8] mb-2 flex items-center gap-2"
+                    style={{ fontFamily: 'var(--font-heading)' }}
+                  >
+                    <BookOpen className="w-3.5 h-3.5" style={{ color: accentColor }} />
+                    Scholarly Note
+                  </h4>
+                  <p className="text-xs text-[#E8E3DB] opacity-70 leading-relaxed">
+                    {tanzilNote}
+                  </p>
                 </section>
               )}
 
@@ -244,48 +344,67 @@ export function SurahDetailPanel() {
               {relatedEvents.length > 0 && (
                 <section>
                   <h3
-                    className="text-sm font-medium text-[#F5F0E8] mb-3"
+                    className="text-xs font-medium text-[#E8E3DB] opacity-50 uppercase tracking-wider mb-3"
                     style={{ fontFamily: 'var(--font-heading)' }}
                   >
-                    Related Events
+                    Related Events ({relatedEvents.length})
                   </h3>
-                  <div className="space-y-3">
-                    {relatedEvents.map((event) => (
+                  <div className="space-y-2">
+                    {(showAllEvents ? relatedEvents : relatedEvents.slice(0, 2)).map(
+                      (event) => (
+                        <button
+                          key={event.id}
+                          onClick={() => {
+                            selectEvent(event.id);
+                            setCurrentYear(event.year);
+                          }}
+                          className="w-full text-left p-3 rounded-xl bg-[#1A2332] border border-[#2A3342] hover:border-[#3A4352] transition-all hover:scale-[1.01] group"
+                        >
+                          <div className="flex items-center justify-between">
+                            <span
+                              className="font-medium text-[#F5F0E8] text-sm group-hover:text-white"
+                              style={{ fontFamily: 'var(--font-heading)' }}
+                            >
+                              {event.name}
+                            </span>
+                            <span
+                              className="text-xs px-2 py-0.5 rounded-full"
+                              style={{
+                                backgroundColor: `${accentColor}20`,
+                                color: accentColor,
+                              }}
+                            >
+                              {event.year} CE
+                            </span>
+                          </div>
+                        </button>
+                      )
+                    )}
+
+                    {relatedEvents.length > 2 && (
                       <button
-                        key={event.id}
-                        onClick={() => setCurrentYear(event.year)}
-                        className="w-full text-left p-3 rounded-lg bg-[#1A2332] border border-[#2A3342] hover:border-[#3A4352] transition-colors"
+                        onClick={() => setShowAllEvents(!showAllEvents)}
+                        className="w-full flex items-center justify-center gap-1 py-2 text-xs font-medium transition-colors"
+                        style={{ color: accentColor }}
                       >
-                        <div className="flex items-center justify-between mb-1">
-                          <span
-                            className="font-medium text-[#F5F0E8]"
-                            style={{ fontFamily: 'var(--font-heading)' }}
-                          >
-                            {event.name}
-                          </span>
-                          <span
-                            className="text-xs opacity-60"
-                            style={{ color: accentColor }}
-                          >
-                            {event.year} CE
-                          </span>
-                        </div>
-                        {event.arabicName && (
-                          <p
-                            className="text-xs text-[#E8E3DB] opacity-50 mb-1"
-                            style={{ fontFamily: 'var(--font-arabic)' }}
-                          >
-                            {event.arabicName}
-                          </p>
+                        {showAllEvents ? (
+                          <>
+                            Show less <ChevronUp className="w-3.5 h-3.5" />
+                          </>
+                        ) : (
+                          <>
+                            Show {relatedEvents.length - 2} more{' '}
+                            <ChevronDown className="w-3.5 h-3.5" />
+                          </>
                         )}
-                        <p className="text-xs text-[#E8E3DB] opacity-70 leading-relaxed">
-                          {event.description}
-                        </p>
                       </button>
-                    ))}
+                    )}
                   </div>
                 </section>
               )}
+
+              {/* Footer spacer */}
+              <div className="h-6" />
             </div>
           </motion.aside>
         </>
