@@ -3,50 +3,98 @@
  */
 
 import { create } from 'zustand';
-import type { Surah, MapState, MapActions } from '@/types';
+
+interface MapState {
+  /** Current year on the timeline (610-632) */
+  currentYear: number;
+  /** Whether auto-play is active */
+  isPlaying: boolean;
+  /** Playback speed multiplier */
+  playbackSpeed: 1 | 2 | 4;
+  /** Currently selected surah number for detail view */
+  selectedSurahNumber: number | null;
+  /** Currently hovered surah number */
+  hoveredSurahNumber: number | null;
+  /** Show Makki surahs filter */
+  showMakki: boolean;
+  /** Show Madani surahs filter */
+  showMadani: boolean;
+  /** Show historical events */
+  showEvents: boolean;
+  /** Has user interacted with timeline (for landing state) */
+  hasInteracted: boolean;
+}
+
+interface MapActions {
+  setCurrentYear: (year: number) => void;
+  togglePlayback: () => void;
+  setPlaybackSpeed: (speed: 1 | 2 | 4) => void;
+  selectSurah: (surahNumber: number | null) => void;
+  hoverSurah: (surahNumber: number | null) => void;
+  setShowMakki: (show: boolean) => void;
+  setShowMadani: (show: boolean) => void;
+  setShowEvents: (show: boolean) => void;
+  setHasInteracted: (interacted: boolean) => void;
+  reset: () => void;
+}
 
 interface MapStore extends MapState, MapActions {}
 
 const initialState: MapState = {
   currentYear: 610,
-  selectedSurah: null,
   isPlaying: false,
   playbackSpeed: 1,
+  selectedSurahNumber: null,
+  hoveredSurahNumber: null,
+  showMakki: true,
+  showMadani: true,
+  showEvents: true,
+  hasInteracted: false,
 };
 
 export const useMapStore = create<MapStore>((set) => ({
   ...initialState,
 
   setCurrentYear: (year: number) => {
-    set({ currentYear: Math.min(632, Math.max(610, year)) });
+    set({
+      currentYear: Math.min(632, Math.max(610, year)),
+      hasInteracted: true,
+    });
   },
 
-  setSelectedSurah: (surah: Surah | null) => {
-    set({ selectedSurah: surah });
+  togglePlayback: () => {
+    set((state) => ({ isPlaying: !state.isPlaying, hasInteracted: true }));
   },
 
-  togglePlaying: () => {
-    set((state) => ({ isPlaying: !state.isPlaying }));
-  },
-
-  setPlaybackSpeed: (speed: number) => {
+  setPlaybackSpeed: (speed: 1 | 2 | 4) => {
     set({ playbackSpeed: speed });
+  },
+
+  selectSurah: (surahNumber: number | null) => {
+    set({ selectedSurahNumber: surahNumber });
+  },
+
+  hoverSurah: (surahNumber: number | null) => {
+    set({ hoveredSurahNumber: surahNumber });
+  },
+
+  setShowMakki: (show: boolean) => {
+    set({ showMakki: show });
+  },
+
+  setShowMadani: (show: boolean) => {
+    set({ showMadani: show });
+  },
+
+  setShowEvents: (show: boolean) => {
+    set({ showEvents: show });
+  },
+
+  setHasInteracted: (interacted: boolean) => {
+    set({ hasInteracted: interacted });
   },
 
   reset: () => {
     set(initialState);
   },
 }));
-
-/**
- * Hook to get visible surahs based on current year
- */
-export const useVisibleSurahs = () => {
-  const currentYear = useMapStore((state) => state.currentYear);
-
-  // Import surahs dynamically to avoid circular dependencies
-  // This will be called on each render but the data is static
-  const { getSurahsByYear } = require('@/data/surahs');
-
-  return getSurahsByYear(currentYear);
-};
