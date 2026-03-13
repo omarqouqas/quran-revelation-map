@@ -44,6 +44,7 @@ src/
 │   │
 │   ├── layout/
 │   │   ├── SurahDetailPanel.tsx   # Right-side surah details
+│   │   ├── EventDetailModal.tsx   # Event details modal
 │   │   └── LandingOverlay.tsx     # Onboarding overlay
 │   │
 │   ├── map/
@@ -80,11 +81,15 @@ src/
 - Makki/Madani classification
 
 ### Layer 2: Historical Events (`events.ts`)
-- 20+ significant events (610-632 CE)
-- Battles: Badr, Uhud, Trench
-- Migrations: Abyssinia, Hijra
-- Treaties: Hudaybiyyah
-- Each event has coordinates, year, related surahs
+- 24 significant events (610-632 CE)
+- **Categories:**
+  - Battle (red): Badr, Uhud, Trench, Hunayn, Khaybar
+  - Migration (blue): Abyssinia (x2), Hijra, Taif Journey
+  - Revelation (amber): First Revelation, Isra & Mi'raj
+  - Treaty (green): Hudaybiyyah, Aqabah Pledges, Constitution
+  - Milestone (purple): Public Preaching, Year of Sorrow, Conquest of Makkah, etc.
+- Each event has: coordinates, year, description, related surahs
+- Off-map events (Abyssinia) shown at departure point with indicator
 
 ### Layer 3: Interpretive Data (`surah-locations.ts`)
 - Geographic coordinates per surah
@@ -121,6 +126,18 @@ src/
 | Sort Options | By number, revelation order, year, alphabetical | `SurahResultsList.tsx` |
 | Result Cards | Clickable cards that jump timeline + open details | `SurahResultCard.tsx` |
 
+### Phase 3: Historical Events Overlay (Complete)
+
+| Feature | Description | File |
+|---------|-------------|------|
+| Event Markers | Diamond-shaped markers with category colors | `MapContainer.tsx` |
+| Event Categories | Battle (red), Migration (blue), Revelation (amber), Treaty (green), Milestone (purple) | `MapContainer.tsx` |
+| Event Detail Modal | Click event to see description, year, related surahs | `EventDetailModal.tsx` |
+| Events Toggle | Show/hide events via legend button | `page.tsx` |
+| Related Surahs | Click from event modal to open surah detail | `EventDetailModal.tsx` |
+| Off-Map Indicator | Shows actual location for events outside map bounds (e.g., Abyssinia) | `EventDetailModal.tsx` |
+| Coordinate Jittering | Prevents overlapping markers at same location | `events.ts` |
+
 ---
 
 ## State Management
@@ -133,9 +150,10 @@ src/
   playbackSpeed: 1 | 2 | 4,   // Speed multiplier
   selectedSurahNumber: number | null,
   hoveredSurahNumber: number | null,
+  selectedEventId: string | null,  // Selected historical event
   showMakki: boolean,         // Filter toggle
   showMadani: boolean,        // Filter toggle
-  showEvents: boolean,        // Events toggle
+  showEvents: boolean,        // Events layer toggle
   hasInteracted: boolean,     // Landing overlay trigger
 }
 ```
@@ -204,13 +222,20 @@ src/
 | Timeline auto-play using stale year | `TimelineSlider.tsx` | Added `currentYearRef` to track current year in setInterval closure |
 | Both panels closing on Escape | `SurahExplorer.tsx` | Use capture phase event listener with `stopPropagation()` |
 | getAllCompleteSurahs called repeatedly | `SurahResultsList.tsx` | Cached at module level |
+| X button not clickable (production) | `SurahExplorer.tsx` | Fixed z-index hierarchy and used native DOM event listener |
+| Map zoom controls blocked by header | `page.tsx` | Added `pointer-events-none` to header, `pointer-events-auto` to buttons |
+| quran-meta v6.x API breaking change | `quran-data.ts` | Changed from `import { getSurahMeta } from 'quran-meta/hafs'` to `createHafs()` pattern |
+| Surahs not loading (require in function) | `surah-locations.ts` | Replaced `require()` with proper ES module import at top of file |
+| Event markers in wrong position | `MapContainer.tsx` | Separated wrapper div (for Mapbox positioning) from inner diamond div (for rotation) - CSS transform was overwriting Mapbox's positioning |
+| Events appearing off-screen | `events.ts` | Moved Abyssinia events to departure point (Makkah) with `offMapLocation` indicator |
+| Overlapping event markers | `events.ts` | Added jitter function with seeded random for deterministic spacing |
 
 ---
 
 ## Future Enhancements
 
 ### Quick Wins
-- [ ] Event markers on map (battles, migrations as distinct icons)
+- [x] Event markers on map (battles, migrations as distinct icons) ✓
 - [ ] URL routing (`/surah/1` for deep-linking)
 - [ ] Keyboard shortcuts (arrows for timeline, Cmd+K for search)
 - [ ] Progress tracking (remember explored surahs)
