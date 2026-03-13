@@ -3,7 +3,13 @@
  * This is Layer 1 of our data architecture
  */
 
-import { getSurahMeta, type SurahMeta } from 'quran-meta/hafs';
+import { createHafs } from 'quran-meta';
+
+// Create Hafs riwaya instance
+const hafs = createHafs();
+
+// Get the SurahMeta type from the return type of getSurahMeta
+type SurahMeta = ReturnType<typeof hafs.getSurahMeta>;
 
 export type { SurahMeta };
 
@@ -267,7 +273,7 @@ export const SURAH_MEANINGS: Record<number, string> = {
  * Get canonical surah data from quran-meta for a single surah
  */
 export function getQuranMetaSurah(surahNumber: number): AppSurahData {
-  const meta = getSurahMeta(surahNumber as 1);
+  const meta = hafs.getSurahMeta(surahNumber as 1);
 
   return {
     number: surahNumber,
