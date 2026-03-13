@@ -4,17 +4,20 @@
  * Left-side slide-in panel for exploring and filtering surahs
  */
 
-import { useEffect } from 'react';
+import { useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useExplorerStore } from '@/stores/useExplorerStore';
 import { ExplorerHeader } from './ExplorerHeader';
 import { ExplorerFilters } from './ExplorerFilters';
 import { SurahResultsList } from './SurahResultsList';
-import { cn } from '@/lib/utils';
 
 export function SurahExplorer() {
   const isExplorerOpen = useExplorerStore((state) => state.isExplorerOpen);
-  const closeExplorer = useExplorerStore((state) => state.closeExplorer);
+
+  // Use getState() for stable close function
+  const handleClose = useCallback(() => {
+    useExplorerStore.getState().closeExplorer();
+  }, []);
 
   // Close on Escape key (stop propagation so detail panel doesn't also close)
   useEffect(() => {
@@ -23,14 +26,14 @@ export function SurahExplorer() {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         e.stopPropagation();
-        closeExplorer();
+        handleClose();
       }
     };
 
     // Use capture phase to handle before detail panel
     window.addEventListener('keydown', handleKeyDown, true);
     return () => window.removeEventListener('keydown', handleKeyDown, true);
-  }, [isExplorerOpen, closeExplorer]);
+  }, [isExplorerOpen, handleClose]);
 
   return (
     <AnimatePresence>
@@ -43,7 +46,7 @@ export function SurahExplorer() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
             className="fixed inset-0 bg-black/40 z-40 sm:hidden"
-            onClick={closeExplorer}
+            onClick={handleClose}
           />
 
           {/* Panel - slides from LEFT */}

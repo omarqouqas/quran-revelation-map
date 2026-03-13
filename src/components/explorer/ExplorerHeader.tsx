@@ -4,13 +4,18 @@
  * Explorer panel header with search input
  */
 
+import { useCallback } from 'react';
 import { Search, X } from 'lucide-react';
 import { useExplorerStore } from '@/stores/useExplorerStore';
 
 export function ExplorerHeader() {
   const searchQuery = useExplorerStore((state) => state.searchQuery);
   const setSearchQuery = useExplorerStore((state) => state.setSearchQuery);
-  const closeExplorer = useExplorerStore((state) => state.closeExplorer);
+
+  // Use useCallback to ensure stable reference
+  const handleClose = useCallback(() => {
+    useExplorerStore.getState().closeExplorer();
+  }, []);
 
   return (
     <div style={{ position: 'sticky', top: 0, zIndex: 10, backgroundColor: '#0A0F1A' }}>
@@ -21,7 +26,11 @@ export function ExplorerHeader() {
         </h2>
         <button
           type="button"
-          onClick={() => closeExplorer()}
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            handleClose();
+          }}
           style={{
             padding: '8px',
             borderRadius: '10px',
@@ -31,10 +40,11 @@ export function ExplorerHeader() {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
+            WebkitTapHighlightColor: 'transparent',
           }}
           aria-label="Close explorer"
         >
-          <X style={{ width: '18px', height: '18px', color: '#9CA3AF' }} />
+          <X style={{ width: '18px', height: '18px', color: '#9CA3AF', pointerEvents: 'none' }} />
         </button>
       </div>
 
