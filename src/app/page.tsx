@@ -23,8 +23,8 @@ export default function Home() {
       {/* Map */}
       <MapContainer />
 
-      {/* Header */}
-      <div className="absolute top-0 left-0 right-0 z-[60]">
+      {/* Header - pointer-events-none so clicks pass through to map */}
+      <div className="absolute top-0 left-0 right-0 z-[60] pointer-events-none">
         {/* Title bar */}
         <div className="flex items-center justify-center py-4 px-6">
           <div className="text-center">
@@ -42,7 +42,7 @@ export default function Home() {
 
         {/* Explore button - positioned left, hidden when panel is open */}
         {!isExplorerOpen && (
-          <div className="absolute top-4 left-4 sm:left-6">
+          <div className="absolute top-4 left-4 sm:left-6 pointer-events-auto">
             <button
               type="button"
               onClick={() => openExplorer()}
@@ -55,8 +55,8 @@ export default function Home() {
         )}
       </div>
 
-      {/* Legend - positioned below map controls */}
-      <div className="absolute top-28 right-3 z-10 flex flex-col gap-2 text-xs px-3 py-2 rounded-lg bg-[#1A2332]/90 backdrop-blur-sm border border-[#2A3342]">
+      {/* Legend - positioned below map controls, no pointer events */}
+      <div className="absolute top-32 right-3 z-10 flex flex-col gap-2 text-xs px-3 py-2 rounded-lg bg-[#1A2332]/90 backdrop-blur-sm border border-[#2A3342] pointer-events-none">
         <div className="flex items-center gap-2">
           <span className="w-2.5 h-2.5 rounded-full bg-[#C8A84E]" />
           <span className="text-[#E8E3DB] opacity-80">Makki</span>
