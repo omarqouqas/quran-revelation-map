@@ -237,7 +237,7 @@ src/
 ### Quick Wins
 - [x] Event markers on map (battles, migrations as distinct icons) ✓
 - [x] URL routing (`/surah/1` for deep-linking) ✓
-- [ ] Keyboard shortcuts (arrows for timeline, Cmd+K for search)
+- [x] Keyboard shortcuts (arrows for timeline, Cmd+K for search) ✓
 - [ ] Progress tracking (remember explored surahs)
 
 ### Medium Effort

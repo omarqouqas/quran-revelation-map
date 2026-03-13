@@ -6,16 +6,19 @@
  * Used by both / and /surah/[number] routes
  */
 
-import { Search, Sparkles } from 'lucide-react';
+import { useState } from 'react';
+import { Search, Sparkles, Keyboard } from 'lucide-react';
 import { MapContainer } from '@/components/map/MapContainer';
 import { TimelineSlider } from '@/components/timeline/TimelineSlider';
 import { SurahDetailPanel } from '@/components/layout/SurahDetailPanel';
 import { EventDetailModal } from '@/components/layout/EventDetailModal';
 import { LandingOverlay } from '@/components/layout/LandingOverlay';
+import { KeyboardShortcutsModal } from '@/components/layout/KeyboardShortcutsModal';
 import { SurahExplorer } from '@/components/explorer';
 import { useExplorerStore } from '@/stores/useExplorerStore';
 import { useMapStore } from '@/stores/useMapStore';
 import { useSurahRouting } from '@/hooks/useSurahRouting';
+import { useKeyboardShortcuts } from '@/hooks/useKeyboardShortcuts';
 
 interface QuranMapAppProps {
   /** Initial surah number to display (from URL) */
@@ -23,8 +26,15 @@ interface QuranMapAppProps {
 }
 
 export function QuranMapApp({ initialSurahNumber }: QuranMapAppProps) {
+  const [showShortcutsHelp, setShowShortcutsHelp] = useState(false);
+
   // Sync URL with surah selection
   useSurahRouting({ initialSurahNumber });
+
+  // Enable keyboard shortcuts
+  useKeyboardShortcuts({
+    onShowHelp: () => setShowShortcutsHelp(true),
+  });
 
   const isExplorerOpen = useExplorerStore((state) => state.isExplorerOpen);
   const openExplorer = useExplorerStore((state) => state.openExplorer);
@@ -90,6 +100,16 @@ export function QuranMapApp({ initialSurahNumber }: QuranMapAppProps) {
           <span className="text-[#E8E3DB]">Events</span>
           <Sparkles className="w-3 h-3 text-[#8B5CF6]" />
         </button>
+        <div className="border-t border-[#2A3342] my-1" />
+        <button
+          onClick={() => setShowShortcutsHelp(true)}
+          style={{ pointerEvents: 'auto' }}
+          className="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity"
+          title="Keyboard shortcuts (?)"
+        >
+          <Keyboard className="w-3.5 h-3.5 text-[#E8E3DB]" />
+          <span className="text-[#E8E3DB]">Shortcuts</span>
+        </button>
       </div>
 
       {/* Timeline panel */}
@@ -115,6 +135,12 @@ export function QuranMapApp({ initialSurahNumber }: QuranMapAppProps) {
 
       {/* Landing overlay (shows until first interaction) */}
       <LandingOverlay />
+
+      {/* Keyboard shortcuts help modal */}
+      <KeyboardShortcutsModal
+        isOpen={showShortcutsHelp}
+        onClose={() => setShowShortcutsHelp(false)}
+      />
     </main>
   );
 }
