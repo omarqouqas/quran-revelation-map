@@ -99,6 +99,30 @@ After viewing a surah, occasionally show reflection questions connecting histori
 
 ---
 
+## Future Visual & Interactive Enhancements
+
+| Enhancement | Effort | Impact | Risk | Notes |
+|-------------|--------|--------|------|-------|
+| **Animated route lines** | Low | High | Low | ✅ Implemented (Hijra, Abyssinia, Taif) |
+| **3D terrain** (Mapbox elevation) | Medium | High | Low | Mountains like Jabal al-Nour visible |
+| **Day/night cycle** on map | Low | Medium | Low | Atmospheric, matches timeline year |
+| **Particle effects** on surah reveal | Low | Medium | Low | Subtle sparkle when markers appear |
+| **Audio recitation embed** | Medium | High | Low | Play ayat in panel via Quran.com API |
+| **Connection lines** between surahs | Medium | High | Low | Visual graph of thematic links |
+| **Animated timeline markers** | Low | Medium | Low | Pulse effect when events occur |
+| **Heatmap of revelation density** | Low | Medium | Low | Show where most surahs were revealed |
+| **Video backgrounds** (clouds/stars) | Medium | Medium | Medium | Can distract from content |
+| **AI voice narration** (Story mode) | High | High | Medium | Pre-recorded safer than generated |
+| **AI-powered Q&A** | High | High | **High** | Risk of errors in religious content |
+
+### Recommended Next (High Impact, Low Risk)
+1. 3D terrain with Mapbox
+2. Audio recitation in detail panel
+3. Day/night cycle on map
+4. Connection lines between related surahs
+
+---
+
 ## What NOT to Build
 
 | Skip This | Why |
