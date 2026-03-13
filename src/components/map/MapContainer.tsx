@@ -120,49 +120,52 @@ export function MapContainer() {
   /** Create an event marker element (diamond shape) */
   const createEventMarkerElement = useCallback(
     (event: HistoricalEvent, isSelected: boolean, isCurrentYear: boolean): HTMLDivElement => {
-      const el = document.createElement('div');
       const category = getEventCategory(event);
       const colors = EVENT_COLORS[category];
-
       const size = isSelected ? 24 : 16;
 
-      // Outer container for rotation
-      el.style.width = `${size}px`;
-      el.style.height = `${size}px`;
-      el.style.transform = 'rotate(45deg)';
-      el.style.backgroundColor = colors.bg;
-      el.style.border = `2px solid ${colors.border}`;
-      el.style.borderRadius = '3px';
-      el.style.cursor = 'pointer';
-      el.style.transition = 'all 0.2s ease-out';
-      el.style.boxShadow = isCurrentYear
+      // Outer wrapper - Mapbox uses this for positioning (don't set transform here!)
+      const wrapper = document.createElement('div');
+      wrapper.style.cursor = 'pointer';
+      wrapper.setAttribute('data-event', event.id);
+      wrapper.setAttribute('title', event.name);
+
+      // Inner diamond element with rotation
+      const diamond = document.createElement('div');
+      diamond.style.width = `${size}px`;
+      diamond.style.height = `${size}px`;
+      diamond.style.transform = 'rotate(45deg)';
+      diamond.style.backgroundColor = colors.bg;
+      diamond.style.border = `2px solid ${colors.border}`;
+      diamond.style.borderRadius = '3px';
+      diamond.style.transition = 'all 0.2s ease-out';
+      diamond.style.boxShadow = isCurrentYear
         ? `0 0 12px ${colors.bg}, 0 0 24px ${colors.bg}40`
         : `0 2px 8px rgba(0,0,0,0.3)`;
 
       // Pulsing animation for current year events
       if (isCurrentYear) {
-        el.style.animation = 'pulse 2s infinite';
+        diamond.style.animation = 'pulse 2s infinite';
       }
 
-      el.setAttribute('data-event', event.id);
-      el.setAttribute('title', event.name);
+      wrapper.appendChild(diamond);
 
       // Hover effects
-      el.addEventListener('mouseenter', () => {
-        el.style.width = '20px';
-        el.style.height = '20px';
-        el.style.boxShadow = `0 0 16px ${colors.bg}, 0 0 32px ${colors.bg}60`;
+      wrapper.addEventListener('mouseenter', () => {
+        diamond.style.width = '20px';
+        diamond.style.height = '20px';
+        diamond.style.boxShadow = `0 0 16px ${colors.bg}, 0 0 32px ${colors.bg}60`;
       });
 
-      el.addEventListener('mouseleave', () => {
-        el.style.width = isSelected ? '24px' : '16px';
-        el.style.height = isSelected ? '24px' : '16px';
-        el.style.boxShadow = isCurrentYear
+      wrapper.addEventListener('mouseleave', () => {
+        diamond.style.width = isSelected ? '24px' : '16px';
+        diamond.style.height = isSelected ? '24px' : '16px';
+        diamond.style.boxShadow = isCurrentYear
           ? `0 0 12px ${colors.bg}, 0 0 24px ${colors.bg}40`
           : `0 2px 8px rgba(0,0,0,0.3)`;
       });
 
-      return el;
+      return wrapper;
     },
     []
   );
@@ -329,17 +332,20 @@ export function MapContainer() {
 
       if (existingMarker) {
         // Update existing marker if selection or year changed
-        const el = existingMarker.getElement();
+        const wrapper = existingMarker.getElement();
+        const diamond = wrapper.firstChild as HTMLDivElement;
+        if (!diamond) return;
+
         const size = isSelected ? '24px' : '16px';
-        el.style.width = size;
-        el.style.height = size;
+        diamond.style.width = size;
+        diamond.style.height = size;
 
         const category = getEventCategory(event);
         const colors = EVENT_COLORS[category];
-        el.style.boxShadow = isCurrentYear
+        diamond.style.boxShadow = isCurrentYear
           ? `0 0 12px ${colors.bg}, 0 0 24px ${colors.bg}40`
           : `0 2px 8px rgba(0,0,0,0.3)`;
-        el.style.animation = isCurrentYear ? 'pulse 2s infinite' : 'none';
+        diamond.style.animation = isCurrentYear ? 'pulse 2s infinite' : 'none';
         return;
       }
 
