@@ -45,7 +45,8 @@ export function SurahExplorer() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 bg-black/40 z-40 sm:hidden"
+            className="fixed inset-0 bg-black/40 sm:hidden"
+            style={{ zIndex: 65 }}
             onClick={handleClose}
           />
 
@@ -67,7 +68,7 @@ export function SurahExplorer() {
               display: 'flex',
               flexDirection: 'column',
               overflow: 'hidden',
-              zIndex: 50,
+              zIndex: 70,
               boxShadow: '4px 0 30px rgba(0,0,0,0.5)',
             }}
           >
