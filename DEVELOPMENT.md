@@ -138,6 +138,37 @@ src/
 | Off-Map Indicator | Shows actual location for events outside map bounds (e.g., Abyssinia) | `EventDetailModal.tsx` |
 | Coordinate Jittering | Prevents overlapping markers at same location | `events.ts` |
 
+### Phase 4: Enhanced UX (Complete)
+
+| Feature | Description | File |
+|---------|-------------|------|
+| Deep Linking | Direct URLs like `/surah/96` for sharing | `src/app/surah/[number]/page.tsx` |
+| URL Sync | URL updates when selecting/deselecting surahs | `useSurahRouting.ts` |
+| Keyboard Shortcuts | Arrow keys, Space, Cmd+K, Escape, Home/End | `useKeyboardShortcuts.ts` |
+| Shortcuts Help Modal | Press `?` to see all keyboard shortcuts | `KeyboardShortcutsModal.tsx` |
+| Opening Verses | Arabic + English for all 114 surahs | `opening-verses.ts` |
+| Journey Routes | Animated route lines (Hijra, Abyssinia, Taif) | `routes.ts`, `MapContainer.tsx` |
+
+### Keyboard Shortcuts
+
+| Keys | Action |
+|------|--------|
+| `←` / `→` | Navigate timeline by 1 year |
+| `Shift` + `←` / `→` | Navigate timeline by 5 years |
+| `Space` | Play/pause timeline |
+| `Cmd/Ctrl` + `K` | Toggle search panel |
+| `Escape` | Close panels |
+| `Home` / `End` | Jump to 610 / 632 CE |
+| `?` | Show shortcuts help |
+
+### Journey Routes
+
+| Route | Year | Path |
+|-------|------|------|
+| The Hijra | 622 CE | Makkah → Cave Thawr → Coastal route → Madinah |
+| Abyssinia Migration | 615 CE | Makkah → Red Sea coast (departure point) |
+| Taif Journey | 619 CE | Makkah → Taif |
+
 ---
 
 ## State Management
