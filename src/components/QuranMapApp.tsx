@@ -8,6 +8,7 @@
 
 import { useState } from 'react';
 import { Search, Sparkles, Keyboard } from 'lucide-react';
+import { VideoBackground } from '@/components/map/VideoBackground';
 import { MapContainer } from '@/components/map/MapContainer';
 import { TimelineSlider } from '@/components/timeline/TimelineSlider';
 import { SurahDetailPanel } from '@/components/layout/SurahDetailPanel';
@@ -44,6 +45,9 @@ export function QuranMapApp({ initialSurahNumber }: QuranMapAppProps) {
 
   return (
     <main className="relative h-screen w-screen overflow-hidden bg-[#0A0F1A]">
+      {/* Ambient video/gradient background */}
+      <VideoBackground />
+
       {/* Map */}
       <MapContainer />
 

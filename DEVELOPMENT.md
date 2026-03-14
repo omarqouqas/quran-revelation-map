@@ -72,7 +72,8 @@ src/
 │   │   └── LandingOverlay.tsx     # Onboarding overlay
 │   │
 │   ├── map/
-│   │   └── MapContainer.tsx       # Mapbox GL map
+│   │   ├── MapContainer.tsx       # Mapbox GL map
+│   │   └── VideoBackground.tsx    # Atmospheric overlay
 │   │
 │   └── timeline/
 │       └── TimelineSlider.tsx     # Timeline controls
@@ -175,6 +176,7 @@ src/
 | Progress Stats | Visual progress bar, streak tracking, stats | `ProgressStats.tsx` |
 | Explored Indicators | Glow effect on explored surah markers | `MapContainer.tsx` |
 | Day/Night Cycle | Atmospheric sky changes with timeline (dawn→dusk) | `MapContainer.tsx` |
+| Ambient Background | Atmospheric overlay with particles, stars, gradients | `VideoBackground.tsx` |
 
 ### Keyboard Shortcuts
 
