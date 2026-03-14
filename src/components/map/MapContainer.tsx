@@ -320,6 +320,7 @@ export function MapContainer() {
       minZoom: 5,
       maxZoom: 12,
       attributionControl: true,
+      pitch: 40, // Tilt to show sky layer
       pitchWithRotate: false,
       dragRotate: false,
     });
@@ -349,15 +350,15 @@ export function MapContainer() {
           ],
           'sky-gradient-center': [0, 0],
           'sky-gradient-radius': 90,
-          'sky-opacity': 0.5,
+          'sky-opacity': 0.85,
         },
       });
 
-      // Add fog for atmospheric depth
+      // Add fog for atmospheric depth (dawn-like initial state)
       map.current.setFog({
         color: 'rgb(255, 153, 102)',
         'high-color': 'rgb(40, 40, 60)',
-        'horizon-blend': 0.1,
+        'horizon-blend': 0.25,
         'space-color': 'rgb(20, 20, 35)',
         'star-intensity': 0.8,
       });
@@ -392,7 +393,7 @@ export function MapContainer() {
     map.current.setFog({
       color: config.fogColor,
       'high-color': config.skyColor,
-      'horizon-blend': 0.08 + config.fogOpacity * 0.15,
+      'horizon-blend': 0.15 + config.fogOpacity * 0.25, // More prominent atmospheric effect
       'space-color': 'rgb(15, 15, 25)',
       'star-intensity': config.starIntensity,
     });
