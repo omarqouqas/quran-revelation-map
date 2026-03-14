@@ -172,9 +172,6 @@ src/
 | Keyboard Shortcuts | Arrow keys, Space, Cmd+K, Escape, Home/End | `useKeyboardShortcuts.ts` |
 | Shortcuts Help Modal | Press `?` to see all keyboard shortcuts | `KeyboardShortcutsModal.tsx` |
 | Opening Verses | Arabic + English for all 114 surahs | `opening-verses.ts` |
-| Progress Tracking | Track explored surahs/events with localStorage | `useProgressStore.ts` |
-| Progress Stats | Visual progress bar, streak tracking, stats | `ProgressStats.tsx` |
-| Explored Indicators | Glow effect on explored surah markers | `MapContainer.tsx` |
 | Day/Night Cycle | Atmospheric sky changes with timeline (dawn→dusk) | `MapContainer.tsx` |
 | Ambient Background | Atmospheric overlay with particles, stars, gradients | `VideoBackground.tsx` |
 
@@ -314,8 +311,8 @@ The map features an atmospheric day/night cycle that mirrors the 23-year revelat
 - [x] Event markers on map (battles, migrations as distinct icons)
 - [x] URL routing (`/surah/1` for deep-linking)
 - [x] Keyboard shortcuts (arrows for timeline, Cmd+K for search)
-- [x] Progress tracking (remember explored surahs)
 - [x] Day/night atmospheric cycle
+- [x] Ambient video background with particles
 
 ### Phase 5: Visual Storytelling (Next Priority)
 

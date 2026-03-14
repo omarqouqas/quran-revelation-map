@@ -8,7 +8,6 @@ import { useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Calendar, MapPin, BookOpen, Swords, Plane, Star, FileText, Milestone } from 'lucide-react';
 import { useMapStore } from '@/stores/useMapStore';
-import { useProgressStore } from '@/stores/useProgressStore';
 import { getEventById, type HistoricalEvent } from '@/data/events';
 import { getSurahByNumber } from '@/lib/quran-data';
 
@@ -53,16 +52,8 @@ export function EventDetailModal() {
   const selectEvent = useMapStore((state) => state.selectEvent);
   const selectSurah = useMapStore((state) => state.selectSurah);
   const setCurrentYear = useMapStore((state) => state.setCurrentYear);
-  const markEventExplored = useProgressStore((state) => state.markEventExplored);
 
   const event = selectedEventId ? getEventById(selectedEventId) : null;
-
-  // Mark event as explored when modal opens
-  useEffect(() => {
-    if (selectedEventId) {
-      markEventExplored(selectedEventId);
-    }
-  }, [selectedEventId, markEventExplored]);
 
   // Close on Escape key
   const handleClose = useCallback(() => {
