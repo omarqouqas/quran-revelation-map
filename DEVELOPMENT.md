@@ -173,6 +173,31 @@ src/
 | Abyssinia Migration | 615 CE | Makkah → Red Sea coast (departure point) |
 | Taif Journey | 619 CE | Makkah → Taif |
 
+### Day/Night Cycle
+
+The map features an atmospheric day/night cycle that mirrors the 23-year revelation journey as a single day - from dawn to dusk.
+
+**Timeline Mapping:**
+
+| Year | Time of Day | Sky Color | Atmosphere |
+|------|-------------|-----------|------------|
+| 610 CE | Dawn | Golden/rose | Stars fading, warm fog |
+| 614 CE | Early Morning | Soft blue | Light mist clearing |
+| 621 CE | Midday | Clear blue | Bright, minimal fog |
+| 628 CE | Late Afternoon | Warm gold | Golden hour glow |
+| 632 CE | Dusk | Purple/amber | Stars appearing, deep fog |
+
+**Symbolic Meaning:**
+- **Dawn (610)**: The first revelation in Cave Hira - a new light begins
+- **Midday (621)**: The Hijra - the turning point, brightest moment
+- **Dusk (632)**: Completion of the Quran - the journey fulfilled
+
+**Technical Implementation:**
+- Uses Mapbox GL's `fog` and `sky` layers
+- `getDayCycleConfig()` calculates sun position, sky colors, fog opacity
+- `lerpColor()` interpolates between colors smoothly
+- Updates in real-time as timeline changes
+
 ---
 
 ## State Management
