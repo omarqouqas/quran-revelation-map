@@ -61,6 +61,7 @@ export function TimelineSlider() {
     return () => {
       if (playIntervalRef.current) {
         clearInterval(playIntervalRef.current);
+        playIntervalRef.current = null;
       }
     };
   }, [isPlaying, playbackSpeed, setCurrentYear, togglePlayback]);
