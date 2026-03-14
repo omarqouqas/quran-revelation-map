@@ -2,9 +2,33 @@
 
 ## Project Overview
 
-An interactive visualization tool that lets users experience the 23-year journey of Quranic revelation (610-632 CE). Users can "time travel" through a timeline, watching surahs appear on a geographic map of the Arabian Peninsula as they were revealed historically.
+A **cinematic visual storytelling experience** that brings the 23-year journey of Quranic revelation (610-632 CE) to life. Users "time travel" through an interactive timeline, watching surahs appear on a geographic map of the Hijaz region (Makkah-Madinah corridor) as they were revealed historically.
 
 **Live URL:** http://localhost:3000
+
+---
+
+## Vision & Philosophy
+
+### What This App IS
+- **A visual storytelling platform** - Cinematic, immersive, emotionally engaging
+- **A historical visualization tool** - Bringing the revelation journey to life
+- **An educational experience** - Understanding *why* surahs were revealed in specific contexts
+- **Geographically focused** - The Hijaz region of what is now Saudi Arabia
+
+### What This App is NOT
+- ~~A Quran reader/recitation app~~ - Other apps do this better
+- ~~A global map~~ - We focus on the sacred geography of revelation
+- ~~A text-heavy reference tool~~ - Visuals first, text supports
+
+### Core Experience
+> "Feel like you're traveling through time, witnessing the moments when revelation descended."
+
+The app should evoke the atmosphere of each era through:
+- **AI-generated visuals** (images/videos) for each surah and event
+- **Cinematic story mode** with auto-advancing narrative
+- **Atmospheric effects** (day/night cycle, ambient particles)
+- **Engaging visual cards** for social sharing
 
 ---
 
@@ -284,23 +308,56 @@ The map features an atmospheric day/night cycle that mirrors the 23-year revelat
 
 ## Future Enhancements
 
-### Quick Wins
-- [x] Event markers on map (battles, migrations as distinct icons) ✓
-- [x] URL routing (`/surah/1` for deep-linking) ✓
-- [x] Keyboard shortcuts (arrows for timeline, Cmd+K for search) ✓
-- [x] Progress tracking (remember explored surahs) ✓
+### Completed
+- [x] Event markers on map (battles, migrations as distinct icons)
+- [x] URL routing (`/surah/1` for deep-linking)
+- [x] Keyboard shortcuts (arrows for timeline, Cmd+K for search)
+- [x] Progress tracking (remember explored surahs)
+- [x] Day/night atmospheric cycle
 
-### Medium Effort
-- [ ] Audio recitation (play opening ayat via Quran.com API)
-- [ ] Surah connections graph (thematic/temporal relationships)
-- [ ] Multiple revelation chronologies (scholarly opinions)
-- [ ] PWA/offline support
+### Phase 5: Visual Storytelling (Next Priority)
 
-### Ambitious Features
-- [ ] Narrative/story mode (guided tour with voiceover)
-- [ ] 3D terrain (Mapbox 3D for mountains like Jabal al-Nour)
-- [ ] Quiz/learning mode (gamified exploration)
-- [ ] AR compass mode (point phone toward Makkah)
+| Feature | Description | Effort |
+|---------|-------------|--------|
+| **AI-generated surah visuals** | 5-10 sec video loops or images depicting each surah's context | High |
+| **Event cinematics** | 15-30 sec AI videos for major events (Badr, Hijra, Conquest) | High |
+| **Ambient video backgrounds** | Subtle desert/sky videos that change with time of day | Medium |
+| **Visual story cards** | Beautiful illustrated cards for social sharing | Medium |
+| **Atmospheric particles** | Sand/dust drifting, light rays, subtle animations | Low |
+
+### Phase 6: Cinematic Story Mode
+
+| Feature | Description | Effort |
+|---------|-------------|--------|
+| **Guided journeys** | Pre-built 3-7 min cinematic tours with auto-advancing timeline | High |
+| **Narrative overlays** | Text cards with context that fade in/out during playback | Medium |
+| **Location cinematics** | Full-screen visuals when arriving at key locations | High |
+| **Journey selection UI** | Beautiful menu to choose from curated journeys | Medium |
+
+**Planned Journeys:**
+- "The First Revelation" (3 min) - 610 CE, Cave Hira, Surah 96
+- "The Year of Sorrow" (5 min) - 619 CE, loss & perseverance
+- "The Hijra" (7 min) - 622 CE, the migration
+- "The Final Sermon" (4 min) - 632 CE, Arafat, completion
+
+### Phase 7: Map Enhancements
+
+| Feature | Description | Effort |
+|---------|-------------|--------|
+| **3D terrain** | Mapbox elevation for mountains (Jabal al-Nour, Uhud) | Medium |
+| **Satellite/terrain toggle** | Switch from dark abstract to realistic terrain | Low |
+| **Tighter Hijaz bounds** | Focus zoom on Makkah-Madinah corridor | Low |
+| **Location illustrations** | Hand-drawn or AI art at key sacred sites | Medium |
+
+### Phase 8: Engagement & Sharing
+
+| Feature | Description | Effort |
+|---------|-------------|--------|
+| **Shareable visual cards** | Generate beautiful images for social media | Medium |
+| **Daily surah spotlight** | Featured surah on landing, rotates daily | Low |
+| **Personal notes** | Save reflections on explored surahs (localStorage) | Medium |
+| **Favorites/bookmarks** | Star surahs to revisit later | Low |
+| **Achievement badges** | Respectful milestones (Explorer, Scholar, Historian) | Low |
 
 ---
 

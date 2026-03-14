@@ -1,142 +1,301 @@
-# Educational Tool Implementation Plan
+# Visual Storytelling Implementation Plan
 
-## Core Educational Goal
+## Core Vision
 
-**Help users understand:** *"Why was this surah revealed here, at this time, in these circumstances?"*
+**Create a cinematic, visually immersive experience** that brings the 23-year Quran revelation journey to life through AI-generated visuals, engaging storytelling, and atmospheric design.
 
-Everything should serve that question.
-
----
-
-## Phase 4: Connect Map to Quran Content
-
-### 1. Verse Spotlight (High Priority)
-Show 1-3 key ayat in each surah's detail panel.
-- Arabic text with translation
-- Listen button for audio
-- Link to full surah on Quran.com
-
-**Why:** Users see the actual revelation, not just metadata.
-
-### 2. Audio Recitation
-- Play button in surah detail panel
-- Short clip (opening ayat) via Quran.com API
-- Option: Full surah link
-
-**Why:** Hearing the Quran creates emotional connection to the location.
-
-### 3. Revelation Context (Asbab al-Nuzul)
-Add a "Why Revealed" section with scholarly context explaining the circumstances of revelation.
-
-**Why:** This is the "aha moment" - connecting historical circumstance to meaning.
+> "Feel like you're traveling through time, witnessing the moments when revelation descended."
 
 ---
 
-## Phase 5: Guided Learning Journeys
+## What We're Building
 
-### 4. Story Mode (Curated Paths)
+### The Experience
+- **NOT** a Quran reader or recitation app
+- **IS** a visual storytelling platform focused on the *journey* of revelation
+- **Geographic focus**: Hijaz region (Makkah-Madinah corridor) in what is now Saudi Arabia
+- **Emotional goal**: Awe, connection, understanding of historical context
 
-Pre-built journeys that auto-advance the timeline with narration:
-
-| Journey | Duration | Covers |
-|---------|----------|--------|
-| "The First Revelation" | 3 min | 610 CE, Cave Hira, Surah 96 |
-| "The Year of Sorrow" | 5 min | 619 CE, loss & perseverance |
-| "The Hijra" | 7 min | 622 CE, migration route |
-| "The Final Sermon" | 4 min | 632 CE, Arafat, completion |
-
-**UX:**
-- Play button starts journey
-- Map pans, timeline advances
-- Text cards appear with context
-- Relevant surahs highlight
-
-**Why:** Provides structure for users who don't know where to start.
-
-### 5. Thematic Exploration
-
-Let users explore by theme instead of chronology:
-- Patience in Adversity
-- Guidance for Conflict
-- Family & Society
-- The Afterlife
-- Stories of Prophets
-
-Clicking a theme filters the map to show only those surahs.
-
-**Why:** Some users want to learn topically, not chronologically.
+### Content Types
+| Type | Format | Purpose |
+|------|--------|---------|
+| **Surah visuals** | 5-10 sec AI video loops or images | Depict the context/atmosphere of each surah |
+| **Event cinematics** | 15-30 sec AI videos | Bring major events to life (battles, migrations) |
+| **Ambient backgrounds** | Looping video | Desert landscapes, sky changes, atmospheric depth |
+| **Story cards** | Illustrated images | Shareable on social media |
+| **Location art** | Static illustrations | Sacred sites (Cave Hira, Kaaba, Uhud) |
 
 ---
 
-## Phase 6: Learning Reinforcement
+## Phase 5: AI-Generated Visuals
 
-### 6. Progress Tracking
-- Track which surahs user has explored
-- Visual completion indicator on map
-- Streak tracking
-- Progress persists (localStorage)
+### 5.1 Surah Visual Library
+Create visual content for all 114 surahs.
 
-**Why:** Creates habit and completion motivation.
+**Visual Categories:**
+| Category | Style | Examples |
+|----------|-------|----------|
+| **Cave/Mountain** | Misty, dawn light, solitary | Al-Alaq (96), Al-Muzzammil (73) |
+| **Desert Journey** | Caravans, sand, vast landscapes | Al-Quraish (106), Al-Fil (105) |
+| **Night/Stars** | Celestial, spiritual, mysterious | Al-Qadr (97), Al-Buruj (85) |
+| **Battle/Conflict** | Dust, movement, tension | Al-Anfal (8), Al-Imran (3) |
+| **City/Community** | Madinah streets, gathering, unity | Al-Hujurat (49), Al-Nur (24) |
+| **Sacred Sites** | Kaaba, mosques, pilgrimage | Al-Hajj (22), Al-Baqarah (2) |
 
-### 7. Reflection Prompts
-After viewing a surah, occasionally show reflection questions connecting historical context to personal application.
+**Production Approach:**
+1. Create prompt templates for consistent style
+2. Generate with Runway/Sora/Midjourney
+3. 5-10 second seamless loops
+4. Plays in surah detail panel or as overlay
 
-**Why:** Transforms passive consumption into active learning.
+**Effort:** High (114 surahs × prompt crafting + generation + curation)
+
+### 5.2 Event Cinematics
+Create videos for 24 historical events.
+
+**Priority Events:**
+| Event | Duration | Visual Focus |
+|-------|----------|--------------|
+| First Revelation | 15 sec | Cave Hira, dawn, light descending |
+| Hijra | 30 sec | Night journey, desert, arrival in Madinah |
+| Battle of Badr | 20 sec | Dust, movement, divine intervention |
+| Conquest of Makkah | 25 sec | Peaceful army, Kaaba, unity |
+| Farewell Pilgrimage | 20 sec | Arafat, vast gathering, sunset |
+
+**Effort:** High (24 events × longer generation + editing)
+
+### 5.3 Ambient Backgrounds
+Subtle video backgrounds behind the map.
+
+| Time of Day | Visual | Mood |
+|-------------|--------|------|
+| Dawn (610 CE) | Golden mist rising over mountains | New beginning |
+| Morning | Clear desert, soft shadows | Growing clarity |
+| Midday (621 CE) | Bright, minimal haze | Turning point |
+| Afternoon | Warm golden light | Perseverance |
+| Dusk (632 CE) | Purple/amber sky, stars appearing | Completion |
+
+**Technical:** HTML5 video element behind map, opacity-blended, synced to timeline.
+
+**Effort:** Medium (5-7 ambient loops)
+
+---
+
+## Phase 6: Cinematic Story Mode
+
+### 6.1 Journey Framework
+Pre-built cinematic tours that auto-advance with narration.
+
+**UX Flow:**
+1. User selects a journey from menu
+2. Map enters "cinematic mode" (UI fades, fullscreen feel)
+3. Timeline auto-advances
+4. Narrative cards fade in/out
+5. Visuals play at key moments
+6. Map pans to relevant locations
+7. Journey ends with summary
+
+### 6.2 Planned Journeys
+
+| Journey | Duration | Key Moments |
+|---------|----------|-------------|
+| **"The First Revelation"** | 3 min | Cave Hira → First words → Return to Khadijah |
+| **"The Year of Sorrow"** | 5 min | Death of Khadijah → Death of Abu Talib → Taif rejection → Isra & Mi'raj |
+| **"The Hijra"** | 7 min | Plot to kill → Cave Thawr → Journey → Arrival in Madinah |
+| **"Victory & Mercy"** | 5 min | Treaty of Hudaybiyyah → Conquest of Makkah → Forgiveness |
+| **"The Final Sermon"** | 4 min | Farewell Pilgrimage → Arafat → Last revelation → Completion |
+
+### 6.3 Narrative Content
+Each journey needs:
+- **Script**: ~200-400 words of narration text
+- **Timing**: When each card appears/disappears
+- **Visuals**: Which AI videos play when
+- **Map movements**: Pan/zoom coordinates
+- **Surah highlights**: Which markers glow
+
+**Effort:** High (writing + timing + integration)
+
+---
+
+## Phase 7: Visual Polish
+
+### 7.1 Atmospheric Effects
+| Effect | Description | Effort |
+|--------|-------------|--------|
+| Sand/dust particles | Drifting particles on map | Low |
+| Light rays | Subtle god rays at dawn/dusk | Low |
+| Marker animations | Pulse/glow on reveal | Low |
+| Transition effects | Smooth fades between story beats | Medium |
+
+### 7.2 Map Enhancements
+| Enhancement | Description | Effort |
+|-------------|-------------|--------|
+| 3D terrain | Mapbox elevation for mountains | Medium |
+| Tighter bounds | Focus on Hijaz region only | Low |
+| Satellite toggle | Switch to realistic terrain view | Low |
+| Sacred site markers | Special icons for Kaaba, Cave Hira, etc. | Low |
+
+---
+
+## Phase 8: Engagement & Sharing
+
+### 8.1 Shareable Cards
+Generate beautiful social media cards:
+- Surah cards with visual + key info
+- "I explored X surahs today" achievement cards
+- Journey completion cards
+
+### 8.2 Daily Engagement
+| Feature | Description |
+|---------|-------------|
+| Daily surah spotlight | Featured surah on landing |
+| Streak tracking | Already implemented |
+| Achievement badges | Explorer, Scholar, Historian |
+
+---
+
+## Technical Architecture for Media
+
+### Asset Storage
+```
+public/
+├── visuals/
+│   ├── surahs/
+│   │   ├── 001-al-fatiha.mp4
+│   │   ├── 002-al-baqarah.mp4
+│   │   └── ...
+│   ├── events/
+│   │   ├── first-revelation.mp4
+│   │   ├── hijra.mp4
+│   │   └── ...
+│   └── ambient/
+│       ├── dawn.mp4
+│       ├── midday.mp4
+│       └── dusk.mp4
+```
+
+### Video Player Component
+- Seamless looping
+- Preload on hover/approach
+- Graceful fallback to static image
+- Optimized for mobile (reduced quality option)
+
+### CDN Considerations
+- Videos should be hosted on CDN (Cloudflare R2, AWS S3)
+- Progressive loading
+- Multiple quality levels (480p, 720p, 1080p)
 
 ---
 
 ## Implementation Priority
 
-| Order | Feature | Effort | Educational Value |
-|-------|---------|--------|-------------------|
-| 1 | Deep linking (`/surah/96`) | Low | Enables sharing |
-| 2 | Verse spotlight | Low | Core content |
-| 3 | Audio recitation | Medium | Emotional connection |
-| 4 | Revelation context | Medium | The "why" |
-| 5 | Progress tracking | Medium | Habit formation |
-| 6 | Story mode (1-2 journeys) | High | Guided learning |
-| 7 | Thematic exploration | Medium | Alternative entry point |
+| Order | Phase | Feature | Effort | Impact |
+|-------|-------|---------|--------|--------|
+| 1 | 5.3 | Ambient video backgrounds | Medium | High - immediate atmosphere |
+| 2 | 7.1 | Atmospheric particles | Low | Medium - polish |
+| 3 | 5.1 | First 10 surah visuals (pilot) | Medium | High - prove concept |
+| 4 | 6.1 | Story mode framework | High | Very High - core feature |
+| 5 | 6.2 | First journey ("First Revelation") | High | Very High - showcase |
+| 6 | 8.1 | Shareable cards | Medium | High - viral growth |
+| 7 | 5.1 | Remaining surah visuals | High | High - completeness |
+| 8 | 5.2 | Event cinematics | High | High - depth |
 
 ---
 
-## Future Visual & Interactive Enhancements
+## AI Video Generation Strategy
 
-| Enhancement | Effort | Impact | Risk | Notes |
-|-------------|--------|--------|------|-------|
-| **Animated route lines** | Low | High | Low | Removed (added visual clutter) |
-| **3D terrain** (Mapbox elevation) | Medium | High | Low | Mountains like Jabal al-Nour visible |
-| **Day/night cycle** on map | Low | Medium | Low | ✅ Implemented (dawn→midday→dusk) |
-| **Particle effects** on surah reveal | Low | Medium | Low | Subtle sparkle when markers appear |
-| **Audio recitation embed** | Medium | High | Low | Play ayat in panel via Quran.com API |
-| **Connection lines** between surahs | Medium | High | Low | Visual graph of thematic links |
-| **Animated timeline markers** | Low | Medium | Low | Pulse effect when events occur |
-| **Heatmap of revelation density** | Low | Medium | Low | Show where most surahs were revealed |
-| **Video backgrounds** (clouds/stars) | Medium | Medium | Medium | Can distract from content |
-| **AI voice narration** (Story mode) | High | High | Medium | Pre-recorded safer than generated |
-| **AI-powered Q&A** | High | High | **High** | Risk of errors in religious content |
+### Existing Data Source: Asbab al-Nuzul
+We already have historical context (revelation circumstances) in `src/data/surah-locations.ts`.
 
-### Recommended Next (High Impact, Low Risk)
-1. 3D terrain with Mapbox
-2. Audio recitation in detail panel
-3. Day/night cycle on map
-4. Connection lines between related surahs
+**Examples from our data:**
+| Surah | Context (from codebase) | Visual Prompt Direction |
+|-------|-------------------------|-------------------------|
+| 96 (Al-Alaq) | "The very first revelation to Prophet Muhammad at Cave Hira" | Mountain cave, dawn light, mist, solitude |
+| 19 (Maryam) | "Recited by Ja'far to the Christian king of Abyssinia during the first migration" | Palace court, diverse gathering, recitation moment |
+| 8 (Al-Anfal) | "Revealed after the Battle of Badr addressing the miraculous victory" | Desert battlefield aftermath, dust settling, divine light |
+| 33 (Al-Ahzab) | "Revealed during and after the siege of Madinah by confederate forces" | Trench fortifications, defensive posture, community unity |
+| 48 (Al-Fath) | "Revealed while returning from Hudaybiyyah, declaring the treaty a clear victory" | Caravan returning, peaceful resolution, hopeful atmosphere |
+| 72 (Al-Jinn) | "Revealed when jinn heard the Prophet reciting after the Taif journey" | Night desert, mysterious atmosphere, unseen presence |
+
+### Prompt Generation Pipeline
+```
+1. Read surah.context from surah-locations.ts
+2. Extract key visual elements (location, time, mood)
+3. Add standard style modifiers
+4. Generate with AI tool
+5. Review for appropriateness
+```
+
+### Tools
+| Tool | Best For | Cost |
+|------|----------|------|
+| **Runway Gen-3** | Short cinematic clips | $15-100/mo |
+| **Sora** (when available) | Longer, coherent scenes | TBD |
+| **Midjourney** | Static images, concept art | $10-60/mo |
+| **Pika** | Quick iterations | $8-58/mo |
+
+### Prompt Engineering
+Create consistent visual language:
+- **Color palette**: Warm golds, deep blues, desert tones
+- **Style**: Cinematic, reverent, historically-inspired (not cartoonish)
+- **Mood**: Awe-inspiring, peaceful, spiritually evocative
+- **Avoid**: Modern elements, faces of prophets, literal depictions
+
+### Example Prompt Template
+```
+[CONTEXT]: {surah.context}
+[THEMES]: {surah.themes.join(', ')}
+[LOCATION]: {location name}
+[YEAR]: {surah.approximateYear} CE
+
+GENERATED PROMPT:
+"Cinematic shot of {location description}, {time of day based on themes},
+{atmospheric elements}, ancient Arabian setting, no faces visible,
+{mood from context}, 4K, documentary film style, reverent atmosphere"
+```
+
+### Example Outputs
+```
+Surah Al-Alaq (First Revelation):
+Context: "The very first revelation to Prophet Muhammad at Cave Hira"
+→ "Cinematic shot of a misty mountain cave at dawn, golden light
+   streaming through the entrance, ancient Arabian landscape visible
+   below, ethereal atmosphere, no people visible, 4K, reverent mood"
+
+Surah Al-Anfal (Battle of Badr):
+Context: "Revealed after the Battle of Badr addressing the miraculous victory"
+→ "Aerial view of Arabian desert battlefield at golden hour, dust
+   clouds settling, distant camp fires, dramatic lighting breaking
+   through clouds, historical epic cinematography, victorious mood"
+
+Surah Maryam (Abyssinia Migration):
+Context: "Recited by Ja'far to the Christian king of Abyssinia"
+→ "Interior of ancient African palace hall, warm candlelight,
+   ornate architecture, dignified atmosphere, cross-cultural
+   moment, documentary style, peaceful and hopeful mood"
+```
+
+---
+
+## Success Metrics
+
+> **"Does this feel like a documentary film about the Quran's revelation?"**
+
+| Metric | Target |
+|--------|--------|
+| Time on site | > 5 minutes average |
+| Journey completion rate | > 60% |
+| Social shares | Trackable via card generation |
+| Return visits | > 30% within 7 days |
 
 ---
 
 ## What NOT to Build
 
-| Skip This | Why |
-|-----------|-----|
-| Real-time global heatmap | Spectacle, not education |
-| AI chat | Risk of errors in religious content |
-| Social features | Distraction from learning |
-| Gamification leaderboards | Turns sacred content into competition |
-| 3D photorealistic | High cost, low educational value |
-
----
-
-## Success Metric
-
-> **"After using this app, can a user explain why Surah X was revealed at location Y during event Z?"**
-
-If yes, we've built something valuable.
+| Skip | Why |
+|------|-----|
+| AI chat/Q&A | Risk of errors in religious content |
+| Audio recitation | Other apps do this better; not our focus |
+| Global map | Dilutes geographic focus |
+| Gamification leaderboards | Trivializes sacred content |
+| User accounts | Adds complexity; localStorage sufficient |
