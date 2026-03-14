@@ -147,7 +147,6 @@ src/
 | Keyboard Shortcuts | Arrow keys, Space, Cmd+K, Escape, Home/End | `useKeyboardShortcuts.ts` |
 | Shortcuts Help Modal | Press `?` to see all keyboard shortcuts | `KeyboardShortcutsModal.tsx` |
 | Opening Verses | Arabic + English for all 114 surahs | `opening-verses.ts` |
-| Journey Routes | Animated route lines (Hijra, Abyssinia, Taif) | `routes.ts`, `MapContainer.tsx` |
 | Progress Tracking | Track explored surahs/events with localStorage | `useProgressStore.ts` |
 | Progress Stats | Visual progress bar, streak tracking, stats | `ProgressStats.tsx` |
 | Explored Indicators | Glow effect on explored surah markers | `MapContainer.tsx` |
@@ -164,14 +163,6 @@ src/
 | `Escape` | Close panels |
 | `Home` / `End` | Jump to 610 / 632 CE |
 | `?` | Show shortcuts help |
-
-### Journey Routes
-
-| Route | Year | Path |
-|-------|------|------|
-| The Hijra | 622 CE | Makkah → Cave Thawr → Coastal route → Madinah |
-| Abyssinia Migration | 615 CE | Makkah → Red Sea coast (departure point) |
-| Taif Journey | 619 CE | Makkah → Taif |
 
 ### Day/Night Cycle
 
@@ -270,7 +261,6 @@ The map features an atmospheric day/night cycle that mirrors the 23-year revelat
 | Taif | 21.2703, 40.4158 | Journey to Taif (Surah 72) |
 | Arafat | 21.3549, 39.9842 | Farewell Pilgrimage (Surah 5) |
 | Mina | 21.4133, 39.8933 | Last revelation (Surah 110) |
-| Juhfa | 22.7167, 39.1500 | Hijra route |
 
 ---
 
@@ -298,7 +288,6 @@ The map features an atmospheric day/night cycle that mirrors the 23-year revelat
 - [x] Event markers on map (battles, migrations as distinct icons) ✓
 - [x] URL routing (`/surah/1` for deep-linking) ✓
 - [x] Keyboard shortcuts (arrows for timeline, Cmd+K for search) ✓
-- [x] Animated journey routes (Hijra, Abyssinia, Taif) ✓
 - [x] Progress tracking (remember explored surahs) ✓
 
 ### Medium Effort

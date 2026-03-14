@@ -103,7 +103,7 @@ After viewing a surah, occasionally show reflection questions connecting histori
 
 | Enhancement | Effort | Impact | Risk | Notes |
 |-------------|--------|--------|------|-------|
-| **Animated route lines** | Low | High | Low | ✅ Implemented (Hijra, Abyssinia, Taif) |
+| **Animated route lines** | Low | High | Low | Removed (added visual clutter) |
 | **3D terrain** (Mapbox elevation) | Medium | High | Low | Mountains like Jabal al-Nour visible |
 | **Day/night cycle** on map | Low | Medium | Low | ✅ Implemented (dawn→midday→dusk) |
 | **Particle effects** on surah reveal | Low | Medium | Low | Subtle sparkle when markers appear |

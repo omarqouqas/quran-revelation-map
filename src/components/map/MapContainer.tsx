@@ -12,7 +12,6 @@ import { useMapStore } from '@/stores/useMapStore';
 import { useProgressStore } from '@/stores/useProgressStore';
 import { getAllCompleteSurahs, LOCATIONS, type CompleteSurahData } from '@/data/surah-locations';
 import { events, type HistoricalEvent } from '@/data/events';
-import { JOURNEY_ROUTES, type JourneyRoute } from '@/data/routes';
 
 // Initialize Mapbox access token
 mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN || '';
@@ -544,109 +543,6 @@ export function MapContainer() {
     createEventMarkerElement,
     selectEvent,
   ]);
-
-  /** Update journey route lines based on current year and events visibility */
-  useEffect(() => {
-    if (!map.current || !mapLoaded) return;
-
-    const mapInstance = map.current;
-
-    // Process each route
-    JOURNEY_ROUTES.forEach((route) => {
-      const sourceId = `route-${route.id}`;
-      const layerId = `route-layer-${route.id}`;
-      const glowLayerId = `route-glow-${route.id}`;
-
-      // Should this route be visible?
-      const isVisible = showEvents && route.year <= currentYear;
-      const isCurrentYear = route.year === currentYear;
-
-      // Check if source exists
-      const sourceExists = mapInstance.getSource(sourceId);
-
-      if (!isVisible) {
-        // Remove layers and source if they exist
-        if (mapInstance.getLayer(glowLayerId)) {
-          mapInstance.removeLayer(glowLayerId);
-        }
-        if (mapInstance.getLayer(layerId)) {
-          mapInstance.removeLayer(layerId);
-        }
-        if (sourceExists) {
-          mapInstance.removeSource(sourceId);
-        }
-        return;
-      }
-
-      // Create GeoJSON for the route
-      const routeGeoJSON: GeoJSON.Feature<GeoJSON.LineString> = {
-        type: 'Feature',
-        properties: {
-          id: route.id,
-          name: route.name,
-        },
-        geometry: {
-          type: 'LineString',
-          coordinates: route.coordinates,
-        },
-      };
-
-      if (sourceExists) {
-        // Update existing source
-        (mapInstance.getSource(sourceId) as mapboxgl.GeoJSONSource).setData(routeGeoJSON);
-      } else {
-        // Add new source
-        mapInstance.addSource(sourceId, {
-          type: 'geojson',
-          data: routeGeoJSON,
-        });
-
-        // Add glow layer (wider, blurred line behind)
-        mapInstance.addLayer({
-          id: glowLayerId,
-          type: 'line',
-          source: sourceId,
-          layout: {
-            'line-join': 'round',
-            'line-cap': 'round',
-          },
-          paint: {
-            'line-color': route.color,
-            'line-width': 8,
-            'line-opacity': 0.3,
-            'line-blur': 3,
-          },
-        });
-
-        // Add main route line
-        mapInstance.addLayer({
-          id: layerId,
-          type: 'line',
-          source: sourceId,
-          layout: {
-            'line-join': 'round',
-            'line-cap': 'round',
-          },
-          paint: {
-            'line-color': route.color,
-            'line-width': 3,
-            'line-opacity': 0.9,
-            'line-dasharray': [2, 1],
-          },
-        });
-      }
-
-      // Animate dash for current year routes
-      if (isCurrentYear) {
-        // Pulse the glow
-        mapInstance.setPaintProperty(glowLayerId, 'line-opacity', 0.5);
-        mapInstance.setPaintProperty(glowLayerId, 'line-width', 12);
-      } else {
-        mapInstance.setPaintProperty(glowLayerId, 'line-opacity', 0.2);
-        mapInstance.setPaintProperty(glowLayerId, 'line-width', 6);
-      }
-    });
-  }, [currentYear, mapLoaded, showEvents]);
 
   return (
     <div
