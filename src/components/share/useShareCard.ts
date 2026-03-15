@@ -21,24 +21,8 @@ export function useShareCard() {
   const [isGenerating, setIsGenerating] = useState(false);
 
   /**
-   * Wait for element to have valid dimensions
-   */
-  const waitForElement = useCallback(async (
-    element: HTMLElement,
-    maxAttempts: number = 10
-  ): Promise<boolean> => {
-    for (let i = 0; i < maxAttempts; i++) {
-      const rect = element.getBoundingClientRect();
-      if (rect.width > 0 && rect.height > 0) {
-        return true;
-      }
-      await new Promise(resolve => setTimeout(resolve, 50));
-    }
-    return false;
-  }, []);
-
-  /**
    * Generate an image from an HTML element
+   * Creates a clean clone to avoid CSS transform/filter issues
    */
   const generateImage = useCallback(async (
     element: HTMLElement,
@@ -47,19 +31,49 @@ export function useShareCard() {
     const { scale = 2 } = options;
 
     try {
-      // Wait for element to have valid dimensions
-      const isReady = await waitForElement(element);
-      if (!isReady) {
+      // Get actual dimensions of the element (before any transforms)
+      const rect = element.getBoundingClientRect();
+      if (rect.width === 0 || rect.height === 0) {
         console.error('Element has no dimensions');
         return null;
       }
 
-      const canvas = await html2canvas(element, {
+      // Clone the element to a temporary container outside the scaled parent
+      const clone = element.cloneNode(true) as HTMLElement;
+
+      // Reset any transforms and ensure full opacity
+      clone.style.transform = 'none';
+      clone.style.position = 'absolute';
+      clone.style.left = '-9999px';
+      clone.style.top = '0';
+      clone.style.width = '400px'; // Fixed card width
+      clone.style.opacity = '1';
+
+      // Remove blur effects from cloned decorative elements (html2canvas struggles with blur)
+      const blurElements = clone.querySelectorAll('[class*="blur"]');
+      blurElements.forEach((el) => {
+        (el as HTMLElement).style.filter = 'none';
+        (el as HTMLElement).style.opacity = '0.3';
+      });
+
+      // Append to body temporarily
+      document.body.appendChild(clone);
+
+      // Wait a frame for styles to apply
+      await new Promise(resolve => requestAnimationFrame(resolve));
+
+      const canvas = await html2canvas(clone, {
         scale,
         backgroundColor: '#0A0F1A',
         logging: false,
         useCORS: true,
+        allowTaint: true,
+        width: 400,
+        height: clone.offsetHeight,
       });
+
+      // Clean up
+      document.body.removeChild(clone);
 
       // Verify canvas has valid dimensions
       if (canvas.width === 0 || canvas.height === 0) {
@@ -76,7 +90,7 @@ export function useShareCard() {
       console.error('Failed to generate image:', error);
       return null;
     }
-  }, [waitForElement]);
+  }, []);
 
   /**
    * Download the card as an image
