@@ -143,6 +143,7 @@ Each journey needs:
 Generate beautiful social media cards:
 - ✅ Surah cards with visual + key info (SurahShareCard.tsx)
 - ✅ Journey completion cards (JourneyShareCard.tsx)
+- ✅ Event cards for historical events (EventShareCard.tsx)
 - ✅ Share modal with preview (ShareModal.tsx)
 - ✅ Download as PNG, Copy to clipboard, Native share (useShareCard.ts)
 
@@ -295,7 +296,8 @@ Context: "Recited by Ja'far to the Christian king of Abyssinia"
 
 | Feature | Description |
 |---------|-------------|
-| **Shareable Cards** | Beautiful card designs for sharing surah info and journey completions. Download as PNG, copy to clipboard, or use native Web Share API. |
+| **Event Share Cards** | Share historical events (battles, migrations, revelations) with beautiful cards. Includes event details, related surahs, and category-specific styling. |
+| **Shareable Cards** | Beautiful card designs for sharing surah info, journey completions, and historical events. Download as PNG, copy to clipboard, or use native Web Share API. |
 | **Revelation Order Comparison** | Full-screen modal showing all 114 surahs with toggle between Quran order and revelation order. Visual indicators show position changes. Click any surah to view details. |
 | **Order Comparison in Detail Panel** | Each surah's detail panel now shows Quran position vs revelation position with difference indicator. |
 

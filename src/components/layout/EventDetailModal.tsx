@@ -4,12 +4,13 @@
  * Modal/panel for displaying historical event details
  */
 
-import { useEffect, useCallback } from 'react';
+import { useEffect, useCallback, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Calendar, MapPin, BookOpen, Swords, Plane, Star, FileText, Milestone } from 'lucide-react';
+import { X, Calendar, MapPin, BookOpen, Swords, Plane, Star, FileText, Milestone, Share2 } from 'lucide-react';
 import { useMapStore } from '@/stores/useMapStore';
 import { getEventById, type HistoricalEvent } from '@/data/events';
 import { getSurahByNumber } from '@/lib/quran-data';
+import { ShareModal } from '@/components/share/ShareModal';
 
 /** Get icon for event category */
 function getEventIcon(event: HistoricalEvent) {
@@ -52,6 +53,7 @@ export function EventDetailModal() {
   const selectEvent = useMapStore((state) => state.selectEvent);
   const selectSurah = useMapStore((state) => state.selectSurah);
   const setCurrentYear = useMapStore((state) => state.setCurrentYear);
+  const [isShareModalOpen, setIsShareModalOpen] = useState(false);
 
   const event = selectedEventId ? getEventById(selectedEventId) : null;
 
@@ -178,23 +180,43 @@ export function EventDetailModal() {
                   )}
                 </div>
 
-                {/* Close button */}
-                <button
-                  onClick={handleClose}
-                  style={{
-                    padding: '8px',
-                    borderRadius: '10px',
-                    backgroundColor: '#1F2937',
-                    border: 'none',
-                    cursor: 'pointer',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    flexShrink: 0,
-                  }}
-                >
-                  <X style={{ width: '18px', height: '18px', color: '#9CA3AF' }} />
-                </button>
+                {/* Action buttons */}
+                <div style={{ display: 'flex', gap: '8px', flexShrink: 0 }}>
+                  {/* Share button */}
+                  <button
+                    onClick={() => setIsShareModalOpen(true)}
+                    style={{
+                      padding: '8px',
+                      borderRadius: '10px',
+                      backgroundColor: '#1F2937',
+                      border: 'none',
+                      cursor: 'pointer',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                    }}
+                    title="Share this event"
+                  >
+                    <Share2 style={{ width: '18px', height: '18px', color: category.color }} />
+                  </button>
+
+                  {/* Close button */}
+                  <button
+                    onClick={handleClose}
+                    style={{
+                      padding: '8px',
+                      borderRadius: '10px',
+                      backgroundColor: '#1F2937',
+                      border: 'none',
+                      cursor: 'pointer',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                    }}
+                  >
+                    <X style={{ width: '18px', height: '18px', color: '#9CA3AF' }} />
+                  </button>
+                </div>
               </div>
             </div>
 
@@ -332,6 +354,15 @@ export function EventDetailModal() {
               )}
             </div>
           </motion.div>
+
+          {/* Share Modal */}
+          {event && (
+            <ShareModal
+              isOpen={isShareModalOpen}
+              onClose={() => setIsShareModalOpen(false)}
+              content={{ type: 'event', event }}
+            />
+          )}
         </>
       )}
     </AnimatePresence>

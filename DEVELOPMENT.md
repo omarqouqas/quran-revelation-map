@@ -80,6 +80,7 @@ src/
 │   │   ├── ShareModal.tsx         # Share preview modal
 │   │   ├── SurahShareCard.tsx     # Surah card design
 │   │   ├── JourneyShareCard.tsx   # Journey card design
+│   │   ├── EventShareCard.tsx     # Event card design
 │   │   └── useShareCard.ts        # Image generation hook
 │   │
 │   └── timeline/
@@ -190,6 +191,7 @@ src/
 |---------|-------------|------|
 | Surah Share Cards | Beautiful card design for sharing surah info on social media | `SurahShareCard.tsx` |
 | Journey Share Cards | Card design for sharing completed journeys | `JourneyShareCard.tsx` |
+| Event Share Cards | Card design for sharing historical events | `EventShareCard.tsx` |
 | Share Modal | Preview modal with Download, Copy, Share buttons | `ShareModal.tsx` |
 | Image Generation | html2canvas integration for PNG export | `useShareCard.ts` |
 | Web Share API | Native mobile sharing with fallback to download | `useShareCard.ts` |

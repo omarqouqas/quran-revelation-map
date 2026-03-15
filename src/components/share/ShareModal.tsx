@@ -11,12 +11,15 @@ import { X, Download, Copy, Share2, Check, Loader2, ImageIcon } from 'lucide-rea
 import { useShareCard } from './useShareCard';
 import { SurahShareCard } from './SurahShareCard';
 import { JourneyShareCard } from './JourneyShareCard';
+import { EventShareCard } from './EventShareCard';
 import { CompleteSurahData } from '@/data/surah-locations';
 import { Journey } from '@/data/journeys';
+import { HistoricalEvent } from '@/data/events';
 
 type ShareContent =
   | { type: 'surah'; surah: CompleteSurahData }
-  | { type: 'journey'; journey: Journey };
+  | { type: 'journey'; journey: Journey }
+  | { type: 'event'; event: HistoricalEvent };
 
 interface ShareModalProps {
   isOpen: boolean;
@@ -35,16 +38,42 @@ export function ShareModal({ isOpen, onClose, content }: ShareModalProps) {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   // Get accent color based on content type
-  const accentColor = content.type === 'surah'
-    ? (content.surah.isMeccan ? '#C8A84E' : '#2EC4B6')
-    : content.journey.accentColor;
+  const getAccentColor = () => {
+    if (content.type === 'surah') {
+      return content.surah.isMeccan ? '#C8A84E' : '#2EC4B6';
+    }
+    if (content.type === 'journey') {
+      return content.journey.accentColor;
+    }
+    // Event - determine color from event category
+    const id = content.event.id;
+    if (id.includes('badr') || id.includes('uhud') || id.includes('trench') || id.includes('hunayn') || id.includes('khaybar')) {
+      return '#EF4444'; // Battle - red
+    }
+    if (id.includes('abyssinia') || id.includes('hijra') || id.includes('taif')) {
+      return '#3B82F6'; // Migration - blue
+    }
+    if (id.includes('revelation') || id.includes('isra')) {
+      return '#F59E0B'; // Revelation - amber
+    }
+    if (id.includes('hudaybiyyah') || id.includes('aqabah') || id.includes('constitution')) {
+      return '#10B981'; // Treaty - green
+    }
+    return '#8B5CF6'; // Milestone - purple
+  };
+  const accentColor = getAccentColor();
 
   const handleDownload = async () => {
     if (!cardRef.current) return;
 
-    const filename = content.type === 'surah'
-      ? `surah-${content.surah.number}-${content.surah.englishName.toLowerCase().replace(/\s+/g, '-')}`
-      : `journey-${content.journey.id}`;
+    let filename: string;
+    if (content.type === 'surah') {
+      filename = `surah-${content.surah.number}-${content.surah.englishName.toLowerCase().replace(/\s+/g, '-')}`;
+    } else if (content.type === 'journey') {
+      filename = `journey-${content.journey.id}`;
+    } else {
+      filename = `event-${content.event.id}`;
+    }
 
     const result = await downloadCard(cardRef.current, { filename });
     if (result.success) {
@@ -77,15 +106,23 @@ export function ShareModal({ isOpen, onClose, content }: ShareModalProps) {
   const handleShare = async () => {
     if (!cardRef.current) return;
 
-    const shareData = content.type === 'surah'
-      ? {
-          title: `Surah ${content.surah.englishName}`,
-          text: `Exploring Surah ${content.surah.englishName} (${content.surah.arabicName}) - ${content.surah.englishMeaning}. Revealed in ${content.surah.classification === 'Makki' ? 'Makkah' : 'Madinah'} around ${content.surah.approximateYear} CE.`,
-        }
-      : {
-          title: content.journey.title,
-          text: `I just completed "${content.journey.title}" journey on Quran Revelation Map! ${content.journey.description}`,
-        };
+    let shareData: { title: string; text: string };
+    if (content.type === 'surah') {
+      shareData = {
+        title: `Surah ${content.surah.englishName}`,
+        text: `Exploring Surah ${content.surah.englishName} (${content.surah.arabicName}) - ${content.surah.englishMeaning}. Revealed in ${content.surah.classification === 'Makki' ? 'Makkah' : 'Madinah'} around ${content.surah.approximateYear} CE.`,
+      };
+    } else if (content.type === 'journey') {
+      shareData = {
+        title: content.journey.title,
+        text: `I just completed "${content.journey.title}" journey on Quran Revelation Map! ${content.journey.description}`,
+      };
+    } else {
+      shareData = {
+        title: content.event.name,
+        text: `${content.event.name} (${content.event.year} CE) - ${content.event.description}`,
+      };
+    }
 
     const result = await shareCard(cardRef.current, shareData);
     if (result.success) {
@@ -96,7 +133,9 @@ export function ShareModal({ isOpen, onClose, content }: ShareModalProps) {
 
   const title = content.type === 'surah'
     ? `Share Surah ${content.surah.englishName}`
-    : `Share ${content.journey.title}`;
+    : content.type === 'journey'
+    ? `Share ${content.journey.title}`
+    : `Share ${content.event.name}`;
 
   return (
     <AnimatePresence>
@@ -148,8 +187,10 @@ export function ShareModal({ isOpen, onClose, content }: ShareModalProps) {
                 <div className="transform scale-[0.75] sm:scale-[0.85] origin-center shrink-0">
                   {content.type === 'surah' ? (
                     <SurahShareCard ref={cardRef} surah={content.surah} />
-                  ) : (
+                  ) : content.type === 'journey' ? (
                     <JourneyShareCard ref={cardRef} journey={content.journey} />
+                  ) : (
+                    <EventShareCard ref={cardRef} event={content.event} />
                   )}
                 </div>
               </div>
