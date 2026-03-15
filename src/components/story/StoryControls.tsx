@@ -21,7 +21,6 @@ export function StoryControls() {
   const previousStep = useStoryStore((s) => s.previousStep);
   const togglePause = useStoryStore((s) => s.togglePause);
   const goToStep = useStoryStore((s) => s.goToStep);
-  const resumeJourney = useStoryStore((s) => s.resumeJourney);
 
   const isLastStep = useIsLastStep();
   const isFirstStep = useIsFirstStep();

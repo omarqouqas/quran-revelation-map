@@ -76,6 +76,12 @@ src/
 │   │   ├── MapContainer.tsx       # Mapbox GL map
 │   │   └── VideoBackground.tsx    # Atmospheric overlay
 │   │
+│   ├── share/
+│   │   ├── ShareModal.tsx         # Share preview modal
+│   │   ├── SurahShareCard.tsx     # Surah card design
+│   │   ├── JourneyShareCard.tsx   # Journey card design
+│   │   └── useShareCard.ts        # Image generation hook
+│   │
 │   └── timeline/
 │       └── TimelineSlider.tsx     # Timeline controls
 │
@@ -177,6 +183,17 @@ src/
 | Ambient Background | Atmospheric overlay with particles, stars, gradients | `VideoBackground.tsx` |
 | Order Comparison | Visual comparison of Quran order vs Revelation order | `OrderComparisonModal.tsx` |
 | Order in Detail Panel | Shows position difference for each surah | `SurahDetailPanel.tsx` |
+
+### Phase 5: Shareable Cards (Complete)
+
+| Feature | Description | File |
+|---------|-------------|------|
+| Surah Share Cards | Beautiful card design for sharing surah info on social media | `SurahShareCard.tsx` |
+| Journey Share Cards | Card design for sharing completed journeys | `JourneyShareCard.tsx` |
+| Share Modal | Preview modal with Download, Copy, Share buttons | `ShareModal.tsx` |
+| Image Generation | html2canvas integration for PNG export | `useShareCard.ts` |
+| Web Share API | Native mobile sharing with fallback to download | `useShareCard.ts` |
+| Clipboard Copy | Copy card image directly to clipboard | `useShareCard.ts` |
 
 ### Keyboard Shortcuts
 
@@ -306,6 +323,7 @@ The map features an atmospheric day/night cycle that mirrors the 23-year revelat
 | Events appearing off-screen | `events.ts` | Moved Abyssinia events to departure point (Makkah) with `offMapLocation` indicator |
 | Overlapping event markers | `events.ts` | Added jitter function with seeded random for deterministic spacing |
 | VideoBackground hydration error | `VideoBackground.tsx` | Removed styled-jsx, moved animations to globals.css, added suppressHydrationWarning |
+| Share card canvas error | `useShareCard.ts` | Added `waitForElement` to poll for valid dimensions before html2canvas capture |
 
 ---
 

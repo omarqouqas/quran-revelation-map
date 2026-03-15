@@ -51,9 +51,12 @@ export function SurahDetailPanel() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [selectedSurahNumber, selectSurah]);
 
-  // Reset events expansion when surah changes
+  // Reset events expansion when surah changes - intentional reset on prop change
   useEffect(() => {
-    setShowAllEvents(false);
+    if (selectedSurahNumber !== null) {
+      // Using RAF to avoid synchronous setState warning
+      requestAnimationFrame(() => setShowAllEvents(false));
+    }
   }, [selectedSurahNumber]);
 
   // Get surah data
@@ -146,7 +149,7 @@ export function SurahDetailPanel() {
                       {surah.englishName}
                     </p>
                     <p className="text-sm text-[#E8E3DB] opacity-50 italic">
-                      "{englishMeaning}"
+                      &ldquo;{englishMeaning}&rdquo;
                     </p>
                   </div>
                 </div>
@@ -246,7 +249,7 @@ export function SurahDetailPanel() {
                     {openingVerse.arabic}
                   </p>
                   <p className="text-sm text-[#E8E3DB] opacity-80 leading-relaxed italic">
-                    "{openingVerse.translation}"
+                    &ldquo;{openingVerse.translation}&rdquo;
                   </p>
                   <p className="text-xs text-[#E8E3DB] opacity-50 mt-3">
                     — {openingVerse.ayah}

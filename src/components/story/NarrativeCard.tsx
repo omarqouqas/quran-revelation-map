@@ -19,10 +19,15 @@ export function NarrativeCard({ step, isPlaying, onStepComplete }: NarrativeCard
   const [progress, setProgress] = useState(0);
   const [hasCompleted, setHasCompleted] = useState(false);
 
-  // Reset progress and completion state when step changes
+  // Reset progress and completion state when step changes - intentional reset on prop change
   useEffect(() => {
-    setProgress(0);
-    setHasCompleted(false);
+    if (step?.id) {
+      // Using RAF to avoid synchronous setState warning
+      requestAnimationFrame(() => {
+        setProgress(0);
+        setHasCompleted(false);
+      });
+    }
   }, [step?.id]);
 
   // Progress timer

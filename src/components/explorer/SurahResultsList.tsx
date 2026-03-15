@@ -11,7 +11,6 @@ import { useExplorerStore } from '@/stores/useExplorerStore';
 import { getAllCompleteSurahs } from '@/data/surah-locations';
 import { filterSurahs, sortSurahs } from '@/lib/surah-filters';
 import { SurahResultCard } from './SurahResultCard';
-import { cn } from '@/lib/utils';
 
 // Cache all surahs at module level to avoid recreating on every render
 const allSurahsCache = getAllCompleteSurahs();

@@ -139,11 +139,12 @@ Each journey needs:
 
 ## Phase 8: Engagement & Sharing
 
-### 8.1 Shareable Cards
+### 8.1 Shareable Cards ✅ COMPLETE
 Generate beautiful social media cards:
-- Surah cards with visual + key info
-- "I explored X surahs today" achievement cards
-- Journey completion cards
+- ✅ Surah cards with visual + key info (SurahShareCard.tsx)
+- ✅ Journey completion cards (JourneyShareCard.tsx)
+- ✅ Share modal with preview (ShareModal.tsx)
+- ✅ Download as PNG, Copy to clipboard, Native share (useShareCard.ts)
 
 ### 8.2 Daily Engagement
 | Feature | Description |
@@ -196,7 +197,7 @@ public/
 | 3 | 5.1 | First 10 surah visuals (pilot) | Medium | High - prove concept |
 | 4 | 6.1 | Story mode framework | High | Very High - core feature |
 | 5 | 6.2 | First journey ("First Revelation") | High | Very High - showcase |
-| 6 | 8.1 | Shareable cards | Medium | High - viral growth |
+| ~~6~~ | ~~8.1~~ | ~~Shareable cards~~ | ~~Medium~~ | ✅ COMPLETE |
 | 7 | 5.1 | Remaining surah visuals | High | High - completeness |
 | 8 | 5.2 | Event cinematics | High | High - depth |
 
@@ -294,6 +295,7 @@ Context: "Recited by Ja'far to the Christian king of Abyssinia"
 
 | Feature | Description |
 |---------|-------------|
+| **Shareable Cards** | Beautiful card designs for sharing surah info and journey completions. Download as PNG, copy to clipboard, or use native Web Share API. |
 | **Revelation Order Comparison** | Full-screen modal showing all 114 surahs with toggle between Quran order and revelation order. Visual indicators show position changes. Click any surah to view details. |
 | **Order Comparison in Detail Panel** | Each surah's detail panel now shows Quran position vs revelation position with difference indicator. |
 

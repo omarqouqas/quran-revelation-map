@@ -21,6 +21,23 @@ export function useShareCard() {
   const [isGenerating, setIsGenerating] = useState(false);
 
   /**
+   * Wait for element to have valid dimensions
+   */
+  const waitForElement = useCallback(async (
+    element: HTMLElement,
+    maxAttempts: number = 10
+  ): Promise<boolean> => {
+    for (let i = 0; i < maxAttempts; i++) {
+      const rect = element.getBoundingClientRect();
+      if (rect.width > 0 && rect.height > 0) {
+        return true;
+      }
+      await new Promise(resolve => setTimeout(resolve, 50));
+    }
+    return false;
+  }, []);
+
+  /**
    * Generate an image from an HTML element
    */
   const generateImage = useCallback(async (
@@ -30,12 +47,25 @@ export function useShareCard() {
     const { scale = 2 } = options;
 
     try {
+      // Wait for element to have valid dimensions
+      const isReady = await waitForElement(element);
+      if (!isReady) {
+        console.error('Element has no dimensions');
+        return null;
+      }
+
       const canvas = await html2canvas(element, {
         scale,
         backgroundColor: '#0A0F1A',
         logging: false,
         useCORS: true,
       });
+
+      // Verify canvas has valid dimensions
+      if (canvas.width === 0 || canvas.height === 0) {
+        console.error('Generated canvas has no dimensions');
+        return null;
+      }
 
       return new Promise((resolve) => {
         canvas.toBlob((blob) => {
@@ -46,7 +76,7 @@ export function useShareCard() {
       console.error('Failed to generate image:', error);
       return null;
     }
-  }, []);
+  }, [waitForElement]);
 
   /**
    * Download the card as an image
@@ -100,7 +130,7 @@ export function useShareCard() {
       ]);
 
       return { success: true };
-    } catch (error) {
+    } catch {
       // Fallback: clipboard API might not be available
       return { success: false, error: 'Clipboard access denied' };
     } finally {
