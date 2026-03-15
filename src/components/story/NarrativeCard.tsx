@@ -5,7 +5,7 @@
  * Displays story text during cinematic journey playback
  */
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { JourneyStep } from '@/data/journeys';
 
@@ -17,48 +17,66 @@ interface NarrativeCardProps {
 
 export function NarrativeCard({ step, isPlaying, onStepComplete }: NarrativeCardProps) {
   const [progress, setProgress] = useState(0);
-  const [hasCompleted, setHasCompleted] = useState(false);
+  const completedRef = useRef(false);
+  const onStepCompleteRef = useRef(onStepComplete);
 
-  // Reset progress and completion state when step changes - intentional reset on prop change
+  // Keep callback ref updated in an effect
   useEffect(() => {
-    if (step?.id) {
-      // Using RAF to avoid synchronous setState warning
-      requestAnimationFrame(() => {
-        setProgress(0);
-        setHasCompleted(false);
-      });
+    onStepCompleteRef.current = onStepComplete;
+  }, [onStepComplete]);
+
+  // Track step ID to detect changes
+  const stepId = step?.id;
+  const prevStepIdRef = useRef<string | undefined>(undefined);
+
+  // Progress timer - handles both reset and progress in one effect
+  useEffect(() => {
+    if (!step || !isPlaying) return;
+
+    // Check if step changed - if so, reset progress
+    const stepChanged = prevStepIdRef.current !== stepId;
+    if (stepChanged) {
+      prevStepIdRef.current = stepId;
+      completedRef.current = false;
     }
-  }, [step?.id]);
-
-  // Progress timer
-  useEffect(() => {
-    if (!step || !isPlaying || hasCompleted) return;
 
     const duration = step.narrative.duration * 1000; // Convert to ms
     const interval = 50; // Update every 50ms
     const increment = (interval / duration) * 100;
 
+    // Start from 0 if step changed
+    let currentProgress = 0;
+
     let timeoutId: NodeJS.Timeout | null = null;
 
+    // Use setTimeout for initial reset to avoid synchronous setState warning
+    const initialTimer = setTimeout(() => {
+      if (stepChanged) {
+        setProgress(0);
+      }
+    }, 0);
+
     const timer = setInterval(() => {
-      setProgress((prev) => {
-        const next = prev + increment;
-        if (next >= 100) {
-          clearInterval(timer);
-          setHasCompleted(true);
-          // Delay slightly before advancing to next step
-          timeoutId = setTimeout(onStepComplete, 500);
-          return 100;
-        }
-        return next;
-      });
+      currentProgress += increment;
+      if (currentProgress >= 100 && !completedRef.current) {
+        completedRef.current = true;
+        clearInterval(timer);
+        setProgress(100);
+        // Delay slightly before advancing to next step
+        timeoutId = setTimeout(() => {
+          onStepCompleteRef.current();
+        }, 500);
+      } else if (!completedRef.current) {
+        setProgress(Math.min(currentProgress, 100));
+      }
     }, interval);
 
     return () => {
+      clearTimeout(initialTimer);
       clearInterval(timer);
       if (timeoutId) clearTimeout(timeoutId);
     };
-  }, [step, isPlaying, onStepComplete, hasCompleted]);
+  }, [step, isPlaying, stepId]);
 
   if (!step) return null;
 
