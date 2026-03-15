@@ -18,6 +18,7 @@ import {
   ChevronDown,
   ChevronUp,
   Sparkles,
+  Share2,
 } from 'lucide-react';
 import { useMapStore } from '@/stores/useMapStore';
 import { getCompleteSurahData } from '@/data/surah-locations';
@@ -26,6 +27,7 @@ import { getEventsForSurah } from '@/data/events';
 import { getOpeningVerse } from '@/data/opening-verses';
 import { getSurahMeaning } from '@/lib/quran-data';
 import { cn } from '@/lib/utils';
+import { ShareModal } from '@/components/share';
 
 export function SurahDetailPanel() {
   const selectedSurahNumber = useMapStore((state) => state.selectedSurahNumber);
@@ -33,6 +35,7 @@ export function SurahDetailPanel() {
   const selectEvent = useMapStore((state) => state.selectEvent);
   const setCurrentYear = useMapStore((state) => state.setCurrentYear);
   const [showAllEvents, setShowAllEvents] = useState(false);
+  const [showShareModal, setShowShareModal] = useState(false);
 
   // Close on Escape key
   useEffect(() => {
@@ -203,6 +206,16 @@ export function SurahDetailPanel() {
                   Listen
                   <ExternalLink className="w-3 h-3 opacity-60" />
                 </a>
+                <button
+                  onClick={() => setShowShareModal(true)}
+                  className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium border transition-all hover:bg-[#1A2332]"
+                  style={{
+                    borderColor: `${accentColor}40`,
+                    color: accentColor,
+                  }}
+                >
+                  <Share2 className="w-4 h-4" />
+                </button>
               </div>
             </div>
 
@@ -421,6 +434,13 @@ export function SurahDetailPanel() {
               <div className="h-6" />
             </div>
           </motion.aside>
+
+          {/* Share Modal */}
+          <ShareModal
+            isOpen={showShareModal}
+            onClose={() => setShowShareModal(false)}
+            content={{ type: 'surah', surah }}
+          />
         </>
       )}
     </AnimatePresence>

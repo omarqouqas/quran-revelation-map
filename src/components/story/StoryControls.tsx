@@ -5,11 +5,14 @@
  * Minimal controls during cinematic journey playback
  */
 
+import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { X, Play, Pause, SkipForward, SkipBack, RotateCcw } from 'lucide-react';
-import { useStoryStore, useCurrentStep, useIsLastStep, useIsFirstStep } from '@/stores/useStoryStore';
+import { X, Play, Pause, SkipForward, SkipBack, RotateCcw, Share2 } from 'lucide-react';
+import { useStoryStore, useIsLastStep, useIsFirstStep } from '@/stores/useStoryStore';
+import { ShareModal } from '@/components/share';
 
 export function StoryControls() {
+  const [showShareModal, setShowShareModal] = useState(false);
   const currentJourney = useStoryStore((s) => s.currentJourney);
   const currentStepIndex = useStoryStore((s) => s.currentStepIndex);
   const isPlaying = useStoryStore((s) => s.isPlaying);
@@ -158,6 +161,13 @@ export function StoryControls() {
                 Watch Again
               </button>
               <button
+                onClick={() => setShowShareModal(true)}
+                className="px-4 py-2.5 rounded-lg border border-[#2A3342] text-[#E8E3DB] hover:bg-[#1A2332] transition-colors flex items-center gap-2"
+              >
+                <Share2 className="w-4 h-4" />
+                Share
+              </button>
+              <button
                 onClick={endJourney}
                 className="px-4 py-2.5 rounded-lg bg-[#C8A84E] text-[#0A0F1A] font-medium hover:bg-[#D4B96A] transition-colors"
               >
@@ -166,6 +176,15 @@ export function StoryControls() {
             </div>
           </motion.div>
         </motion.div>
+      )}
+
+      {/* Share Modal */}
+      {currentJourney && (
+        <ShareModal
+          isOpen={showShareModal}
+          onClose={() => setShowShareModal(false)}
+          content={{ type: 'journey', journey: currentJourney }}
+        />
       )}
     </>
   );
