@@ -7,7 +7,7 @@
 
 import { useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Download, Copy, Share2, Check, Loader2 } from 'lucide-react';
+import { X, Download, Copy, Share2, Check, Loader2, ImageIcon } from 'lucide-react';
 import { useShareCard } from './useShareCard';
 import { SurahShareCard } from './SurahShareCard';
 import { JourneyShareCard } from './JourneyShareCard';
@@ -24,11 +24,20 @@ interface ShareModalProps {
   content: ShareContent;
 }
 
+type FeedbackState = 'idle' | 'success' | 'error';
+
 export function ShareModal({ isOpen, onClose, content }: ShareModalProps) {
   const cardRef = useRef<HTMLDivElement>(null);
   const { isGenerating, downloadCard, copyToClipboard, shareCard } = useShareCard();
   const [copied, setCopied] = useState(false);
   const [shared, setShared] = useState(false);
+  const [downloadFeedback, setDownloadFeedback] = useState<FeedbackState>('idle');
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+  // Get accent color based on content type
+  const accentColor = content.type === 'surah'
+    ? (content.surah.isMeccan ? '#C8A84E' : '#2EC4B6')
+    : content.journey.accentColor;
 
   const handleDownload = async () => {
     if (!cardRef.current) return;
@@ -37,7 +46,18 @@ export function ShareModal({ isOpen, onClose, content }: ShareModalProps) {
       ? `surah-${content.surah.number}-${content.surah.englishName.toLowerCase().replace(/\s+/g, '-')}`
       : `journey-${content.journey.id}`;
 
-    await downloadCard(cardRef.current, { filename });
+    const result = await downloadCard(cardRef.current, { filename });
+    if (result.success) {
+      setDownloadFeedback('success');
+      setTimeout(() => setDownloadFeedback('idle'), 2000);
+    } else {
+      setDownloadFeedback('error');
+      setErrorMessage('Failed to download image');
+      setTimeout(() => {
+        setDownloadFeedback('idle');
+        setErrorMessage(null);
+      }, 3000);
+    }
   };
 
   const handleCopy = async () => {
@@ -46,7 +66,11 @@ export function ShareModal({ isOpen, onClose, content }: ShareModalProps) {
     const result = await copyToClipboard(cardRef.current);
     if (result.success) {
       setCopied(true);
+      setErrorMessage(null);
       setTimeout(() => setCopied(false), 2000);
+    } else {
+      setErrorMessage(result.error || 'Failed to copy to clipboard');
+      setTimeout(() => setErrorMessage(null), 3000);
     }
   };
 
@@ -112,14 +136,37 @@ export function ShareModal({ isOpen, onClose, content }: ShareModalProps) {
             </div>
 
             {/* Card preview */}
-            <div className="flex-1 overflow-y-auto p-5 flex items-center justify-center bg-[#0A0F1A]/50">
-              <div className="transform scale-[0.85] origin-center">
-                {content.type === 'surah' ? (
-                  <SurahShareCard ref={cardRef} surah={content.surah} />
-                ) : (
-                  <JourneyShareCard ref={cardRef} journey={content.journey} />
-                )}
+            <div className="flex-1 overflow-y-auto p-4 flex flex-col items-center bg-[#0A0F1A]/50">
+              {/* Preview label */}
+              <div className="flex items-center gap-2 mb-3 text-xs text-[#E8E3DB]/60">
+                <ImageIcon className="w-3.5 h-3.5" />
+                <span>Preview · Exports at 800×1200 px</span>
               </div>
+
+              {/* Card container with proper overflow handling */}
+              <div className="flex-1 flex items-center justify-center w-full overflow-auto">
+                <div className="transform scale-[0.75] sm:scale-[0.85] origin-center shrink-0">
+                  {content.type === 'surah' ? (
+                    <SurahShareCard ref={cardRef} surah={content.surah} />
+                  ) : (
+                    <JourneyShareCard ref={cardRef} journey={content.journey} />
+                  )}
+                </div>
+              </div>
+
+              {/* Error message */}
+              <AnimatePresence>
+                {errorMessage && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 10 }}
+                    className="mt-3 px-3 py-2 rounded-lg bg-red-500/20 border border-red-500/30 text-red-400 text-xs"
+                  >
+                    {errorMessage}
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
 
             {/* Actions */}
@@ -128,21 +175,33 @@ export function ShareModal({ isOpen, onClose, content }: ShareModalProps) {
               <button
                 onClick={handleDownload}
                 disabled={isGenerating}
-                className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[#1A2332] border border-[#2A3342] text-[#E8E3DB] hover:bg-[#2A3342] hover:border-[#C8A84E]/50 transition-all disabled:opacity-50"
+                className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[#1A2332] border border-[#2A3342] text-[#E8E3DB] hover:bg-[#2A3342] transition-all disabled:opacity-50"
+                style={{
+                  borderColor: downloadFeedback === 'success' ? '#2EC4B6' : undefined,
+                  backgroundColor: downloadFeedback === 'success' ? 'rgba(46, 196, 182, 0.1)' : undefined
+                }}
               >
-                {isGenerating ? (
+                {downloadFeedback === 'success' ? (
+                  <Check className="w-4 h-4 text-[#2EC4B6]" />
+                ) : isGenerating ? (
                   <Loader2 className="w-4 h-4 animate-spin" />
                 ) : (
                   <Download className="w-4 h-4" />
                 )}
-                <span className="text-sm font-medium">Download</span>
+                <span className="text-sm font-medium">
+                  {downloadFeedback === 'success' ? 'Saved!' : 'Download'}
+                </span>
               </button>
 
               {/* Copy */}
               <button
                 onClick={handleCopy}
                 disabled={isGenerating}
-                className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[#1A2332] border border-[#2A3342] text-[#E8E3DB] hover:bg-[#2A3342] hover:border-[#C8A84E]/50 transition-all disabled:opacity-50"
+                className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[#1A2332] border border-[#2A3342] text-[#E8E3DB] hover:bg-[#2A3342] transition-all disabled:opacity-50"
+                style={{
+                  borderColor: copied ? '#2EC4B6' : undefined,
+                  backgroundColor: copied ? 'rgba(46, 196, 182, 0.1)' : undefined
+                }}
               >
                 {copied ? (
                   <Check className="w-4 h-4 text-[#2EC4B6]" />
@@ -156,11 +215,14 @@ export function ShareModal({ isOpen, onClose, content }: ShareModalProps) {
                 </span>
               </button>
 
-              {/* Share */}
+              {/* Share - uses dynamic accent color */}
               <button
                 onClick={handleShare}
                 disabled={isGenerating}
-                className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[#C8A84E] text-[#0A0F1A] font-medium hover:bg-[#D4B96A] transition-all disabled:opacity-50"
+                className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-[#0A0F1A] font-medium transition-all disabled:opacity-50"
+                style={{
+                  backgroundColor: shared ? '#2EC4B6' : accentColor,
+                }}
               >
                 {shared ? (
                   <Check className="w-4 h-4" />

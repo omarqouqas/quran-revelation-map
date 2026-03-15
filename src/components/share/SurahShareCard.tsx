@@ -22,14 +22,21 @@ export const SurahShareCard = forwardRef<HTMLDivElement, SurahShareCardProps>(
     return (
       <div
         ref={ref}
-        className="w-[400px] p-6 rounded-2xl overflow-hidden"
+        className="w-[400px] p-6 rounded-2xl relative"
         style={{
           background: `linear-gradient(135deg, #0A0F1A 0%, #1A2332 100%)`,
           border: `2px solid ${accentColor}40`,
+          boxShadow: `0 0 40px ${accentColor}15, 0 4px 20px rgba(0,0,0,0.3)`,
         }}
       >
+        {/* Decorative glow */}
+        <div
+          className="absolute top-0 right-0 w-24 h-24 opacity-30 blur-3xl pointer-events-none"
+          style={{ backgroundColor: accentColor }}
+        />
+
         {/* Header with surah number badge */}
-        <div className="flex items-start justify-between mb-4">
+        <div className="flex items-start justify-between mb-4 relative">
           <div
             className="w-14 h-14 rounded-xl flex items-center justify-center text-xl font-bold"
             style={{
@@ -41,7 +48,7 @@ export const SurahShareCard = forwardRef<HTMLDivElement, SurahShareCardProps>(
             {surah.number}
           </div>
           <div
-            className="px-3 py-1.5 rounded-full text-xs font-medium"
+            className="px-3 py-1.5 rounded-full text-xs font-medium uppercase tracking-wide"
             style={{
               backgroundColor: `${accentColor}20`,
               color: accentColor,
@@ -51,9 +58,9 @@ export const SurahShareCard = forwardRef<HTMLDivElement, SurahShareCardProps>(
           </div>
         </div>
 
-        {/* Arabic name */}
+        {/* Arabic name - larger for better sharing visibility */}
         <h2
-          className="text-3xl text-[#F5F0E8] mb-1 text-right"
+          className="text-4xl text-[#F5F0E8] mb-2 text-right leading-tight"
           style={{ fontFamily: 'var(--font-arabic)' }}
           dir="rtl"
         >
@@ -80,21 +87,30 @@ export const SurahShareCard = forwardRef<HTMLDivElement, SurahShareCardProps>(
         />
 
         {/* Stats row */}
-        <div className="flex items-center gap-4 mb-4">
-          <div className="flex items-center gap-2">
-            <BookOpen className="w-4 h-4" style={{ color: accentColorLight }} />
+        <div className="flex items-center gap-3 mb-4 flex-wrap">
+          <div
+            className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg"
+            style={{ backgroundColor: `${accentColor}10` }}
+          >
+            <BookOpen className="w-3.5 h-3.5" style={{ color: accentColorLight }} />
             <span className="text-sm text-[#E8E3DB]">
               {surah.ayahCount} verses
             </span>
           </div>
-          <div className="flex items-center gap-2">
-            <Calendar className="w-4 h-4" style={{ color: accentColorLight }} />
+          <div
+            className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg"
+            style={{ backgroundColor: `${accentColor}10` }}
+          >
+            <Calendar className="w-3.5 h-3.5" style={{ color: accentColorLight }} />
             <span className="text-sm text-[#E8E3DB]">
               ~{surah.approximateYear} CE
             </span>
           </div>
-          <div className="flex items-center gap-2">
-            <MapPin className="w-4 h-4" style={{ color: accentColorLight }} />
+          <div
+            className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg"
+            style={{ backgroundColor: `${accentColor}10` }}
+          >
+            <MapPin className="w-3.5 h-3.5" style={{ color: accentColorLight }} />
             <span className="text-sm text-[#E8E3DB]">
               #{surah.revelationOrder} revealed
             </span>

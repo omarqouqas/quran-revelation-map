@@ -34,15 +34,16 @@ export const JourneyShareCard = forwardRef<HTMLDivElement, JourneyShareCardProps
     return (
       <div
         ref={ref}
-        className="w-[400px] p-6 rounded-2xl overflow-hidden relative"
+        className="w-[400px] p-6 rounded-2xl relative"
         style={{
           background: `linear-gradient(135deg, #0A0F1A 0%, #1A2332 100%)`,
           border: `2px solid ${accentColor}40`,
+          boxShadow: `0 0 40px ${accentColor}15, 0 4px 20px rgba(0,0,0,0.3)`,
         }}
       >
         {/* Decorative glow */}
         <div
-          className="absolute top-0 right-0 w-32 h-32 opacity-20 blur-3xl"
+          className="absolute top-0 right-0 w-24 h-24 opacity-30 blur-3xl pointer-events-none"
           style={{ backgroundColor: accentColor }}
         />
 
