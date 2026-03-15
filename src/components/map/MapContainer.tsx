@@ -9,6 +9,7 @@ import { useEffect, useRef, useCallback, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { useMapStore } from '@/stores/useMapStore';
+import { useStoryStore } from '@/stores/useStoryStore';
 import { getAllCompleteSurahs, LOCATIONS, type CompleteSurahData } from '@/data/surah-locations';
 import { events, type HistoricalEvent } from '@/data/events';
 
@@ -169,6 +170,10 @@ export function MapContainer() {
   const selectSurah = useMapStore((state) => state.selectSurah);
   const selectEvent = useMapStore((state) => state.selectEvent);
   const hoverSurah = useMapStore((state) => state.hoverSurah);
+
+  // Story mode location for flyTo
+  const storyLocation = useStoryStore((state) => state.storyLocation);
+  const isStoryMode = useStoryStore((state) => state.isStoryMode);
 
   // Get all surahs once
   const allSurahs = useRef(getAllCompleteSurahs());
@@ -526,6 +531,19 @@ export function MapContainer() {
     createEventMarkerElement,
     selectEvent,
   ]);
+
+  /** Fly to location during story mode */
+  useEffect(() => {
+    if (!map.current || !mapLoaded || !isStoryMode || !storyLocation) return;
+
+    map.current.flyTo({
+      center: [storyLocation.lng, storyLocation.lat],
+      zoom: storyLocation.zoom,
+      duration: 2000,
+      essential: true,
+      easing: (t) => t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2, // easeInOutQuad
+    });
+  }, [storyLocation, mapLoaded, isStoryMode]);
 
   return (
     <div
