@@ -69,6 +69,7 @@ src/
 │   ├── layout/
 │   │   ├── SurahDetailPanel.tsx   # Right-side surah details
 │   │   ├── EventDetailModal.tsx   # Event details modal
+│   │   ├── OrderComparisonModal.tsx # Quran vs Revelation order view
 │   │   └── LandingOverlay.tsx     # Onboarding overlay
 │   │
 │   ├── map/
@@ -174,6 +175,8 @@ src/
 | Opening Verses | Arabic + English for all 114 surahs | `opening-verses.ts` |
 | Day/Night Cycle | Atmospheric sky changes with timeline (dawn→dusk) | `MapContainer.tsx` |
 | Ambient Background | Atmospheric overlay with particles, stars, gradients | `VideoBackground.tsx` |
+| Order Comparison | Visual comparison of Quran order vs Revelation order | `OrderComparisonModal.tsx` |
+| Order in Detail Panel | Shows position difference for each surah | `SurahDetailPanel.tsx` |
 
 ### Keyboard Shortcuts
 
@@ -302,6 +305,7 @@ The map features an atmospheric day/night cycle that mirrors the 23-year revelat
 | Event markers in wrong position | `MapContainer.tsx` | Separated wrapper div (for Mapbox positioning) from inner diamond div (for rotation) - CSS transform was overwriting Mapbox's positioning |
 | Events appearing off-screen | `events.ts` | Moved Abyssinia events to departure point (Makkah) with `offMapLocation` indicator |
 | Overlapping event markers | `events.ts` | Added jitter function with seeded random for deterministic spacing |
+| VideoBackground hydration error | `VideoBackground.tsx` | Removed styled-jsx, moved animations to globals.css, added suppressHydrationWarning |
 
 ---
 
@@ -313,6 +317,7 @@ The map features an atmospheric day/night cycle that mirrors the 23-year revelat
 - [x] Keyboard shortcuts (arrows for timeline, Cmd+K for search)
 - [x] Day/night atmospheric cycle
 - [x] Ambient video background with particles
+- [x] Revelation Order vs Quran Order comparison (modal + detail panel)
 
 ### Phase 5: Visual Storytelling (Next Priority)
 

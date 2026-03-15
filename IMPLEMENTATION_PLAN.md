@@ -290,6 +290,15 @@ Context: "Recited by Ja'far to the Christian king of Abyssinia"
 
 ---
 
+## Recently Completed
+
+| Feature | Description |
+|---------|-------------|
+| **Revelation Order Comparison** | Full-screen modal showing all 114 surahs with toggle between Quran order and revelation order. Visual indicators show position changes. Click any surah to view details. |
+| **Order Comparison in Detail Panel** | Each surah's detail panel now shows Quran position vs revelation position with difference indicator. |
+
+---
+
 ## What NOT to Build
 
 | Skip | Why |
@@ -297,5 +306,6 @@ Context: "Recited by Ja'far to the Christian king of Abyssinia"
 | AI chat/Q&A | Risk of errors in religious content |
 | Audio recitation | Other apps do this better; not our focus |
 | Global map | Dilutes geographic focus |
-| Gamification leaderboards | Trivializes sacred content |
+| Gamification/Quiz modes | Trivializes sacred content |
 | User accounts | Adds complexity; localStorage sufficient |
+| Leaderboards | Inappropriate for sacred content |
