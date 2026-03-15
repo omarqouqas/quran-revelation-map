@@ -241,18 +241,64 @@ export function SurahDetailPanel() {
                 </section>
               )}
 
-              {/* Revelation order badge */}
-              <div className="flex items-center gap-2 text-sm">
-                <BookOpen className="w-4 h-4" style={{ color: accentColor }} />
-                <span className="text-[#E8E3DB]">
-                  Revealed{' '}
-                  <span className="font-semibold" style={{ color: accentColor }}>
-                    {surah.revelationOrder}
-                    {getOrdinalSuffix(surah.revelationOrder)}
-                  </span>{' '}
-                  in chronological order
-                </span>
-              </div>
+              {/* Order Comparison - Quran vs Revelation */}
+              <section className="p-4 rounded-xl bg-[#1A2332] border border-[#2A3342]">
+                <h4
+                  className="text-xs font-semibold text-[#E8E3DB] opacity-70 uppercase tracking-wider mb-3"
+                  style={{ fontFamily: 'var(--font-heading)' }}
+                >
+                  Order Comparison
+                </h4>
+                <div className="flex items-center justify-between gap-4">
+                  {/* Quran Order */}
+                  <div className="flex-1 text-center">
+                    <p className="text-xs text-[#E8E3DB] opacity-60 mb-1">Quran Order</p>
+                    <p
+                      className="text-2xl font-bold"
+                      style={{ color: '#F5F0E8', fontFamily: 'var(--font-heading)' }}
+                    >
+                      {surah.number}
+                      <span className="text-sm font-normal opacity-50">/114</span>
+                    </p>
+                  </div>
+
+                  {/* Difference indicator */}
+                  <div className="flex flex-col items-center">
+                    <div
+                      className="w-10 h-10 rounded-full flex items-center justify-center text-xs font-bold"
+                      style={{
+                        backgroundColor: `${accentColor}20`,
+                        color: accentColor,
+                      }}
+                    >
+                      {surah.number > surah.revelationOrder ? '↑' : surah.number < surah.revelationOrder ? '↓' : '='}
+                      {Math.abs(surah.number - surah.revelationOrder)}
+                    </div>
+                    <p className="text-[10px] text-[#E8E3DB] opacity-40 mt-1">diff</p>
+                  </div>
+
+                  {/* Revelation Order */}
+                  <div className="flex-1 text-center">
+                    <p className="text-xs text-[#E8E3DB] opacity-60 mb-1">Revealed</p>
+                    <p
+                      className="text-2xl font-bold"
+                      style={{ color: accentColor, fontFamily: 'var(--font-heading)' }}
+                    >
+                      {surah.revelationOrder}
+                      <span className="text-sm font-normal opacity-50">{getOrdinalSuffix(surah.revelationOrder)}</span>
+                    </p>
+                  </div>
+                </div>
+
+                {/* Insight text */}
+                {Math.abs(surah.number - surah.revelationOrder) > 20 && (
+                  <p className="text-xs text-[#E8E3DB] opacity-50 mt-3 text-center italic">
+                    {surah.revelationOrder < surah.number
+                      ? `Revealed early but placed near end of Quran`
+                      : `Revealed later but placed near beginning of Quran`}
+                  </p>
+                )}
+              </section>
 
               {/* Key themes */}
               <section>

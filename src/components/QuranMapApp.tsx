@@ -7,7 +7,7 @@
  */
 
 import { useState } from 'react';
-import { Search, Sparkles, Keyboard } from 'lucide-react';
+import { Search, Sparkles, Keyboard, ArrowLeftRight } from 'lucide-react';
 import { VideoBackground } from '@/components/map/VideoBackground';
 import { MapContainer } from '@/components/map/MapContainer';
 import { TimelineSlider } from '@/components/timeline/TimelineSlider';
@@ -15,6 +15,7 @@ import { SurahDetailPanel } from '@/components/layout/SurahDetailPanel';
 import { EventDetailModal } from '@/components/layout/EventDetailModal';
 import { LandingOverlay } from '@/components/layout/LandingOverlay';
 import { KeyboardShortcutsModal } from '@/components/layout/KeyboardShortcutsModal';
+import { OrderComparisonModal } from '@/components/layout/OrderComparisonModal';
 import { SurahExplorer } from '@/components/explorer';
 import { useExplorerStore } from '@/stores/useExplorerStore';
 import { useMapStore } from '@/stores/useMapStore';
@@ -28,6 +29,7 @@ interface QuranMapAppProps {
 
 export function QuranMapApp({ initialSurahNumber }: QuranMapAppProps) {
   const [showShortcutsHelp, setShowShortcutsHelp] = useState(false);
+  const [showOrderComparison, setShowOrderComparison] = useState(false);
 
   // Sync URL with surah selection
   useSurahRouting({ initialSurahNumber });
@@ -106,6 +108,16 @@ export function QuranMapApp({ initialSurahNumber }: QuranMapAppProps) {
         </button>
         <div className="border-t border-[#2A3342] my-1" />
         <button
+          onClick={() => setShowOrderComparison(true)}
+          style={{ pointerEvents: 'auto' }}
+          className="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity"
+          title="Compare Quran vs Revelation order"
+        >
+          <ArrowLeftRight className="w-3.5 h-3.5 text-[#C8A84E]" />
+          <span className="text-[#E8E3DB]">Order</span>
+        </button>
+        <div className="border-t border-[#2A3342] my-1" />
+        <button
           onClick={() => setShowShortcutsHelp(true)}
           style={{ pointerEvents: 'auto' }}
           className="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity"
@@ -144,6 +156,12 @@ export function QuranMapApp({ initialSurahNumber }: QuranMapAppProps) {
       <KeyboardShortcutsModal
         isOpen={showShortcutsHelp}
         onClose={() => setShowShortcutsHelp(false)}
+      />
+
+      {/* Order comparison modal */}
+      <OrderComparisonModal
+        isOpen={showOrderComparison}
+        onClose={() => setShowOrderComparison(false)}
       />
     </main>
   );

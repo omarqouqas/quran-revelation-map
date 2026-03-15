@@ -15,6 +15,12 @@
 import { useMemo } from 'react';
 import { useMapStore } from '@/stores/useMapStore';
 
+/** Seeded random number generator for deterministic values */
+function seededRandom(seed: number): number {
+  const x = Math.sin(seed * 9999) * 10000;
+  return x - Math.floor(x);
+}
+
 /** Time of day phases */
 type TimePhase = 'dawn' | 'morning' | 'midday' | 'afternoon' | 'dusk';
 
@@ -122,14 +128,15 @@ function getPhaseConfig(phase: TimePhase): PhaseConfig {
 
 /** Floating particle component for atmospheric effect */
 function FloatingParticles({ color, count = 20 }: { color: string; count?: number }) {
+  // Generate particles with seeded random for deterministic SSR/client values
   const particles = useMemo(() => {
     return Array.from({ length: count }, (_, i) => ({
       id: i,
-      left: `${Math.random() * 100}%`,
-      top: `${Math.random() * 100}%`,
-      size: 2 + Math.random() * 4,
-      duration: 15 + Math.random() * 20,
-      delay: Math.random() * 10,
+      left: `${seededRandom(i * 3 + 1) * 100}%`,
+      top: `${seededRandom(i * 3 + 2) * 100}%`,
+      size: 2 + seededRandom(i * 3 + 3) * 4,
+      duration: 15 + seededRandom(i * 5 + 1) * 20,
+      delay: seededRandom(i * 5 + 2) * 10,
     }));
   }, [count]);
 
@@ -233,14 +240,15 @@ export function VideoBackground() {
 
 /** Simple stars effect for dawn/dusk */
 function Stars({ opacity = 0.5 }: { opacity?: number }) {
+  // Generate stars with seeded random for deterministic SSR/client values
   const stars = useMemo(() => {
     return Array.from({ length: 50 }, (_, i) => ({
       id: i,
-      left: `${Math.random() * 100}%`,
-      top: `${Math.random() * 60}%`, // Only in upper portion
-      size: 1 + Math.random() * 2,
-      twinkleDuration: 2 + Math.random() * 3,
-      delay: Math.random() * 3,
+      left: `${seededRandom(i * 7 + 100) * 100}%`,
+      top: `${seededRandom(i * 7 + 101) * 60}%`, // Only in upper portion
+      size: 1 + seededRandom(i * 7 + 102) * 2,
+      twinkleDuration: 2 + seededRandom(i * 7 + 103) * 3,
+      delay: seededRandom(i * 7 + 104) * 3,
     }));
   }, []);
 
