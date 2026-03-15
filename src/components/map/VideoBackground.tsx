@@ -15,12 +15,6 @@
 import { useMemo } from 'react';
 import { useMapStore } from '@/stores/useMapStore';
 
-/** Seeded random number generator for deterministic values */
-function seededRandom(seed: number): number {
-  const x = Math.sin(seed * 9999) * 10000;
-  return x - Math.floor(x);
-}
-
 /** Time of day phases */
 type TimePhase = 'dawn' | 'morning' | 'midday' | 'afternoon' | 'dusk';
 
@@ -30,8 +24,6 @@ interface PhaseConfig {
   gradient: string;
   overlayOpacity: number;
   particleColor: string;
-  // Future: videoUrl when available
-  // videoUrl?: string;
 }
 
 /** Calculate time phase from year */
@@ -126,9 +118,15 @@ function getPhaseConfig(phase: TimePhase): PhaseConfig {
   }
 }
 
+/** Seeded random number generator for deterministic values */
+function seededRandom(seed: number): number {
+  const x = Math.sin(seed * 9999) * 10000;
+  return x - Math.floor(x);
+}
+
 /** Floating particle component for atmospheric effect */
 function FloatingParticles({ color, count = 20 }: { color: string; count?: number }) {
-  // Generate particles with seeded random for deterministic SSR/client values
+  // Generate particles with seeded random for deterministic values
   const particles = useMemo(() => {
     return Array.from({ length: count }, (_, i) => ({
       id: i,
@@ -141,11 +139,12 @@ function FloatingParticles({ color, count = 20 }: { color: string; count?: numbe
   }, [count]);
 
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+    <div className="absolute inset-0 overflow-hidden pointer-events-none" suppressHydrationWarning>
       {particles.map((p) => (
         <div
           key={p.id}
           className="absolute rounded-full animate-float"
+          suppressHydrationWarning
           style={{
             left: p.left,
             top: p.top,
@@ -157,27 +156,45 @@ function FloatingParticles({ color, count = 20 }: { color: string; count?: numbe
           }}
         />
       ))}
-      <style jsx>{`
-        @keyframes float {
-          0%, 100% {
-            transform: translate(0, 0) scale(1);
-            opacity: 0;
-          }
-          10% {
-            opacity: 1;
-          }
-          50% {
-            transform: translate(20px, -30px) scale(1.2);
-            opacity: 0.8;
-          }
-          90% {
-            opacity: 1;
-          }
-        }
-        .animate-float {
-          animation: float ease-in-out infinite;
-        }
-      `}</style>
+    </div>
+  );
+}
+
+/** Simple stars effect for dawn/dusk */
+function Stars({ opacity = 0.5 }: { opacity?: number }) {
+  // Generate stars with seeded random for deterministic values
+  const stars = useMemo(() => {
+    return Array.from({ length: 50 }, (_, i) => ({
+      id: i,
+      left: `${seededRandom(i * 7 + 100) * 100}%`,
+      top: `${seededRandom(i * 7 + 101) * 60}%`, // Only in upper portion
+      size: 1 + seededRandom(i * 7 + 102) * 2,
+      twinkleDuration: 2 + seededRandom(i * 7 + 103) * 3,
+      delay: seededRandom(i * 7 + 104) * 3,
+    }));
+  }, []);
+
+  return (
+    <div
+      className="absolute inset-0 transition-opacity duration-[2000ms]"
+      style={{ opacity }}
+      suppressHydrationWarning
+    >
+      {stars.map((star) => (
+        <div
+          key={star.id}
+          className="absolute rounded-full bg-white animate-twinkle"
+          suppressHydrationWarning
+          style={{
+            left: star.left,
+            top: star.top,
+            width: star.size,
+            height: star.size,
+            animationDuration: `${star.twinkleDuration}s`,
+            animationDelay: `${star.delay}s`,
+          }}
+        />
+      ))}
     </div>
   );
 }
@@ -220,72 +237,6 @@ export function VideoBackground() {
           opacity: 0.15,
         }}
       />
-
-      {/* Future: Video element when available */}
-      {/*
-      {config.videoUrl && (
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover opacity-30 mix-blend-overlay"
-          src={config.videoUrl}
-        />
-      )}
-      */}
-    </div>
-  );
-}
-
-/** Simple stars effect for dawn/dusk */
-function Stars({ opacity = 0.5 }: { opacity?: number }) {
-  // Generate stars with seeded random for deterministic SSR/client values
-  const stars = useMemo(() => {
-    return Array.from({ length: 50 }, (_, i) => ({
-      id: i,
-      left: `${seededRandom(i * 7 + 100) * 100}%`,
-      top: `${seededRandom(i * 7 + 101) * 60}%`, // Only in upper portion
-      size: 1 + seededRandom(i * 7 + 102) * 2,
-      twinkleDuration: 2 + seededRandom(i * 7 + 103) * 3,
-      delay: seededRandom(i * 7 + 104) * 3,
-    }));
-  }, []);
-
-  return (
-    <div
-      className="absolute inset-0 transition-opacity duration-[2000ms]"
-      style={{ opacity }}
-    >
-      {stars.map((star) => (
-        <div
-          key={star.id}
-          className="absolute rounded-full bg-white animate-twinkle"
-          style={{
-            left: star.left,
-            top: star.top,
-            width: star.size,
-            height: star.size,
-            animationDuration: `${star.twinkleDuration}s`,
-            animationDelay: `${star.delay}s`,
-          }}
-        />
-      ))}
-      <style jsx>{`
-        @keyframes twinkle {
-          0%, 100% {
-            opacity: 0.3;
-            transform: scale(1);
-          }
-          50% {
-            opacity: 1;
-            transform: scale(1.2);
-          }
-        }
-        .animate-twinkle {
-          animation: twinkle ease-in-out infinite;
-        }
-      `}</style>
     </div>
   );
 }
