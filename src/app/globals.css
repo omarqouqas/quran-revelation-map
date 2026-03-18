@@ -217,3 +217,56 @@ body {
 .timeline-thumb-pulse {
   animation: timeline-pulse 2s ease-in-out infinite;
 }
+
+/* Sacred site marker animations */
+@keyframes sacred-glow-holy {
+  0%, 100% {
+    box-shadow: 0 0 12px rgba(255, 215, 0, 0.6), 0 0 24px rgba(255, 215, 0, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 0 0 40px rgba(255, 215, 0, 0.5);
+  }
+}
+
+@keyframes sacred-glow-revelation {
+  0%, 100% {
+    box-shadow: 0 0 12px rgba(245, 158, 11, 0.6), 0 0 24px rgba(245, 158, 11, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(245, 158, 11, 0.8), 0 0 40px rgba(245, 158, 11, 0.5);
+  }
+}
+
+@keyframes sacred-glow-battle {
+  0%, 100% {
+    box-shadow: 0 0 12px rgba(239, 68, 68, 0.5), 0 0 24px rgba(239, 68, 68, 0.25);
+  }
+  50% {
+    box-shadow: 0 0 18px rgba(239, 68, 68, 0.7), 0 0 36px rgba(239, 68, 68, 0.4);
+  }
+}
+
+@keyframes sacred-glow-journey {
+  0%, 100% {
+    box-shadow: 0 0 12px rgba(59, 130, 246, 0.5), 0 0 24px rgba(59, 130, 246, 0.25);
+  }
+  50% {
+    box-shadow: 0 0 18px rgba(59, 130, 246, 0.7), 0 0 36px rgba(59, 130, 246, 0.4);
+  }
+}
+
+.sacred-site-holy {
+  animation: sacred-glow-holy 3s ease-in-out infinite;
+}
+
+.sacred-site-revelation {
+  animation: sacred-glow-revelation 2.5s ease-in-out infinite;
+}
+
+.sacred-site-battle {
+  animation: sacred-glow-battle 4s ease-in-out infinite;
+}
+
+.sacred-site-journey {
+  animation: sacred-glow-journey 3.5s ease-in-out infinite;
+}

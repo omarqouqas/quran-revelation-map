@@ -133,7 +133,7 @@ Each journey needs:
 | 3D terrain | Mapbox elevation for mountains | Pending |
 | Tighter bounds | Focus on Hijaz region only | ✅ Complete |
 | Satellite toggle | Switch to realistic terrain view | Pending |
-| Sacred site markers | Special icons for Kaaba, Cave Hira, etc. | Pending |
+| Sacred site markers | Glowing icons for Kaaba, Cave Hira, etc. | ✅ Complete |
 
 ---
 
@@ -295,6 +295,8 @@ Context: "Recited by Ja'far to the Christian king of Abyssinia"
 
 | Feature | Description |
 |---------|-------------|
+| **Sacred Site Markers** | Glowing icons for 8 key locations: Makkah, Madinah, Cave Hira, Badr, Uhud, Taif, Hudaybiyyah, Arafat. Category-based colors (holy=gold, revelation=amber, battle=red, journey=blue) with pulsing glow animations. |
+| **Landing Page UX** | "Begin the Journey" button, horizontal swipe indicator, hidden sidebar until interaction, pulsing timeline handle. |
 | **Tighter Map Bounds** | Map now focuses on the Hijaz region (Makkah-Madinah corridor) with tighter bounds, centered zoom, and restricted panning. Improved initial view at zoom 7.2 with minZoom 6.5. |
 | **Event Share Cards** | Share historical events (battles, migrations, revelations) with beautiful cards. Includes event details, related surahs, and category-specific styling. |
 | **Shareable Cards** | Beautiful card designs for sharing surah info, journey completions, and historical events. Download as PNG, copy to clipboard, or use native Web Share API. |

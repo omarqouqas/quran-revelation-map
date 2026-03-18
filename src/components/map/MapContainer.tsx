@@ -124,15 +124,84 @@ function lerpColor(color1: string, color2: string, t: number): string {
   return `rgb(${r}, ${g}, ${b})`;
 }
 
-/** Location labels to display on the map */
-const LOCATION_LABELS = [
-  { name: 'Makkah', arabicName: 'مكة', ...LOCATIONS.MAKKAH },
-  { name: 'Madinah', arabicName: 'المدينة', ...LOCATIONS.MADINAH },
-  { name: 'Cave Hira', arabicName: 'غار حراء', ...LOCATIONS.CAVE_HIRA },
-  { name: 'Badr', arabicName: 'بدر', ...LOCATIONS.BADR },
-  { name: 'Uhud', arabicName: 'أحد', ...LOCATIONS.UHUD },
-  { name: 'Taif', arabicName: 'الطائف', ...LOCATIONS.TAIF },
-  { name: 'Hudaybiyyah', arabicName: 'الحديبية', ...LOCATIONS.HUDAYBIYYAH },
+/** Sacred site categories with styling */
+type SacredSiteCategory = 'holy' | 'revelation' | 'battle' | 'journey';
+
+interface SacredSite {
+  name: string;
+  arabicName: string;
+  lat: number;
+  lng: number;
+  category: SacredSiteCategory;
+  description: string;
+}
+
+/** Sacred site category colors and icons */
+const SACRED_SITE_STYLES: Record<SacredSiteCategory, { color: string; glowColor: string }> = {
+  holy: { color: '#FFD700', glowColor: 'rgba(255, 215, 0, 0.6)' },        // Gold - Kaaba, mosques
+  revelation: { color: '#F59E0B', glowColor: 'rgba(245, 158, 11, 0.6)' }, // Amber - Cave Hira
+  battle: { color: '#EF4444', glowColor: 'rgba(239, 68, 68, 0.5)' },      // Red - Badr, Uhud
+  journey: { color: '#3B82F6', glowColor: 'rgba(59, 130, 246, 0.5)' },    // Blue - Taif, Hudaybiyyah
+};
+
+/** Sacred sites to display on the map */
+const SACRED_SITES: SacredSite[] = [
+  {
+    name: 'Makkah',
+    arabicName: 'مكة المكرمة',
+    ...LOCATIONS.MAKKAH,
+    category: 'holy',
+    description: 'The holiest city in Islam, home of the Kaaba'
+  },
+  {
+    name: 'Madinah',
+    arabicName: 'المدينة المنورة',
+    ...LOCATIONS.MADINAH,
+    category: 'holy',
+    description: 'The radiant city, home of the Prophet\'s Mosque'
+  },
+  {
+    name: 'Cave Hira',
+    arabicName: 'غار حراء',
+    ...LOCATIONS.CAVE_HIRA,
+    category: 'revelation',
+    description: 'Where the first revelation descended'
+  },
+  {
+    name: 'Badr',
+    arabicName: 'بدر',
+    ...LOCATIONS.BADR,
+    category: 'battle',
+    description: 'Site of the decisive Battle of Badr (624 CE)'
+  },
+  {
+    name: 'Uhud',
+    arabicName: 'أحد',
+    ...LOCATIONS.UHUD,
+    category: 'battle',
+    description: 'Site of the Battle of Uhud (625 CE)'
+  },
+  {
+    name: 'Taif',
+    arabicName: 'الطائف',
+    ...LOCATIONS.TAIF,
+    category: 'journey',
+    description: 'Mountain city visited during the Year of Sorrow'
+  },
+  {
+    name: 'Hudaybiyyah',
+    arabicName: 'الحديبية',
+    ...LOCATIONS.HUDAYBIYYAH,
+    category: 'journey',
+    description: 'Site of the historic peace treaty (628 CE)'
+  },
+  {
+    name: 'Arafat',
+    arabicName: 'عرفات',
+    ...LOCATIONS.ARAFAT,
+    category: 'holy',
+    description: 'Sacred mount of the Farewell Pilgrimage'
+  },
 ];
 
 /** Get event category for styling */
@@ -272,31 +341,104 @@ export function MapContainer() {
     []
   );
 
-  /** Create a location label element */
-  const createLocationLabelElement = useCallback(
-    (name: string): HTMLDivElement => {
+  /** Create a sacred site marker element with glowing icon */
+  const createSacredSiteMarker = useCallback(
+    (site: SacredSite): HTMLDivElement => {
+      const style = SACRED_SITE_STYLES[site.category];
+
       const el = document.createElement('div');
-      el.className = 'flex flex-col items-center pointer-events-none';
+      el.className = 'sacred-site-marker flex flex-col items-center';
+      el.style.cursor = 'pointer';
+      el.setAttribute('title', `${site.name} - ${site.description}`);
 
-      const dot = document.createElement('div');
-      dot.style.width = '6px';
-      dot.style.height = '6px';
-      dot.style.borderRadius = '50%';
-      dot.style.backgroundColor = '#F5F0E8';
-      dot.style.opacity = '0.5';
+      // Icon container with glow
+      const iconContainer = document.createElement('div');
+      iconContainer.className = `sacred-site-icon sacred-site-${site.category}`;
+      iconContainer.style.width = '28px';
+      iconContainer.style.height = '28px';
+      iconContainer.style.borderRadius = '50%';
+      iconContainer.style.display = 'flex';
+      iconContainer.style.alignItems = 'center';
+      iconContainer.style.justifyContent = 'center';
+      iconContainer.style.backgroundColor = 'rgba(10, 15, 26, 0.8)';
+      iconContainer.style.border = `2px solid ${style.color}`;
+      iconContainer.style.boxShadow = `0 0 12px ${style.glowColor}, 0 0 24px ${style.glowColor}`;
+      iconContainer.style.transition = 'all 0.3s ease';
 
+      // SVG icon based on category
+      const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      svg.setAttribute('width', '14');
+      svg.setAttribute('height', '14');
+      svg.setAttribute('viewBox', '0 0 24 24');
+      svg.setAttribute('fill', 'none');
+      svg.setAttribute('stroke', style.color);
+      svg.setAttribute('stroke-width', '2');
+      svg.setAttribute('stroke-linecap', 'round');
+      svg.setAttribute('stroke-linejoin', 'round');
+
+      let pathD = '';
+      switch (site.category) {
+        case 'holy':
+          // Star/sparkle icon for holy sites
+          pathD = 'M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z';
+          break;
+        case 'revelation':
+          // Sun/light icon for revelation
+          pathD = 'M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41M12 6a6 6 0 100 12 6 6 0 000-12z';
+          svg.setAttribute('fill', style.color);
+          svg.setAttribute('fill-opacity', '0.3');
+          break;
+        case 'battle':
+          // Shield icon for battle sites
+          pathD = 'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z';
+          break;
+        case 'journey':
+          // Compass/direction icon for journey sites
+          pathD = 'M12 2L19 21L12 17L5 21L12 2Z';
+          break;
+      }
+
+      const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      path.setAttribute('d', pathD);
+      svg.appendChild(path);
+      iconContainer.appendChild(svg);
+
+      // Label
       const label = document.createElement('div');
-      label.style.fontSize = '11px';
-      label.style.color = '#F5F0E8';
-      label.style.opacity = '0.5';
+      label.style.fontSize = '10px';
+      label.style.color = style.color;
       label.style.marginTop = '4px';
       label.style.whiteSpace = 'nowrap';
       label.style.fontFamily = 'var(--font-heading)';
-      label.style.fontWeight = '500';
-      label.textContent = name;
+      label.style.fontWeight = '600';
+      label.style.textShadow = '0 1px 3px rgba(0,0,0,0.8)';
+      label.style.letterSpacing = '0.5px';
+      label.textContent = site.name;
 
-      el.appendChild(dot);
+      // Arabic name (smaller, below)
+      const arabicLabel = document.createElement('div');
+      arabicLabel.style.fontSize = '9px';
+      arabicLabel.style.color = '#F5F0E8';
+      arabicLabel.style.opacity = '0.6';
+      arabicLabel.style.marginTop = '1px';
+      arabicLabel.style.whiteSpace = 'nowrap';
+      arabicLabel.style.fontFamily = 'var(--font-arabic)';
+      arabicLabel.textContent = site.arabicName;
+
+      el.appendChild(iconContainer);
       el.appendChild(label);
+      el.appendChild(arabicLabel);
+
+      // Hover effects
+      el.addEventListener('mouseenter', () => {
+        iconContainer.style.transform = 'scale(1.15)';
+        iconContainer.style.boxShadow = `0 0 20px ${style.glowColor}, 0 0 40px ${style.glowColor}`;
+      });
+
+      el.addEventListener('mouseleave', () => {
+        iconContainer.style.transform = 'scale(1)';
+        iconContainer.style.boxShadow = `0 0 12px ${style.glowColor}, 0 0 24px ${style.glowColor}`;
+      });
 
       return el;
     },
@@ -359,13 +501,13 @@ export function MapContainer() {
         'star-intensity': 0.8,
       });
 
-      // Add location labels
-      LOCATION_LABELS.forEach((location) => {
+      // Add sacred site markers
+      SACRED_SITES.forEach((site) => {
         if (!map.current) return;
 
-        const el = createLocationLabelElement(location.name);
-        new mapboxgl.Marker({ element: el })
-          .setLngLat([location.lng, location.lat])
+        const el = createSacredSiteMarker(site);
+        new mapboxgl.Marker({ element: el, anchor: 'bottom' })
+          .setLngLat([site.lng, site.lat])
           .addTo(map.current);
       });
 
@@ -377,7 +519,7 @@ export function MapContainer() {
       map.current = null;
       setMapLoaded(false);
     };
-  }, [createLocationLabelElement]);
+  }, [createSacredSiteMarker]);
 
   /** Update day/night cycle based on current year */
   useEffect(() => {
