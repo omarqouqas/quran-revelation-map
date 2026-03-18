@@ -70,8 +70,7 @@ src/
 │   │   ├── SurahDetailPanel.tsx   # Right-side surah details
 │   │   ├── EventDetailModal.tsx   # Event details modal
 │   │   ├── OrderComparisonModal.tsx # Quran vs Revelation order view
-│   │   ├── LandingOverlay.tsx     # Onboarding overlay
-│   │   └── DailySurahSpotlight.tsx # Daily featured surah
+│   │   └── LandingOverlay.tsx     # Onboarding overlay
 │   │
 │   ├── map/
 │   │   ├── MapContainer.tsx       # Mapbox GL map
@@ -197,12 +196,6 @@ src/
 | Image Generation | html2canvas integration for PNG export | `useShareCard.ts` |
 | Web Share API | Native mobile sharing with fallback to download | `useShareCard.ts` |
 | Clipboard Copy | Copy card image directly to clipboard | `useShareCard.ts` |
-
-### Phase 6: Engagement Features (In Progress)
-
-| Feature | Description | File |
-|---------|-------------|------|
-| Daily Surah Spotlight | Featured surah on landing page that rotates daily | `DailySurahSpotlight.tsx` |
 
 ### Keyboard Shortcuts
 
@@ -373,22 +366,21 @@ The map features an atmospheric day/night cycle that mirrors the 23-year revelat
 
 ### Phase 7: Map Enhancements
 
-| Feature | Description | Effort |
+| Feature | Description | Status |
 |---------|-------------|--------|
-| **3D terrain** | Mapbox elevation for mountains (Jabal al-Nour, Uhud) | Medium |
-| **Satellite/terrain toggle** | Switch from dark abstract to realistic terrain | Low |
-| **Tighter Hijaz bounds** | Focus zoom on Makkah-Madinah corridor | Low |
-| **Location illustrations** | Hand-drawn or AI art at key sacred sites | Medium |
+| **Tighter Hijaz bounds** | Focus zoom on Makkah-Madinah corridor | ✅ Complete |
+| **3D terrain** | Mapbox elevation for mountains (Jabal al-Nour, Uhud) | Pending |
+| **Satellite/terrain toggle** | Switch from dark abstract to realistic terrain | Pending |
+| **Location illustrations** | Hand-drawn or AI art at key sacred sites | Pending |
 
 ### Phase 8: Engagement & Sharing
 
-| Feature | Description | Effort |
+| Feature | Description | Status |
 |---------|-------------|--------|
-| **Shareable visual cards** | Generate beautiful images for social media | Medium |
-| **Daily surah spotlight** | Featured surah on landing, rotates daily | Low |
-| **Personal notes** | Save reflections on explored surahs (localStorage) | Medium |
-| **Favorites/bookmarks** | Star surahs to revisit later | Low |
-| **Achievement badges** | Respectful milestones (Explorer, Scholar, Historian) | Low |
+| **Shareable visual cards** | Generate beautiful images for social media | ✅ Complete |
+| **Personal notes** | Save reflections on explored surahs (localStorage) | Pending |
+| **Favorites/bookmarks** | Star surahs to revisit later | Pending |
+| **Achievement badges** | Respectful milestones (Explorer, Scholar, Historian) | Pending |
 
 ---
 

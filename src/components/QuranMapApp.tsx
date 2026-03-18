@@ -7,6 +7,7 @@
  */
 
 import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Search, Sparkles, Keyboard, ArrowLeftRight, Film } from 'lucide-react';
 import { VideoBackground } from '@/components/map/VideoBackground';
 import { MapContainer } from '@/components/map/MapContainer';
@@ -45,6 +46,7 @@ export function QuranMapApp({ initialSurahNumber }: QuranMapAppProps) {
   const openExplorer = useExplorerStore((state) => state.openExplorer);
   const showEvents = useMapStore((state) => state.showEvents);
   const setShowEvents = useMapStore((state) => state.setShowEvents);
+  const hasInteracted = useMapStore((state) => state.hasInteracted);
 
   // Story mode state
   const isStoryMode = useStoryStore((state) => state.isStoryMode);
@@ -78,76 +80,90 @@ export function QuranMapApp({ initialSurahNumber }: QuranMapAppProps) {
             </div>
           </div>
 
-          {/* Explore button - positioned left, hidden when panel is open */}
-          {!isExplorerOpen && (
-            <button
-              type="button"
-              onClick={() => openExplorer()}
-              style={{ pointerEvents: 'auto' }}
-              className="absolute top-4 left-4 sm:left-6 group flex items-center gap-2 px-4 py-2.5 sm:px-5 sm:py-3 rounded-full bg-[#1A2332]/80 backdrop-blur-sm border border-[#C8A84E]/30 hover:border-[#C8A84E] hover:bg-[#1A2332] text-[#C8A84E] font-medium text-sm shadow-lg cursor-pointer transition-all duration-300"
-            >
-              <Search className="w-4 h-4 sm:w-5 sm:h-5" />
-              <span className="hidden sm:inline">Explore Surahs</span>
-            </button>
-          )}
+          {/* Explore button - positioned left, hidden when panel is open or before interaction */}
+          <AnimatePresence>
+            {!isExplorerOpen && hasInteracted && (
+              <motion.button
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.3 }}
+                type="button"
+                onClick={() => openExplorer()}
+                style={{ pointerEvents: 'auto' }}
+                className="absolute top-4 left-4 sm:left-6 group flex items-center gap-2 px-4 py-2.5 sm:px-5 sm:py-3 rounded-full bg-[#1A2332]/80 backdrop-blur-sm border border-[#C8A84E]/30 hover:border-[#C8A84E] hover:bg-[#1A2332] text-[#C8A84E] font-medium text-sm shadow-lg cursor-pointer transition-all duration-300"
+              >
+                <Search className="w-4 h-4 sm:w-5 sm:h-5" />
+                <span className="hidden sm:inline">Explore Surahs</span>
+              </motion.button>
+            )}
+          </AnimatePresence>
         </div>
       )}
 
-      {/* Legend - positioned below map controls (hidden in story mode) */}
-      {!isStoryMode && (
-      <div className="absolute top-32 right-3 z-10 flex flex-col gap-2 text-xs px-3 py-2.5 rounded-lg bg-[#1A2332]/90 backdrop-blur-sm border border-[#2A3342]">
-        <div className="flex items-center gap-2 pointer-events-none">
-          <span className="w-2.5 h-2.5 rounded-full bg-[#C8A84E]" />
-          <span className="text-[#E8E3DB] opacity-80">Makki</span>
-        </div>
-        <div className="flex items-center gap-2 pointer-events-none">
-          <span className="w-2.5 h-2.5 rounded-full bg-[#2DD4BF]" />
-          <span className="text-[#E8E3DB] opacity-80">Madani</span>
-        </div>
-        <div className="border-t border-[#2A3342] my-1" />
-        <button
-          onClick={() => setShowEvents(!showEvents)}
-          style={{ pointerEvents: 'auto' }}
-          className={`flex items-center gap-2 transition-opacity ${showEvents ? 'opacity-100' : 'opacity-50'}`}
-        >
-          <span
-            className="w-2.5 h-2.5 rotate-45 rounded-sm"
-            style={{ backgroundColor: showEvents ? '#8B5CF6' : '#4B5563' }}
-          />
-          <span className="text-[#E8E3DB]">Events</span>
-          <Sparkles className="w-3 h-3 text-[#8B5CF6]" />
-        </button>
-        <div className="border-t border-[#2A3342] my-1" />
-        <button
-          onClick={() => setShowOrderComparison(true)}
-          style={{ pointerEvents: 'auto' }}
-          className="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity"
-          title="Compare Quran vs Revelation order"
-        >
-          <ArrowLeftRight className="w-3.5 h-3.5 text-[#C8A84E]" />
-          <span className="text-[#E8E3DB]">Order</span>
-        </button>
-        <button
-          onClick={openJourneySelector}
-          style={{ pointerEvents: 'auto' }}
-          className="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity"
-          title="Cinematic story journeys"
-        >
-          <Film className="w-3.5 h-3.5 text-[#C8A84E]" />
-          <span className="text-[#E8E3DB]">Journeys</span>
-        </button>
-        <div className="border-t border-[#2A3342] my-1" />
-        <button
-          onClick={() => setShowShortcutsHelp(true)}
-          style={{ pointerEvents: 'auto' }}
-          className="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity"
-          title="Keyboard shortcuts (?)"
-        >
-          <Keyboard className="w-3.5 h-3.5 text-[#E8E3DB]" />
-          <span className="text-[#E8E3DB]">Shortcuts</span>
-        </button>
-      </div>
-      )}
+      {/* Legend - positioned below map controls (hidden in story mode and before interaction) */}
+      <AnimatePresence>
+        {!isStoryMode && hasInteracted && (
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 20 }}
+            transition={{ duration: 0.3 }}
+            className="absolute top-32 right-3 z-10 flex flex-col gap-2 text-xs px-3 py-2.5 rounded-lg bg-[#1A2332]/90 backdrop-blur-sm border border-[#2A3342]"
+          >
+            <div className="flex items-center gap-2 pointer-events-none">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#C8A84E]" />
+              <span className="text-[#E8E3DB] opacity-80">Makki</span>
+            </div>
+            <div className="flex items-center gap-2 pointer-events-none">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#2DD4BF]" />
+              <span className="text-[#E8E3DB] opacity-80">Madani</span>
+            </div>
+            <div className="border-t border-[#2A3342] my-1" />
+            <button
+              onClick={() => setShowEvents(!showEvents)}
+              style={{ pointerEvents: 'auto' }}
+              className={`flex items-center gap-2 transition-opacity ${showEvents ? 'opacity-100' : 'opacity-50'}`}
+            >
+              <span
+                className="w-2.5 h-2.5 rotate-45 rounded-sm"
+                style={{ backgroundColor: showEvents ? '#8B5CF6' : '#4B5563' }}
+              />
+              <span className="text-[#E8E3DB]">Events</span>
+              <Sparkles className="w-3 h-3 text-[#8B5CF6]" />
+            </button>
+            <div className="border-t border-[#2A3342] my-1" />
+            <button
+              onClick={() => setShowOrderComparison(true)}
+              style={{ pointerEvents: 'auto' }}
+              className="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity"
+              title="Compare Quran vs Revelation order"
+            >
+              <ArrowLeftRight className="w-3.5 h-3.5 text-[#C8A84E]" />
+              <span className="text-[#E8E3DB]">Order</span>
+            </button>
+            <button
+              onClick={openJourneySelector}
+              style={{ pointerEvents: 'auto' }}
+              className="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity"
+              title="Cinematic story journeys"
+            >
+              <Film className="w-3.5 h-3.5 text-[#C8A84E]" />
+              <span className="text-[#E8E3DB]">Journeys</span>
+            </button>
+            <div className="border-t border-[#2A3342] my-1" />
+            <button
+              onClick={() => setShowShortcutsHelp(true)}
+              style={{ pointerEvents: 'auto' }}
+              className="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity"
+              title="Keyboard shortcuts (?)"
+            >
+              <Keyboard className="w-3.5 h-3.5 text-[#E8E3DB]" />
+              <span className="text-[#E8E3DB]">Shortcuts</span>
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Timeline panel (hidden in story mode) */}
       {!isStoryMode && (

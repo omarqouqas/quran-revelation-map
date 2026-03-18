@@ -29,6 +29,7 @@ export function TimelineSlider() {
   const togglePlayback = useMapStore((state) => state.togglePlayback);
   const playbackSpeed = useMapStore((state) => state.playbackSpeed);
   const setPlaybackSpeed = useMapStore((state) => state.setPlaybackSpeed);
+  const hasInteracted = useMapStore((state) => state.hasInteracted);
 
   const playIntervalRef = useRef<NodeJS.Timeout | null>(null);
   const currentYearRef = useRef(currentYear);
@@ -178,13 +179,14 @@ export function TimelineSlider() {
               'block w-6 h-6 rounded-full shadow-lg focus:outline-none',
               'transition-all duration-150',
               'bg-[#F5F0E8] border-2',
-              isMakkiPeriod ? 'border-[#C8A84E]' : 'border-[#2EC4B6]'
+              isMakkiPeriod ? 'border-[#C8A84E]' : 'border-[#2EC4B6]',
+              !hasInteracted && 'timeline-thumb-pulse'
             )}
-            style={{
+            style={hasInteracted ? {
               boxShadow: isMakkiPeriod
                 ? '0 0 12px rgba(200, 168, 78, 0.5)'
                 : '0 0 12px rgba(46, 196, 182, 0.5)',
-            }}
+            } : undefined}
             aria-label={`Year ${currentYear} CE`}
           />
         </Slider.Root>
