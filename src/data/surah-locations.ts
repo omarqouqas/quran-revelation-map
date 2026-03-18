@@ -348,7 +348,6 @@ export function getSurahsByRevelationOrder(): CompleteSurahData[] {
  */
 export function getSurahsByLocation(locationKey: LocationKey): CompleteSurahData[] {
   const allSurahs = getAllCompleteSurahs();
-  const targetLocation = LOCATIONS[locationKey];
 
   return allSurahs.filter((surah) => {
     // Check if surah has explicit location override

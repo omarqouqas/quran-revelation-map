@@ -10,7 +10,7 @@ import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { useMapStore } from '@/stores/useMapStore';
 import { useStoryStore } from '@/stores/useStoryStore';
-import { getAllCompleteSurahs, LOCATIONS, type CompleteSurahData } from '@/data/surah-locations';
+import { getAllCompleteSurahs, type CompleteSurahData } from '@/data/surah-locations';
 import { events, type HistoricalEvent } from '@/data/events';
 import { SACRED_SITES, SACRED_SITE_STYLES, type SacredSite } from '@/data/sacred-sites';
 

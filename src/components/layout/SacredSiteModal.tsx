@@ -103,8 +103,8 @@ export function SacredSiteModal() {
               left: '50%',
               transform: 'translate(-50%, -50%)',
               width: '90%',
-              maxWidth: '480px',
-              maxHeight: '85vh',
+              maxWidth: '420px',
+              maxHeight: '70vh',
               backgroundColor: '#0A0F1A',
               borderRadius: '20px',
               border: `2px solid ${style.color}40`,
@@ -116,7 +116,7 @@ export function SacredSiteModal() {
             {/* Header */}
             <div
               style={{
-                padding: '20px 24px',
+                padding: '16px 20px',
                 borderBottom: '1px solid #2A3342',
                 background: `linear-gradient(135deg, ${style.color}15, transparent)`,
               }}
@@ -145,12 +145,12 @@ export function SacredSiteModal() {
                   {/* Title */}
                   <h2
                     style={{
-                      fontSize: '24px',
+                      fontSize: '22px',
                       fontWeight: 700,
                       color: '#F5F0E8',
-                      marginBottom: '4px',
+                      marginBottom: '2px',
                       fontFamily: 'var(--font-heading)',
-                      lineHeight: 1.3,
+                      lineHeight: 1.2,
                     }}
                   >
                     {site.name}
@@ -159,7 +159,7 @@ export function SacredSiteModal() {
                   {/* Arabic name */}
                   <p
                     style={{
-                      fontSize: '20px',
+                      fontSize: '18px',
                       color: style.color,
                       fontFamily: 'var(--font-arabic)',
                     }}
@@ -190,7 +190,7 @@ export function SacredSiteModal() {
             </div>
 
             {/* Content */}
-            <div style={{ padding: '20px 24px', overflowY: 'auto', maxHeight: 'calc(85vh - 180px)' }}>
+            <div style={{ padding: '16px 20px', overflowY: 'auto', maxHeight: 'calc(70vh - 140px)' }}>
               {/* Coordinates */}
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
                 <MapPin style={{ width: '16px', height: '16px', color: style.color }} />
