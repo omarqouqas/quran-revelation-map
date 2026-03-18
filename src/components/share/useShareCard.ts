@@ -17,6 +17,139 @@ interface ShareResult {
   error?: string;
 }
 
+/**
+ * Color properties that might contain modern color functions
+ */
+const COLOR_PROPERTIES = [
+  'color',
+  'background-color',
+  'border-color',
+  'border-top-color',
+  'border-right-color',
+  'border-bottom-color',
+  'border-left-color',
+  'outline-color',
+  'text-decoration-color',
+  'fill',
+  'stroke',
+];
+
+/**
+ * Convert a potentially modern color value to RGB using canvas
+ * This works because canvas 2D context only supports RGB/RGBA
+ */
+function colorToRgb(color: string): string {
+  if (!color || color === 'transparent' || color === 'none' || color === 'inherit' || color === 'currentcolor') {
+    return color;
+  }
+
+  // Check if it's already a simple color format
+  if (color.startsWith('#') || color.startsWith('rgb')) {
+    return color;
+  }
+
+  try {
+    // Use canvas to convert any color to RGB
+    const canvas = document.createElement('canvas');
+    canvas.width = 1;
+    canvas.height = 1;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return color;
+
+    ctx.fillStyle = color;
+    ctx.fillRect(0, 0, 1, 1);
+    const data = ctx.getImageData(0, 0, 1, 1).data;
+
+    if (data[3] === 0) {
+      return 'transparent';
+    } else if (data[3] === 255) {
+      return `rgb(${data[0]}, ${data[1]}, ${data[2]})`;
+    } else {
+      return `rgba(${data[0]}, ${data[1]}, ${data[2]}, ${(data[3] / 255).toFixed(3)})`;
+    }
+  } catch {
+    return color;
+  }
+}
+
+/**
+ * Process an element and all its children to convert modern colors to RGB
+ * and handle opacity properly
+ */
+function convertElementColors(element: HTMLElement): void {
+  const processElement = (el: HTMLElement) => {
+    const computed = window.getComputedStyle(el);
+
+    // Convert all color properties
+    for (const prop of COLOR_PROPERTIES) {
+      try {
+        const value = computed.getPropertyValue(prop);
+        if (value && value !== 'none' && value !== 'transparent' && value !== 'inherit') {
+          const rgbValue = colorToRgb(value);
+          el.style.setProperty(prop, rgbValue, 'important');
+        }
+      } catch {
+        // Ignore errors for individual properties
+      }
+    }
+
+    // Handle opacity - ensure it's a simple numeric value
+    try {
+      const opacity = computed.getPropertyValue('opacity');
+      if (opacity) {
+        el.style.setProperty('opacity', opacity, 'important');
+      }
+    } catch {
+      // Ignore
+    }
+
+    // Remove box-shadow (often contains modern colors that are hard to parse)
+    try {
+      const boxShadow = computed.getPropertyValue('box-shadow');
+      if (boxShadow && boxShadow !== 'none') {
+        el.style.setProperty('box-shadow', 'none', 'important');
+      }
+    } catch {
+      // Ignore
+    }
+
+    // Remove text-shadow as well
+    try {
+      const textShadow = computed.getPropertyValue('text-shadow');
+      if (textShadow && textShadow !== 'none') {
+        el.style.setProperty('text-shadow', 'none', 'important');
+      }
+    } catch {
+      // Ignore
+    }
+  };
+
+  processElement(element);
+  element.querySelectorAll('*').forEach((child) => {
+    if (child instanceof HTMLElement) {
+      processElement(child);
+    }
+  });
+
+  // Also process SVG elements
+  element.querySelectorAll('svg, svg *').forEach((svgEl) => {
+    if (svgEl instanceof SVGElement) {
+      const computed = window.getComputedStyle(svgEl);
+      ['fill', 'stroke', 'color'].forEach((prop) => {
+        try {
+          const value = computed.getPropertyValue(prop);
+          if (value && value !== 'none' && value !== 'transparent' && value !== 'inherit') {
+            const rgbValue = colorToRgb(value);
+            svgEl.style.setProperty(prop, rgbValue, 'important');
+          }
+        } catch {
+          // Ignore
+        }
+      });
+    }
+  });
+}
+
 export function useShareCard() {
   const [isGenerating, setIsGenerating] = useState(false);
 
@@ -62,6 +195,12 @@ export function useShareCard() {
       // Wait a frame for styles to apply
       await new Promise(resolve => requestAnimationFrame(resolve));
 
+      // Convert modern CSS colors (lab, oklch, etc.) to RGB for html2canvas compatibility
+      convertElementColors(clone);
+
+      // Wait another frame for color changes to apply
+      await new Promise(resolve => requestAnimationFrame(resolve));
+
       const canvas = await html2canvas(clone, {
         scale,
         backgroundColor: '#0A0F1A',
@@ -70,6 +209,15 @@ export function useShareCard() {
         allowTaint: true,
         width: 400,
         height: clone.offsetHeight,
+        // Use onclone to handle color conversion and remove problematic stylesheets
+        onclone: (doc, clonedElement) => {
+          // Remove all stylesheets to prevent html2canvas from parsing LAB/OKLCH colors
+          const styleSheets = doc.querySelectorAll('style, link[rel="stylesheet"]');
+          styleSheets.forEach((sheet) => sheet.remove());
+
+          // Convert all colors in the cloned element to RGB inline styles
+          convertElementColors(clonedElement);
+        },
       });
 
       // Clean up

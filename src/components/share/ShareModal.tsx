@@ -12,14 +12,17 @@ import { useShareCard } from './useShareCard';
 import { SurahShareCard } from './SurahShareCard';
 import { JourneyShareCard } from './JourneyShareCard';
 import { EventShareCard } from './EventShareCard';
+import { SacredSiteShareCard } from './SacredSiteShareCard';
 import { CompleteSurahData } from '@/data/surah-locations';
 import { Journey } from '@/data/journeys';
 import { HistoricalEvent } from '@/data/events';
+import { SacredSite, SACRED_SITE_STYLES } from '@/data/sacred-sites';
 
 type ShareContent =
   | { type: 'surah'; surah: CompleteSurahData }
   | { type: 'journey'; journey: Journey }
-  | { type: 'event'; event: HistoricalEvent };
+  | { type: 'event'; event: HistoricalEvent }
+  | { type: 'site'; site: SacredSite };
 
 interface ShareModalProps {
   isOpen: boolean;
@@ -44,6 +47,9 @@ export function ShareModal({ isOpen, onClose, content }: ShareModalProps) {
     }
     if (content.type === 'journey') {
       return content.journey.accentColor;
+    }
+    if (content.type === 'site') {
+      return SACRED_SITE_STYLES[content.site.category].color;
     }
     // Event - determine color from event category
     const id = content.event.id;
@@ -71,6 +77,8 @@ export function ShareModal({ isOpen, onClose, content }: ShareModalProps) {
       filename = `surah-${content.surah.number}-${content.surah.englishName.toLowerCase().replace(/\s+/g, '-')}`;
     } else if (content.type === 'journey') {
       filename = `journey-${content.journey.id}`;
+    } else if (content.type === 'site') {
+      filename = `site-${content.site.name.toLowerCase().replace(/\s+/g, '-')}`;
     } else {
       filename = `event-${content.event.id}`;
     }
@@ -117,6 +125,11 @@ export function ShareModal({ isOpen, onClose, content }: ShareModalProps) {
         title: content.journey.title,
         text: `I just completed "${content.journey.title}" journey on Quran Revelation Map! ${content.journey.description}`,
       };
+    } else if (content.type === 'site') {
+      shareData = {
+        title: content.site.name,
+        text: `Exploring ${content.site.name} (${content.site.arabicName}) - ${content.site.description}`,
+      };
     } else {
       shareData = {
         title: content.event.name,
@@ -135,6 +148,8 @@ export function ShareModal({ isOpen, onClose, content }: ShareModalProps) {
     ? `Share Surah ${content.surah.englishName}`
     : content.type === 'journey'
     ? `Share ${content.journey.title}`
+    : content.type === 'site'
+    ? `Share ${content.site.name}`
     : `Share ${content.event.name}`;
 
   return (
@@ -189,6 +204,8 @@ export function ShareModal({ isOpen, onClose, content }: ShareModalProps) {
                     <SurahShareCard ref={cardRef} surah={content.surah} />
                   ) : content.type === 'journey' ? (
                     <JourneyShareCard ref={cardRef} journey={content.journey} />
+                  ) : content.type === 'site' ? (
+                    <SacredSiteShareCard ref={cardRef} site={content.site} />
                   ) : (
                     <EventShareCard ref={cardRef} event={content.event} />
                   )}

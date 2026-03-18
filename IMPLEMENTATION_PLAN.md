@@ -144,8 +144,10 @@ Generate beautiful social media cards:
 - ✅ Surah cards with visual + key info (SurahShareCard.tsx)
 - ✅ Journey completion cards (JourneyShareCard.tsx)
 - ✅ Event cards for historical events (EventShareCard.tsx)
+- ✅ Sacred site cards with related events & surahs (SacredSiteShareCard.tsx)
 - ✅ Share modal with preview (ShareModal.tsx)
 - ✅ Download as PNG, Copy to clipboard, Native share (useShareCard.ts)
+- ✅ Tailwind v4 LAB/OKLCH color compatibility fix
 
 ### 8.2 Daily Engagement
 | Feature | Description | Status |
@@ -295,11 +297,14 @@ Context: "Recited by Ja'far to the Christian king of Abyssinia"
 
 | Feature | Description |
 |---------|-------------|
+| **Sacred Site Modal** | Clickable sacred site markers open a detailed modal showing site info, Arabic name, coordinates, description, related historical events, and related surahs revealed at that location. Share button allows exporting site cards. |
+| **Sacred Site Share Cards** | Beautiful shareable cards for all 8 sacred sites with category-based styling, related events, and related surahs. |
+| **html2canvas Tailwind v4 Fix** | Fixed "unsupported color function 'lab'" error by converting all LAB/OKLCH colors to RGB using canvas 2D context and removing stylesheets from cloned document. |
 | **Sacred Site Markers** | Glowing icons for 8 key locations: Makkah, Madinah, Cave Hira, Badr, Uhud, Taif, Hudaybiyyah, Arafat. Category-based colors (holy=gold, revelation=amber, battle=red, journey=blue) with pulsing glow animations. |
 | **Landing Page UX** | "Begin the Journey" button, horizontal swipe indicator, hidden sidebar until interaction, pulsing timeline handle. |
 | **Tighter Map Bounds** | Map now focuses on the Hijaz region (Makkah-Madinah corridor) with tighter bounds, centered zoom, and restricted panning. Improved initial view at zoom 7.2 with minZoom 6.5. |
 | **Event Share Cards** | Share historical events (battles, migrations, revelations) with beautiful cards. Includes event details, related surahs, and category-specific styling. |
-| **Shareable Cards** | Beautiful card designs for sharing surah info, journey completions, and historical events. Download as PNG, copy to clipboard, or use native Web Share API. |
+| **Shareable Cards** | Beautiful card designs for sharing surah info, journey completions, historical events, and sacred sites. Download as PNG, copy to clipboard, or use native Web Share API. |
 | **Revelation Order Comparison** | Full-screen modal showing all 114 surahs with toggle between Quran order and revelation order. Visual indicators show position changes. Click any surah to view details. |
 | **Order Comparison in Detail Panel** | Each surah's detail panel now shows Quran position vs revelation position with difference indicator. |
 

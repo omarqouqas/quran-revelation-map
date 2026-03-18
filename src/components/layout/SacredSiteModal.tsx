@@ -5,13 +5,14 @@
  * Shows site info, related surahs, and related events
  */
 
-import { useEffect, useCallback } from 'react';
+import { useEffect, useCallback, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, MapPin, BookOpen, Calendar, Star, Sun, Shield, Compass } from 'lucide-react';
+import { X, MapPin, BookOpen, Calendar, Star, Sun, Shield, Compass, Share2 } from 'lucide-react';
 import { useMapStore } from '@/stores/useMapStore';
 import { getSacredSiteByName, SACRED_SITE_STYLES, type SacredSite } from '@/data/sacred-sites';
 import { getSurahsByLocation } from '@/data/surah-locations';
 import { getEventById } from '@/data/events';
+import { ShareModal } from '@/components/share/ShareModal';
 
 /** Get icon for site category */
 function getSiteIcon(category: SacredSite['category']) {
@@ -32,6 +33,7 @@ export function SacredSiteModal() {
   const selectSite = useMapStore((state) => state.selectSite);
   const selectSurah = useMapStore((state) => state.selectSurah);
   const selectEvent = useMapStore((state) => state.selectEvent);
+  const [isShareModalOpen, setIsShareModalOpen] = useState(false);
 
   const site = selectedSiteName ? getSacredSiteByName(selectedSiteName) : null;
   const style = site ? SACRED_SITE_STYLES[site.category] : null;
@@ -169,23 +171,43 @@ export function SacredSiteModal() {
                   </p>
                 </div>
 
-                {/* Close button */}
-                <button
-                  onClick={handleClose}
-                  style={{
-                    padding: '8px',
-                    borderRadius: '10px',
-                    backgroundColor: '#1F2937',
-                    border: 'none',
-                    cursor: 'pointer',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    flexShrink: 0,
-                  }}
-                >
-                  <X style={{ width: '18px', height: '18px', color: '#9CA3AF' }} />
-                </button>
+                {/* Action buttons */}
+                <div style={{ display: 'flex', gap: '8px', flexShrink: 0 }}>
+                  {/* Share button */}
+                  <button
+                    onClick={() => setIsShareModalOpen(true)}
+                    style={{
+                      padding: '8px',
+                      borderRadius: '10px',
+                      backgroundColor: '#1F2937',
+                      border: 'none',
+                      cursor: 'pointer',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                    }}
+                    title="Share this site"
+                  >
+                    <Share2 style={{ width: '18px', height: '18px', color: style.color }} />
+                  </button>
+
+                  {/* Close button */}
+                  <button
+                    onClick={handleClose}
+                    style={{
+                      padding: '8px',
+                      borderRadius: '10px',
+                      backgroundColor: '#1F2937',
+                      border: 'none',
+                      cursor: 'pointer',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                    }}
+                  >
+                    <X style={{ width: '18px', height: '18px', color: '#9CA3AF' }} />
+                  </button>
+                </div>
               </div>
             </div>
 
@@ -343,6 +365,13 @@ export function SacredSiteModal() {
               )}
             </div>
           </motion.div>
+
+          {/* Share Modal */}
+          <ShareModal
+            isOpen={isShareModalOpen}
+            onClose={() => setIsShareModalOpen(false)}
+            content={{ type: 'site', site }}
+          />
         </>
       )}
     </AnimatePresence>

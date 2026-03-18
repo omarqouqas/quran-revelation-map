@@ -69,6 +69,7 @@ src/
 │   ├── layout/
 │   │   ├── SurahDetailPanel.tsx   # Right-side surah details
 │   │   ├── EventDetailModal.tsx   # Event details modal
+│   │   ├── SacredSiteModal.tsx    # Sacred site details modal
 │   │   ├── OrderComparisonModal.tsx # Quran vs Revelation order view
 │   │   └── LandingOverlay.tsx     # Onboarding overlay
 │   │
@@ -81,6 +82,7 @@ src/
 │   │   ├── SurahShareCard.tsx     # Surah card design
 │   │   ├── JourneyShareCard.tsx   # Journey card design
 │   │   ├── EventShareCard.tsx     # Event card design
+│   │   ├── SacredSiteShareCard.tsx # Sacred site card design
 │   │   └── useShareCard.ts        # Image generation hook
 │   │
 │   └── timeline/
@@ -89,6 +91,7 @@ src/
 ├── data/
 │   ├── surah-locations.ts   # Surah coordinates, themes, context
 │   ├── events.ts            # Historical events (battles, migrations)
+│   ├── sacred-sites.ts      # Sacred site markers (Makkah, Cave Hira, etc.)
 │   └── tanzil-notes.ts      # Verse-level revelation notes
 │
 ├── lib/
@@ -192,10 +195,23 @@ src/
 | Surah Share Cards | Beautiful card design for sharing surah info on social media | `SurahShareCard.tsx` |
 | Journey Share Cards | Card design for sharing completed journeys | `JourneyShareCard.tsx` |
 | Event Share Cards | Card design for sharing historical events | `EventShareCard.tsx` |
+| Sacred Site Share Cards | Card design for sharing sacred site info | `SacredSiteShareCard.tsx` |
 | Share Modal | Preview modal with Download, Copy, Share buttons | `ShareModal.tsx` |
-| Image Generation | html2canvas integration for PNG export | `useShareCard.ts` |
+| Image Generation | html2canvas integration for PNG export with Tailwind v4 color fix | `useShareCard.ts` |
 | Web Share API | Native mobile sharing with fallback to download | `useShareCard.ts` |
 | Clipboard Copy | Copy card image directly to clipboard | `useShareCard.ts` |
+
+### Phase 6: Sacred Site Markers (Complete)
+
+| Feature | Description | File |
+|---------|-------------|------|
+| Sacred Site Markers | Glowing markers for 8 key locations with category-based colors | `MapContainer.tsx` |
+| Site Categories | Holy (gold), Revelation (amber), Battle (red), Journey (blue) | `sacred-sites.ts` |
+| Pulsing Glow Animation | CSS keyframe animations for marker visibility | `globals.css` |
+| Sacred Site Modal | Click marker to view site details, related events, related surahs | `SacredSiteModal.tsx` |
+| Site Share Cards | Share sacred site info with beautiful cards | `SacredSiteShareCard.tsx` |
+| Related Surahs | Shows surahs revealed at each location | `SacredSiteModal.tsx` |
+| Related Events | Shows historical events at each location | `SacredSiteModal.tsx` |
 
 ### Keyboard Shortcuts
 
@@ -247,6 +263,7 @@ The map features an atmospheric day/night cycle that mirrors the 23-year revelat
   selectedSurahNumber: number | null,
   hoveredSurahNumber: number | null,
   selectedEventId: string | null,  // Selected historical event
+  selectedSiteName: string | null, // Selected sacred site
   showMakki: boolean,         // Filter toggle
   showMadani: boolean,        // Filter toggle
   showEvents: boolean,        // Events layer toggle
@@ -326,6 +343,7 @@ The map features an atmospheric day/night cycle that mirrors the 23-year revelat
 | Overlapping event markers | `events.ts` | Added jitter function with seeded random for deterministic spacing |
 | VideoBackground hydration error | `VideoBackground.tsx` | Removed styled-jsx, moved animations to globals.css, added suppressHydrationWarning |
 | Share card canvas error | `useShareCard.ts` | Added `waitForElement` to poll for valid dimensions before html2canvas capture |
+| html2canvas LAB color error | `useShareCard.ts` | Tailwind v4 uses LAB/OKLCH colors which html2canvas doesn't support. Fixed by removing stylesheets from cloned document and converting all colors to RGB using canvas 2D context |
 
 ---
 
