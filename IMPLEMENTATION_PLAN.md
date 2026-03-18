@@ -128,12 +128,12 @@ Each journey needs:
 | Transition effects | Smooth fades between story beats | Medium |
 
 ### 7.2 Map Enhancements
-| Enhancement | Description | Effort |
+| Enhancement | Description | Status |
 |-------------|-------------|--------|
-| 3D terrain | Mapbox elevation for mountains | Medium |
-| Tighter bounds | Focus on Hijaz region only | Low |
-| Satellite toggle | Switch to realistic terrain view | Low |
-| Sacred site markers | Special icons for Kaaba, Cave Hira, etc. | Low |
+| 3D terrain | Mapbox elevation for mountains | Pending |
+| Tighter bounds | Focus on Hijaz region only | ✅ Complete |
+| Satellite toggle | Switch to realistic terrain view | Pending |
+| Sacred site markers | Special icons for Kaaba, Cave Hira, etc. | Pending |
 
 ---
 
@@ -296,6 +296,7 @@ Context: "Recited by Ja'far to the Christian king of Abyssinia"
 
 | Feature | Description |
 |---------|-------------|
+| **Tighter Map Bounds** | Map now focuses on the Hijaz region (Makkah-Madinah corridor) with tighter bounds, centered zoom, and restricted panning. Improved initial view at zoom 7.2 with minZoom 6.5. |
 | **Daily Surah Spotlight** | Featured surah on landing page that rotates daily based on UTC date. Shows surah info with an "Explore" button to jump directly to that surah. |
 | **Event Share Cards** | Share historical events (battles, migrations, revelations) with beautiful cards. Includes event details, related surahs, and category-specific styling. |
 | **Shareable Cards** | Beautiful card designs for sharing surah info, journey completions, and historical events. Download as PNG, copy to clipboard, or use native Web Share API. |

@@ -17,15 +17,15 @@ import { events, type HistoricalEvent } from '@/data/events';
 mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN || '';
 
 /** Map center coordinates (between Makkah and Madinah) */
-const MAP_CENTER: [number, number] = [39.5, 23.5];
+const MAP_CENTER: [number, number] = [39.5, 22.8];
 
-/** Initial zoom level to show the Arabian Peninsula */
-const MAP_ZOOM = 6.5;
+/** Initial zoom level - tighter focus on Hijaz region */
+const MAP_ZOOM = 7.2;
 
-/** Map bounds to restrict panning */
+/** Map bounds to restrict panning - focused on Hijaz region (Makkah-Madinah corridor) */
 const MAP_BOUNDS: [[number, number], [number, number]] = [
-  [35, 15], // Southwest
-  [45, 30], // Northeast
+  [37.5, 19.5], // Southwest (covers area south of Makkah)
+  [42, 26.5],   // Northeast (covers area north of Madinah)
 ];
 
 /**
@@ -313,7 +313,7 @@ export function MapContainer() {
       center: MAP_CENTER,
       zoom: MAP_ZOOM,
       maxBounds: MAP_BOUNDS,
-      minZoom: 5,
+      minZoom: 6.5,
       maxZoom: 12,
       attributionControl: true,
       pitch: 40, // Tilt to show sky layer
