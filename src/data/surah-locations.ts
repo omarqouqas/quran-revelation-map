@@ -342,3 +342,29 @@ export function getSurahsByYear(year: number): CompleteSurahData[] {
 export function getSurahsByRevelationOrder(): CompleteSurahData[] {
   return getAllCompleteSurahs().sort((a, b) => a.revelationOrder - b.revelationOrder);
 }
+
+/**
+ * Get surahs revealed at a specific location
+ */
+export function getSurahsByLocation(locationKey: LocationKey): CompleteSurahData[] {
+  const allSurahs = getAllCompleteSurahs();
+  const targetLocation = LOCATIONS[locationKey];
+
+  return allSurahs.filter((surah) => {
+    // Check if surah has explicit location override
+    const surahLocationInfo = surahLocationData[surah.number];
+    if (surahLocationInfo?.locationKey === locationKey) {
+      return true;
+    }
+
+    // For Makkah/Madinah, include all surahs from that period without explicit overrides
+    if (locationKey === 'MAKKAH' && surah.isMeccan && !surahLocationInfo?.locationKey) {
+      return true;
+    }
+    if (locationKey === 'MADINAH' && !surah.isMeccan && !surahLocationInfo?.locationKey) {
+      return true;
+    }
+
+    return false;
+  });
+}

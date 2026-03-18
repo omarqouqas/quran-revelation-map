@@ -17,6 +17,8 @@ interface MapState {
   hoveredSurahNumber: number | null;
   /** Currently selected event ID for detail view */
   selectedEventId: string | null;
+  /** Currently selected sacred site name for detail view */
+  selectedSiteName: string | null;
   /** Show Makki surahs filter */
   showMakki: boolean;
   /** Show Madani surahs filter */
@@ -34,6 +36,7 @@ interface MapActions {
   selectSurah: (surahNumber: number | null) => void;
   hoverSurah: (surahNumber: number | null) => void;
   selectEvent: (eventId: string | null) => void;
+  selectSite: (siteName: string | null) => void;
   setShowMakki: (show: boolean) => void;
   setShowMadani: (show: boolean) => void;
   setShowEvents: (show: boolean) => void;
@@ -50,6 +53,7 @@ const initialState: MapState = {
   selectedSurahNumber: null,
   hoveredSurahNumber: null,
   selectedEventId: null,
+  selectedSiteName: null,
   showMakki: true,
   showMadani: true,
   showEvents: true,
@@ -84,6 +88,10 @@ export const useMapStore = create<MapStore>((set) => ({
 
   selectEvent: (eventId: string | null) => {
     set({ selectedEventId: eventId });
+  },
+
+  selectSite: (siteName: string | null) => {
+    set({ selectedSiteName: siteName });
   },
 
   setShowMakki: (show: boolean) => {

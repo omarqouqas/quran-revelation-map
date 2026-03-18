@@ -14,6 +14,7 @@ import { MapContainer } from '@/components/map/MapContainer';
 import { TimelineSlider } from '@/components/timeline/TimelineSlider';
 import { SurahDetailPanel } from '@/components/layout/SurahDetailPanel';
 import { EventDetailModal } from '@/components/layout/EventDetailModal';
+import { SacredSiteModal } from '@/components/layout/SacredSiteModal';
 import { LandingOverlay } from '@/components/layout/LandingOverlay';
 import { KeyboardShortcutsModal } from '@/components/layout/KeyboardShortcutsModal';
 import { OrderComparisonModal } from '@/components/layout/OrderComparisonModal';
@@ -184,6 +185,9 @@ export function QuranMapApp({ initialSurahNumber }: QuranMapAppProps) {
 
       {/* Event detail modal (hidden in story mode) */}
       {!isStoryMode && <EventDetailModal />}
+
+      {/* Sacred site detail modal (hidden in story mode) */}
+      {!isStoryMode && <SacredSiteModal />}
 
       {/* Surah explorer panel (hidden in story mode) */}
       {!isStoryMode && <SurahExplorer />}

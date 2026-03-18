@@ -12,6 +12,7 @@ import { useMapStore } from '@/stores/useMapStore';
 import { useStoryStore } from '@/stores/useStoryStore';
 import { getAllCompleteSurahs, LOCATIONS, type CompleteSurahData } from '@/data/surah-locations';
 import { events, type HistoricalEvent } from '@/data/events';
+import { SACRED_SITES, SACRED_SITE_STYLES, type SacredSite } from '@/data/sacred-sites';
 
 // Initialize Mapbox access token
 mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN || '';
@@ -124,86 +125,6 @@ function lerpColor(color1: string, color2: string, t: number): string {
   return `rgb(${r}, ${g}, ${b})`;
 }
 
-/** Sacred site categories with styling */
-type SacredSiteCategory = 'holy' | 'revelation' | 'battle' | 'journey';
-
-interface SacredSite {
-  name: string;
-  arabicName: string;
-  lat: number;
-  lng: number;
-  category: SacredSiteCategory;
-  description: string;
-}
-
-/** Sacred site category colors and icons */
-const SACRED_SITE_STYLES: Record<SacredSiteCategory, { color: string; glowColor: string }> = {
-  holy: { color: '#FFD700', glowColor: 'rgba(255, 215, 0, 0.6)' },        // Gold - Kaaba, mosques
-  revelation: { color: '#F59E0B', glowColor: 'rgba(245, 158, 11, 0.6)' }, // Amber - Cave Hira
-  battle: { color: '#EF4444', glowColor: 'rgba(239, 68, 68, 0.5)' },      // Red - Badr, Uhud
-  journey: { color: '#3B82F6', glowColor: 'rgba(59, 130, 246, 0.5)' },    // Blue - Taif, Hudaybiyyah
-};
-
-/** Sacred sites to display on the map */
-const SACRED_SITES: SacredSite[] = [
-  {
-    name: 'Makkah',
-    arabicName: 'مكة المكرمة',
-    ...LOCATIONS.MAKKAH,
-    category: 'holy',
-    description: 'The holiest city in Islam, home of the Kaaba'
-  },
-  {
-    name: 'Madinah',
-    arabicName: 'المدينة المنورة',
-    ...LOCATIONS.MADINAH,
-    category: 'holy',
-    description: 'The radiant city, home of the Prophet\'s Mosque'
-  },
-  {
-    name: 'Cave Hira',
-    arabicName: 'غار حراء',
-    ...LOCATIONS.CAVE_HIRA,
-    category: 'revelation',
-    description: 'Where the first revelation descended'
-  },
-  {
-    name: 'Badr',
-    arabicName: 'بدر',
-    ...LOCATIONS.BADR,
-    category: 'battle',
-    description: 'Site of the decisive Battle of Badr (624 CE)'
-  },
-  {
-    name: 'Uhud',
-    arabicName: 'أحد',
-    ...LOCATIONS.UHUD,
-    category: 'battle',
-    description: 'Site of the Battle of Uhud (625 CE)'
-  },
-  {
-    name: 'Taif',
-    arabicName: 'الطائف',
-    ...LOCATIONS.TAIF,
-    category: 'journey',
-    description: 'Mountain city visited during the Year of Sorrow'
-  },
-  {
-    name: 'Hudaybiyyah',
-    arabicName: 'الحديبية',
-    ...LOCATIONS.HUDAYBIYYAH,
-    category: 'journey',
-    description: 'Site of the historic peace treaty (628 CE)'
-  },
-  {
-    name: 'Arafat',
-    arabicName: 'عرفات',
-    ...LOCATIONS.ARAFAT,
-    category: 'holy',
-    description: 'Sacred mount of the Farewell Pilgrimage'
-  },
-];
-
 /** Get event category for styling */
 function getEventCategory(event: HistoricalEvent): 'battle' | 'migration' | 'revelation' | 'treaty' | 'milestone' {
   const id = event.id;
@@ -238,6 +159,7 @@ export function MapContainer() {
   const selectedEventId = useMapStore((state) => state.selectedEventId);
   const selectSurah = useMapStore((state) => state.selectSurah);
   const selectEvent = useMapStore((state) => state.selectEvent);
+  const selectSite = useMapStore((state) => state.selectSite);
   const hoverSurah = useMapStore((state) => state.hoverSurah);
 
   // Story mode location for flyTo
@@ -429,6 +351,11 @@ export function MapContainer() {
       el.appendChild(label);
       el.appendChild(arabicLabel);
 
+      // Click handler to open site modal
+      el.addEventListener('click', () => {
+        selectSite(site.name);
+      });
+
       // Hover effects
       el.addEventListener('mouseenter', () => {
         iconContainer.style.transform = 'scale(1.15)';
@@ -442,7 +369,7 @@ export function MapContainer() {
 
       return el;
     },
-    []
+    [selectSite]
   );
 
   /** Initialize map */
