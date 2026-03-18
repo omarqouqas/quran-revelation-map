@@ -148,11 +148,11 @@ Generate beautiful social media cards:
 - ✅ Download as PNG, Copy to clipboard, Native share (useShareCard.ts)
 
 ### 8.2 Daily Engagement
-| Feature | Description |
-|---------|-------------|
-| Daily surah spotlight | Featured surah on landing |
-| Streak tracking | Already implemented |
-| Achievement badges | Explorer, Scholar, Historian |
+| Feature | Description | Status |
+|---------|-------------|--------|
+| Daily surah spotlight | Featured surah on landing | ✅ Complete |
+| Streak tracking | Already implemented | ✅ Complete |
+| Achievement badges | Explorer, Scholar, Historian | Pending |
 
 ---
 
@@ -296,6 +296,7 @@ Context: "Recited by Ja'far to the Christian king of Abyssinia"
 
 | Feature | Description |
 |---------|-------------|
+| **Daily Surah Spotlight** | Featured surah on landing page that rotates daily based on UTC date. Shows surah info with an "Explore" button to jump directly to that surah. |
 | **Event Share Cards** | Share historical events (battles, migrations, revelations) with beautiful cards. Includes event details, related surahs, and category-specific styling. |
 | **Shareable Cards** | Beautiful card designs for sharing surah info, journey completions, and historical events. Download as PNG, copy to clipboard, or use native Web Share API. |
 | **Revelation Order Comparison** | Full-screen modal showing all 114 surahs with toggle between Quran order and revelation order. Visual indicators show position changes. Click any surah to view details. |

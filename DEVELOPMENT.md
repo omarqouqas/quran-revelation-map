@@ -70,7 +70,8 @@ src/
 │   │   ├── SurahDetailPanel.tsx   # Right-side surah details
 │   │   ├── EventDetailModal.tsx   # Event details modal
 │   │   ├── OrderComparisonModal.tsx # Quran vs Revelation order view
-│   │   └── LandingOverlay.tsx     # Onboarding overlay
+│   │   ├── LandingOverlay.tsx     # Onboarding overlay
+│   │   └── DailySurahSpotlight.tsx # Daily featured surah
 │   │
 │   ├── map/
 │   │   ├── MapContainer.tsx       # Mapbox GL map
@@ -196,6 +197,12 @@ src/
 | Image Generation | html2canvas integration for PNG export | `useShareCard.ts` |
 | Web Share API | Native mobile sharing with fallback to download | `useShareCard.ts` |
 | Clipboard Copy | Copy card image directly to clipboard | `useShareCard.ts` |
+
+### Phase 6: Engagement Features (In Progress)
+
+| Feature | Description | File |
+|---------|-------------|------|
+| Daily Surah Spotlight | Featured surah on landing page that rotates daily | `DailySurahSpotlight.tsx` |
 
 ### Keyboard Shortcuts
 
