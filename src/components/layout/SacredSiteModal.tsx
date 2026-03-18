@@ -93,20 +93,20 @@ export function SacredSiteModal() {
 
           {/* Modal */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            initial={{ opacity: 0, scale: 0.95, y: -20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 20 }}
+            exit={{ opacity: 0, scale: 0.95, y: -20 }}
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
             style={{
               position: 'fixed',
-              top: '50%',
+              top: '80px',
               left: '50%',
-              transform: 'translate(-50%, -50%)',
+              transform: 'translateX(-50%)',
               width: '90%',
-              maxWidth: '420px',
-              maxHeight: '70vh',
+              maxWidth: '400px',
+              maxHeight: 'calc(100vh - 160px)',
               backgroundColor: '#0A0F1A',
-              borderRadius: '20px',
+              borderRadius: '16px',
               border: `2px solid ${style.color}40`,
               boxShadow: `0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 40px ${style.glowColor}`,
               overflow: 'hidden',
@@ -190,7 +190,7 @@ export function SacredSiteModal() {
             </div>
 
             {/* Content */}
-            <div style={{ padding: '16px 20px', overflowY: 'auto', maxHeight: 'calc(70vh - 140px)' }}>
+            <div style={{ padding: '16px 20px', overflowY: 'auto', maxHeight: 'calc(100vh - 280px)' }}>
               {/* Coordinates */}
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
                 <MapPin style={{ width: '16px', height: '16px', color: style.color }} />
