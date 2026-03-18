@@ -7,7 +7,6 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { useMapStore } from '@/stores/useMapStore';
-import { DailySurahSpotlight } from './DailySurahSpotlight';
 
 export function LandingOverlay() {
   const hasInteracted = useMapStore((state) => state.hasInteracted);
@@ -52,11 +51,6 @@ export function LandingOverlay() {
               the revelation of the Quran
             </p>
           </motion.div>
-
-          {/* Daily Surah Spotlight */}
-          <div className="relative px-4 w-full max-w-lg">
-            <DailySurahSpotlight />
-          </div>
 
           {/* Scroll hint arrow */}
           <motion.div
