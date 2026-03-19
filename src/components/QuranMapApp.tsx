@@ -63,8 +63,8 @@ export function QuranMapApp({ initialSurahNumber }: QuranMapAppProps) {
       {/* Map */}
       <MapContainer />
 
-      {/* Header - pointer-events-none so clicks pass through to map (hidden in story mode) */}
-      {!isStoryMode && (
+      {/* Header - pointer-events-none so clicks pass through to map (hidden in story mode and before interaction) */}
+      {!isStoryMode && hasInteracted && (
         <div className="absolute top-0 left-0 right-0 z-[60] pointer-events-none">
           {/* Title bar */}
           <div className="flex items-center justify-center py-4 px-6">
