@@ -10,114 +10,27 @@ import { BookOpen, Lightbulb, Quote, History, CheckCircle2, MessageCircle, Spark
 import { Lesson, LessonSection, LessonSectionType } from '@/data/learning-paths';
 import { useLearningStore, useCurrentLesson, useCurrentPath } from '@/stores/useLearningStore';
 
-/** Icon for each section type */
-const sectionIcons: Record<LessonSectionType, React.ElementType> = {
-  narrative: BookOpen,
-  insight: Lightbulb,
-  'quran-reference': Quote,
-  'historical-context': History,
-};
-
-/** Colors for each section type */
-const sectionColors: Record<LessonSectionType, string> = {
-  narrative: '#E8E3DB',
-  insight: '#C8A84E',
-  'quran-reference': '#2EC4B6',
-  'historical-context': '#8B5CF6',
-};
-
 /** Render a single section */
-function SectionContent({ section, index }: { section: LessonSection; index: number }) {
-  const Icon = sectionIcons[section.type];
-  const color = sectionColors[section.type];
-
-  // Narrative sections - clean text with optional title
+function SectionContent({ section, index, accentColor }: { section: LessonSection; index: number; accentColor: string }) {
+  // Narrative sections - clean card with title
   if (section.type === 'narrative') {
     return (
       <motion.div
-        initial={{ opacity: 0, y: 10 }}
+        initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: index * 0.08 }}
-        className="mb-8"
+        transition={{ delay: index * 0.1, duration: 0.4 }}
+        className="mb-6"
       >
-        {section.title && (
-          <h4
-            className="text-base font-semibold text-[#F5F0E8] mb-3"
-            style={{ fontFamily: 'var(--font-heading)' }}
-          >
-            {section.title}
-          </h4>
-        )}
-        <p className="text-[#E8E3DB] text-[0.95rem] leading-[1.8] opacity-90">
-          {section.content}
-        </p>
-      </motion.div>
-    );
-  }
-
-  // Historical context - subtle left border
-  if (section.type === 'historical-context') {
-    return (
-      <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: index * 0.08 }}
-        className="mb-8 pl-4 border-l-2"
-        style={{ borderColor: `${color}50` }}
-      >
-        {section.title && (
-          <div className="flex items-center gap-2 mb-3">
-            <History className="w-4 h-4" style={{ color }} />
+        <div className="p-5 rounded-2xl bg-[#0D1219] border border-[#1E2736]">
+          {section.title && (
             <h4
-              className="text-sm font-semibold uppercase tracking-wide"
-              style={{ color }}
+              className="text-lg font-bold text-[#F5F0E8] mb-4"
+              style={{ fontFamily: 'var(--font-heading)' }}
             >
               {section.title}
             </h4>
-          </div>
-        )}
-        <p className="text-[#E8E3DB] text-[0.95rem] leading-[1.8] opacity-90">
-          {section.content}
-        </p>
-      </motion.div>
-    );
-  }
-
-  // Insight sections - highlighted box
-  if (section.type === 'insight') {
-    return (
-      <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: index * 0.08 }}
-        className="mb-8"
-      >
-        <div
-          className="p-5 rounded-xl relative overflow-hidden"
-          style={{
-            background: `linear-gradient(135deg, ${color}12 0%, ${color}06 100%)`,
-            border: `1px solid ${color}25`,
-          }}
-        >
-          {/* Subtle decorative element */}
-          <div
-            className="absolute top-3 right-3 opacity-20"
-          >
-            <Lightbulb className="w-8 h-8" style={{ color }} />
-          </div>
-
-          {section.title && (
-            <div className="flex items-center gap-2 mb-3">
-              <Sparkles className="w-4 h-4" style={{ color }} />
-              <h4
-                className="text-sm font-semibold"
-                style={{ color }}
-              >
-                {section.title}
-              </h4>
-            </div>
           )}
-          <p className="text-[#E8E3DB] text-[0.95rem] leading-[1.8] pr-8">
+          <p className="text-[#E8E3DB] text-base leading-[1.9]">
             {section.content}
           </p>
         </div>
@@ -125,52 +38,163 @@ function SectionContent({ section, index }: { section: LessonSection; index: num
     );
   }
 
-  // Quran reference - elegant quote styling
-  if (section.type === 'quran-reference') {
+  // Historical context - card with purple accent
+  if (section.type === 'historical-context') {
+    const color = '#8B5CF6';
     return (
       <motion.div
-        initial={{ opacity: 0, y: 10 }}
+        initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: index * 0.08 }}
-        className="mb-8"
+        transition={{ delay: index * 0.1, duration: 0.4 }}
+        className="mb-6"
       >
-        {section.title && (
-          <div className="flex items-center gap-2 mb-4">
-            <Quote className="w-4 h-4" style={{ color }} />
-            <h4
-              className="text-sm font-semibold"
-              style={{ color }}
-            >
-              {section.title}
-            </h4>
-          </div>
-        )}
         <div
-          className="relative pl-5 py-1"
+          className="p-5 rounded-2xl relative overflow-hidden"
           style={{
-            borderLeft: `3px solid ${color}`,
+            background: `linear-gradient(135deg, ${color}08 0%, #0D121905 100%)`,
+            border: `1px solid ${color}20`,
           }}
         >
-          {/* Large decorative quote mark */}
+          {/* Accent bar */}
           <div
-            className="absolute -left-1 -top-2 text-5xl font-serif opacity-20 select-none"
-            style={{ color, fontFamily: 'Georgia, serif' }}
-          >
-            "
-          </div>
+            className="absolute left-0 top-0 bottom-0 w-1 rounded-l-2xl"
+            style={{ backgroundColor: color }}
+          />
 
-          <p
-            className="text-[#F5F0E8] text-[1rem] leading-[1.9] italic relative z-10"
-          >
+          {section.title && (
+            <div className="flex items-center gap-3 mb-4 pl-3">
+              <div
+                className="w-8 h-8 rounded-lg flex items-center justify-center"
+                style={{ backgroundColor: `${color}20` }}
+              >
+                <History className="w-4 h-4" style={{ color }} />
+              </div>
+              <h4
+                className="text-base font-bold uppercase tracking-wider"
+                style={{ color }}
+              >
+                {section.title}
+              </h4>
+            </div>
+          )}
+          <p className="text-[#E8E3DB] text-base leading-[1.9] pl-3">
             {section.content}
           </p>
+        </div>
+      </motion.div>
+    );
+  }
+
+  // Insight sections - highlighted card with icon
+  if (section.type === 'insight') {
+    const color = '#C8A84E';
+    return (
+      <motion.div
+        initial={{ opacity: 0, y: 15 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: index * 0.1, duration: 0.4 }}
+        className="mb-6"
+      >
+        <div
+          className="p-6 rounded-2xl relative overflow-hidden"
+          style={{
+            background: `linear-gradient(145deg, ${color}12 0%, ${color}04 100%)`,
+            border: `1px solid ${color}30`,
+          }}
+        >
+          {/* Large decorative icon */}
+          <div className="absolute -top-2 -right-2 opacity-10">
+            <Lightbulb className="w-20 h-20" style={{ color }} />
+          </div>
+
+          {section.title ? (
+            <div className="flex items-center gap-3 mb-4">
+              <div
+                className="w-8 h-8 rounded-lg flex items-center justify-center"
+                style={{ backgroundColor: `${color}25` }}
+              >
+                <Sparkles className="w-4 h-4" style={{ color }} />
+              </div>
+              <h4 className="text-base font-bold" style={{ color }}>
+                {section.title}
+              </h4>
+            </div>
+          ) : (
+            <div className="flex items-center gap-2 mb-4">
+              <Lightbulb className="w-5 h-5" style={{ color }} />
+              <span className="text-sm font-semibold uppercase tracking-wider" style={{ color }}>
+                Insight
+              </span>
+            </div>
+          )}
+          <p className="text-[#F5F0E8] text-base leading-[1.9] relative z-10">
+            {section.content}
+          </p>
+        </div>
+      </motion.div>
+    );
+  }
+
+  // Quran reference - elegant quote card
+  if (section.type === 'quran-reference') {
+    const color = '#2EC4B6';
+    return (
+      <motion.div
+        initial={{ opacity: 0, y: 15 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: index * 0.1, duration: 0.4 }}
+        className="mb-6"
+      >
+        <div
+          className="p-6 rounded-2xl relative overflow-hidden"
+          style={{
+            background: `linear-gradient(145deg, ${color}10 0%, ${color}03 100%)`,
+            border: `1px solid ${color}25`,
+          }}
+        >
+          {section.title && (
+            <div className="flex items-center gap-3 mb-5">
+              <div
+                className="w-8 h-8 rounded-lg flex items-center justify-center"
+                style={{ backgroundColor: `${color}20` }}
+              >
+                <Quote className="w-4 h-4" style={{ color }} />
+              </div>
+              <h4 className="text-base font-bold" style={{ color }}>
+                {section.title}
+              </h4>
+            </div>
+          )}
+
+          {/* Quote content */}
+          <div className="relative">
+            {/* Large decorative quote marks */}
+            <div
+              className="absolute -left-1 -top-3 text-6xl font-serif select-none opacity-15"
+              style={{ color, fontFamily: 'Georgia, serif', lineHeight: 1 }}
+            >
+              "
+            </div>
+
+            <p className="text-[#F5F0E8] text-lg leading-[2] italic pl-6 pr-4">
+              {section.content}
+            </p>
+
+            <div
+              className="absolute -right-1 -bottom-6 text-6xl font-serif select-none opacity-15"
+              style={{ color, fontFamily: 'Georgia, serif', lineHeight: 1 }}
+            >
+              "
+            </div>
+          </div>
 
           {section.surahNumber && (
             <p
-              className="mt-3 text-sm font-medium"
+              className="mt-6 text-sm font-semibold flex items-center gap-2 pl-6"
               style={{ color }}
             >
-              — Surah {section.surahNumber}
+              <span className="w-8 h-px" style={{ backgroundColor: color }} />
+              Surah {section.surahNumber}
               {section.ayahRange && `, verses ${section.ayahRange.start}-${section.ayahRange.end}`}
             </p>
           )}
@@ -182,14 +206,16 @@ function SectionContent({ section, index }: { section: LessonSection; index: num
   // Fallback
   return (
     <motion.div
-      initial={{ opacity: 0, y: 10 }}
+      initial={{ opacity: 0, y: 15 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: index * 0.08 }}
-      className="mb-8"
+      transition={{ delay: index * 0.1, duration: 0.4 }}
+      className="mb-6"
     >
-      <p className="text-[#E8E3DB] text-[0.95rem] leading-[1.8]">
-        {section.content}
-      </p>
+      <div className="p-5 rounded-2xl bg-[#0D1219] border border-[#1E2736]">
+        <p className="text-[#E8E3DB] text-base leading-[1.9]">
+          {section.content}
+        </p>
+      </div>
     </motion.div>
   );
 }
@@ -198,17 +224,18 @@ function SectionContent({ section, index }: { section: LessonSection; index: num
 function TakeawaysSection({ takeaways, color }: { takeaways: string[]; color: string }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 10 }}
+      initial={{ opacity: 0, y: 15 }}
       animate={{ opacity: 1, y: 0 }}
-      className="mt-10 mb-6"
+      transition={{ delay: 0.4, duration: 0.4 }}
+      className="mt-10 mb-8"
     >
-      {/* Section divider */}
-      <div className="flex items-center gap-4 mb-5">
+      {/* Section header with lines */}
+      <div className="flex items-center gap-4 mb-6">
         <div className="h-px flex-1 bg-gradient-to-r from-transparent via-[#2A3342] to-transparent" />
-        <div className="flex items-center gap-2">
-          <CheckCircle2 className="w-4 h-4" style={{ color }} />
+        <div className="flex items-center gap-2.5 px-4">
+          <CheckCircle2 className="w-5 h-5" style={{ color }} />
           <span
-            className="text-sm font-semibold uppercase tracking-wide"
+            className="text-sm font-bold uppercase tracking-widest"
             style={{ color }}
           >
             Key Takeaways
@@ -217,37 +244,34 @@ function TakeawaysSection({ takeaways, color }: { takeaways: string[]; color: st
         <div className="h-px flex-1 bg-gradient-to-r from-transparent via-[#2A3342] to-transparent" />
       </div>
 
-      <div
-        className="p-5 rounded-xl"
-        style={{
-          background: `linear-gradient(135deg, ${color}08 0%, transparent 100%)`,
-          border: `1px solid ${color}20`,
-        }}
-      >
-        <ul className="space-y-3">
-          {takeaways.map((takeaway, i) => (
-            <motion.li
-              key={i}
-              initial={{ opacity: 0, x: -10 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.3 + i * 0.08 }}
-              className="flex items-start gap-3"
+      {/* Takeaways grid */}
+      <div className="space-y-4">
+        {takeaways.map((takeaway, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.5 + i * 0.1, duration: 0.3 }}
+            className="flex items-start gap-4 p-4 rounded-xl"
+            style={{
+              background: `linear-gradient(135deg, ${color}08 0%, transparent 100%)`,
+              border: `1px solid ${color}15`,
+            }}
+          >
+            <span
+              className="w-7 h-7 rounded-full flex items-center justify-center shrink-0 text-sm font-bold"
+              style={{
+                background: `linear-gradient(135deg, ${color}30 0%, ${color}15 100%)`,
+                color: color,
+              }}
             >
-              <span
-                className="w-5 h-5 rounded-full flex items-center justify-center shrink-0 mt-0.5 text-xs font-bold"
-                style={{
-                  backgroundColor: `${color}20`,
-                  color: color,
-                }}
-              >
-                {i + 1}
-              </span>
-              <span className="text-[#E8E3DB] text-[0.95rem] leading-relaxed">
-                {takeaway}
-              </span>
-            </motion.li>
-          ))}
-        </ul>
+              {i + 1}
+            </span>
+            <span className="text-[#E8E3DB] text-base leading-relaxed pt-0.5">
+              {takeaway}
+            </span>
+          </motion.div>
+        ))}
       </div>
     </motion.div>
   );
@@ -257,24 +281,29 @@ function TakeawaysSection({ takeaways, color }: { takeaways: string[]; color: st
 function ReflectionSection({ prompts, color }: { prompts: string[]; color: string }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 10 }}
+      initial={{ opacity: 0, y: 15 }}
       animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.6, duration: 0.4 }}
       className="mb-8"
     >
-      <div className="flex items-center gap-2 mb-4">
-        <MessageCircle className="w-4 h-4 text-[#E8E3DB] opacity-60" />
-        <span className="text-sm font-semibold text-[#E8E3DB] opacity-80 uppercase tracking-wide">
+      {/* Section header */}
+      <div className="flex items-center gap-3 mb-5">
+        <div className="w-8 h-8 rounded-lg bg-[#1A2332] flex items-center justify-center">
+          <MessageCircle className="w-4 h-4 text-[#E8E3DB] opacity-70" />
+        </div>
+        <span className="text-sm font-bold text-[#E8E3DB] opacity-80 uppercase tracking-widest">
           Reflect
         </span>
       </div>
 
-      <div className="space-y-3">
+      {/* Prompts */}
+      <div className="space-y-4">
         {prompts.map((prompt, i) => (
           <div
             key={i}
-            className="p-4 rounded-lg bg-[#1A2332]/50 border border-[#2A3342]/50"
+            className="p-5 rounded-xl bg-[#0D1219] border border-[#1E2736]"
           >
-            <p className="text-[#E8E3DB] opacity-80 text-[0.95rem] leading-relaxed italic">
+            <p className="text-[#E8E3DB] text-base leading-relaxed italic">
               "{prompt}"
             </p>
           </div>
@@ -287,7 +316,6 @@ function ReflectionSection({ prompts, color }: { prompts: string[]; color: strin
 export function LessonViewer() {
   const currentPath = useCurrentPath();
   const currentLesson = useCurrentLesson();
-  const currentSectionIndex = useLearningStore((s) => s.currentSectionIndex);
   const isLessonCompleted = useLearningStore((s) => s.isLessonCompleted);
 
   if (!currentPath || !currentLesson) {
@@ -301,33 +329,41 @@ export function LessonViewer() {
     <div className="h-full flex flex-col">
       {/* Lesson header */}
       <div
-        className="px-6 py-6 border-b border-[#2A3342]/50 shrink-0"
+        className="px-6 py-6 border-b border-[#1E2736] shrink-0"
         style={{
-          background: `linear-gradient(180deg, ${accentColor}08 0%, transparent 100%)`,
+          background: `linear-gradient(180deg, ${accentColor}10 0%, transparent 100%)`,
         }}
       >
-        {/* Path and progress */}
-        <div className="flex items-center gap-2 text-xs mb-4">
-          <span className="font-medium" style={{ color: accentColor }}>{currentPath.title}</span>
-          <span className="text-[#E8E3DB] opacity-30">•</span>
-          <span className="text-[#E8E3DB] opacity-50">
+        {/* Path and progress badge */}
+        <div className="flex items-center gap-3 mb-5">
+          <span
+            className="px-3 py-1 rounded-full text-xs font-semibold"
+            style={{
+              backgroundColor: `${accentColor}20`,
+              color: accentColor,
+            }}
+          >
+            {currentPath.title}
+          </span>
+          <span className="text-[#E8E3DB] opacity-40 text-sm">•</span>
+          <span className="text-[#E8E3DB] opacity-50 text-sm">
             Lesson {currentLesson.order} of {currentPath.lessons.length}
           </span>
           {isCompleted && (
             <>
-              <span className="text-[#E8E3DB] opacity-30">•</span>
-              <span className="flex items-center gap-1 text-green-500 font-medium">
-                <CheckCircle2 className="w-3 h-3" />
-                Completed
+              <span className="text-[#E8E3DB] opacity-40 text-sm">•</span>
+              <span className="flex items-center gap-1.5 text-green-400 text-sm font-medium">
+                <CheckCircle2 className="w-3.5 h-3.5" />
+                Done
               </span>
             </>
           )}
         </div>
 
-        {/* Arabic title - larger and more prominent */}
+        {/* Arabic title */}
         {currentLesson.arabicTitle && (
           <p
-            className="text-2xl mb-2 opacity-50"
+            className="text-3xl mb-3 opacity-60"
             style={{ fontFamily: 'var(--font-arabic)', color: accentColor }}
             dir="rtl"
           >
@@ -337,21 +373,21 @@ export function LessonViewer() {
 
         {/* Lesson title */}
         <h2
-          className="text-2xl font-bold text-[#F5F0E8] mb-2"
-          style={{ fontFamily: 'var(--font-heading)' }}
+          className="text-2xl sm:text-3xl font-bold text-[#F5F0E8] mb-3"
+          style={{ fontFamily: 'var(--font-heading)', lineHeight: 1.3 }}
         >
           {currentLesson.title}
         </h2>
 
         {/* Objective */}
-        <p className="text-sm text-[#E8E3DB] opacity-60 leading-relaxed">
+        <p className="text-base text-[#E8E3DB] opacity-60 leading-relaxed">
           {currentLesson.objective}
         </p>
       </div>
 
       {/* Lesson content - scrollable */}
       <div className="flex-1 overflow-y-auto">
-        <div className="px-6 py-8">
+        <div className="px-5 py-8">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentLesson.id}
@@ -361,7 +397,12 @@ export function LessonViewer() {
             >
               {/* Sections */}
               {currentLesson.sections.map((section, index) => (
-                <SectionContent key={index} section={section} index={index} />
+                <SectionContent
+                  key={index}
+                  section={section}
+                  index={index}
+                  accentColor={accentColor}
+                />
               ))}
 
               {/* Takeaways */}
@@ -374,8 +415,8 @@ export function LessonViewer() {
                 <ReflectionSection prompts={currentLesson.reflectionPrompts} color={accentColor} />
               )}
 
-              {/* Bottom spacing for scroll */}
-              <div className="h-4" />
+              {/* Bottom spacing */}
+              <div className="h-8" />
             </motion.div>
           </AnimatePresence>
         </div>
