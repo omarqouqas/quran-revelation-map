@@ -1,0 +1,784 @@
+/**
+ * Enhanced Surah Data
+ * Detailed circumstances, themes with explanations, insights, and reflection prompts
+ */
+
+/** Theme with explanation */
+export interface SurahTheme {
+  title: string;
+  explanation: string;
+}
+
+/** Enhanced surah data structure */
+export interface EnhancedSurahData {
+  number: number;
+  circumstances: string; // Asbab al-Nuzul - 50-150 words
+  themes: SurahTheme[]; // 3-5 themes with explanations
+  insights: string[]; // 2-4 learning insights
+  reflectionPrompts: string[]; // 1-2 reflection questions
+  relatedSurahs?: number[]; // Related surah numbers
+}
+
+/** Enhanced data for pilot surahs */
+export const enhancedSurahData: Record<number, EnhancedSurahData> = {
+  // Surah 1: Al-Fatiha
+  1: {
+    number: 1,
+    circumstances:
+      "Al-Fatiha is unique among all surahs as the essential prayer recited in every unit of salah. Though revealed early in Makkah, scholars note it was revealed twice - once in Makkah and once in Madinah - emphasizing its paramount importance. It encapsulates the entire message of the Quran: praise of Allah, acknowledgment of His sovereignty, seeking guidance, and the straight path. The Prophet ﷺ called it 'the greatest surah in the Quran' and 'the Seven Oft-Repeated Verses.'",
+    themes: [
+      {
+        title: "Divine Praise",
+        explanation:
+          "Opens with praise of Allah as Lord of all worlds, establishing the proper relationship between Creator and creation.",
+      },
+      {
+        title: "Seeking Guidance",
+        explanation:
+          "The core supplication is for guidance to the straight path - the most essential human need.",
+      },
+      {
+        title: "The Three Groups",
+        explanation:
+          "Humanity is divided into those blessed, those who earned anger, and those astray - clarifying the consequences of choices.",
+      },
+      {
+        title: "Conversation with Allah",
+        explanation:
+          "The surah is a dialogue - when recited, Allah responds to each verse, making it uniquely interactive.",
+      },
+    ],
+    insights: [
+      "Every prayer begins with praise, not requests - teaching us gratitude precedes asking.",
+      "We ask for guidance multiple times daily, acknowledging our constant need for direction.",
+      "The path is described as 'straight' (sirat al-mustaqim) - singular and clear, not many confusing options.",
+    ],
+    reflectionPrompts: [
+      "When you recite Al-Fatiha in prayer, do you feel the conversation with Allah?",
+      "What does asking for guidance 17+ times daily reveal about our nature?",
+    ],
+    relatedSurahs: [2, 112],
+  },
+
+  // Surah 93: Ad-Duha (The Morning Light)
+  93: {
+    number: 93,
+    circumstances:
+      "Revealed after a painful pause in revelation that lasted several weeks or months. The Quraysh mocked the Prophet ﷺ, saying his Lord had abandoned him. His aunt or a neighbor reportedly taunted, 'Your devil has forsaken you.' This caused deep distress to the Prophet ﷺ. Then came this surah - a divine embrace reassuring him that Allah had not abandoned him and would never abandon him. It marks one of the most tender moments in Quranic revelation.",
+    themes: [
+      {
+        title: "Divine Comfort",
+        explanation:
+          "Allah reassures His beloved that silence is not abandonment - sometimes the pause itself is part of the plan.",
+      },
+      {
+        title: "Past Blessings as Proof",
+        explanation:
+          "Allah reminds the Prophet of his orphanhood, poverty, and confusion - all overcome through divine care.",
+      },
+      {
+        title: "The Ascending Future",
+        explanation:
+          "The Hereafter will be better than the present, and each stage of life will be better than the last.",
+      },
+      {
+        title: "Gratitude Through Action",
+        explanation:
+          "Remembering past blessings should translate into caring for orphans, helping the needy, and proclaiming Allah's favor.",
+      },
+    ],
+    insights: [
+      "Difficult periods are temporary tests, not signs of divine displeasure or abandonment.",
+      "Our past struggles, once overcome, become proof of Allah's continuous care.",
+      "Gratitude is expressed through action - caring for others as we were cared for.",
+      "The night (difficulty) always gives way to morning (relief) - this is Allah's pattern.",
+    ],
+    reflectionPrompts: [
+      "What past difficulties in your life now appear as hidden blessings?",
+      "How can you show gratitude for being guided by helping others find their way?",
+    ],
+    relatedSurahs: [94, 108],
+  },
+
+  // Surah 94: Ash-Sharh (The Expansion)
+  94: {
+    number: 94,
+    circumstances:
+      "Revealed immediately after or alongside Ad-Duha, continuing the same theme of divine comfort. Some scholars consider them essentially one surah. It references the 'expansion of the chest' - when the Prophet's chest was spiritually opened and purified, removing the burden of pre-Islamic confusion. This surah provides the famous principle 'With hardship comes ease' - repeated twice for emphasis, promising that relief is inherent within every difficulty.",
+    themes: [
+      {
+        title: "Spiritual Expansion",
+        explanation:
+          "Allah expanded the Prophet's heart for faith, wisdom, and resilience - a gift that enabled his mission.",
+      },
+      {
+        title: "Burden Lifted",
+        explanation:
+          "The weight of confusion and the burden of prophethood were made bearable through divine support.",
+      },
+      {
+        title: "Hardship Contains Ease",
+        explanation:
+          "The Arabic uses definite article for hardship (singular) but indefinite for ease - one hardship, multiple eases.",
+      },
+      {
+        title: "Active Gratitude",
+        explanation:
+          "When free from one task, engage in another good deed; always turn to Allah in devotion.",
+      },
+    ],
+    insights: [
+      "The same difficulty (al-usr) is mentioned twice, but ease (yusr) appears twice without 'the' - suggesting multiple eases for each hardship.",
+      "Spiritual capacity can be expanded - the heart that once found guidance heavy can be opened to embrace it.",
+      "Relief doesn't come after hardship ends, but within it - they coexist.",
+    ],
+    reflectionPrompts: [
+      "Can you identify the 'ease' that exists within your current challenges?",
+      "What burdens has Allah lifted from you that you may have forgotten?",
+    ],
+    relatedSurahs: [93, 73],
+  },
+
+  // Surah 96: Al-Alaq (The Clot)
+  96: {
+    number: 96,
+    circumstances:
+      "The first five verses are the very first Quranic revelation, received in the Cave of Hira during the month of Ramadan, 610 CE. The Prophet ﷺ, then 40 years old, was approached by Jibreel who commanded 'Read!' (Iqra'). The Prophet, unlettered, responded 'I cannot read.' After being embraced tightly three times, the angel recited these verses. The Prophet ﷺ descended trembling to Khadijah who comforted him with the famous words: 'Allah will never disgrace you.' The remaining verses were revealed later, addressing Abu Jahl's opposition.",
+    themes: [
+      {
+        title: "Knowledge Through Revelation",
+        explanation:
+          "The first command is 'Read/Recite' - establishing that Islam is built on knowledge, learning, and divine guidance.",
+      },
+      {
+        title: "Human Creation",
+        explanation:
+          "Humanity's humble origin from a clinging clot contrasts with our potential for knowledge and closeness to Allah.",
+      },
+      {
+        title: "The Pen's Honor",
+        explanation:
+          "Allah taught by the pen - writing and knowledge transmission are sacred acts in Islam.",
+      },
+      {
+        title: "Warning Against Arrogance",
+        explanation:
+          "The later verses warn against those who, seeing themselves as self-sufficient, oppose truth and obstruct worship.",
+      },
+    ],
+    insights: [
+      "The first revelation wasn't about law or ritual, but about learning - establishing Islam's intellectual foundation.",
+      "Being unlettered didn't disqualify the Prophet; Allah teaches whomever He wills.",
+      "Human arrogance stems from perceiving self-sufficiency, forgetting our complete dependence on Allah.",
+      "The command 'Iqra' continues - every Muslim is commanded to seek knowledge.",
+    ],
+    reflectionPrompts: [
+      "What does it mean that the first divine command was about reading and learning?",
+      "How does remembering your humble origins affect your relationship with knowledge?",
+    ],
+    relatedSurahs: [68, 73, 74],
+  },
+
+  // Surah 112: Al-Ikhlas (Sincerity/Purity)
+  112: {
+    number: 112,
+    circumstances:
+      "Revealed when the Quraysh polytheists and some Jewish scholars asked the Prophet to describe Allah: 'What is your Lord made of? Gold, silver, or what?' This surah came as the definitive answer - the purest statement of monotheism. The Prophet ﷺ said it equals one-third of the Quran in meaning, as the Quran's message revolves around Allah's nature, His commands, and the afterlife. This surah comprehensively addresses Allah's nature.",
+    themes: [
+      {
+        title: "Absolute Oneness",
+        explanation:
+          "Allah is One (Ahad) - not just numerically, but in His essence, attributes, and actions. Nothing compares.",
+      },
+      {
+        title: "Self-Sufficiency",
+        explanation:
+          "As-Samad means the one to whom all creation turns in need, while He needs nothing from anyone.",
+      },
+      {
+        title: "Beyond Reproduction",
+        explanation:
+          "Allah neither begets nor is begotten - rejecting both the pagan idea of divine offspring and any origin for Allah.",
+      },
+      {
+        title: "Absolute Uniqueness",
+        explanation:
+          "Nothing is comparable to Him - no analogy, no partner, no equal in any attribute.",
+      },
+    ],
+    insights: [
+      "Four verses capture the essence of divine reality more precisely than volumes of philosophy.",
+      "Every false belief about God is corrected: anthropomorphism, trinity, divine children, multiple gods.",
+      "Reciting this surah is beloved to Allah - a companion who recited it repeatedly was told 'Your love for it will enter you into Paradise.'",
+    ],
+    reflectionPrompts: [
+      "How does truly understanding Allah's oneness affect how you worship?",
+      "What modern forms of 'shirk' (associating partners) does this surah address?",
+    ],
+    relatedSurahs: [1, 113, 114],
+  },
+
+  // Surah 113: Al-Falaq (The Daybreak)
+  113: {
+    number: 113,
+    circumstances:
+      "Revealed alongside Al-Nas as the two protective surahs (Al-Mu'awwidhatan). According to authentic narrations, they were revealed when the Prophet ﷺ was afflicted by magic cast by Labid ibn A'sam, causing him distress. Jibreel came and taught him these surahs for protection. The Prophet ﷺ would recite them every night before sleep, blowing into his hands and wiping over his body. He commanded us to recite them, saying 'You will never recite anything like them.'",
+    themes: [
+      {
+        title: "Seeking Divine Refuge",
+        explanation:
+          "True protection comes only from Allah - we are taught to consciously seek His shelter from harm.",
+      },
+      {
+        title: "Darkness and Evil",
+        explanation:
+          "Night's darkness symbolizes times of vulnerability when evil intensifies - requiring heightened awareness.",
+      },
+      {
+        title: "Envy's Danger",
+        explanation:
+          "The envier's evil eye is real and dangerous enough to warrant divine protection - a reminder to guard our hearts.",
+      },
+      {
+        title: "Hidden Harms",
+        explanation:
+          "Magic and secret plots exist - protection comes through connection to Allah, not paranoia.",
+      },
+    ],
+    insights: [
+      "Acknowledging that evil exists and can harm us is not weakness but wisdom - leading us to the true Protector.",
+      "The Prophet ﷺ himself was affected by magic, showing that trials can reach anyone, but relief comes from Allah.",
+      "Regular recitation creates a spiritual shield - prophetic medicine for the soul.",
+    ],
+    reflectionPrompts: [
+      "What 'darkness' in your life requires you to seek Allah's protection more consciously?",
+      "How does knowing the Prophet ﷺ sought refuge affect your own practice of these surahs?",
+    ],
+    relatedSurahs: [112, 114],
+  },
+
+  // Surah 114: An-Nas (Mankind)
+  114: {
+    number: 114,
+    circumstances:
+      "The final surah in Quranic order, revealed alongside Al-Falaq for protection against evil. While Al-Falaq addresses external evils, An-Nas focuses on the internal threat - the whispering of Shaytan that enters the heart. The surah emphasizes Allah as Lord, King, and God of mankind, invoking His relationship with humanity three times before describing the lurking whisperer who retreats when Allah is remembered.",
+    themes: [
+      {
+        title: "Triple Divine Relationship",
+        explanation:
+          "Rabb (Lord/Nurturer), Malik (King/Sovereign), and Ilah (God) - three dimensions of Allah's relationship with us.",
+      },
+      {
+        title: "The Whispering Enemy",
+        explanation:
+          "Shaytan's method is subtle suggestion in the heart - not force, but insidious influence.",
+      },
+      {
+        title: "The Retreating Whisperer",
+        explanation:
+          "When we remember Allah, Shaytan retreats (khannas) - showing dhikr's protective power.",
+      },
+      {
+        title: "Jinn and Human Tempters",
+        explanation:
+          "Evil whispers come from both jinn (devils) and humans (bad companions, media, thoughts) - both require protection.",
+      },
+    ],
+    insights: [
+      "The Quran ends not with a statement but a prayer - our final lesson is to keep asking Allah for protection.",
+      "Shaytan cannot force us; he can only suggest. Our agency remains - we choose whether to listen.",
+      "The remedy is simple: remember Allah. When you do, the whisperer has no power.",
+      "Human 'shayateen' - people who tempt us to wrong - are as dangerous as jinn.",
+    ],
+    reflectionPrompts: [
+      "What recurring 'whispers' do you need to seek protection from?",
+      "How can you increase dhikr to make the whisperer retreat more often?",
+    ],
+    relatedSurahs: [112, 113],
+  },
+
+  // Surah 2: Al-Baqarah (The Cow)
+  2: {
+    number: 2,
+    circumstances:
+      "The longest surah, revealed gradually throughout the Madinan period over approximately eight years. It addresses the new Muslim community's needs: establishing laws, refuting arguments from Jewish tribes in Madinah, and providing comprehensive guidance for building a just society. Named after the story of the cow that the Israelites were commanded to sacrifice - a narrative illustrating excessive questioning and reluctance to obey. The final two verses were revealed during Mi'raj, the night journey.",
+    themes: [
+      {
+        title: "Guidance for the Mindful",
+        explanation:
+          "Opens declaring the Quran as guidance for the muttaqeen - those conscious of Allah and seeking direction.",
+      },
+      {
+        title: "Stories of Previous Nations",
+        explanation:
+          "Detailed accounts of Bani Israel serve as lessons - their mistakes warn us, their prophets inspire us.",
+      },
+      {
+        title: "Legal Foundations",
+        explanation:
+          "Fasting, Hajj, jihad, financial laws, marriage, divorce - the building blocks of Islamic society.",
+      },
+      {
+        title: "The Throne Verse",
+        explanation:
+          "Ayat al-Kursi (2:255) is the greatest verse in the Quran - a comprehensive statement of Allah's sovereignty.",
+      },
+    ],
+    insights: [
+      "The story of Adam establishes human potential for both error and repentance - we can return to Allah.",
+      "The cow story shows how simple commands become difficult when we complicate them with excessive questions.",
+      "Verse 286: 'Allah does not burden a soul beyond its capacity' - our tests are calibrated to our strength.",
+    ],
+    reflectionPrompts: [
+      "Do you ever complicate simple commands through excessive questioning?",
+      "How does knowing Allah tests within your capacity change your response to hardship?",
+    ],
+    relatedSurahs: [1, 3, 5],
+  },
+
+  // Surah 36: Ya-Sin
+  36: {
+    number: 36,
+    circumstances:
+      "A Makkan surah called 'the heart of the Quran' by the Prophet ﷺ who encouraged reciting it over those who are dying and for the deceased. It addresses the fundamental themes that the early Muslims faced: resurrection denial, prophetic rejection, and the evidence of Allah's power in creation. The powerful narrative of the man who came running from the city to support the messengers provides an inspiring model of faith.",
+    themes: [
+      {
+        title: "Prophetic Mission",
+        explanation:
+          "The Prophet ﷺ is confirmed as a messenger on a straight path - his role validated against deniers.",
+      },
+      {
+        title: "Resurrection Evidence",
+        explanation:
+          "Multiple signs in nature prove Allah's ability to resurrect: dead earth revived, day and night cycles, the ark of Nuh.",
+      },
+      {
+        title: "The Believing Man",
+        explanation:
+          "The unnamed man who defended the messengers and was martyred shows true faith means supporting truth regardless of cost.",
+      },
+      {
+        title: "Divine Creative Power",
+        explanation:
+          "'Be, and it is' (Kun fa-yakun) - Allah's command creates instantly; resurrection requires only His word.",
+      },
+    ],
+    insights: [
+      "The heart of the Quran addresses the heart's essential questions: Is this real? Will we return? Does my life matter?",
+      "The believing man wished his people knew of his reward - concern for others' guidance continues even after death.",
+      "Resurrection is easier for Allah than initial creation - yet we struggle to believe despite witnessing creation daily.",
+    ],
+    reflectionPrompts: [
+      "What 'dead' aspects of your spiritual life need the revival that Ya-Sin describes?",
+      "Like the man from the city, what truths do you need to support even if unpopular?",
+    ],
+    relatedSurahs: [67, 78],
+  },
+
+  // Surah 55: Ar-Rahman (The Most Merciful)
+  55: {
+    number: 55,
+    circumstances:
+      "A Makkan surah unique for its poetic repetition - 'Which of your Lord's favors will you deny?' appears 31 times, addressing both humans and jinn. It was one of the first surahs recited publicly when the Prophet ﷺ gathered both Quraysh and jinn at Ukaz fair. The jinn responded positively while many humans rejected. It catalogs Allah's countless blessings, overwhelming the listener with gratitude.",
+    themes: [
+      {
+        title: "The Divine Name Ar-Rahman",
+        explanation:
+          "Opens with Allah's most intimate name of mercy - setting the entire surah's tone of divine generosity.",
+      },
+      {
+        title: "Teaching the Quran",
+        explanation:
+          "The first blessing mentioned is teaching the Quran - establishing knowledge of revelation as the greatest gift.",
+      },
+      {
+        title: "Balance in Creation",
+        explanation:
+          "Justice and balance (mizan) pervade creation - from cosmic scales to marketplace transactions.",
+      },
+      {
+        title: "Gardens of Paradise",
+        explanation:
+          "Detailed descriptions of Paradise's rewards - a preview that makes this world's sacrifices worthwhile.",
+      },
+    ],
+    insights: [
+      "The repetition isn't redundancy but emphasis - like waves of blessing overwhelming denial.",
+      "Addressing humans and jinn together shows our shared accountability and shared capacity for blessing.",
+      "Beauty is mentioned as a blessing - aesthetics matter in Islam; Allah made things beautiful not just functional.",
+    ],
+    reflectionPrompts: [
+      "Of the blessings listed, which do you take most for granted?",
+      "How would your day change if you genuinely couldn't deny each of Allah's favors?",
+    ],
+    relatedSurahs: [56, 76],
+  },
+
+  // Surah 56: Al-Waqi'ah (The Event)
+  56: {
+    number: 56,
+    circumstances:
+      "A Makkan surah about the Day of Judgment, called 'The Event' because it will inevitably occur. The Prophet ﷺ said: 'Whoever recites Al-Waqi'ah every night will never be afflicted by poverty.' It divides humanity into three groups on that Day and provides vivid descriptions of each group's fate. The surah also challenges humans to reflect on their food, water, and fire - daily necessities they couldn't create.",
+    themes: [
+      {
+        title: "The Three Groups",
+        explanation:
+          "Humanity divides into: the foremost (sabiqun), companions of the right, and companions of the left - three distinct destinies.",
+      },
+      {
+        title: "Inevitable Reality",
+        explanation:
+          "The Event cannot be denied or delayed - calling it 'waqi'ah' (that which falls/happens) emphasizes certainty.",
+      },
+      {
+        title: "Signs in Sustenance",
+        explanation:
+          "Your crops, water, and fire - did you create them? Daily necessities prove your dependence on Allah.",
+      },
+      {
+        title: "The Quran's Honor",
+        explanation:
+          "The surah's end emphasizes the Quran's nobility - it should not be touched except by the purified.",
+      },
+    ],
+    insights: [
+      "The three groups aren't binary - there's a special elite (sabiqun) who go beyond mere 'good enough.'",
+      "Contemplating the origin of your food and drink is itself an act of worship and recognition.",
+      "The connection between this surah and provision (rizq) shows that worldly sustenance connects to eternal awareness.",
+    ],
+    reflectionPrompts: [
+      "Which of the three groups do you aspire to, and what distinguishes them?",
+      "When you eat and drink, do you remember you couldn't create these essentials?",
+    ],
+    relatedSurahs: [55, 78],
+  },
+
+  // Surah 67: Al-Mulk (The Dominion)
+  67: {
+    number: 67,
+    circumstances:
+      "A Makkan surah the Prophet ﷺ called 'the protector from the punishment of the grave.' He would recite it every night before sleeping and said: 'I wish it was in the heart of every believer.' Its 30 verses are easy to memorize, making this protection accessible. The surah challenges readers to find any flaw in creation and describes the stars as missiles against devils, addressing the Quraysh who used celestial navigation.",
+    themes: [
+      {
+        title: "Divine Sovereignty",
+        explanation:
+          "All dominion (mulk) belongs to Allah - He is capable of all things, including resurrection.",
+      },
+      {
+        title: "Death as Test",
+        explanation:
+          "Life and death were created to test which of us is best in deeds - quality over quantity.",
+      },
+      {
+        title: "Flawless Creation",
+        explanation:
+          "Look again and again at the sky - you'll find no inconsistency. Creation's perfection proves the Creator.",
+      },
+      {
+        title: "Warning to Deniers",
+        explanation:
+          "Hellfire awaits those who reject - they'll admit 'If only we had listened or used reason.'",
+      },
+    ],
+    insights: [
+      "We're tested not on how much we do, but how well - 'which of you is best in deed,' not 'most in deed.'",
+      "The surah intercedes in the grave - making nightly recitation a shield for one's most vulnerable moment.",
+      "Deniers will confess they didn't listen or reason - two faculties we must engage with revelation.",
+    ],
+    reflectionPrompts: [
+      "Are you focused on the quantity or quality of your deeds?",
+      "Have you made this surah's nightly recitation a habit for its promised protection?",
+    ],
+    relatedSurahs: [36, 78],
+  },
+
+  // Surah 18: Al-Kahf (The Cave)
+  18: {
+    number: 18,
+    circumstances:
+      "Revealed when the Quraysh, advised by Madinan Jews, tested the Prophet ﷺ with three questions: about young men who slept in a cave, a great traveler, and the soul. This surah answered two of them. The Prophet ﷺ prescribed reciting it every Friday, promising light between two Fridays. The first and last ten verses protect from Dajjal (the Antichrist). It contains four profound stories, each addressing different trials.",
+    themes: [
+      {
+        title: "Protection from Trials",
+        explanation:
+          "Four stories address four fitnahs: faith (youth), wealth (two gardens), knowledge (Musa and Khidr), power (Dhul-Qarnayn).",
+      },
+      {
+        title: "True Wealth",
+        explanation:
+          "The proud garden owner lost everything; his humble companion's 'What Allah wills' protected him from envy and loss.",
+      },
+      {
+        title: "Hidden Wisdom",
+        explanation:
+          "Khidr's actions seemed wrong until explained - teaching us that Allah's wisdom transcends our limited understanding.",
+      },
+      {
+        title: "Power with Righteousness",
+        explanation:
+          "Dhul-Qarnayn used his authority justly, refusing to oppress even when able - a model for ethical leadership.",
+      },
+    ],
+    insights: [
+      "The youth fled to a cave for faith - sometimes protecting religion requires physical withdrawal.",
+      "Saying 'Ma sha Allah' (what Allah wills) protects blessings from envy - including our own self-admiration.",
+      "Musa ﷺ, despite his prophethood, was sent to learn from another - we never stop being students.",
+      "The Dajjal connection suggests these four trials will intensify before the end times.",
+    ],
+    reflectionPrompts: [
+      "Which of the four trials (faith, wealth, knowledge, power) is most challenging for you?",
+      "When facing events you don't understand, can you trust Allah's hidden wisdom like Musa eventually did?",
+    ],
+    relatedSurahs: [17, 19],
+  },
+
+  // Surah 19: Maryam (Mary)
+  19: {
+    number: 19,
+    circumstances:
+      "Revealed in Makkah and notably recited by Ja'far ibn Abi Talib before the Negus of Abyssinia when Muslims sought asylum. When he reached the verses about Maryam and Isa, the Christian king wept, saying 'This and what Jesus brought come from the same source.' It led to his protection of the Muslim emigrants. The surah emphasizes mercy (rahma appears 16 times) and is named after the only woman to have a surah titled after her.",
+    themes: [
+      {
+        title: "Divine Mercy in Prophetic Families",
+        explanation:
+          "Stories of Zakariyya, Yahya, Maryam, Isa, and Ibrahim show mercy flowing through generations.",
+      },
+      {
+        title: "Miraculous Births",
+        explanation:
+          "Yahya to elderly parents, Isa to a virgin - Allah's power transcends natural law when He wills.",
+      },
+      {
+        title: "Honoring the Righteous",
+        explanation:
+          "Maryam is defended, Isa clarifies his mission from the cradle - Allah protects His servants' honor.",
+      },
+      {
+        title: "Warning Against False Claims",
+        explanation:
+          "Attributing a son to Allah nearly causes heavens to collapse - a warning against Christian theology of that era.",
+      },
+    ],
+    insights: [
+      "The only woman named in the Quran has an entire surah - her status transcends any cultural diminishment of women.",
+      "Isa spoke from the cradle to defend his mother - miracles serve to protect the innocent.",
+      "Zakariyya's persistence in dua despite old age teaches that age is no barrier to asking Allah.",
+    ],
+    reflectionPrompts: [
+      "How does Maryam's patience under accusation inspire your response to being misunderstood?",
+      "What 'impossible' duas have you stopped making because they seemed beyond hope?",
+    ],
+    relatedSurahs: [3, 18, 21],
+  },
+
+  // Surah 12: Yusuf (Joseph)
+  12: {
+    number: 12,
+    circumstances:
+      "Revealed during the 'Year of Sorrow' after the deaths of Khadijah and Abu Talib, when the Prophet ﷺ faced his darkest period. Allah sent the most consoling story: Yusuf ﷺ, who faced family betrayal, slavery, false accusation, imprisonment, yet emerged as Egypt's minister and forgave his brothers. It is the only surah that tells one complete story, and the Prophet ﷺ called it 'the best of stories' as the opening verse states.",
+    themes: [
+      {
+        title: "Beauty in Every Form",
+        explanation:
+          "Yusuf was given half of all beauty, but his spiritual beauty - patience, purity, and forgiveness - surpassed his physical.",
+      },
+      {
+        title: "Patience Through Trials",
+        explanation:
+          "The well, slavery, seduction, prison - each test was preparation for leadership and reunion.",
+      },
+      {
+        title: "Dreams and Divine Plan",
+        explanation:
+          "Yusuf's childhood dream was fulfilled decades later - Allah's promises unfold in His time.",
+      },
+      {
+        title: "Forgiveness Over Revenge",
+        explanation:
+          "When Yusuf had power, he chose mercy: 'No blame upon you today' - the pinnacle of noble character.",
+      },
+    ],
+    insights: [
+      "Revealed when the Prophet ﷺ lost everything, showing that after every loss, restoration awaits.",
+      "Ya'qub's 'beautiful patience' (sabr jameel) is patience without complaint - a different level of trust.",
+      "Yusuf's protection from Zuleikha wasn't removal from the situation but strength within it.",
+    ],
+    reflectionPrompts: [
+      "Which of Yusuf's many trials would be hardest for you? What quality would you need most?",
+      "When you have power over someone who wronged you, do you choose Yusuf's path of forgiveness?",
+    ],
+    relatedSurahs: [11, 38],
+  },
+
+  // Surah 103: Al-Asr (Time)
+  103: {
+    number: 103,
+    circumstances:
+      "A brief Makkan surah of only three verses, yet Imam Shafi'i said if only this surah was revealed, it would be sufficient guidance for humanity. The companions would not part ways without reciting it to each other. It diagnoses the human condition (loss) and prescribes four remedies: faith, good deeds, mutual encouragement to truth, and mutual encouragement to patience. Its brevity makes it memorizable; its depth makes it inexhaustible.",
+    themes: [
+      {
+        title: "Time as Witness",
+        explanation:
+          "Allah swears by time itself - the medium through which our test unfolds and our choices accumulate.",
+      },
+      {
+        title: "Universal Loss",
+        explanation:
+          "All humans are in loss - this is the default state. The exception requires active effort.",
+      },
+      {
+        title: "Four Conditions of Success",
+        explanation:
+          "Faith, righteous deeds, encouraging truth, encouraging patience - all four are necessary, none alone sufficient.",
+      },
+      {
+        title: "Community Obligation",
+        explanation:
+          "Two of the four conditions involve others - faith cannot be purely individual; we must help each other.",
+      },
+    ],
+    insights: [
+      "Time is passing whether we use it well or not - it's evidence against us unless we invest it properly.",
+      "The exception is grammatically structured as four AND conditions - missing one means loss.",
+      "Half the remedy is social: encouraging truth and patience requires community. Islam is not solitary.",
+    ],
+    reflectionPrompts: [
+      "Which of the four conditions do you most neglect?",
+      "Who in your life encourages you to truth and patience, and who do you encourage?",
+    ],
+    relatedSurahs: [95, 102],
+  },
+
+  // Surah 110: An-Nasr (The Victory)
+  110: {
+    number: 110,
+    circumstances:
+      "The last surah revealed in its entirety, coming during the Farewell Pilgrimage approximately 80 days before the Prophet's ﷺ death. Upon hearing it, Abu Bakr wept, understanding it announced the Prophet's mission was complete. The Prophet ﷺ himself said: 'An announcer of my death has come.' The surah instructs glorification and seeking forgiveness when victory comes - the response to success is not celebration but humility.",
+    themes: [
+      {
+        title: "Victory Belongs to Allah",
+        explanation:
+          "The help (nasr) is from Allah, not human effort alone - victory should increase gratitude, not pride.",
+      },
+      {
+        title: "Mass Conversion",
+        explanation:
+          "People enter Islam in crowds (afwaja) - the fruit of years of patient struggle becomes apparent.",
+      },
+      {
+        title: "Response to Success",
+        explanation:
+          "At victory's peak, glorify Allah and seek forgiveness - the opposite of worldly celebration.",
+      },
+      {
+        title: "Mission Completion",
+        explanation:
+          "The Prophet's ﷺ mission was complete with this revelation - a subtle announcement of his impending departure.",
+      },
+    ],
+    insights: [
+      "Success should trigger istighfar (seeking forgiveness), not pride - purifying us from any self-attribution.",
+      "Abu Bakr's tears at a 'victory' surah show his deep understanding - he heard what others missed.",
+      "The Prophet ﷺ increased his prayers after this surah, preparing for his return to Allah.",
+    ],
+    reflectionPrompts: [
+      "When you succeed, is your first instinct gratitude and humility or pride?",
+      "How does knowing this was the Prophet's final revelation affect how you receive it?",
+    ],
+    relatedSurahs: [48, 108],
+  },
+
+  // Surah 108: Al-Kawthar (Abundance)
+  108: {
+    number: 108,
+    circumstances:
+      "The shortest surah, revealed when the Prophet's ﷺ son passed away and the Quraysh mocked him as 'abtar' (cut off, without male descendants to continue his legacy). Allah responded with the ultimate consolation: Al-Kawthar, a river in Paradise, and the promise that the Prophet's legacy would outlast his enemies. Today, billions say his name in prayer while the mockers are forgotten - the prophecy fulfilled.",
+    themes: [
+      {
+        title: "Abundant Divine Compensation",
+        explanation:
+          "Whatever loss the Prophet ﷺ felt, Allah gave more - Al-Kawthar is infinite good in exchange for finite grief.",
+      },
+      {
+        title: "Response to Blessing",
+        explanation:
+          "Pray and sacrifice for your Lord - gratitude is expressed through devoted worship.",
+      },
+      {
+        title: "Enemies Forgotten",
+        explanation:
+          "'Your enemy is cut off' - history has proven this. The mockers are nameless; the Prophet ﷺ is immortal.",
+      },
+      {
+        title: "Comfort in Grief",
+        explanation:
+          "This surah was grief counseling - teaching that Allah compensates beyond measure.",
+      },
+    ],
+    insights: [
+      "Three verses transformed mockery into prophecy - the 'cut off' man has billions of followers.",
+      "Al-Kawthar's water is whiter than milk, sweeter than honey - those who drink will never thirst again.",
+      "When mocked or bereaved, remember: Allah's compensation makes every loss insignificant.",
+    ],
+    reflectionPrompts: [
+      "What 'Al-Kawthar' has Allah given you that outweighs your losses?",
+      "How does the fate of the Prophet's ﷺ mockers affect how you respond to those who mock your faith?",
+    ],
+    relatedSurahs: [93, 94, 110],
+  },
+
+  // Surah 68: Al-Qalam (The Pen)
+  68: {
+    number: 68,
+    circumstances:
+      "One of the earliest revelations, defending the Prophet ﷺ against accusations of madness. The Quraysh called him majnoon (possessed/mad) for his message. Allah swears by the pen - the instrument of knowledge and civilization - to refute them. The surah includes the story of the garden owners whose crops were destroyed for refusing to share, a warning to Makkan merchants who hoarded wealth.",
+    themes: [
+      {
+        title: "The Honor of Writing",
+        explanation:
+          "Allah swears by the pen and what is written - establishing the sacred nature of knowledge transmission.",
+      },
+      {
+        title: "Prophetic Character",
+        explanation:
+          "The Prophet ﷺ is on exalted character (khuluq adheem) - the greatest testimony to his person.",
+      },
+      {
+        title: "Greed's Consequences",
+        explanation:
+          "The garden story shows how refusing to share led to total loss - a warning about charitable neglect.",
+      },
+      {
+        title: "Patience Against Accusation",
+        explanation:
+          "Don't obey every worthless oath-maker, slanderer, or hinderer of good - be patient, like Yunus was commanded.",
+      },
+    ],
+    insights: [
+      "'You are on exalted character' - this single verse is the Prophet's ﷺ eternal character reference.",
+      "The pen's honor establishes that Islam values literacy, scholarship, and preserved knowledge.",
+      "Jonah (Yunus) is mentioned as a warning - don't leave your post in frustration as he initially did.",
+    ],
+    reflectionPrompts: [
+      "How does the Prophet's ﷺ character being praised by Allah shape how you study his life?",
+      "What wealth do you withhold that, like the garden, might be taken if not shared?",
+    ],
+    relatedSurahs: [96, 73],
+  },
+};
+
+/**
+ * Get enhanced data for a surah
+ */
+export function getEnhancedSurahData(
+  surahNumber: number
+): EnhancedSurahData | undefined {
+  return enhancedSurahData[surahNumber];
+}
+
+/**
+ * Check if enhanced data exists for a surah
+ */
+export function hasEnhancedSurahData(surahNumber: number): boolean {
+  return surahNumber in enhancedSurahData;
+}
