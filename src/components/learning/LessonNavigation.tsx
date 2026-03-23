@@ -15,11 +15,7 @@ import {
   useIsLastLesson,
 } from '@/stores/useLearningStore';
 
-interface LessonNavigationProps {
-  onShowOutline?: () => void;
-}
-
-export function LessonNavigation({ onShowOutline }: LessonNavigationProps) {
+export function LessonNavigation() {
   const currentPath = useCurrentPath();
   const currentLesson = useCurrentLesson();
   const isFirstLesson = useIsFirstLesson();

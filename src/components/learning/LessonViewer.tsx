@@ -6,12 +6,12 @@
  */
 
 import { motion, AnimatePresence } from 'framer-motion';
-import { BookOpen, Lightbulb, Quote, History, CheckCircle2, MessageCircle, Sparkles } from 'lucide-react';
-import { Lesson, LessonSection, LessonSectionType } from '@/data/learning-paths';
+import { Lightbulb, Quote, History, CheckCircle2, MessageCircle, Sparkles } from 'lucide-react';
+import { LessonSection } from '@/data/learning-paths';
 import { useLearningStore, useCurrentLesson, useCurrentPath } from '@/stores/useLearningStore';
 
 /** Render a single section */
-function SectionContent({ section, index, accentColor }: { section: LessonSection; index: number; accentColor: string }) {
+function SectionContent({ section, index }: { section: LessonSection; index: number }) {
   // Narrative sections - clean card with title
   if (section.type === 'narrative') {
     return (
@@ -173,7 +173,7 @@ function SectionContent({ section, index, accentColor }: { section: LessonSectio
               className="absolute -left-1 -top-3 text-6xl font-serif select-none opacity-15"
               style={{ color, fontFamily: 'Georgia, serif', lineHeight: 1 }}
             >
-              "
+              &ldquo;
             </div>
 
             <p className="text-[#F5F0E8] text-lg leading-[2] italic pl-6 pr-4">
@@ -184,7 +184,7 @@ function SectionContent({ section, index, accentColor }: { section: LessonSectio
               className="absolute -right-1 -bottom-6 text-6xl font-serif select-none opacity-15"
               style={{ color, fontFamily: 'Georgia, serif', lineHeight: 1 }}
             >
-              "
+              &rdquo;
             </div>
           </div>
 
@@ -278,7 +278,7 @@ function TakeawaysSection({ takeaways, color }: { takeaways: string[]; color: st
 }
 
 /** Reflection prompts section */
-function ReflectionSection({ prompts, color }: { prompts: string[]; color: string }) {
+function ReflectionSection({ prompts }: { prompts: string[] }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 15 }}
@@ -304,7 +304,7 @@ function ReflectionSection({ prompts, color }: { prompts: string[]; color: strin
             className="p-5 rounded-xl bg-[#0D1219] border border-[#1E2736]"
           >
             <p className="text-[#E8E3DB] text-base leading-relaxed italic">
-              "{prompt}"
+              &ldquo;{prompt}&rdquo;
             </p>
           </div>
         ))}
@@ -401,7 +401,6 @@ export function LessonViewer() {
                   key={index}
                   section={section}
                   index={index}
-                  accentColor={accentColor}
                 />
               ))}
 
@@ -412,7 +411,7 @@ export function LessonViewer() {
 
               {/* Reflection prompts */}
               {currentLesson.reflectionPrompts && currentLesson.reflectionPrompts.length > 0 && (
-                <ReflectionSection prompts={currentLesson.reflectionPrompts} color={accentColor} />
+                <ReflectionSection prompts={currentLesson.reflectionPrompts} />
               )}
 
               {/* Bottom spacing */}

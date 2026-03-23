@@ -7,7 +7,7 @@
 
 import { useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, BookOpen, GraduationCap } from 'lucide-react';
+import { X, GraduationCap } from 'lucide-react';
 import { useLearningStore, useCurrentPath, useCurrentLesson } from '@/stores/useLearningStore';
 import { useMapStore } from '@/stores/useMapStore';
 import { LessonViewer } from './LessonViewer';
@@ -18,8 +18,6 @@ export function LearningMode() {
   const currentPath = useCurrentPath();
   const currentLesson = useCurrentLesson();
   const exitLearning = useLearningStore((s) => s.exitLearning);
-  const learningLocation = useLearningStore((s) => s.learningLocation);
-  const highlightedSurahs = useLearningStore((s) => s.highlightedSurahs);
 
   // Map store actions for syncing
   const setCurrentYear = useMapStore((s) => s.setCurrentYear);
