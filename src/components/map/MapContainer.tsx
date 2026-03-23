@@ -10,6 +10,7 @@ import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { useMapStore } from '@/stores/useMapStore';
 import { useStoryStore } from '@/stores/useStoryStore';
+import { useLearningStore } from '@/stores/useLearningStore';
 import { getAllCompleteSurahs, type CompleteSurahData } from '@/data/surah-locations';
 import { events, type HistoricalEvent } from '@/data/events';
 import { SACRED_SITES, SACRED_SITE_STYLES, type SacredSite } from '@/data/sacred-sites';
@@ -166,6 +167,10 @@ export function MapContainer() {
   // Story mode location for flyTo
   const storyLocation = useStoryStore((state) => state.storyLocation);
   const isStoryMode = useStoryStore((state) => state.isStoryMode);
+
+  // Learning mode location for flyTo
+  const learningLocation = useLearningStore((state) => state.learningLocation);
+  const isLearningMode = useLearningStore((state) => state.isLearningMode);
 
   // Get all surahs once
   const allSurahs = useRef(getAllCompleteSurahs());
@@ -632,6 +637,19 @@ export function MapContainer() {
       easing: (t) => t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2, // easeInOutQuad
     });
   }, [storyLocation, mapLoaded, isStoryMode]);
+
+  /** Fly to location during learning mode */
+  useEffect(() => {
+    if (!map.current || !mapLoaded || !isLearningMode || !learningLocation) return;
+
+    map.current.flyTo({
+      center: [learningLocation.lng, learningLocation.lat],
+      zoom: learningLocation.zoom,
+      duration: 1500,
+      essential: true,
+      easing: (t) => t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2, // easeInOutQuad
+    });
+  }, [learningLocation, mapLoaded, isLearningMode]);
 
   return (
     <div

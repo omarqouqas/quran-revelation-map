@@ -8,7 +8,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, Sparkles, Keyboard, ArrowLeftRight, Film, User } from 'lucide-react';
+import { Search, Sparkles, Keyboard, ArrowLeftRight, Film, User, BookOpen } from 'lucide-react';
 import { VideoBackground } from '@/components/map/VideoBackground';
 import { MapContainer } from '@/components/map/MapContainer';
 import { TimelineSlider } from '@/components/timeline/TimelineSlider';
@@ -21,9 +21,11 @@ import { OrderComparisonModal } from '@/components/layout/OrderComparisonModal';
 import { AgeExplorerModal } from '@/components/layout/AgeExplorerModal';
 import { SurahExplorer } from '@/components/explorer';
 import { StoryMode, JourneySelector } from '@/components/story';
+import { LearningMode, PathSelector } from '@/components/learning';
 import { useExplorerStore } from '@/stores/useExplorerStore';
 import { useMapStore } from '@/stores/useMapStore';
 import { useStoryStore } from '@/stores/useStoryStore';
+import { useLearningStore } from '@/stores/useLearningStore';
 import { useSurahRouting } from '@/hooks/useSurahRouting';
 import { useKeyboardShortcuts } from '@/hooks/useKeyboardShortcuts';
 
@@ -57,6 +59,12 @@ export function QuranMapApp({ initialSurahNumber }: QuranMapAppProps) {
   const openJourneySelector = useStoryStore((state) => state.openJourneySelector);
   const closeJourneySelector = useStoryStore((state) => state.closeJourneySelector);
 
+  // Learning mode state
+  const isLearningMode = useLearningStore((state) => state.isLearningMode);
+  const isPathSelectorOpen = useLearningStore((state) => state.isPathSelectorOpen);
+  const openPathSelector = useLearningStore((state) => state.openPathSelector);
+  const closePathSelector = useLearningStore((state) => state.closePathSelector);
+
   return (
     <main className="relative h-screen w-screen overflow-hidden bg-[#0A0F1A]">
       {/* Ambient video/gradient background */}
@@ -65,8 +73,8 @@ export function QuranMapApp({ initialSurahNumber }: QuranMapAppProps) {
       {/* Map */}
       <MapContainer />
 
-      {/* Header - pointer-events-none so clicks pass through to map (hidden in story mode and before interaction) */}
-      {!isStoryMode && hasInteracted && (
+      {/* Header - pointer-events-none so clicks pass through to map (hidden in story/learning mode and before interaction) */}
+      {!isStoryMode && !isLearningMode && hasInteracted && (
         <div className="absolute top-0 left-0 right-0 z-[60] pointer-events-none">
           {/* Title bar */}
           <div className="flex items-center justify-center py-4 px-6">
@@ -104,9 +112,9 @@ export function QuranMapApp({ initialSurahNumber }: QuranMapAppProps) {
         </div>
       )}
 
-      {/* Legend - positioned below map controls (hidden in story mode and before interaction) */}
+      {/* Legend - positioned below map controls (hidden in story/learning mode and before interaction) */}
       <AnimatePresence>
-        {!isStoryMode && hasInteracted && (
+        {!isStoryMode && !isLearningMode && hasInteracted && (
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -155,6 +163,15 @@ export function QuranMapApp({ initialSurahNumber }: QuranMapAppProps) {
               <span className="text-[#E8E3DB]">Journeys</span>
             </button>
             <button
+              onClick={openPathSelector}
+              style={{ pointerEvents: 'auto' }}
+              className="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity"
+              title="Structured learning paths"
+            >
+              <BookOpen className="w-3.5 h-3.5 text-[#2EC4B6]" />
+              <span className="text-[#E8E3DB]">Learn</span>
+            </button>
+            <button
               onClick={() => setShowAgeExplorer(true)}
               style={{ pointerEvents: 'auto' }}
               className="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity"
@@ -177,8 +194,8 @@ export function QuranMapApp({ initialSurahNumber }: QuranMapAppProps) {
         )}
       </AnimatePresence>
 
-      {/* Timeline panel (hidden in story mode) */}
-      {!isStoryMode && (
+      {/* Timeline panel (hidden in story/learning mode) */}
+      {!isStoryMode && !isLearningMode && (
         <div className="absolute bottom-0 left-0 right-0 z-20">
           <div
             className="mx-auto max-w-3xl"
@@ -191,17 +208,17 @@ export function QuranMapApp({ initialSurahNumber }: QuranMapAppProps) {
         </div>
       )}
 
-      {/* Surah detail panel (hidden in story mode) */}
-      {!isStoryMode && <SurahDetailPanel />}
+      {/* Surah detail panel (hidden in story/learning mode) */}
+      {!isStoryMode && !isLearningMode && <SurahDetailPanel />}
 
-      {/* Event detail modal (hidden in story mode) */}
-      {!isStoryMode && <EventDetailModal />}
+      {/* Event detail modal (hidden in story/learning mode) */}
+      {!isStoryMode && !isLearningMode && <EventDetailModal />}
 
-      {/* Sacred site detail modal (hidden in story mode) */}
-      {!isStoryMode && <SacredSiteModal />}
+      {/* Sacred site detail modal (hidden in story/learning mode) */}
+      {!isStoryMode && !isLearningMode && <SacredSiteModal />}
 
-      {/* Surah explorer panel (hidden in story mode) */}
-      {!isStoryMode && <SurahExplorer />}
+      {/* Surah explorer panel (hidden in story/learning mode) */}
+      {!isStoryMode && !isLearningMode && <SurahExplorer />}
 
       {/* Landing overlay (shows until first interaction) */}
       <LandingOverlay />
@@ -231,6 +248,15 @@ export function QuranMapApp({ initialSurahNumber }: QuranMapAppProps) {
       <AgeExplorerModal
         isOpen={showAgeExplorer}
         onClose={() => setShowAgeExplorer(false)}
+      />
+
+      {/* Learning mode panel */}
+      {isLearningMode && <LearningMode />}
+
+      {/* Learning path selector modal */}
+      <PathSelector
+        isOpen={isPathSelectorOpen}
+        onClose={closePathSelector}
       />
     </main>
   );
