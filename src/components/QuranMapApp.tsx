@@ -8,7 +8,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, Sparkles, Keyboard, ArrowLeftRight, Film } from 'lucide-react';
+import { Search, Sparkles, Keyboard, ArrowLeftRight, Film, User } from 'lucide-react';
 import { VideoBackground } from '@/components/map/VideoBackground';
 import { MapContainer } from '@/components/map/MapContainer';
 import { TimelineSlider } from '@/components/timeline/TimelineSlider';
@@ -18,6 +18,7 @@ import { SacredSiteModal } from '@/components/layout/SacredSiteModal';
 import { LandingOverlay } from '@/components/layout/LandingOverlay';
 import { KeyboardShortcutsModal } from '@/components/layout/KeyboardShortcutsModal';
 import { OrderComparisonModal } from '@/components/layout/OrderComparisonModal';
+import { AgeExplorerModal } from '@/components/layout/AgeExplorerModal';
 import { SurahExplorer } from '@/components/explorer';
 import { StoryMode, JourneySelector } from '@/components/story';
 import { useExplorerStore } from '@/stores/useExplorerStore';
@@ -34,6 +35,7 @@ interface QuranMapAppProps {
 export function QuranMapApp({ initialSurahNumber }: QuranMapAppProps) {
   const [showShortcutsHelp, setShowShortcutsHelp] = useState(false);
   const [showOrderComparison, setShowOrderComparison] = useState(false);
+  const [showAgeExplorer, setShowAgeExplorer] = useState(false);
 
   // Sync URL with surah selection
   useSurahRouting({ initialSurahNumber });
@@ -152,6 +154,15 @@ export function QuranMapApp({ initialSurahNumber }: QuranMapAppProps) {
               <Film className="w-3.5 h-3.5 text-[#C8A84E]" />
               <span className="text-[#E8E3DB]">Journeys</span>
             </button>
+            <button
+              onClick={() => setShowAgeExplorer(true)}
+              style={{ pointerEvents: 'auto' }}
+              className="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity"
+              title="Explore revelation at your age"
+            >
+              <User className="w-3.5 h-3.5 text-[#C8A84E]" />
+              <span className="text-[#E8E3DB]">Your Age</span>
+            </button>
             <div className="border-t border-[#2A3342] my-1" />
             <button
               onClick={() => setShowShortcutsHelp(true)}
@@ -214,6 +225,12 @@ export function QuranMapApp({ initialSurahNumber }: QuranMapAppProps) {
       <JourneySelector
         isOpen={isJourneySelectorOpen}
         onClose={closeJourneySelector}
+      />
+
+      {/* Age explorer modal */}
+      <AgeExplorerModal
+        isOpen={showAgeExplorer}
+        onClose={() => setShowAgeExplorer(false)}
       />
     </main>
   );

@@ -124,17 +124,27 @@ function seededRandom(seed: number): number {
   return x - Math.floor(x);
 }
 
-/** Floating particle component for atmospheric effect */
-function FloatingParticles({ color, count = 20 }: { color: string; count?: number }) {
+/** Sand/dust particle component with wind drift effect */
+function DustParticles({ phase }: { phase: TimePhase }) {
+  // More particles at dawn/dusk for atmospheric effect
+  const count = phase === 'dawn' || phase === 'dusk' ? 45 : phase === 'midday' ? 20 : 30;
+
+  // Phase-aware dust colors
+  const dustColor = phase === 'dawn' ? 'rgba(212, 168, 78, 0.6)' :
+                    phase === 'dusk' ? 'rgba(200, 148, 110, 0.5)' :
+                    phase === 'afternoon' ? 'rgba(220, 180, 120, 0.4)' :
+                    'rgba(232, 227, 219, 0.3)';
+
   // Generate particles with seeded random for deterministic values
   const particles = useMemo(() => {
     return Array.from({ length: count }, (_, i) => ({
       id: i,
-      left: `${seededRandom(i * 3 + 1) * 100}%`,
+      left: `${seededRandom(i * 3 + 1) * 120 - 10}%`, // Start slightly off-screen
       top: `${seededRandom(i * 3 + 2) * 100}%`,
-      size: 2 + seededRandom(i * 3 + 3) * 4,
-      duration: 15 + seededRandom(i * 5 + 1) * 20,
-      delay: seededRandom(i * 5 + 2) * 10,
+      size: 1 + seededRandom(i * 3 + 3) * 3, // 1-4px variety
+      duration: 20 + seededRandom(i * 5 + 1) * 25, // 20-45s
+      delay: seededRandom(i * 5 + 2) * 15,
+      opacity: 0.3 + seededRandom(i * 5 + 3) * 0.5, // Vary opacity
     }));
   }, [count]);
 
@@ -143,16 +153,69 @@ function FloatingParticles({ color, count = 20 }: { color: string; count?: numbe
       {particles.map((p) => (
         <div
           key={p.id}
-          className="absolute rounded-full animate-float"
+          className="absolute rounded-full animate-dust-drift"
           suppressHydrationWarning
           style={{
             left: p.left,
             top: p.top,
             width: p.size,
             height: p.size,
-            backgroundColor: color,
+            backgroundColor: dustColor,
             animationDuration: `${p.duration}s`,
             animationDelay: `${p.delay}s`,
+            opacity: p.opacity,
+          }}
+        />
+      ))}
+    </div>
+  );
+}
+
+/** Light rays (god rays) component for dawn/dusk phases */
+function LightRays({ phase }: { phase: TimePhase }) {
+  const isVisible = phase === 'dawn' || phase === 'dusk';
+
+  // Different colors for dawn vs dusk
+  const rayColor = phase === 'dawn'
+    ? 'rgba(255, 200, 100, 0.12)'
+    : 'rgba(255, 150, 80, 0.10)';
+
+  const rayHighlight = phase === 'dawn'
+    ? 'rgba(255, 220, 150, 0.08)'
+    : 'rgba(255, 120, 80, 0.06)';
+
+  // Generate rays with seeded random for deterministic positioning
+  const rays = useMemo(() => {
+    return Array.from({ length: 5 }, (_, i) => ({
+      id: i,
+      left: 10 + seededRandom(i * 11 + 200) * 80, // 10-90% spread
+      width: 60 + seededRandom(i * 11 + 201) * 100, // 60-160px width
+      rotation: -15 + seededRandom(i * 11 + 202) * 30, // -15 to 15 degrees
+      delay: seededRandom(i * 11 + 203) * 2, // Stagger animations
+      height: 50 + seededRandom(i * 11 + 204) * 30, // 50-80% height
+    }));
+  }, []);
+
+  return (
+    <div
+      className={`absolute inset-0 overflow-hidden pointer-events-none transition-opacity duration-[2000ms] ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+      suppressHydrationWarning
+    >
+      {rays.map((ray) => (
+        <div
+          key={ray.id}
+          className="absolute top-0 animate-ray"
+          suppressHydrationWarning
+          style={{
+            left: `${ray.left}%`,
+            width: ray.width,
+            height: `${ray.height}%`,
+            background: `linear-gradient(180deg, ${rayHighlight} 0%, ${rayColor} 30%, transparent 100%)`,
+            transform: `rotate(${ray.rotation}deg)`,
+            transformOrigin: 'top center',
+            animationDelay: `${ray.delay}s`,
+            filter: 'blur(20px)',
+            mixBlendMode: 'screen',
           }}
         />
       ))}
@@ -221,8 +284,11 @@ export function VideoBackground() {
         }}
       />
 
-      {/* Floating dust/light particles */}
-      <FloatingParticles color={config.particleColor} count={30} />
+      {/* Sand/dust particles with wind drift */}
+      <DustParticles phase={phase} />
+
+      {/* Light rays (god rays) for dawn/dusk */}
+      <LightRays phase={phase} />
 
       {/* Stars overlay for dawn/dusk */}
       {(phase === 'dawn' || phase === 'dusk') && (

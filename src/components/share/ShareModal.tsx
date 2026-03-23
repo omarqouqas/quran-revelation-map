@@ -13,6 +13,7 @@ import { SurahShareCard } from './SurahShareCard';
 import { JourneyShareCard } from './JourneyShareCard';
 import { EventShareCard } from './EventShareCard';
 import { SacredSiteShareCard } from './SacredSiteShareCard';
+import { AgeShareCard } from './AgeShareCard';
 import { CompleteSurahData } from '@/data/surah-locations';
 import { Journey } from '@/data/journeys';
 import { HistoricalEvent } from '@/data/events';
@@ -22,7 +23,8 @@ type ShareContent =
   | { type: 'surah'; surah: CompleteSurahData }
   | { type: 'journey'; journey: Journey }
   | { type: 'event'; event: HistoricalEvent }
-  | { type: 'site'; site: SacredSite };
+  | { type: 'site'; site: SacredSite }
+  | { type: 'age'; age: number; year: number; lifeStage: { title: string; description: string }; events: HistoricalEvent[]; surahs: CompleteSurahData[] };
 
 interface ShareModalProps {
   isOpen: boolean;
@@ -50,6 +52,9 @@ export function ShareModal({ isOpen, onClose, content }: ShareModalProps) {
     }
     if (content.type === 'site') {
       return SACRED_SITE_STYLES[content.site.category].color;
+    }
+    if (content.type === 'age') {
+      return content.year >= 622 ? '#2EC4B6' : '#C8A84E';
     }
     // Event - determine color from event category
     const id = content.event.id;
@@ -79,6 +84,8 @@ export function ShareModal({ isOpen, onClose, content }: ShareModalProps) {
       filename = `journey-${content.journey.id}`;
     } else if (content.type === 'site') {
       filename = `site-${content.site.name.toLowerCase().replace(/\s+/g, '-')}`;
+    } else if (content.type === 'age') {
+      filename = `at-age-${content.age}-revelation`;
     } else {
       filename = `event-${content.event.id}`;
     }
@@ -130,6 +137,11 @@ export function ShareModal({ isOpen, onClose, content }: ShareModalProps) {
         title: content.site.name,
         text: `Exploring ${content.site.name} (${content.site.arabicName}) - ${content.site.description}`,
       };
+    } else if (content.type === 'age') {
+      shareData = {
+        title: `At Age ${content.age}`,
+        text: `At age ${content.age}, the Prophet Muhammad (peace be upon him) was experiencing: ${content.lifeStage.title}. Explore the Quran revelations through time!`,
+      };
     } else {
       shareData = {
         title: content.event.name,
@@ -150,6 +162,8 @@ export function ShareModal({ isOpen, onClose, content }: ShareModalProps) {
     ? `Share ${content.journey.title}`
     : content.type === 'site'
     ? `Share ${content.site.name}`
+    : content.type === 'age'
+    ? `Share "At Age ${content.age}"`
     : `Share ${content.event.name}`;
 
   return (
@@ -206,6 +220,15 @@ export function ShareModal({ isOpen, onClose, content }: ShareModalProps) {
                     <JourneyShareCard ref={cardRef} journey={content.journey} />
                   ) : content.type === 'site' ? (
                     <SacredSiteShareCard ref={cardRef} site={content.site} />
+                  ) : content.type === 'age' ? (
+                    <AgeShareCard
+                      ref={cardRef}
+                      age={content.age}
+                      year={content.year}
+                      lifeStage={content.lifeStage}
+                      events={content.events}
+                      surahs={content.surahs}
+                    />
                   ) : (
                     <EventShareCard ref={cardRef} event={content.event} />
                   )}

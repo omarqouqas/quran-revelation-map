@@ -337,6 +337,15 @@ export function getSurahsByYear(year: number): CompleteSurahData[] {
 }
 
 /**
+ * Get surahs revealed around a specific year (within ±1 year range)
+ */
+export function getSurahsAroundYear(year: number): CompleteSurahData[] {
+  return getAllCompleteSurahs().filter(
+    (s) => s.approximateYear >= year - 1 && s.approximateYear <= year + 1
+  );
+}
+
+/**
  * Get surahs sorted by revelation order
  */
 export function getSurahsByRevelationOrder(): CompleteSurahData[] {

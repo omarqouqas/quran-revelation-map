@@ -19,6 +19,8 @@ interface MapState {
   selectedEventId: string | null;
   /** Currently selected sacred site name for detail view */
   selectedSiteName: string | null;
+  /** Surah numbers to highlight on the map (e.g., related to selected event) */
+  highlightedSurahNumbers: number[];
   /** Show Makki surahs filter */
   showMakki: boolean;
   /** Show Madani surahs filter */
@@ -37,6 +39,7 @@ interface MapActions {
   hoverSurah: (surahNumber: number | null) => void;
   selectEvent: (eventId: string | null) => void;
   selectSite: (siteName: string | null) => void;
+  setHighlightedSurahs: (surahNumbers: number[]) => void;
   setShowMakki: (show: boolean) => void;
   setShowMadani: (show: boolean) => void;
   setShowEvents: (show: boolean) => void;
@@ -54,6 +57,7 @@ const initialState: MapState = {
   hoveredSurahNumber: null,
   selectedEventId: null,
   selectedSiteName: null,
+  highlightedSurahNumbers: [],
   showMakki: true,
   showMadani: true,
   showEvents: true,
@@ -92,6 +96,10 @@ export const useMapStore = create<MapStore>((set) => ({
 
   selectSite: (siteName: string | null) => {
     set({ selectedSiteName: siteName });
+  },
+
+  setHighlightedSurahs: (surahNumbers: number[]) => {
+    set({ highlightedSurahNumbers: surahNumbers });
   },
 
   setShowMakki: (show: boolean) => {

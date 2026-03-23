@@ -6,10 +6,11 @@
 
 import { useEffect, useCallback, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Calendar, MapPin, BookOpen, Swords, Plane, Star, FileText, Milestone, Share2 } from 'lucide-react';
+import { X, Calendar, MapPin, BookOpen, Swords, Plane, Star, FileText, Milestone, Share2, Sparkles } from 'lucide-react';
 import { useMapStore } from '@/stores/useMapStore';
 import { getEventById, type HistoricalEvent } from '@/data/events';
 import { getSurahByNumber } from '@/lib/quran-data';
+import { getCompleteSurahData } from '@/data/surah-locations';
 import { ShareModal } from '@/components/share/ShareModal';
 
 /** Get icon for event category */
@@ -53,14 +54,26 @@ export function EventDetailModal() {
   const selectEvent = useMapStore((state) => state.selectEvent);
   const selectSurah = useMapStore((state) => state.selectSurah);
   const setCurrentYear = useMapStore((state) => state.setCurrentYear);
+  const setHighlightedSurahs = useMapStore((state) => state.setHighlightedSurahs);
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
 
   const event = selectedEventId ? getEventById(selectedEventId) : null;
 
+  // Highlight related surahs on the map when event is selected
+  useEffect(() => {
+    if (event && event.relatedSurahNumbers.length > 0) {
+      setHighlightedSurahs(event.relatedSurahNumbers);
+    }
+    return () => {
+      setHighlightedSurahs([]);
+    };
+  }, [event, setHighlightedSurahs]);
+
   // Close on Escape key
   const handleClose = useCallback(() => {
+    setHighlightedSurahs([]);
     selectEvent(null);
-  }, [selectEvent]);
+  }, [selectEvent, setHighlightedSurahs]);
 
   useEffect(() => {
     if (!selectedEventId) return;
@@ -279,29 +292,73 @@ export function EventDetailModal() {
                 {event.description}
               </p>
 
-              {/* Related Surahs */}
+              {/* Related Surahs - Enhanced with context */}
               {event.relatedSurahNumbers.length > 0 && (
                 <div>
-                  <h3
+                  {/* Section header with context hint */}
+                  <div
                     style={{
                       display: 'flex',
                       alignItems: 'center',
-                      gap: '8px',
-                      fontSize: '14px',
-                      fontWeight: 600,
-                      color: '#9CA3AF',
+                      justifyContent: 'space-between',
                       marginBottom: '12px',
-                      textTransform: 'uppercase',
-                      letterSpacing: '0.05em',
                     }}
                   >
-                    <BookOpen style={{ width: '16px', height: '16px' }} />
-                    Related Surahs
-                  </h3>
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                    <h3
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '8px',
+                        fontSize: '14px',
+                        fontWeight: 600,
+                        color: '#9CA3AF',
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.05em',
+                      }}
+                    >
+                      <BookOpen style={{ width: '16px', height: '16px' }} />
+                      Revelation Context
+                    </h3>
+                    <div
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '4px',
+                        fontSize: '11px',
+                        color: category.color,
+                        opacity: 0.8,
+                      }}
+                    >
+                      <Sparkles style={{ width: '12px', height: '12px' }} />
+                      Pulsing on map
+                    </div>
+                  </div>
+
+                  {/* Context explanation */}
+                  <div
+                    style={{
+                      padding: '12px 14px',
+                      borderRadius: '10px',
+                      backgroundColor: `${category.bg}`,
+                      border: `1px solid ${category.color}30`,
+                      marginBottom: '12px',
+                    }}
+                  >
+                    <p style={{ fontSize: '13px', color: '#E8E3DB', lineHeight: 1.6 }}>
+                      {event.relatedSurahNumbers.length === 1
+                        ? 'This surah contains verses revealed in response to this event, providing divine guidance and context.'
+                        : `These ${event.relatedSurahNumbers.length} surahs contain verses revealed in connection with this event, addressing the situation and guiding the believers.`}
+                    </p>
+                  </div>
+
+                  {/* Surah cards */}
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                     {event.relatedSurahNumbers.map((surahNumber) => {
                       const surah = getSurahByNumber(surahNumber);
+                      const completeSurah = getCompleteSurahData(surahNumber);
                       if (!surah) return null;
+
+                      const surahColor = completeSurah?.isMeccan ? '#C8A84E' : '#2EC4B6';
 
                       return (
                         <button
@@ -310,16 +367,17 @@ export function EventDetailModal() {
                           style={{
                             display: 'flex',
                             alignItems: 'center',
-                            gap: '8px',
-                            padding: '8px 14px',
-                            borderRadius: '10px',
+                            gap: '12px',
+                            padding: '12px 14px',
+                            borderRadius: '12px',
                             backgroundColor: '#1A2332',
                             border: '1px solid #2A3342',
                             cursor: 'pointer',
                             transition: 'all 0.2s',
+                            textAlign: 'left',
                           }}
                           onMouseEnter={(e) => {
-                            e.currentTarget.style.borderColor = category.color;
+                            e.currentTarget.style.borderColor = surahColor;
                             e.currentTarget.style.backgroundColor = '#1F2937';
                           }}
                           onMouseLeave={(e) => {
@@ -327,25 +385,61 @@ export function EventDetailModal() {
                             e.currentTarget.style.backgroundColor = '#1A2332';
                           }}
                         >
+                          {/* Surah number badge */}
                           <span
                             style={{
-                              width: '24px',
-                              height: '24px',
-                              borderRadius: '6px',
-                              backgroundColor: category.bg,
-                              color: category.color,
-                              fontSize: '12px',
+                              width: '32px',
+                              height: '32px',
+                              borderRadius: '8px',
+                              backgroundColor: `${surahColor}20`,
+                              color: surahColor,
+                              fontSize: '14px',
                               fontWeight: 700,
                               display: 'flex',
                               alignItems: 'center',
                               justifyContent: 'center',
+                              flexShrink: 0,
                             }}
                           >
                             {surahNumber}
                           </span>
-                          <span style={{ fontSize: '14px', color: '#F5F0E8', fontWeight: 500 }}>
-                            {surah.englishName}
-                          </span>
+
+                          {/* Surah info */}
+                          <div style={{ flex: 1, minWidth: 0 }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                              <span style={{ fontSize: '15px', color: '#F5F0E8', fontWeight: 600 }}>
+                                {surah.englishName}
+                              </span>
+                              <span
+                                style={{
+                                  fontSize: '11px',
+                                  padding: '2px 6px',
+                                  borderRadius: '4px',
+                                  backgroundColor: `${surahColor}15`,
+                                  color: surahColor,
+                                }}
+                              >
+                                {completeSurah?.isMeccan ? 'Makki' : 'Madani'}
+                              </span>
+                            </div>
+                            {completeSurah?.context && (
+                              <p
+                                style={{
+                                  fontSize: '12px',
+                                  color: '#9CA3AF',
+                                  marginTop: '2px',
+                                  overflow: 'hidden',
+                                  textOverflow: 'ellipsis',
+                                  whiteSpace: 'nowrap',
+                                }}
+                              >
+                                {completeSurah.context}
+                              </p>
+                            )}
+                          </div>
+
+                          {/* Arrow indicator */}
+                          <span style={{ color: '#6B7280', fontSize: '18px' }}>→</span>
                         </button>
                       );
                     })}

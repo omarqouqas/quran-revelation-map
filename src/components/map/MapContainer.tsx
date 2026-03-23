@@ -157,6 +157,7 @@ export function MapContainer() {
   const showEvents = useMapStore((state) => state.showEvents);
   const selectedSurahNumber = useMapStore((state) => state.selectedSurahNumber);
   const selectedEventId = useMapStore((state) => state.selectedEventId);
+  const highlightedSurahNumbers = useMapStore((state) => state.highlightedSurahNumbers);
   const selectSurah = useMapStore((state) => state.selectSurah);
   const selectEvent = useMapStore((state) => state.selectEvent);
   const selectSite = useMapStore((state) => state.selectSite);
@@ -171,11 +172,11 @@ export function MapContainer() {
 
   /** Create a marker element for a surah */
   const createMarkerElement = useCallback(
-    (surah: CompleteSurahData, isSelected: boolean): HTMLDivElement => {
+    (surah: CompleteSurahData, isSelected: boolean, isHighlighted: boolean): HTMLDivElement => {
       const el = document.createElement('div');
       const isMakki = surah.isMeccan;
 
-      const baseSize = isSelected ? 18 : 8;
+      const baseSize = isSelected ? 18 : isHighlighted ? 14 : 8;
       const color = isMakki ? '#C8A84E' : '#2EC4B6';
       const borderColor = isMakki ? '#D4B96A' : '#5EEAD4';
 
@@ -187,6 +188,12 @@ export function MapContainer() {
       el.style.cursor = 'pointer';
       el.style.transition = 'all 0.2s ease-out';
       el.className = isMakki ? 'marker-makki' : 'marker-madani';
+
+      // Add pulsing glow for highlighted surahs
+      if (isHighlighted) {
+        el.style.boxShadow = `0 0 12px ${color}, 0 0 24px ${color}60`;
+        el.style.animation = 'surah-pulse 1.5s ease-in-out infinite';
+      }
 
       el.setAttribute('data-surah', surah.number.toString());
       el.setAttribute('title', `${surah.englishName} (${surah.arabicName})`);
@@ -499,18 +506,29 @@ export function MapContainer() {
     // Add or update markers for visible surahs
     visibleSurahs.forEach((surah) => {
       const isSelected = surah.number === selectedSurahNumber;
+      const isHighlighted = highlightedSurahNumbers.includes(surah.number);
       const existingMarker = markersRef.current.get(surah.number);
+      const color = surah.isMeccan ? '#C8A84E' : '#2EC4B6';
 
       if (existingMarker) {
-        // Update existing marker if selection state changed
+        // Update existing marker if selection or highlight state changed
         const el = existingMarker.getElement();
-        const size = isSelected ? '18px' : '8px';
+        const size = isSelected ? '18px' : isHighlighted ? '14px' : '8px';
         el.style.width = size;
         el.style.height = size;
+
+        // Update glow and animation for highlighted state
+        if (isHighlighted) {
+          el.style.boxShadow = `0 0 12px ${color}, 0 0 24px ${color}60`;
+          el.style.animation = 'surah-pulse 1.5s ease-in-out infinite';
+        } else {
+          el.style.boxShadow = '';
+          el.style.animation = '';
+        }
         return;
       }
 
-      const el = createMarkerElement(surah, isSelected);
+      const el = createMarkerElement(surah, isSelected, isHighlighted);
 
       el.addEventListener('click', () => {
         selectSurah(surah.number);
@@ -528,6 +546,7 @@ export function MapContainer() {
     showMakki,
     showMadani,
     selectedSurahNumber,
+    highlightedSurahNumbers,
     createMarkerElement,
     selectSurah,
   ]);

@@ -140,6 +140,18 @@ body {
   }
 }
 
+/* Highlighted surah pulse animation (for event-related surahs) */
+@keyframes surah-pulse {
+  0%, 100% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+  50% {
+    transform: scale(1.25);
+    filter: brightness(1.3);
+  }
+}
+
 /* Radix UI Slider overrides */
 [data-radix-slider-track] {
   background: var(--color-navy-lighter);
@@ -194,6 +206,55 @@ body {
 
 .animate-twinkle {
   animation: twinkle ease-in-out infinite;
+}
+
+/* Enhanced dust particle animations with wind drift */
+@keyframes dust-drift {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  50% {
+    transform: translate(80px, -20px) scale(1.1);
+    opacity: 0.6;
+  }
+  90% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(160px, -40px) scale(0.9);
+    opacity: 0;
+  }
+}
+
+.animate-dust-drift {
+  animation: dust-drift ease-in-out infinite;
+}
+
+/* Light ray animations for dawn/dusk */
+@keyframes ray-sway {
+  0%, 100% {
+    transform: rotate(-2deg) translateX(0);
+  }
+  50% {
+    transform: rotate(2deg) translateX(10px);
+  }
+}
+
+@keyframes ray-pulse {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.animate-ray {
+  animation: ray-sway 8s ease-in-out infinite, ray-pulse 4s ease-in-out infinite;
 }
 
 /* Timeline thumb pulsing glow animation */
