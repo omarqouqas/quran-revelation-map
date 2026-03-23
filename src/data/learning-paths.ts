@@ -1609,6 +1609,876 @@ export const learningPaths: LearningPath[] = [
       },
     ],
   },
+
+  // ============================================
+  // THEMATIC LEARNING PATHS
+  // ============================================
+
+  // Thematic Path 1: Surahs of Comfort
+  {
+    id: 'surahs-of-comfort',
+    title: 'Surahs of Comfort',
+    arabicTitle: 'سور الطمأنينة',
+    subtitle: 'Divine Consolation in Times of Hardship',
+    description:
+      'Explore the surahs revealed during the most difficult moments — offering timeless comfort and hope for all who struggle.',
+    icon: 'Heart',
+    accentColor: '#F472B6',
+    estimatedTime: '20 min',
+    category: 'thematic',
+    lessons: [
+      {
+        id: 'soc-1',
+        order: 1,
+        title: 'When Revelation Paused',
+        arabicTitle: 'فترة الوحي',
+        objective: 'Understand the context of Surah Ad-Duha and its message of hope',
+        estimatedTime: 5,
+        sections: [
+          {
+            type: 'narrative',
+            title: 'The Painful Silence',
+            content:
+              'After the initial revelations, there came a pause. Days turned to weeks, and the Prophet ﷺ waited anxiously for Jibril. The Quraysh mocked him: "Your Lord has abandoned you!" This silence was devastating for someone who had tasted the sweetness of divine communication.',
+          },
+          {
+            type: 'quran-reference',
+            title: 'The Morning Light Breaks',
+            content:
+              '"By the morning brightness, and by the night when it covers with darkness — your Lord has not forsaken you, nor has He detested you. And the Hereafter is better for you than the first life. And your Lord is going to give you, and you will be satisfied."',
+            surahNumber: 93,
+            ayahRange: { start: 1, end: 5 },
+          },
+          {
+            type: 'insight',
+            content:
+              'Notice the imagery: the morning (duha) always follows the night. The pause in revelation was like night — dark and difficult — but the morning was coming. Allah swears by both, teaching us that darkness is temporary and part of the divine plan.',
+          },
+          {
+            type: 'historical-context',
+            title: 'The Reminder of Blessings',
+            content:
+              'The surah then reminds the Prophet ﷺ of his past: "Did He not find you an orphan and give you refuge? And He found you lost and guided you. And He found you poor and made you self-sufficient." Past blessings prove future care.',
+          },
+        ],
+        takeaways: [
+          'Surah Ad-Duha was revealed after a painful pause in revelation',
+          'The imagery of morning following night teaches that hardship is temporary',
+          'Past blessings are proof of Allah\'s continued care',
+          'The surah commands us to care for orphans and those in need',
+        ],
+        reflectionPrompts: [
+          'When have you felt "abandoned" only to later see Allah\'s wisdom?',
+          'What past blessings remind you of Allah\'s care during difficulty?',
+        ],
+        mapHighlights: {
+          year: 610,
+          surahNumbers: [93],
+          location: { ...LOCATIONS.MAKKAH, zoom: 11 },
+        },
+      },
+      {
+        id: 'soc-2',
+        order: 2,
+        title: 'Expansion After Constriction',
+        arabicTitle: 'الشرح بعد الضيق',
+        objective: 'Learn how Surah Ash-Sharh promises ease with every hardship',
+        estimatedTime: 5,
+        sections: [
+          {
+            type: 'narrative',
+            title: 'The Companion Surah',
+            content:
+              'Surah Ash-Sharh (94) is the twin of Ad-Duha. Together they form a pair of comfort revealed during the early Makkan period. While Ad-Duha addressed the pause in revelation, Ash-Sharh addresses the weight of the mission itself.',
+          },
+          {
+            type: 'quran-reference',
+            title: 'The Expanding of the Chest',
+            content:
+              '"Did We not expand for you your chest? And We removed from you your burden, which had weighed upon your back. And We raised high for you your reputation. For indeed, with hardship comes ease. Indeed, with hardship comes ease."',
+            surahNumber: 94,
+            ayahRange: { start: 1, end: 6 },
+          },
+          {
+            type: 'insight',
+            title: 'The Double Promise',
+            content:
+              'The phrase "with hardship comes ease" is repeated twice. Scholars explain: one hardship is mentioned, but ease is mentioned twice — meaning every difficulty brings multiple forms of relief. The Arabic uses "ma\'a" (with), not "ba\'da" (after), teaching that ease exists alongside hardship, not just after it.',
+          },
+          {
+            type: 'narrative',
+            title: 'Your Reputation Raised High',
+            content:
+              'At a time when the Prophet ﷺ was mocked and rejected, Allah promised: "We raised high for you your reputation." Today, his name is mentioned alongside Allah\'s name in every adhan, every prayer, billions of times daily across the globe.',
+          },
+        ],
+        takeaways: [
+          'Surah Ash-Sharh is the twin of Ad-Duha, revealed together',
+          '"With hardship comes ease" is repeated twice — double ease for each hardship',
+          'Ease comes WITH hardship, not just after it',
+          'The Prophet\'s reputation was raised to be mentioned in every prayer',
+        ],
+        reflectionPrompts: [
+          'Can you identify forms of ease that exist alongside your current hardship?',
+        ],
+        mapHighlights: {
+          year: 610,
+          surahNumbers: [94],
+          location: { ...LOCATIONS.MAKKAH, zoom: 11 },
+        },
+      },
+      {
+        id: 'soc-3',
+        order: 3,
+        title: 'The Abundance',
+        arabicTitle: 'الكوثر',
+        objective: 'Discover how Surah Al-Kawthar responded to mockery with eternal promise',
+        estimatedTime: 5,
+        sections: [
+          {
+            type: 'historical-context',
+            title: 'The Insult',
+            content:
+              'When the Prophet\'s son passed away, his enemies rejoiced. Al-As ibn Wa\'il called him "abtar" — cut off, without legacy, soon to be forgotten. In a society that valued sons above all, this was the ultimate insult.',
+          },
+          {
+            type: 'quran-reference',
+            title: 'The Shortest Surah',
+            content:
+              '"Indeed, We have granted you Al-Kawthar. So pray to your Lord and sacrifice. Indeed, your enemy is the one who is cut off."',
+            surahNumber: 108,
+            ayahRange: { start: 1, end: 3 },
+          },
+          {
+            type: 'insight',
+            title: 'What is Al-Kawthar?',
+            content:
+              'Al-Kawthar means "abundance" or "the most good." It refers to a river in Paradise, but also to the abundance of followers, knowledge, and blessings. The Prophet ﷺ has more spiritual children — over a billion Muslims — than any person in history.',
+          },
+          {
+            type: 'narrative',
+            title: 'Who is Really Cut Off?',
+            content:
+              'The stunning reversal: "Your enemy is the one who is cut off." Al-As ibn Wa\'il is forgotten except when Muslims read about how wrong he was. The Prophet ﷺ is remembered and loved by billions. This three-verse surah completely inverted the insult.',
+          },
+        ],
+        takeaways: [
+          'Surah Al-Kawthar was revealed when enemies mocked the Prophet\'s loss of his son',
+          'Al-Kawthar means abundance — a river in Paradise and countless followers',
+          'The shortest surah carries one of the most powerful reversals',
+          'Those who mock believers are the ones truly "cut off"',
+        ],
+        reflectionPrompts: [
+          'How does this surah change how you view worldly "success" vs. divine blessing?',
+        ],
+        mapHighlights: {
+          year: 616,
+          surahNumbers: [108],
+          location: { ...LOCATIONS.MAKKAH, zoom: 11 },
+        },
+      },
+      {
+        id: 'soc-4',
+        order: 4,
+        title: 'Surahs for Every Struggle',
+        arabicTitle: 'سور لكل محنة',
+        objective: 'Explore other Makkan surahs that provide comfort during trials',
+        estimatedTime: 5,
+        sections: [
+          {
+            type: 'narrative',
+            title: 'A Collection of Comfort',
+            content:
+              'Beyond Ad-Duha, Ash-Sharh, and Al-Kawthar, the Quran contains many surahs revealed specifically during times of hardship. Each addresses different aspects of struggle and provides unique forms of comfort.',
+          },
+          {
+            type: 'quran-reference',
+            title: 'Surah Al-Inshirah (The Relief)',
+            content:
+              'Surah Yusuf was revealed during the "Year of Sorrow" when the Prophet ﷺ lost both Khadijah and Abu Talib. The story of Yusuf — separated from his father for decades, then reunited — offered hope that separation and grief are not permanent.',
+            surahNumber: 12,
+          },
+          {
+            type: 'historical-context',
+            title: 'Surah Al-Kahf: Protection from Trials',
+            content:
+              'Surah Al-Kahf was revealed when the Quraysh asked trick questions. It teaches protection from four great trials: faith (People of the Cave), wealth (Two Gardens), knowledge (Musa and Khidr), and power (Dhul-Qarnayn). Reading it weekly is recommended.',
+          },
+          {
+            type: 'insight',
+            title: 'The Pattern of Comfort',
+            content:
+              'Notice the pattern in surahs of comfort: acknowledgment of difficulty, reminder of Allah\'s past help, promise of future ease, and a call to action (prayer, patience, gratitude). This is the Quranic model for processing hardship.',
+          },
+        ],
+        takeaways: [
+          'The Quran contains many surahs specifically addressing hardship',
+          'Surah Yusuf was revealed during the Year of Sorrow as comfort',
+          'Surah Al-Kahf protects from trials of faith, wealth, knowledge, and power',
+          'The Quranic pattern: acknowledge → remind → promise → act',
+        ],
+        reflectionPrompts: [
+          'Which surah of comfort resonates most with your current situation?',
+          'How can you use the Quranic pattern when facing difficulty?',
+        ],
+        mapHighlights: {
+          year: 619,
+          surahNumbers: [12, 18],
+          location: { ...LOCATIONS.MAKKAH, zoom: 10 },
+        },
+      },
+    ],
+  },
+
+  // Thematic Path 2: Stories of the Prophets
+  {
+    id: 'stories-of-prophets',
+    title: 'Stories of the Prophets',
+    arabicTitle: 'قصص الأنبياء',
+    subtitle: 'Lessons from Those Who Came Before',
+    description:
+      'Journey through the narrative surahs that tell the stories of prophets — each story a mirror reflecting timeless lessons.',
+    icon: 'ScrollText',
+    accentColor: '#60A5FA',
+    estimatedTime: '25 min',
+    category: 'thematic',
+    lessons: [
+      {
+        id: 'sop-1',
+        order: 1,
+        title: 'The Best of Stories',
+        arabicTitle: 'أحسن القصص',
+        objective: 'Understand why and how the Quran tells prophetic stories',
+        estimatedTime: 5,
+        sections: [
+          {
+            type: 'narrative',
+            title: 'Why Stories?',
+            content:
+              'The Quran is not a storybook, yet nearly one-third of it consists of narratives. Why? Because stories bypass intellectual defenses and speak directly to the heart. They show rather than tell. They make abstract principles concrete through lived experience.',
+          },
+          {
+            type: 'quran-reference',
+            title: 'The Declaration',
+            content:
+              '"We relate to you the best of stories in what We have revealed to you of this Quran, although you were, before it, among the unaware." This verse opens Surah Yusuf, the most complete narrative in the Quran.',
+            surahNumber: 12,
+            ayahRange: { start: 3, end: 3 },
+          },
+          {
+            type: 'insight',
+            title: 'Stories as Mirrors',
+            content:
+              'Each prophetic story serves as a mirror. Musa\'s story teaches confronting tyranny. Yusuf\'s teaches patience through injustice. Ibrahim\'s teaches breaking with tradition for truth. We see ourselves in their struggles and find guidance in their responses.',
+          },
+          {
+            type: 'historical-context',
+            title: 'Comfort for the Prophet ﷺ',
+            content:
+              'Many prophetic stories were revealed when the Prophet ﷺ faced rejection. "All we relate to you of the news of the messengers is that by which We make firm your heart" (11:120). The struggles of past prophets validated his own.',
+          },
+        ],
+        takeaways: [
+          'Nearly one-third of the Quran consists of narratives',
+          'Stories bypass defenses and speak to the heart',
+          'Surah Yusuf is called "the best of stories"',
+          'Prophetic stories were revealed to strengthen the Prophet\'s heart',
+        ],
+        reflectionPrompts: [
+          'Which prophetic story do you relate to most? Why?',
+        ],
+        mapHighlights: {
+          year: 619,
+          surahNumbers: [12],
+          location: { ...LOCATIONS.MAKKAH, zoom: 10 },
+        },
+      },
+      {
+        id: 'sop-2',
+        order: 2,
+        title: 'Yusuf: Beauty Through Trial',
+        arabicTitle: 'يوسف: الجمال في المحنة',
+        objective: 'Learn the lessons of patience and trust from the story of Yusuf',
+        estimatedTime: 6,
+        sections: [
+          {
+            type: 'narrative',
+            title: 'The Only Complete Story',
+            content:
+              'Surah Yusuf (12) is unique — it tells one complete story from beginning to end, unlike other surahs that contain fragments of multiple stories. It follows Yusuf from a child\'s dream to becoming the most powerful man in Egypt.',
+          },
+          {
+            type: 'historical-context',
+            title: 'When It Was Revealed',
+            content:
+              'This surah was revealed during the "Year of Sorrow" when the Prophet ﷺ lost Khadijah and Abu Talib. A story about separation from loved ones, betrayal by one\'s own people, and ultimate reunion — it was perfectly timed comfort.',
+          },
+          {
+            type: 'quran-reference',
+            title: 'The Key Verse',
+            content:
+              'When Yusuf\'s brothers finally stood before him, not recognizing him, and then the revelation came — his response: "No blame upon you today. Allah will forgive you, and He is the Most Merciful of the merciful." After decades of injustice, his first words were forgiveness.',
+            surahNumber: 12,
+            ayahRange: { start: 92, end: 92 },
+          },
+          {
+            type: 'insight',
+            title: 'Patience with Purpose',
+            content:
+              'Yusuf\'s story teaches "sabr jameel" — beautiful patience. Not passive resignation, but active trust. In the well, in slavery, in prison, in power — he maintained his character. His beauty was not just physical; it was moral consistency through every circumstance.',
+          },
+        ],
+        takeaways: [
+          'Surah Yusuf is the only complete narrative in the Quran',
+          'It was revealed during the Year of Sorrow as comfort',
+          'Yusuf\'s first words to his brothers were forgiveness, not blame',
+          '"Sabr jameel" (beautiful patience) is active trust, not passive resignation',
+        ],
+        reflectionPrompts: [
+          'How can you practice "beautiful patience" in your current trial?',
+          'What does Yusuf\'s forgiveness teach about responding to those who wronged us?',
+        ],
+        mapHighlights: {
+          year: 619,
+          surahNumbers: [12],
+          eventIds: ['year-of-sorrow'],
+          location: { ...LOCATIONS.MAKKAH, zoom: 10 },
+        },
+      },
+      {
+        id: 'sop-3',
+        order: 3,
+        title: 'Musa: The Most Mentioned',
+        arabicTitle: 'موسى: أكثر الأنبياء ذكراً',
+        objective: 'Understand why Musa appears more than any other prophet in the Quran',
+        estimatedTime: 6,
+        sections: [
+          {
+            type: 'narrative',
+            title: 'The Most Frequent Name',
+            content:
+              'Musa (Moses) is mentioned by name 136 times in the Quran — more than any other individual. His story appears in over 30 surahs. Why such emphasis? Because his mission most closely paralleled that of Muhammad ﷺ.',
+          },
+          {
+            type: 'historical-context',
+            title: 'Parallel Missions',
+            content:
+              'Both faced tyrannical opposition (Pharaoh/Quraysh). Both led their people on a migration (Exodus/Hijra). Both received divine law (Torah/Quran). Both built communities from oppressed minorities. The Prophet ﷺ could see his own journey reflected in Musa\'s.',
+          },
+          {
+            type: 'quran-reference',
+            title: 'The Staff and the Miracles',
+            content:
+              'Surah Ta-Ha recounts Musa\'s calling at the burning bush, the miracles of the staff and the shining hand, the confrontation with Pharaoh, and the parting of the sea. Each miracle taught: Allah\'s power transforms the ordinary (a staff) into the extraordinary.',
+            surahNumber: 20,
+          },
+          {
+            type: 'insight',
+            title: 'The Human Prophet',
+            content:
+              'Musa is portrayed with remarkable humanity — his fear at the staff becoming a snake, his speech impediment, his anger at his people, his fatigue. This accessibility makes his story relatable. If Musa, with his imperfections, could be a great prophet, there is hope for all of us.',
+          },
+        ],
+        takeaways: [
+          'Musa is mentioned 136 times — more than any other individual',
+          'His mission closely paralleled Muhammad\'s ﷺ',
+          'His story appears in over 30 different surahs',
+          'He is portrayed with human imperfections, making him relatable',
+        ],
+        reflectionPrompts: [
+          'What aspect of Musa\'s story speaks to your current situation?',
+        ],
+        mapHighlights: {
+          year: 615,
+          surahNumbers: [20, 28],
+          location: { ...LOCATIONS.MAKKAH, zoom: 10 },
+        },
+      },
+      {
+        id: 'sop-4',
+        order: 4,
+        title: 'Ibrahim: The Father of Prophets',
+        arabicTitle: 'إبراهيم: أبو الأنبياء',
+        objective: 'Learn from Ibrahim\'s unwavering submission to Allah',
+        estimatedTime: 5,
+        sections: [
+          {
+            type: 'narrative',
+            title: 'The Shared Ancestor',
+            content:
+              'Ibrahim holds a unique position: he is the father of both the Israelite prophets (through Ishaq) and Muhammad ﷺ (through Ismail). He built the Kaaba, established the Hajj rituals, and exemplified pure monotheism (hanifiyyah).',
+          },
+          {
+            type: 'quran-reference',
+            title: 'The Test of Tests',
+            content:
+              '"And when his Lord tested Ibrahim with words and he fulfilled them, [Allah] said, \'Indeed, I will make you a leader for the people.\'" Ibrahim passed every test — leaving his homeland, facing the fire, sacrificing his son — earning the title "Khalil Allah" (Friend of Allah).',
+            surahNumber: 2,
+            ayahRange: { start: 124, end: 124 },
+          },
+          {
+            type: 'historical-context',
+            title: 'The Connection to Makkah',
+            content:
+              'Ibrahim\'s story is intimately connected to Makkah. He brought Hajar and Ismail to this barren valley. He raised the foundations of the Kaaba. His footsteps are preserved at Maqam Ibrahim. Every pilgrim reenacts his family\'s journey.',
+          },
+          {
+            type: 'insight',
+            title: 'Submission as Liberation',
+            content:
+              'Ibrahim\'s story teaches that submission to Allah is not restriction but liberation. By submitting to the command to sacrifice his son, he was freed from attachment to anything besides Allah. The knife did not cut Ismail; it cut Ibrahim\'s attachment to the world.',
+          },
+        ],
+        takeaways: [
+          'Ibrahim is the father of prophets — ancestor to both Israelite prophets and Muhammad ﷺ',
+          'He built the Kaaba and established Hajj rituals',
+          'He earned the title "Khalil Allah" (Friend of Allah) through his tests',
+          'His story teaches that submission to Allah is liberation, not restriction',
+        ],
+        reflectionPrompts: [
+          'What are you being asked to "sacrifice" in submission to Allah?',
+        ],
+        mapHighlights: {
+          year: 613,
+          surahNumbers: [2, 14],
+          location: { ...LOCATIONS.MAKKAH, zoom: 11 },
+        },
+      },
+      {
+        id: 'sop-5',
+        order: 5,
+        title: 'Maryam and Isa',
+        arabicTitle: 'مريم وعيسى',
+        objective: 'Understand the Quranic portrayal of Maryam and Isa',
+        estimatedTime: 5,
+        sections: [
+          {
+            type: 'narrative',
+            title: 'The Only Woman Named',
+            content:
+              'Maryam is the only woman mentioned by name in the entire Quran — and she has an entire surah named after her. She is mentioned more times in the Quran (34) than in the entire New Testament. Her honor in Islam is unparalleled.',
+          },
+          {
+            type: 'quran-reference',
+            title: 'The Annunciation',
+            content:
+              '"And mention, [O Muhammad], in the Book [the story of] Mary, when she withdrew from her family to a place toward the east... Then We sent to her Our Spirit, and he represented himself to her as a well-proportioned man." The Quran\'s account of the miraculous conception.',
+            surahNumber: 19,
+            ayahRange: { start: 16, end: 17 },
+          },
+          {
+            type: 'historical-context',
+            title: 'Protection in Abyssinia',
+            content:
+              'When Muslims sought refuge in Christian Abyssinia, Ja\'far recited the opening of Surah Maryam before the Negus. The king wept. This surah, honoring Mary and Jesus, became a bridge between the faiths and protected the Muslim refugees.',
+          },
+          {
+            type: 'insight',
+            title: 'Isa in Islam',
+            content:
+              'Isa (Jesus) is a mighty messenger, born miraculously, who performed miracles by Allah\'s permission. He was not crucified but raised to Allah, and will return before the Day of Judgment. The Quran honors him while clarifying theological points.',
+          },
+        ],
+        takeaways: [
+          'Maryam is the only woman named in the Quran',
+          'She is mentioned 34 times — more than in the New Testament',
+          'Surah Maryam protected Muslim refugees in Abyssinia',
+          'Isa is honored as a mighty messenger who will return',
+        ],
+        reflectionPrompts: [
+          'What does Maryam\'s story teach about devotion and trust?',
+        ],
+        mapHighlights: {
+          year: 615,
+          surahNumbers: [19],
+          eventIds: ['first-abyssinia'],
+          location: { ...LOCATIONS.MAKKAH, zoom: 9 },
+        },
+      },
+    ],
+  },
+
+  // Thematic Path 3: Makki vs Madani
+  {
+    id: 'makki-vs-madani',
+    title: 'Makki vs Madani',
+    arabicTitle: 'المكي والمدني',
+    subtitle: 'Two Eras, Two Styles, One Message',
+    description:
+      'Compare the surahs revealed in Makkah versus Madinah — understanding how context shaped style while the core message remained unchanged.',
+    icon: 'GitCompare',
+    accentColor: '#A78BFA',
+    estimatedTime: '20 min',
+    category: 'thematic',
+    lessons: [
+      {
+        id: 'mvm-1',
+        order: 1,
+        title: 'What Makes a Surah Makki or Madani?',
+        arabicTitle: 'ما الفرق بين المكي والمدني؟',
+        objective: 'Learn the criteria scholars use to classify surahs',
+        estimatedTime: 5,
+        sections: [
+          {
+            type: 'narrative',
+            title: 'The Primary Definition',
+            content:
+              'The most accepted definition: Makki surahs are those revealed BEFORE the Hijra (622 CE), regardless of location. Madani surahs are those revealed AFTER the Hijra. So a verse revealed in Makkah after the Conquest (630 CE) would be Madani, not Makki.',
+          },
+          {
+            type: 'historical-context',
+            title: 'The Numbers',
+            content:
+              '86 surahs are classified as Makki, 28 as Madani. However, this is simplified — many surahs contain both Makki and Madani verses. Surah Al-Baqarah, for example, is Madani but contains verse 281, believed to be the last verse revealed.',
+          },
+          {
+            type: 'insight',
+            title: 'Why the Distinction Matters',
+            content:
+              'Understanding whether a surah is Makki or Madani helps with: interpreting verses in context, understanding the progression of Islamic law, seeing how the Quran responded to changing circumstances, and appreciating the wisdom in the order of revelation.',
+          },
+          {
+            type: 'narrative',
+            title: 'Identifying Features',
+            content:
+              'Scholars developed markers: Makki surahs often address "O mankind" while Madani address "O you who believe." Makki surahs discuss Tawhid and the afterlife; Madani discuss law and community. Makki surahs are often shorter with powerful rhythms; Madani are often longer with detailed guidance.',
+          },
+        ],
+        takeaways: [
+          'Makki = revealed before Hijra; Madani = revealed after Hijra',
+          '86 surahs are Makki, 28 are Madani',
+          'Many surahs contain verses from both periods',
+          'The distinction helps interpret verses in their proper context',
+        ],
+        reflectionPrompts: [
+          'Why might Allah have revealed different styles for different contexts?',
+        ],
+        mapHighlights: {
+          year: 622,
+          location: { ...LOCATIONS.MAKKAH, zoom: 8 },
+        },
+      },
+      {
+        id: 'mvm-2',
+        order: 2,
+        title: 'The Makkan Style',
+        arabicTitle: 'أسلوب السور المكية',
+        objective: 'Understand the distinctive features of Makkan surahs',
+        estimatedTime: 5,
+        sections: [
+          {
+            type: 'narrative',
+            title: 'The Audience',
+            content:
+              'In Makkah, the Prophet ﷺ addressed polytheists who denied the resurrection, associated partners with Allah, and rejected prophethood. The Makkan surahs therefore focus on establishing fundamental beliefs rather than detailed laws.',
+          },
+          {
+            type: 'quran-reference',
+            title: 'Powerful and Concise',
+            content:
+              'Consider Surah Al-Ikhlas: "Say: He is Allah, the One. Allah, the Eternal Refuge. He neither begets nor is born. Nor is there to Him any equivalent." Four verses that demolish polytheism. This concise, powerful style is quintessentially Makkan.',
+            surahNumber: 112,
+            ayahRange: { start: 1, end: 4 },
+          },
+          {
+            type: 'insight',
+            title: 'Characteristics of Makkan Surahs',
+            content:
+              'Short, punchy verses with strong rhythm. Oaths by natural phenomena (sun, moon, stars, night). Emphasis on Tawhid (Oneness), the Day of Judgment, and moral accountability. Stories of past nations who rejected prophets. Addresses "O mankind" more than "O you who believe."',
+          },
+          {
+            type: 'historical-context',
+            title: 'Building Faith Under Persecution',
+            content:
+              'These surahs were revealed while Muslims were a persecuted minority. They needed spiritual fortification, not community laws. The Makkan surahs built unshakeable conviction in hearts that would later be tested to their limits.',
+          },
+        ],
+        takeaways: [
+          'Makkan surahs addressed polytheists, focusing on core beliefs',
+          'They feature short, powerful verses with strong rhythm',
+          'Common themes: Tawhid, Day of Judgment, stories of past nations',
+          'They built conviction in hearts before community laws were needed',
+        ],
+        reflectionPrompts: [
+          'Which Makkan surah strengthens your faith the most?',
+        ],
+        mapHighlights: {
+          year: 615,
+          surahNumbers: [112, 111, 113, 114],
+          location: { ...LOCATIONS.MAKKAH, zoom: 11 },
+        },
+      },
+      {
+        id: 'mvm-3',
+        order: 3,
+        title: 'The Madinan Style',
+        arabicTitle: 'أسلوب السور المدنية',
+        objective: 'Understand the distinctive features of Madinan surahs',
+        estimatedTime: 5,
+        sections: [
+          {
+            type: 'narrative',
+            title: 'A New Context',
+            content:
+              'In Madinah, Muslims were no longer a persecuted minority but a community building a state. They needed laws for family, commerce, warfare, and governance. The audience now included Jews, Christians, and hypocrites alongside believers.',
+          },
+          {
+            type: 'quran-reference',
+            title: 'Detailed Guidance',
+            content:
+              'Surah Al-Baqarah contains the longest verse in the Quran — verse 282, about documenting debts. This level of detail is characteristic of Madinan surahs: "O you who believe, when you contract a debt for a specified term, write it down..."',
+            surahNumber: 2,
+            ayahRange: { start: 282, end: 282 },
+          },
+          {
+            type: 'insight',
+            title: 'Characteristics of Madinan Surahs',
+            content:
+              'Longer verses with detailed legal guidance. Addresses "O you who believe" frequently. Laws of inheritance, marriage, divorce, criminal punishment. Rules of warfare and treaties. Dialogue with People of the Book (Jews and Christians). Exposure of hypocrites.',
+          },
+          {
+            type: 'historical-context',
+            title: 'Building a Civilization',
+            content:
+              'The Madinan surahs transformed a community of faith into a functioning civilization. Laws were revealed gradually, in response to specific situations. This "gradual legislation" (tadrij) allowed the community to adapt without being overwhelmed.',
+          },
+        ],
+        takeaways: [
+          'Madinan surahs addressed a Muslim community building a state',
+          'They feature longer verses with detailed legal guidance',
+          'Common themes: family law, commerce, warfare, governance',
+          'Laws were revealed gradually in response to specific situations',
+        ],
+        reflectionPrompts: [
+          'Why might detailed laws come after establishing faith?',
+        ],
+        mapHighlights: {
+          year: 625,
+          surahNumbers: [2, 4, 5],
+          location: { ...LOCATIONS.MADINAH, zoom: 11 },
+        },
+      },
+      {
+        id: 'mvm-4',
+        order: 4,
+        title: 'One Message, Adapted to Context',
+        arabicTitle: 'رسالة واحدة بأساليب متعددة',
+        objective: 'See how the core message remained constant while style adapted',
+        estimatedTime: 5,
+        sections: [
+          {
+            type: 'narrative',
+            title: 'The Constant Core',
+            content:
+              'Despite the differences in style, the core message never changed: Tawhid (Oneness of Allah), prophethood of Muhammad ﷺ, the Day of Judgment, and moral accountability. These appear in both Makki and Madani surahs — only the emphasis shifts.',
+          },
+          {
+            type: 'insight',
+            title: 'Wisdom in Gradual Revelation',
+            content:
+              'If the entire Quran had been revealed at once in Makkah, the detailed laws would have overwhelmed a persecuted community. If it had all been revealed in Madinah, the spiritual foundations might not have been as deep. The 23-year period allowed both foundations and structure.',
+          },
+          {
+            type: 'quran-reference',
+            title: 'Why Gradual Revelation?',
+            content:
+              '"And those who disbelieve say, \'Why was the Quran not revealed to him all at once?\' Thus [it is] that We may strengthen thereby your heart. And We have spaced it distinctly." Gradual revelation strengthened hearts and addressed circumstances.',
+            surahNumber: 25,
+            ayahRange: { start: 32, end: 32 },
+          },
+          {
+            type: 'historical-context',
+            title: 'A Model for Da\'wah',
+            content:
+              'The Makki-Madani distinction offers a model for sharing Islam: establish beliefs before laws, build conviction before community, address the heart before the actions. Prophet Musa was told: "Speak to him gently" even when addressing Pharaoh.',
+          },
+        ],
+        takeaways: [
+          'Core beliefs (Tawhid, prophethood, judgment) appear in both Makki and Madani',
+          'Gradual revelation allowed hearts to be strengthened over 23 years',
+          'The sequence offers a model: establish faith before detailed law',
+          'Context shaped style, but the essential message remained unchanged',
+        ],
+        reflectionPrompts: [
+          'How can the Makki-Madani model guide how we share Islam today?',
+        ],
+        mapHighlights: {
+          year: 622,
+          location: { lat: 22.5, lng: 39.5, zoom: 7 },
+        },
+      },
+    ],
+  },
+
+  // Thematic Path 4: The Night Surahs
+  {
+    id: 'night-surahs',
+    title: 'The Night Surahs',
+    arabicTitle: 'سور الليل',
+    subtitle: 'Revelations of the Night',
+    description:
+      'Explore surahs revealed at night or about the night — understanding the special relationship between darkness, devotion, and divine communication.',
+    icon: 'Moon',
+    accentColor: '#6366F1',
+    estimatedTime: '15 min',
+    category: 'thematic',
+    lessons: [
+      {
+        id: 'ns-1',
+        order: 1,
+        title: 'The Night of Power',
+        arabicTitle: 'ليلة القدر',
+        objective: 'Understand the significance of the night when revelation began',
+        estimatedTime: 5,
+        sections: [
+          {
+            type: 'narrative',
+            title: 'The Greatest Night',
+            content:
+              'The Quran began its descent on a single night — Laylat al-Qadr, the Night of Power. This night, occurring in the last ten nights of Ramadan, is described as better than a thousand months. It is the anniversary of when the heavens opened.',
+          },
+          {
+            type: 'quran-reference',
+            title: 'Surah Al-Qadr',
+            content:
+              '"Indeed, We sent it down during the Night of Decree. And what can make you know what the Night of Decree is? The Night of Decree is better than a thousand months. The angels and the Spirit descend therein by permission of their Lord for every matter. Peace it is until the emergence of dawn."',
+            surahNumber: 97,
+            ayahRange: { start: 1, end: 5 },
+          },
+          {
+            type: 'insight',
+            title: 'Why Night?',
+            content:
+              'Night is when the world quiets, when distractions fade, when the soul can focus. The Prophet ﷺ was in seclusion at night when Jibril came. The night prayer (Tahajjud) is emphasized repeatedly. Darkness of the world allows the light of revelation to shine brightest.',
+          },
+          {
+            type: 'historical-context',
+            title: 'Seeking the Night',
+            content:
+              'The Prophet ﷺ would increase his worship in the last ten nights of Ramadan, seeking Laylat al-Qadr. He said: "Whoever stands in prayer on Laylat al-Qadr, out of faith and seeking reward, will have all his past sins forgiven."',
+          },
+        ],
+        takeaways: [
+          'Laylat al-Qadr is the night when Quran revelation began',
+          'It is better than 1,000 months (83+ years)',
+          'Angels descend on this night by Allah\'s permission',
+          'The Prophet ﷺ intensified worship in the last ten nights of Ramadan',
+        ],
+        reflectionPrompts: [
+          'How do you seek Laylat al-Qadr in Ramadan?',
+          'What makes night a special time for worship?',
+        ],
+        mapHighlights: {
+          year: 610,
+          surahNumbers: [97],
+          eventIds: ['first-revelation'],
+          location: { ...LOCATIONS.CAVE_HIRA, zoom: 12 },
+        },
+      },
+      {
+        id: 'ns-2',
+        order: 2,
+        title: 'The Wrapped One',
+        arabicTitle: 'المزمل',
+        objective: 'Learn about the night prayer commanded in Surah Al-Muzzammil',
+        estimatedTime: 5,
+        sections: [
+          {
+            type: 'narrative',
+            title: 'Among the Earliest Revelations',
+            content:
+              'Surah Al-Muzzammil (The Wrapped One) was among the first surahs revealed. It addresses the Prophet ﷺ as he wrapped himself in his cloak, perhaps after the overwhelming experience of revelation. It establishes the night prayer as foundational.',
+          },
+          {
+            type: 'quran-reference',
+            title: 'The Night Vigil',
+            content:
+              '"O you who wraps himself [in clothing]! Arise [to pray] the night, except for a little — half of it, or subtract from it a little, or add to it — and recite the Quran with measured recitation. Indeed, We will cast upon you a heavy word."',
+            surahNumber: 73,
+            ayahRange: { start: 1, end: 5 },
+          },
+          {
+            type: 'insight',
+            title: 'Preparation for a Heavy Word',
+            content:
+              'The command to pray at night came BEFORE most of the Quran was revealed. Why? Because the "heavy word" (the Quran) required spiritual preparation. Night prayer builds the strength needed to carry and convey divine revelation.',
+          },
+          {
+            type: 'historical-context',
+            title: 'Later Easing',
+            content:
+              'Initially, the night prayer was obligatory, and Muslims would pray most of the night. Later, verse 20 of the same surah eased this: "Recite what is easy from the Quran." The obligation was reduced, but the virtue remained immense.',
+          },
+        ],
+        takeaways: [
+          'Surah Al-Muzzammil was among the earliest revelations',
+          'It establishes night prayer (Tahajjud) as foundational',
+          'Night prayer was commanded BEFORE most revelation — as preparation',
+          'The obligation was later eased, but the virtue remains',
+        ],
+        reflectionPrompts: [
+          'How can you incorporate night prayer into your life?',
+        ],
+        mapHighlights: {
+          year: 610,
+          surahNumbers: [73],
+          location: { ...LOCATIONS.MAKKAH, zoom: 11 },
+        },
+      },
+      {
+        id: 'ns-3',
+        order: 3,
+        title: 'Oaths by the Night',
+        arabicTitle: 'القسم بالليل',
+        objective: 'Explore surahs that swear by the night and nighttime phenomena',
+        estimatedTime: 5,
+        sections: [
+          {
+            type: 'narrative',
+            title: 'Divine Oaths',
+            content:
+              'Multiple surahs begin with oaths by the night or night-related phenomena. When Allah swears by something, He draws our attention to its significance. The night, stars, moon, and dawn are witnesses to truths we need to understand.',
+          },
+          {
+            type: 'quran-reference',
+            title: 'Surah Al-Lail',
+            content:
+              '"By the night when it covers, and by the day when it appears, and by He who created the male and female — indeed, your efforts are diverse." The night "covering" symbolizes how our deeds can be hidden, but Allah sees all.',
+            surahNumber: 92,
+            ayahRange: { start: 1, end: 4 },
+          },
+          {
+            type: 'quran-reference',
+            title: 'Surah Al-Fajr',
+            content:
+              '"By the dawn, and by the ten nights, and by the even and the odd, and by the night when it passes — is there [not] in [all] that an oath for one of discernment?" The "ten nights" are understood as the last ten nights of Ramadan.',
+            surahNumber: 89,
+            ayahRange: { start: 1, end: 5 },
+          },
+          {
+            type: 'insight',
+            title: 'Night as Symbol',
+            content:
+              'Night in the Quran symbolizes: difficulty before ease (night before morning), hiddenness (what is done in private), tranquility (when the soul can reflect), and divine timing (much happens at night that day reveals).',
+          },
+        ],
+        takeaways: [
+          'Multiple surahs swear by the night — signifying its importance',
+          'Surah Al-Lail uses night as a symbol of hidden deeds',
+          'Surah Al-Fajr references the "ten nights" of Ramadan',
+          'Night symbolizes difficulty, hiddenness, and tranquility',
+        ],
+        reflectionPrompts: [
+          'What does the night symbolize in your spiritual journey?',
+        ],
+        mapHighlights: {
+          year: 612,
+          surahNumbers: [92, 89],
+          location: { ...LOCATIONS.MAKKAH, zoom: 11 },
+        },
+      },
+    ],
+  },
 ];
 
 /**

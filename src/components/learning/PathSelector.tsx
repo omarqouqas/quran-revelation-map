@@ -7,7 +7,7 @@
 
 import { useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Clock, BookOpen, CheckCircle2, Play, Sunrise, Shield, Compass, Route, Users, Swords, Crown, Lock } from 'lucide-react';
+import { X, Clock, BookOpen, CheckCircle2, Play, Sunrise, Shield, Compass, Route, Users, Swords, Crown, Lock, Heart, ScrollText, GitCompare, Moon } from 'lucide-react';
 import { learningPaths, LearningPath } from '@/data/learning-paths';
 import { useLearningStore } from '@/stores/useLearningStore';
 
@@ -26,6 +26,10 @@ const iconMap: Record<string, React.ElementType> = {
   Swords,
   Crown,
   BookOpen,
+  Heart,
+  ScrollText,
+  GitCompare,
+  Moon,
 };
 
 /** Single path card */
