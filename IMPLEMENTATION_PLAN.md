@@ -297,6 +297,7 @@ Context: "Recited by Ja'far to the Christian king of Abyssinia"
 
 | Feature | Description |
 |---------|-------------|
+| **Age Explorer** | Users enter their age to discover what was being revealed when the Prophet ﷺ was that same age. Shows life stage context (Before Prophethood, Makkan Period, Hijra, Madinan Period), related events, and surahs being revealed. Includes shareable cards with Arabic titles and period-appropriate styling (gold for Makki, teal for Madani). |
 | **Sacred Site Modal** | Clickable sacred site markers open a detailed modal showing site info, Arabic name, coordinates, description, related historical events, and related surahs revealed at that location. Share button allows exporting site cards. |
 | **Sacred Site Share Cards** | Beautiful shareable cards for all 8 sacred sites with category-based styling, related events, and related surahs. |
 | **html2canvas Tailwind v4 Fix** | Fixed "unsupported color function 'lab'" error by converting all LAB/OKLCH colors to RGB using canvas 2D context and removing stylesheets from cloned document. |
