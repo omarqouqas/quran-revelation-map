@@ -12,6 +12,7 @@ import { Search, Sparkles, Keyboard, ArrowLeftRight, Film, User, BookOpen } from
 import { VideoBackground } from '@/components/map/VideoBackground';
 import { MapContainer } from '@/components/map/MapContainer';
 import { TimelineSlider } from '@/components/timeline/TimelineSlider';
+import { TimelineContextPanel } from '@/components/timeline/TimelineContextPanel';
 import { SurahDetailPanel } from '@/components/layout/SurahDetailPanel';
 import { EventDetailModal } from '@/components/layout/EventDetailModal';
 import { SacredSiteModal } from '@/components/layout/SacredSiteModal';
@@ -204,6 +205,7 @@ export function QuranMapApp({ initialSurahNumber }: QuranMapAppProps) {
             }}
           >
             <TimelineSlider />
+            <TimelineContextPanel />
           </div>
         </div>
       )}
