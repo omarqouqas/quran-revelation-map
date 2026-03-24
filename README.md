@@ -15,6 +15,9 @@ This is **not** a Quran reader or recitation app. It's an educational tool focus
   - 7 chronological paths: The Beginning, Persecution & Patience, The Turning Point, The Hijra, Building the Ummah, Trials & Triumph, Victory & Completion
   - 4 thematic paths: Surahs of Comfort, Stories of the Prophets, Makki vs Madani, The Night Surahs
   - Progress tracking saved locally
+- **Timeline Learning Mode** - "What Was Happening" panel showing historical context as you navigate the timeline
+  - 6 sub-periods with context narratives (Early/Middle/Late Makkan, Early/Middle/Late Madinan)
+  - Prophet's age, events, surahs, and themes for each year
 - **Enhanced Surah Data** - 20 pilot surahs with detailed circumstances, themes with explanations, insights, and reflection prompts
 - **Interactive Timeline** - Explore revelation chronologically from 610-632 CE
 - **Geographic Map** - Hijaz region with sacred site markers (Makkah, Madinah, Cave Hira, etc.)
@@ -30,8 +33,8 @@ See [IMPLEMENTATION_PLAN.md](./IMPLEMENTATION_PLAN.md) for the full roadmap.
 
 **Next priorities:**
 1. Enhanced Surah Data (expand to all 114 surahs)
-2. Timeline Learning Mode
-3. Bookmarks & Notes
+2. Bookmarks & Notes
+3. Search Functionality
 
 ## Tech Stack
 
