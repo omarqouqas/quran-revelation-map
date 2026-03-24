@@ -276,18 +276,18 @@ Themes in the Quran
 
 ## Implementation Priority
 
-| Order | Phase | Feature | Effort | Impact |
-|-------|-------|---------|--------|--------|
-| 1 | 1.1 | Learning path framework | High | Very High |
-| 2 | 1.2 | First learning path ("The Beginning") | Medium | Very High |
-| 3 | 2.1 | Enhanced surah data (pilot 20 surahs) | Medium | High |
-| 4 | 3.1 | Progress tracking | Low | Medium |
-| 5 | 1.2 | Remaining core learning paths | High | Very High |
-| 6 | 4.1 | Timeline learning mode | Medium | High |
-| 7 | 2.1 | Enhanced surah data (all 114) | High | High |
-| 8 | 3.2 | Bookmarks & notes | Low | Medium |
-| 9 | 5.1 | Search functionality | Medium | Medium |
-| 10 | 1.3 | Thematic learning paths | Medium | Medium |
+| Order | Phase | Feature | Effort | Impact | Status |
+|-------|-------|---------|--------|--------|--------|
+| 1 | 1.1 | Learning path framework | High | Very High | ✅ Done |
+| 2 | 1.2 | First learning path ("The Beginning") | Medium | Very High | ✅ Done |
+| 3 | 2.1 | Enhanced surah data (pilot 20 surahs) | Medium | High | ✅ Done |
+| 4 | 3.1 | Progress tracking | Low | Medium | ✅ Done |
+| 5 | 1.2 | Remaining core learning paths | High | Very High | ✅ Done |
+| 6 | 4.1 | Timeline learning mode | Medium | High | |
+| 7 | 2.1 | Enhanced surah data (all 114) | High | High | |
+| 8 | 3.2 | Bookmarks & notes | Low | Medium | |
+| 9 | 5.1 | Search functionality | Medium | Medium | |
+| 10 | 1.3 | Thematic learning paths | Medium | Medium | ✅ Done |
 
 ---
 
@@ -337,6 +337,8 @@ For each of 114 surahs:
 
 | Feature | Description |
 |---------|-------------|
+| **Learning Paths (Complete)** | 11 structured learning paths with 44 total lessons covering the entire revelation journey. 7 chronological paths (The Beginning, Persecution & Patience, The Turning Point, The Hijra, Building the Ummah, Trials & Triumph, Victory & Completion) and 4 thematic paths (Surahs of Comfort, Stories of the Prophets, Makki vs Madani, The Night Surahs). Each lesson includes narrative sections, historical context, Quran references, insights, key takeaways, and reflection prompts. Progress saved to localStorage. |
+| **Enhanced Surah Data** | 20 pilot surahs with deep educational content including: detailed circumstances of revelation (Asbab al-Nuzul), 3-5 themes with explanations, learning insights, reflection prompts, and related surah links. SurahDetailPanel displays enhanced data when available with visual cards for each section type. Surahs: 1, 2, 12, 18, 19, 36, 55, 56, 67, 68, 93, 94, 96, 103, 108, 110, 112, 113, 114. |
 | **Age Explorer** | Users enter their age to discover what was being revealed when the Prophet ﷺ was that same age. Shows life stage context (Before Prophethood, Makkan Period, Hijra, Madinan Period), related events, and surahs being revealed. Includes shareable cards with Arabic titles and period-appropriate styling (gold for Makki, teal for Madani). |
 | **Sacred Site Modal** | Clickable sacred site markers open a detailed modal showing site info, Arabic name, coordinates, description, related historical events, and related surahs revealed at that location. Share button allows exporting site cards. |
 | **Sacred Site Share Cards** | Beautiful shareable cards for all 8 sacred sites with category-based styling, related events, and related surahs. |

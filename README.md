@@ -11,6 +11,11 @@ This is **not** a Quran reader or recitation app. It's an educational tool focus
 ## Features
 
 ### Currently Available
+- **Learning Paths** - 11 structured courses (44 lessons) covering the entire revelation journey
+  - 7 chronological paths: The Beginning, Persecution & Patience, The Turning Point, The Hijra, Building the Ummah, Trials & Triumph, Victory & Completion
+  - 4 thematic paths: Surahs of Comfort, Stories of the Prophets, Makki vs Madani, The Night Surahs
+  - Progress tracking saved locally
+- **Enhanced Surah Data** - 20 pilot surahs with detailed circumstances, themes with explanations, insights, and reflection prompts
 - **Interactive Timeline** - Explore revelation chronologically from 610-632 CE
 - **Geographic Map** - Hijaz region with sacred site markers (Makkah, Madinah, Cave Hira, etc.)
 - **Surah Explorer** - View all 114 surahs with revelation order and context
@@ -24,9 +29,9 @@ This is **not** a Quran reader or recitation app. It's an educational tool focus
 See [IMPLEMENTATION_PLAN.md](./IMPLEMENTATION_PLAN.md) for the full roadmap.
 
 **Next priorities:**
-1. Guided Learning Paths (structured courses through revelation history)
-2. Enhanced Surah Context (themes, insights, reflection prompts)
-3. Progress Tracking (track your learning journey)
+1. Enhanced Surah Data (expand to all 114 surahs)
+2. Timeline Learning Mode
+3. Bookmarks & Notes
 
 ## Tech Stack
 
@@ -60,11 +65,14 @@ src/
 ├── app/                  # Next.js app router
 ├── components/
 │   ├── layout/          # Modals, panels, UI structure
+│   ├── learning/        # Learning paths, lessons, navigation
 │   ├── map/             # Map, markers, video background
 │   ├── share/           # Share cards and modal
 │   └── timeline/        # Timeline slider
 ├── data/
 │   ├── events.ts        # Historical events
+│   ├── learning-paths.ts # Learning path definitions (11 paths, 44 lessons)
+│   ├── enhanced-surah-data.ts # Deep surah context (20 pilot surahs)
 │   ├── surah-locations.ts # Surah data with locations
 │   └── sacred-sites.ts  # Sacred site information
 ├── hooks/               # Custom React hooks
