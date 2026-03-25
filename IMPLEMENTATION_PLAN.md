@@ -284,7 +284,7 @@ Themes in the Quran
 | 4 | 3.1 | Progress tracking | Low | Medium | ✅ Done |
 | 5 | 1.2 | Remaining core learning paths | High | Very High | ✅ Done |
 | 6 | 4.1 | Timeline learning mode | Medium | High | ✅ Done |
-| 7 | 2.1 | Enhanced surah data (all 114) | High | High | |
+| 7 | 2.1 | Enhanced surah data (all 114) | High | High | ✅ Done |
 | 8 | 3.2 | Bookmarks & notes | Low | Medium | |
 | 9 | 5.1 | Search functionality | Medium | Medium | ✅ Done |
 | 10 | 1.3 | Thematic learning paths | Medium | Medium | ✅ Done |
