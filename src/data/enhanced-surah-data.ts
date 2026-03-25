@@ -2461,6 +2461,435 @@ export const enhancedSurahData: Record<number, EnhancedSurahData> = {
     relatedSurahs: [33, 65, 24],
   },
 
+  // Surah 69: Al-Haqqah (The Inevitable Reality)
+  69: {
+    number: 69,
+    circumstances:
+      "A Makkan surah emphasizing the certainty of Judgment Day. It vividly describes the destruction of past nations and the dramatic events of resurrection. The opening rhetorical question 'What is the Inevitable?' creates urgency and awe.",
+    themes: [
+      {
+        title: "The Inevitable Hour",
+        explanation:
+          "A name for Judgment Day that emphasizes its absolute certainty.",
+      },
+      {
+        title: "Destroyed Nations",
+        explanation:
+          "Thamud, 'Ad, Pharaoh - all destroyed by specific punishments.",
+      },
+      {
+        title: "Books of Deeds",
+        explanation:
+          "Right hand receives book with joy; left hand with regret and chains.",
+      },
+      {
+        title: "Quran's Authenticity",
+        explanation:
+          "Not poetry or soothsaying - a revelation from the Lord of worlds.",
+      },
+    ],
+    insights: [
+      "The screaming wind that destroyed 'Ad lasted seven nights and eight days.",
+      "The one who receives his book in left hand will wish he had never been given it.",
+      "If the Prophet ﷺ fabricated anything, his life vein would be cut - proving his honesty.",
+    ],
+    reflectionPrompts: [
+      "Which hand do you expect to receive your book in? What can you change now?",
+      "How does the certainty of judgment affect your daily choices?",
+    ],
+    relatedSurahs: [56, 77, 78],
+  },
+
+  // Surah 70: Al-Ma'arij (The Ascending Stairways)
+  70: {
+    number: 70,
+    circumstances:
+      "A Makkan surah named after the stairways by which angels ascend. A skeptic asked mockingly when punishment would come; the surah responds that angels take 50,000 years to ascend - divine time differs from human perception.",
+    themes: [
+      {
+        title: "Angels Ascending",
+        explanation:
+          "Angels and Spirit ascend in a day equal to 50,000 years.",
+      },
+      {
+        title: "Human Nature",
+        explanation:
+          "Man is created anxious, impatient, withholding when blessed.",
+      },
+      {
+        title: "Exceptions",
+        explanation:
+          "Those who pray, give charity, guard chastity - they overcome human weakness.",
+      },
+      {
+        title: "No Ransom Accepted",
+        explanation:
+          "On that Day, no relative or ransom can save anyone.",
+      },
+    ],
+    insights: [
+      "The critique of human nature is balanced by exceptions who struggle against it.",
+      "Family bonds dissolve on Judgment Day - each soul for itself.",
+      "Prayer is described as constant (da'imun) - not sporadic but sustained.",
+    ],
+    reflectionPrompts: [
+      "How do you combat the natural tendency toward anxiety and impatience?",
+      "Is your prayer 'constant' or sporadic?",
+    ],
+    relatedSurahs: [69, 71, 79],
+  },
+
+  // Surah 71: Nuh (Noah)
+  71: {
+    number: 71,
+    circumstances:
+      "A Makkan surah entirely dedicated to Prophet Nuh's story. He preached for 950 years yet few believed. The surah captures his prayers, methods, frustration, and ultimate supplication against his people - a mirror for the Prophet ﷺ facing similar rejection.",
+    themes: [
+      {
+        title: "Decades of Preaching",
+        explanation:
+          "Nuh called his people night and day for centuries with little result.",
+      },
+      {
+        title: "Multiple Methods",
+        explanation:
+          "He tried public preaching, private counsel, appeals to reason and emotion.",
+      },
+      {
+        title: "Stubborn Rejection",
+        explanation:
+          "They put fingers in ears, covered themselves, persisted arrogantly.",
+      },
+      {
+        title: "Final Supplication",
+        explanation:
+          "Nuh prayed against them only after Allah confirmed none would believe.",
+      },
+    ],
+    insights: [
+      "950 years of effort - success is measured by faithfulness, not numbers.",
+      "Nuh's diverse methods show prophetic creativity in dawah.",
+      "The supplication against his people came only after divine confirmation.",
+    ],
+    reflectionPrompts: [
+      "How patient are you in calling others to good, even without seeing results?",
+      "What methods do you vary in communicating truth?",
+    ],
+    relatedSurahs: [11, 23, 54],
+  },
+
+  // Surah 72: Al-Jinn
+  72: {
+    number: 72,
+    circumstances:
+      "A Makkan surah revealing that a group of jinn listened to the Prophet ﷺ reciting Quran and returned to their people as believers and warners. It provides rare insight into the jinn world, their diversity in faith, and their acknowledgment of Muhammad ﷺ.",
+    themes: [
+      {
+        title: "Jinn Accept Islam",
+        explanation:
+          "They heard the Quran and recognized it as guiding to truth.",
+      },
+      {
+        title: "Diversity Among Jinn",
+        explanation:
+          "Some are Muslims, some deviated - like humans, they have free will.",
+      },
+      {
+        title: "Heaven Guarded",
+        explanation:
+          "Jinn can no longer eavesdrop on heaven - shooting stars guard it.",
+      },
+      {
+        title: "Mosques for Allah Alone",
+        explanation:
+          "Worship spaces are for Allah exclusively - no partners.",
+      },
+    ],
+    insights: [
+      "The jinn's immediate recognition of truth contrasts with Quraysh's stubborn denial.",
+      "Even the unseen realm has believers and disbelievers - accountability is universal.",
+      "The Prophet ﷺ was sent to both humans and jinn.",
+    ],
+    reflectionPrompts: [
+      "What barriers prevent you from recognizing truth as quickly as these jinn did?",
+      "How does knowing jinn exist affect your worldview?",
+    ],
+    relatedSurahs: [46, 55, 15],
+  },
+
+  // Surah 73: Al-Muzzammil (The Enshrouded One)
+  73: {
+    number: 73,
+    circumstances:
+      "A very early Makkan surah addressing the Prophet ﷺ as 'the one wrapped in garments.' It establishes night prayer (tahajjud) as preparation for the weighty revelation to come. Initially, long night prayers were obligatory, later reduced to what is feasible.",
+    themes: [
+      {
+        title: "Night Prayer Established",
+        explanation:
+          "Stand in prayer at night - half, less, or more - reciting Quran.",
+      },
+      {
+        title: "Weighty Words Coming",
+        explanation:
+          "A heavy word will be cast upon you - preparation through worship.",
+      },
+      {
+        title: "Night's Special Quality",
+        explanation:
+          "Night prayer is more impactful for the soul and clearer for recitation.",
+      },
+      {
+        title: "Mercy in Reduction",
+        explanation:
+          "Allah knows you cannot maintain it - pray what is easy for you.",
+      },
+    ],
+    insights: [
+      "The Prophet ﷺ was prepared for revelation through extensive night worship.",
+      "Night hours are described as having stronger spiritual impact.",
+      "The reduction shows Allah's mercy - He doesn't burden beyond capacity.",
+    ],
+    reflectionPrompts: [
+      "What spiritual disciplines prepare you for life's challenges?",
+      "How can you incorporate even small amounts of night prayer?",
+    ],
+    relatedSurahs: [74, 76, 32],
+  },
+
+  // Surah 74: Al-Muddathir (The Cloaked One)
+  74: {
+    number: 74,
+    circumstances:
+      "Among the earliest revelations. After the terrifying first encounter with Jibreel, the Prophet ﷺ returned home trembling, asking Khadijah to cover him. Then came: 'O you wrapped in garments, arise and warn!' - the command to begin public preaching.",
+    themes: [
+      {
+        title: "Command to Warn",
+        explanation:
+          "Rise and warn - the prophetic mission officially begins.",
+      },
+      {
+        title: "Magnify Your Lord",
+        explanation:
+          "Declare Allah's greatness before declaring the message.",
+      },
+      {
+        title: "Saqar (Hell)",
+        explanation:
+          "Nineteen angels guard it - a response to mockery about this number.",
+      },
+      {
+        title: "Self-Inflicted Doom",
+        explanation:
+          "The disbeliever who rejected truth brought punishment upon himself.",
+      },
+    ],
+    insights: [
+      "The transition from private terror to public mission happened quickly.",
+      "Purification (tahhir) precedes preaching - internal preparation first.",
+      "The mockers who laughed at 'nineteen angels' didn't understand divine wisdom.",
+    ],
+    reflectionPrompts: [
+      "What fears hold you back from fulfilling your calling?",
+      "Have you purified your intention before calling others?",
+    ],
+    relatedSurahs: [73, 96, 68],
+  },
+
+  // Surah 75: Al-Qiyamah (The Resurrection)
+  75: {
+    number: 75,
+    circumstances:
+      "A Makkan surah opening with an oath by the Day of Resurrection and the self-reproaching soul. It addresses those who denied resurrection, describing the moment of death, the gathering of bones, and the soul's self-awareness.",
+    themes: [
+      {
+        title: "Self-Reproaching Soul",
+        explanation:
+          "The conscience (nafs lawwamah) that blames itself is honored by Allah's oath.",
+      },
+      {
+        title: "Resurrection of Bones",
+        explanation:
+          "Can bones be reassembled? Yes, even fingertips can be perfectly recreated.",
+      },
+      {
+        title: "Moment of Death",
+        explanation:
+          "When soul reaches collarbone, no healer or reciter can help.",
+      },
+      {
+        title: "Faces Radiant and Dark",
+        explanation:
+          "That Day, some faces beam with light; others know disaster awaits.",
+      },
+    ],
+    insights: [
+      "The fingertip detail (unique fingerprints) is a remarkable scientific allusion.",
+      "The self-blaming soul is praised - self-awareness of sin leads to repentance.",
+      "Death's inevitability makes worldly attachment futile.",
+    ],
+    reflectionPrompts: [
+      "How active is your self-reproaching soul in correcting you?",
+      "What would you do differently if you knew death was at your collarbone?",
+    ],
+    relatedSurahs: [56, 69, 82],
+  },
+
+  // Surah 76: Al-Insan/Ad-Dahr (The Human/Time)
+  76: {
+    number: 76,
+    circumstances:
+      "A Madinan surah (though some say Makkan) describing human creation from a drop, then guidance to gratitude or ingratitude. It contains detailed Paradise descriptions and was revealed about Ali, Fatimah, and their family giving away food while fasting.",
+    themes: [
+      {
+        title: "Human's Humble Origin",
+        explanation:
+          "There was a time when human was nothing mentioned - created from a drop.",
+      },
+      {
+        title: "Grateful or Ungrateful",
+        explanation:
+          "We guided the way; whether grateful or ungrateful is their choice.",
+      },
+      {
+        title: "Paradise in Detail",
+        explanation:
+          "Garments of silk, silver vessels, spring of Salsabil - vivid imagery.",
+      },
+      {
+        title: "Feeding Despite Need",
+        explanation:
+          "They feed the poor, orphan, captive despite loving the food themselves.",
+      },
+    ],
+    insights: [
+      "The occasion of revelation about Ali's family shows the reward for sacrificial giving.",
+      "Paradise imagery includes sensory pleasures sanctified by divine context.",
+      "Human insignificance before creation contrasts with potential through gratitude.",
+    ],
+    reflectionPrompts: [
+      "Would you give away food you desperately need?",
+      "How does knowing your humble origin affect your pride?",
+    ],
+    relatedSurahs: [32, 56, 83],
+  },
+
+  // Surah 77: Al-Mursalat (Those Sent Forth)
+  77: {
+    number: 77,
+    circumstances:
+      "A Makkan surah opening with oaths about winds or angels sent forth. The refrain 'Woe that Day to the deniers' repeats ten times, creating a powerful rhythmic warning. It describes creation's signs and Judgment Day's terrors.",
+    themes: [
+      {
+        title: "Winds/Angels Sent",
+        explanation:
+          "Oaths by those sent forth in succession - cosmic or angelic forces.",
+      },
+      {
+        title: "Woe to Deniers",
+        explanation:
+          "Ten times the refrain repeats - emphasizing the warning.",
+      },
+      {
+        title: "Creation Signs",
+        explanation:
+          "Did We not create you from fluid? Place you in a secure lodging?",
+      },
+      {
+        title: "No Shade from Fire",
+        explanation:
+          "That Day, no cool shade - only shadows of smoke in three columns.",
+      },
+    ],
+    insights: [
+      "The repetitive refrain creates almost musical emphasis on accountability.",
+      "The secure lodging (womb) is a sign of Allah's care from the beginning.",
+      "Deniers are told to enjoy briefly - their enjoyment is temporary.",
+    ],
+    reflectionPrompts: [
+      "What signs of creation do you overlook daily?",
+      "How does repetition in the Quran affect your attention?",
+    ],
+    relatedSurahs: [56, 78, 79],
+  },
+
+  // Surah 78: An-Naba (The News)
+  78: {
+    number: 78,
+    circumstances:
+      "A Makkan surah beginning with 'About what are they asking?' - referring to debates about resurrection. It systematically presents creation's evidence and describes both Paradise's delights and Hell's punishments in vivid contrast.",
+    themes: [
+      {
+        title: "The Great News",
+        explanation:
+          "The resurrection they dispute - about it they will come to know.",
+      },
+      {
+        title: "Creation Evidence",
+        explanation:
+          "Earth as bed, mountains as pegs, pairs created, night for rest.",
+      },
+      {
+        title: "Day of Sorting",
+        explanation:
+          "The trumpet blown, people come in crowds, heaven opened with gates.",
+      },
+      {
+        title: "Paradise and Hell Contrasted",
+        explanation:
+          "Gardens, grapes, companions vs. ambush, boiling water, scalding wind.",
+      },
+    ],
+    insights: [
+      "The list of creation signs builds an overwhelming case for the Creator's power.",
+      "Hell is described as 'lying in ambush' - waiting for the arrogant.",
+      "Paradise rewards are physical and spiritual - both dignified and delightful.",
+    ],
+    reflectionPrompts: [
+      "Which creation sign mentioned most powerfully points you to Allah?",
+      "How do you prepare for the 'Day of Sorting'?",
+    ],
+    relatedSurahs: [77, 79, 80],
+  },
+
+  // Surah 79: An-Nazi'at (Those Who Pull Out)
+  79: {
+    number: 79,
+    circumstances:
+      "A Makkan surah opening with oaths about angels who extract souls - some violently (from disbelievers), some gently (from believers). It recounts Musa's encounter with Pharaoh and describes the cataclysmic events of Judgment Day.",
+    themes: [
+      {
+        title: "Angels Extracting Souls",
+        explanation:
+          "Some pull out violently, others draw out gently - based on the person's state.",
+      },
+      {
+        title: "Musa and Pharaoh",
+        explanation:
+          "The great story of confrontation between truth and arrogant power.",
+      },
+      {
+        title: "The Great Overwhelming",
+        explanation:
+          "When the greatest calamity comes, man will remember his striving.",
+      },
+      {
+        title: "Paradise and Hell",
+        explanation:
+          "Whoever feared standing before Allah has Paradise; who transgressed has Fire.",
+      },
+    ],
+    insights: [
+      "The violent extraction for disbelievers vs gentle drawing for believers motivates preparation.",
+      "Pharaoh's story is summarized as pure arrogance meeting divine power.",
+      "'When is the Hour?' - the Prophet ﷺ is told he's only a warner, not its timekeeper.",
+    ],
+    reflectionPrompts: [
+      "Do you fear standing before your Lord? How does that fear manifest?",
+      "What kind of soul extraction do you expect - and are you preparing accordingly?",
+    ],
+    relatedSurahs: [78, 80, 81],
+  },
+
   // Surah 93: Ad-Duha (The Morning Light)
   93: {
     number: 93,
