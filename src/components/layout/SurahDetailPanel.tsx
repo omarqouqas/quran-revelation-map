@@ -119,14 +119,14 @@ export function SurahDetailPanel() {
               {/* Close button */}
               <button
                 onClick={() => selectSurah(null)}
-                className="absolute right-4 top-4 p-2 rounded-full hover:bg-[#2A3342] transition-colors z-10"
+                className="absolute right-5 top-5 p-2.5 rounded-full hover:bg-[#2A3342] transition-colors z-10"
                 aria-label="Close panel"
               >
                 <X className="w-5 h-5 text-[#E8E3DB]" />
               </button>
 
               {/* Surah header */}
-              <div className="px-6 pt-5 pb-4">
+              <div className="px-7 pt-6 pb-5">
                 <div className="flex items-start gap-4">
                   {/* Number badge */}
                   <div
@@ -186,7 +186,7 @@ export function SurahDetailPanel() {
               </div>
 
               {/* Action buttons */}
-              <div className="px-6 pb-4 flex gap-3">
+              <div className="px-7 pb-5 flex gap-3">
                 <a
                   href={quranComUrl}
                   target="_blank"
@@ -229,17 +229,17 @@ export function SurahDetailPanel() {
             </div>
 
             {/* Content */}
-            <div className="px-6 py-6 space-y-8">
+            <div className="px-7 py-8 space-y-10">
               {/* Opening Verse */}
               {openingVerse && (
                 <section
-                  className="p-5 rounded-xl border"
+                  className="p-6 rounded-2xl border"
                   style={{
                     backgroundColor: `${accentColor}08`,
                     borderColor: `${accentColor}20`,
                   }}
                 >
-                  <div className="flex items-center gap-2 mb-4">
+                  <div className="flex items-center gap-2 mb-5">
                     <Sparkles className="w-4 h-4" style={{ color: accentColor }} />
                     <h3
                       className="text-xs font-semibold uppercase tracking-wider"
@@ -249,7 +249,7 @@ export function SurahDetailPanel() {
                     </h3>
                   </div>
                   <p
-                    className="text-2xl text-[#F5F0E8] leading-loose text-right mb-4"
+                    className="text-2xl text-[#F5F0E8] leading-loose text-right mb-5"
                     style={{ fontFamily: 'var(--font-arabic)' }}
                   >
                     {openingVerse.arabic}
@@ -257,16 +257,16 @@ export function SurahDetailPanel() {
                   <p className="text-sm text-[#E8E3DB] opacity-80 leading-relaxed italic">
                     &ldquo;{openingVerse.translation}&rdquo;
                   </p>
-                  <p className="text-xs text-[#E8E3DB] opacity-50 mt-3">
+                  <p className="text-xs text-[#E8E3DB] opacity-50 mt-4">
                     — {openingVerse.ayah}
                   </p>
                 </section>
               )}
 
               {/* Order Comparison - Quran vs Revelation */}
-              <section className="p-4 rounded-xl bg-[#1A2332] border border-[#2A3342]">
+              <section className="p-5 rounded-2xl bg-[#1A2332] border border-[#2A3342]">
                 <h4
-                  className="text-xs font-semibold text-[#E8E3DB] opacity-70 uppercase tracking-wider mb-3"
+                  className="text-xs font-semibold text-[#E8E3DB] opacity-70 uppercase tracking-wider mb-4"
                   style={{ fontFamily: 'var(--font-heading)' }}
                 >
                   Order Comparison
@@ -325,7 +325,7 @@ export function SurahDetailPanel() {
               {/* Circumstances - Asbab al-Nuzul (when enhanced data available) */}
               {enhancedData && (
                 <section
-                  className="p-5 rounded-xl border relative overflow-hidden"
+                  className="p-6 rounded-2xl border relative overflow-hidden"
                   style={{
                     background: `linear-gradient(135deg, #8B5CF608 0%, #0D121905 100%)`,
                     borderColor: '#8B5CF620',
@@ -333,12 +333,12 @@ export function SurahDetailPanel() {
                 >
                   {/* Accent bar */}
                   <div
-                    className="absolute left-0 top-0 bottom-0 w-1 rounded-l-xl"
+                    className="absolute left-0 top-0 bottom-0 w-1 rounded-l-2xl"
                     style={{ backgroundColor: '#8B5CF6' }}
                   />
-                  <div className="flex items-center gap-2 mb-4 pl-3">
+                  <div className="flex items-center gap-3 mb-5 pl-4">
                     <div
-                      className="w-8 h-8 rounded-lg flex items-center justify-center"
+                      className="w-9 h-9 rounded-xl flex items-center justify-center"
                       style={{ backgroundColor: '#8B5CF620' }}
                     >
                       <History className="w-4 h-4 text-[#8B5CF6]" />
@@ -350,7 +350,7 @@ export function SurahDetailPanel() {
                       Circumstances of Revelation
                     </h3>
                   </div>
-                  <p className="text-[15px] text-[#E8E3DB] opacity-90 leading-relaxed pl-3">
+                  <p className="text-[15px] text-[#E8E3DB] opacity-90 leading-[1.8] pl-4">
                     {enhancedData.circumstances}
                   </p>
                 </section>
@@ -359,40 +359,40 @@ export function SurahDetailPanel() {
               {/* Key themes - Enhanced version when available */}
               <section>
                 <h3
-                  className="text-xs font-semibold text-[#E8E3DB] opacity-70 uppercase tracking-wider mb-4"
+                  className="text-xs font-semibold text-[#E8E3DB] opacity-70 uppercase tracking-wider mb-5"
                   style={{ fontFamily: 'var(--font-heading)' }}
                 >
                   Key Themes
                 </h3>
                 {enhancedData ? (
-                  <div className="space-y-3">
+                  <div className="space-y-4">
                     {enhancedData.themes.map((theme, index) => (
                       <div
                         key={index}
-                        className="p-4 rounded-xl border"
+                        className="p-5 rounded-2xl border"
                         style={{
                           backgroundColor: `${accentColor}08`,
                           borderColor: `${accentColor}20`,
                         }}
                       >
                         <h4
-                          className="font-semibold text-sm mb-2"
+                          className="font-semibold text-sm mb-3"
                           style={{ color: accentColor }}
                         >
                           {theme.title}
                         </h4>
-                        <p className="text-sm text-[#E8E3DB] opacity-80 leading-relaxed">
+                        <p className="text-sm text-[#E8E3DB] opacity-80 leading-[1.7]">
                           {theme.explanation}
                         </p>
                       </div>
                     ))}
                   </div>
                 ) : (
-                  <div className="flex flex-wrap gap-2.5">
+                  <div className="flex flex-wrap gap-3">
                     {surah.themes.map((theme, index) => (
                       <span
                         key={index}
-                        className="px-3 py-1.5 rounded-lg text-xs font-medium"
+                        className="px-4 py-2 rounded-xl text-xs font-medium"
                         style={{
                           backgroundColor: `${accentColor}15`,
                           color: accentColor,
@@ -409,7 +409,7 @@ export function SurahDetailPanel() {
               {/* Learning Insights (when enhanced data available) */}
               {enhancedData && enhancedData.insights.length > 0 && (
                 <section
-                  className="p-5 rounded-xl border relative overflow-hidden"
+                  className="p-6 rounded-2xl border relative overflow-hidden"
                   style={{
                     background: `linear-gradient(145deg, #C8A84E12 0%, #C8A84E04 100%)`,
                     borderColor: '#C8A84E30',
@@ -417,10 +417,10 @@ export function SurahDetailPanel() {
                 >
                   {/* Large decorative icon */}
                   <div className="absolute -top-2 -right-2 opacity-10">
-                    <Lightbulb className="w-20 h-20 text-[#C8A84E]" />
+                    <Lightbulb className="w-24 h-24 text-[#C8A84E]" />
                   </div>
 
-                  <div className="flex items-center gap-2 mb-5">
+                  <div className="flex items-center gap-3 mb-6">
                     <Lightbulb className="w-5 h-5 text-[#C8A84E]" />
                     <h3
                       className="text-xs font-semibold uppercase tracking-wider text-[#C8A84E]"
@@ -429,14 +429,14 @@ export function SurahDetailPanel() {
                       Learning Insights
                     </h3>
                   </div>
-                  <div className="space-y-4 relative z-10">
+                  <div className="space-y-5 relative z-10">
                     {enhancedData.insights.map((insight, index) => (
                       <div
                         key={index}
-                        className="flex items-start gap-3"
+                        className="flex items-start gap-4"
                       >
                         <span
-                          className="w-6 h-6 rounded-full flex items-center justify-center shrink-0 text-xs font-bold mt-0.5"
+                          className="w-7 h-7 rounded-full flex items-center justify-center shrink-0 text-xs font-bold mt-0.5"
                           style={{
                             background: 'linear-gradient(135deg, #C8A84E30 0%, #C8A84E15 100%)',
                             color: '#C8A84E',
@@ -444,7 +444,7 @@ export function SurahDetailPanel() {
                         >
                           {index + 1}
                         </span>
-                        <p className="text-[15px] text-[#F5F0E8] leading-relaxed">
+                        <p className="text-[15px] text-[#F5F0E8] leading-[1.8]">
                           {insight}
                         </p>
                       </div>
@@ -454,29 +454,29 @@ export function SurahDetailPanel() {
               )}
 
               {/* Historical context */}
-              <section>
+              <section className="p-6 rounded-2xl bg-[#0D1219] border border-[#1E2736]">
                 <h3
-                  className="text-xs font-semibold text-[#E8E3DB] opacity-70 uppercase tracking-wider mb-4"
+                  className="text-xs font-semibold text-[#E8E3DB] opacity-70 uppercase tracking-wider mb-5"
                   style={{ fontFamily: 'var(--font-heading)' }}
                 >
                   Historical Context
                 </h3>
-                <p className="text-[15px] text-[#E8E3DB] opacity-85 leading-relaxed">
+                <p className="text-[15px] text-[#E8E3DB] opacity-85 leading-[1.8]">
                   {surah.context}
                 </p>
               </section>
 
               {/* Tanzil note */}
               {tanzilNote && (
-                <section className="p-5 rounded-xl bg-[#1A2332] border border-[#2A3342]">
+                <section className="p-6 rounded-2xl bg-[#1A2332] border border-[#2A3342]">
                   <h4
-                    className="text-xs font-semibold text-[#F5F0E8] mb-3 flex items-center gap-2"
+                    className="text-xs font-semibold text-[#F5F0E8] mb-4 flex items-center gap-2"
                     style={{ fontFamily: 'var(--font-heading)' }}
                   >
                     <BookOpen className="w-3.5 h-3.5" style={{ color: accentColor }} />
                     Scholarly Note
                   </h4>
-                  <p className="text-sm text-[#E8E3DB] opacity-75 leading-relaxed">
+                  <p className="text-sm text-[#E8E3DB] opacity-75 leading-[1.7]">
                     {tanzilNote}
                   </p>
                 </section>
@@ -486,12 +486,12 @@ export function SurahDetailPanel() {
               {relatedEvents.length > 0 && (
                 <section>
                   <h3
-                    className="text-xs font-semibold text-[#E8E3DB] opacity-70 uppercase tracking-wider mb-4"
+                    className="text-xs font-semibold text-[#E8E3DB] opacity-70 uppercase tracking-wider mb-5"
                     style={{ fontFamily: 'var(--font-heading)' }}
                   >
                     Related Events ({relatedEvents.length})
                   </h3>
-                  <div className="space-y-2">
+                  <div className="space-y-3">
                     {(showAllEvents ? relatedEvents : relatedEvents.slice(0, 2)).map(
                       (event) => (
                         <button
@@ -500,7 +500,7 @@ export function SurahDetailPanel() {
                             selectEvent(event.id);
                             setCurrentYear(event.year);
                           }}
-                          className="w-full text-left p-3 rounded-xl bg-[#1A2332] border border-[#2A3342] hover:border-[#3A4352] transition-all hover:scale-[1.01] group"
+                          className="w-full text-left p-4 rounded-2xl bg-[#1A2332] border border-[#2A3342] hover:border-[#3A4352] transition-all hover:scale-[1.01] group"
                         >
                           <div className="flex items-center justify-between">
                             <span
@@ -510,7 +510,7 @@ export function SurahDetailPanel() {
                               {event.name}
                             </span>
                             <span
-                              className="text-xs px-2 py-0.5 rounded-full"
+                              className="text-xs px-2.5 py-1 rounded-full"
                               style={{
                                 backgroundColor: `${accentColor}20`,
                                 color: accentColor,
@@ -526,7 +526,7 @@ export function SurahDetailPanel() {
                     {relatedEvents.length > 2 && (
                       <button
                         onClick={() => setShowAllEvents(!showAllEvents)}
-                        className="w-full flex items-center justify-center gap-1 py-2 text-xs font-medium transition-colors"
+                        className="w-full flex items-center justify-center gap-1 py-3 text-xs font-medium transition-colors"
                         style={{ color: accentColor }}
                       >
                         {showAllEvents ? (
@@ -547,9 +547,9 @@ export function SurahDetailPanel() {
 
               {/* Reflection Prompts (when enhanced data available) */}
               {enhancedData && enhancedData.reflectionPrompts.length > 0 && (
-                <section className="p-5 rounded-xl bg-[#0D1219] border border-[#1E2736]">
-                  <div className="flex items-center gap-2 mb-5">
-                    <div className="w-8 h-8 rounded-lg bg-[#1A2332] flex items-center justify-center">
+                <section className="p-6 rounded-2xl bg-[#0D1219] border border-[#1E2736]">
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="w-9 h-9 rounded-xl bg-[#1A2332] flex items-center justify-center">
                       <MessageCircle className="w-4 h-4 text-[#E8E3DB] opacity-70" />
                     </div>
                     <h3
@@ -563,9 +563,9 @@ export function SurahDetailPanel() {
                     {enhancedData.reflectionPrompts.map((prompt, index) => (
                       <div
                         key={index}
-                        className="p-4 rounded-xl bg-[#1A2332] border border-[#2A3342]"
+                        className="p-5 rounded-xl bg-[#1A2332] border border-[#2A3342]"
                       >
-                        <p className="text-[15px] text-[#E8E3DB] leading-relaxed italic">
+                        <p className="text-[15px] text-[#E8E3DB] leading-[1.8] italic">
                           &ldquo;{prompt}&rdquo;
                         </p>
                       </div>
@@ -578,27 +578,27 @@ export function SurahDetailPanel() {
               {enhancedData && enhancedData.relatedSurahs && enhancedData.relatedSurahs.length > 0 && (
                 <section>
                   <h3
-                    className="text-xs font-semibold text-[#E8E3DB] opacity-70 uppercase tracking-wider mb-4 flex items-center gap-2"
+                    className="text-xs font-semibold text-[#E8E3DB] opacity-70 uppercase tracking-wider mb-5 flex items-center gap-2"
                     style={{ fontFamily: 'var(--font-heading)' }}
                   >
                     <Link2 className="w-3.5 h-3.5" style={{ color: accentColor }} />
                     Related Surahs
                   </h3>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-3">
                     {enhancedData.relatedSurahs.map((relatedNumber) => {
                       const relatedInfo = getSurahByNumber(relatedNumber);
                       return (
                         <button
                           key={relatedNumber}
                           onClick={() => selectSurah(relatedNumber)}
-                          className="flex items-center gap-2 px-3 py-2 rounded-xl border transition-all hover:scale-[1.02]"
+                          className="flex items-center gap-3 px-4 py-3 rounded-2xl border transition-all hover:scale-[1.02]"
                           style={{
                             backgroundColor: `${accentColor}10`,
                             borderColor: `${accentColor}30`,
                           }}
                         >
                           <span
-                            className="w-7 h-7 rounded-lg flex items-center justify-center text-xs font-bold"
+                            className="w-8 h-8 rounded-xl flex items-center justify-center text-xs font-bold"
                             style={{
                               backgroundColor: `${accentColor}25`,
                               color: accentColor,
@@ -625,7 +625,7 @@ export function SurahDetailPanel() {
               )}
 
               {/* Footer spacer */}
-              <div className="h-6" />
+              <div className="h-10" />
             </div>
           </motion.aside>
 
