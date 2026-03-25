@@ -2071,6 +2071,396 @@ export const enhancedSurahData: Record<number, EnhancedSurahData> = {
     relatedSurahs: [53, 69, 77],
   },
 
+  // Surah 57: Al-Hadid (The Iron)
+  57: {
+    number: 57,
+    circumstances:
+      "A Madinan surah revealed after the community was established but facing financial challenges. It calls for spending in Allah's cause and discusses the nature of worldly life. Named after iron, which Allah 'sent down' with mighty power and benefits.",
+    themes: [
+      {
+        title: "Spending Before Victory",
+        explanation:
+          "Those who spent before the conquest have greater rank than those after.",
+      },
+      {
+        title: "Light on the Bridge",
+        explanation:
+          "On Judgment Day, believers will have light running before them.",
+      },
+      {
+        title: "Worldly Life's Reality",
+        explanation:
+          "Life is play, amusement, beautification, boasting - then withers like plants.",
+      },
+      {
+        title: "Iron Sent Down",
+        explanation:
+          "Iron has mighty power and benefits - material blessings serve divine purposes.",
+      },
+    ],
+    insights: [
+      "Everything in creation glorifies Allah - a universal chorus of praise.",
+      "The hypocrites will beg for light but a wall will separate them from believers.",
+      "Monasticism was invented, not prescribed - balance in worship is commanded.",
+    ],
+    reflectionPrompts: [
+      "What would you sacrifice before seeing victory, not knowing the outcome?",
+      "How do you balance worldly engagement with spiritual priorities?",
+    ],
+    relatedSurahs: [59, 61, 64],
+  },
+
+  // Surah 58: Al-Mujadilah (The Pleading Woman)
+  58: {
+    number: 58,
+    circumstances:
+      "A Madinan surah beginning with Khawlah bint Tha'labah's complaint about her husband's zihar (a pre-Islamic form of divorce). Allah heard her plea and revealed legislation abolishing this practice. The surah also addresses secret conversations and gatherings.",
+    themes: [
+      {
+        title: "Allah Hears All",
+        explanation:
+          "Khawlah complained and Allah heard from above seven heavens.",
+      },
+      {
+        title: "Zihar Abolished",
+        explanation:
+          "The unjust pre-Islamic divorce practice was forbidden with expiation.",
+      },
+      {
+        title: "Secret Councils",
+        explanation:
+          "Private conversations should not be for sin and aggression.",
+      },
+      {
+        title: "Making Room in Gatherings",
+        explanation:
+          "When asked to make room, do so - Allah will make room for you.",
+      },
+    ],
+    insights: [
+      "Khawlah's persistence led to revelation - one woman's voice changed Islamic law.",
+      "Aisha remarked: 'Blessed is the One whose hearing encompasses all things.'",
+      "The etiquette of gatherings reflects inner character.",
+    ],
+    reflectionPrompts: [
+      "When have you seen persistence in seeking justice rewarded?",
+      "How do your private conversations reflect your true character?",
+    ],
+    relatedSurahs: [33, 49, 65],
+  },
+
+  // Surah 59: Al-Hashr (The Gathering)
+  59: {
+    number: 59,
+    circumstances:
+      "A Madinan surah revealed after the expulsion of Banu Nadir (4 AH), a Jewish tribe that broke their treaty and plotted against the Prophet ﷺ. It contains some of Allah's most beautiful names and discusses the distribution of war gains.",
+    themes: [
+      {
+        title: "Banu Nadir's Expulsion",
+        explanation:
+          "They thought their fortresses would protect them, but Allah reached them.",
+      },
+      {
+        title: "Fay' Distribution",
+        explanation:
+          "Gains without fighting belong to specific categories - fair distribution.",
+      },
+      {
+        title: "The Ansar's Preference",
+        explanation:
+          "They preferred the Muhajirun over themselves despite their own need.",
+      },
+      {
+        title: "Allah's Beautiful Names",
+        explanation:
+          "The closing verses contain multiple divine names - profound theology.",
+      },
+    ],
+    insights: [
+      "The Ansar's preference (ithar) over themselves is praised as ultimate generosity.",
+      "Security without Allah is illusion - the strongest fortress falls to His decree.",
+      "The final verses are among the most theologically rich in the Quran.",
+    ],
+    reflectionPrompts: [
+      "When have you preferred others' needs over your own despite difficulty?",
+      "Which of Allah's names in this surah resonates most with your current situation?",
+    ],
+    relatedSurahs: [8, 33, 57],
+  },
+
+  // Surah 60: Al-Mumtahanah (The Examined Woman)
+  60: {
+    number: 60,
+    circumstances:
+      "A Madinan surah revealed after Hatib ibn Abi Balta'ah secretly warned the Quraysh about the upcoming conquest of Makkah. It also addresses how to treat believing women who migrate and the boundaries of alliance with disbelievers.",
+    themes: [
+      {
+        title: "Hatib's Mistake",
+        explanation:
+          "Even a Badr veteran erred, but sincere intention was considered.",
+      },
+      {
+        title: "Abraham's Example",
+        explanation:
+          "He declared separation from his polytheist people - a model.",
+      },
+      {
+        title: "Examining Women",
+        explanation:
+          "Test believing women who migrate - if sincere, accept them.",
+      },
+      {
+        title: "Friendship Boundaries",
+        explanation:
+          "Don't take Allah's enemies as allies, revealing secrets to them.",
+      },
+    ],
+    insights: [
+      "Hatib's excuse (protecting family in Makkah) was understood, though wrong.",
+      "The believing women's examination protected the community from spies.",
+      "Kindness to non-hostile non-Muslims is explicitly permitted.",
+    ],
+    reflectionPrompts: [
+      "How do you balance family loyalty with higher principles?",
+      "What boundaries do you maintain in relationships with those hostile to your faith?",
+    ],
+    relatedSurahs: [9, 58, 66],
+  },
+
+  // Surah 61: As-Saff (The Ranks)
+  61: {
+    number: 61,
+    circumstances:
+      "A Madinan surah addressing the importance of unity in faith and action. It rebukes those who say what they don't do and prophecies the coming of Ahmad (Muhammad ﷺ) through Jesus's words. Named after believers who stand in solid ranks.",
+    themes: [
+      {
+        title: "Saying and Doing",
+        explanation:
+          "Allah despises those who say what they don't do - integrity required.",
+      },
+      {
+        title: "Solid Ranks",
+        explanation:
+          "Allah loves those who fight in His cause in solid formation.",
+      },
+      {
+        title: "Ahmad Prophesied",
+        explanation:
+          "Jesus announced a messenger after him named Ahmad.",
+      },
+      {
+        title: "Helpers of Allah",
+        explanation:
+          "Be like Jesus's disciples who said 'We are Allah's helpers.'",
+      },
+    ],
+    insights: [
+      "The disconnect between words and actions is hateful to Allah.",
+      "Jesus explicitly named Muhammad ﷺ - connecting the two prophets.",
+      "Standing in ranks symbolizes unity of purpose and mutual support.",
+    ],
+    reflectionPrompts: [
+      "Where is there a gap between what you say and what you do?",
+      "How can you be a 'helper of Allah' in your current circumstances?",
+    ],
+    relatedSurahs: [3, 57, 62],
+  },
+
+  // Surah 62: Al-Jumu'ah (Friday)
+  62: {
+    number: 62,
+    circumstances:
+      "A Madinan surah establishing the Friday prayer obligation. Revealed when a trade caravan arrived during the Prophet's ﷺ sermon and many left to see it. It emphasizes prioritizing worship over worldly gains.",
+    themes: [
+      {
+        title: "Friday Prayer Obligation",
+        explanation:
+          "When called, hasten to remembrance of Allah and leave trade.",
+      },
+      {
+        title: "Example of Donkey",
+        explanation:
+          "Those who carry scripture but don't apply it are like donkeys carrying books.",
+      },
+      {
+        title: "Messenger to the Unlettered",
+        explanation:
+          "Allah sent among the unlettered a messenger to purify and teach.",
+      },
+      {
+        title: "What Allah Has is Better",
+        explanation:
+          "What is with Allah is better than amusement and trade.",
+      },
+    ],
+    insights: [
+      "The 'donkey carrying books' imagery is a powerful critique of knowledge without action.",
+      "Friday prayer is a weekly community gathering - social and spiritual unity.",
+      "Rushing to trade during sermon showed misplaced priorities - corrected by revelation.",
+    ],
+    reflectionPrompts: [
+      "Do you carry knowledge without applying it?",
+      "What 'trade' or distractions pull you away from remembrance of Allah?",
+    ],
+    relatedSurahs: [61, 63, 9],
+  },
+
+  // Surah 63: Al-Munafiqun (The Hypocrites)
+  63: {
+    number: 63,
+    circumstances:
+      "A Madinan surah exposing the hypocrites' characteristics, particularly Abdullah ibn Ubayy who said 'the more honored will expel the lesser' about the Muhajirun. The Prophet's ﷺ own son offered to kill his father, but the Prophet ﷺ refused.",
+    themes: [
+      {
+        title: "Hypocrites' Appearance",
+        explanation:
+          "Their bodies impress you, they speak eloquently - but hollow inside.",
+      },
+      {
+        title: "Ibn Ubayy's Words",
+        explanation:
+          "He claimed Madinans should expel the Muhajirun - exposed by revelation.",
+      },
+      {
+        title: "Propped-Up Timbers",
+        explanation:
+          "Hypocrites are like propped wood - appear solid but are hollow.",
+      },
+      {
+        title: "Spending Before Death",
+        explanation:
+          "Spend from provision before death - then no delay is granted.",
+      },
+    ],
+    insights: [
+      "Physical presence and eloquent speech don't indicate faith.",
+      "Abdullah ibn Ubayy's son remained faithful despite his father's hypocrisy.",
+      "The 'propped timber' metaphor captures external appearance vs internal emptiness.",
+    ],
+    reflectionPrompts: [
+      "How do you distinguish genuine faith from impressive presentation?",
+      "What are you delaying that death will not delay?",
+    ],
+    relatedSurahs: [9, 47, 58],
+  },
+
+  // Surah 64: At-Taghabun (The Mutual Loss and Gain)
+  64: {
+    number: 64,
+    circumstances:
+      "A Madinan surah (though some say partially Makkan) addressing the Day of Judgment when true loss and gain become apparent. It warns that family and wealth can be distractions and emphasizes obedience and spending.",
+    themes: [
+      {
+        title: "Day of Taghabun",
+        explanation:
+          "The day of mutual loss - when the deceived realize their loss.",
+      },
+      {
+        title: "Family as Trial",
+        explanation:
+          "Your spouses and children may be enemies to you - be cautious.",
+      },
+      {
+        title: "Obeying Within Ability",
+        explanation:
+          "Fear Allah as much as you can - mercy within obligation.",
+      },
+      {
+        title: "Lending to Allah",
+        explanation:
+          "If you lend Allah a good loan, He will multiply it.",
+      },
+    ],
+    insights: [
+      "The mutual loss: believers gain what disbelievers lose, and vice versa.",
+      "Family can distract from duty - love must not override obedience.",
+      "'As much as you can' shows Islam's practicality and mercy.",
+    ],
+    reflectionPrompts: [
+      "Has family ever held you back from what's right?",
+      "What good loan can you give Allah today?",
+    ],
+    relatedSurahs: [57, 65, 59],
+  },
+
+  // Surah 65: At-Talaq (The Divorce)
+  65: {
+    number: 65,
+    circumstances:
+      "A Madinan surah detailing divorce procedures with precision. It protects women's rights during the waiting period ('iddah), ensures housing, and establishes the principle that 'Allah will provide a way out' for those who fear Him.",
+    themes: [
+      {
+        title: "Proper Divorce Procedure",
+        explanation:
+          "Divorce during purity, count the 'iddah, don't expel women unjustly.",
+      },
+      {
+        title: "Allah Provides a Way Out",
+        explanation:
+          "Whoever fears Allah, He makes a way out and provides unexpectedly.",
+      },
+      {
+        title: "Housing Rights",
+        explanation:
+          "House divorced women according to your means - don't harm them.",
+      },
+      {
+        title: "Nursing Compensation",
+        explanation:
+          "If they nurse your children, compensate them fairly.",
+      },
+    ],
+    insights: [
+      "The 'way out' verse is one of the most comforting for those in difficulty.",
+      "Women's rights during divorce are detailed - housing, maintenance, dignity.",
+      "The surah ends warning of destroyed nations - divorce laws are serious.",
+    ],
+    reflectionPrompts: [
+      "How do you see taqwa (consciousness of Allah) creating solutions?",
+      "In difficult relationships, how do you maintain rights while seeking solutions?",
+    ],
+    relatedSurahs: [2, 4, 66],
+  },
+
+  // Surah 66: At-Tahrim (The Prohibition)
+  66: {
+    number: 66,
+    circumstances:
+      "A Madinan surah addressing a domestic situation where the Prophet ﷺ forbade himself something lawful to please his wives. It discusses household matters while drawing lessons about the wives of Noah and Lot versus Pharaoh's wife and Maryam.",
+    themes: [
+      {
+        title: "Don't Prohibit the Lawful",
+        explanation:
+          "The Prophet ﷺ was gently corrected for forbidding what Allah made lawful.",
+      },
+      {
+        title: "Protecting Families",
+        explanation:
+          "Protect yourselves and families from Fire - active spiritual leadership.",
+      },
+      {
+        title: "Contrasting Women",
+        explanation:
+          "Noah's and Lot's wives were disbelievers; Pharaoh's wife and Maryam were righteous.",
+      },
+      {
+        title: "Sincere Repentance",
+        explanation:
+          "Turn to Allah with sincere repentance (tawbatan nasuhah).",
+      },
+    ],
+    insights: [
+      "Even prophets' households had tensions - normalizing marital challenges.",
+      "A woman's faith is independent - righteous despite an evil spouse, or evil despite a righteous spouse.",
+      "'Tawbatan nasuhah' means repentance so sincere one never returns to the sin.",
+    ],
+    reflectionPrompts: [
+      "How do you actively protect your family from spiritual harm?",
+      "What does sincere repentance look like in your life?",
+    ],
+    relatedSurahs: [33, 65, 24],
+  },
+
   // Surah 93: Ad-Duha (The Morning Light)
   93: {
     number: 93,
