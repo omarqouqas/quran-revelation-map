@@ -18,7 +18,7 @@ This is **not** a Quran reader or recitation app. It's an educational tool focus
 - **Timeline Learning Mode** - "What Was Happening" panel showing historical context as you navigate the timeline
   - 6 sub-periods with context narratives (Early/Middle/Late Makkan, Early/Middle/Late Madinan)
   - Prophet's age, events, surahs, and themes for each year
-- **Enhanced Surah Data** - 20 pilot surahs with detailed circumstances, themes with explanations, insights, and reflection prompts
+- **Enhanced Surah Data** - All 114 surahs with detailed circumstances (Asbab al-Nuzul), themes with explanations, learning insights, reflection prompts, and related surah links
 - **Interactive Timeline** - Explore revelation chronologically from 610-632 CE
 - **Geographic Map** - Hijaz region with sacred site markers (Makkah, Madinah, Cave Hira, etc.)
 - **Global Search** - Unified search (Cmd/Ctrl+K) across surahs, events, and sacred sites
@@ -35,8 +35,7 @@ This is **not** a Quran reader or recitation app. It's an educational tool focus
 See [IMPLEMENTATION_PLAN.md](./IMPLEMENTATION_PLAN.md) for the full roadmap.
 
 **Next priorities:**
-1. Enhanced Surah Data (expand to all 114 surahs)
-2. Bookmarks & Notes
+1. Bookmarks & Notes
 
 ## Tech Stack
 
@@ -78,7 +77,7 @@ src/
 ├── data/
 │   ├── events.ts        # Historical events
 │   ├── learning-paths.ts # Learning path definitions (11 paths, 44 lessons)
-│   ├── enhanced-surah-data.ts # Deep surah context (20 pilot surahs)
+│   ├── enhanced-surah-data.ts # Deep surah context (all 114 surahs)
 │   ├── surah-locations.ts # Surah data with locations
 │   └── sacred-sites.ts  # Sacred site information
 ├── hooks/               # Custom React hooks
