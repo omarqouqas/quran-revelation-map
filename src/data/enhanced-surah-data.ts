@@ -2890,6 +2890,513 @@ export const enhancedSurahData: Record<number, EnhancedSurahData> = {
     relatedSurahs: [78, 80, 81],
   },
 
+  // Surah 80: 'Abasa (He Frowned)
+  80: {
+    number: 80,
+    circumstances:
+      "A Makkan surah revealed when the Prophet ﷺ frowned at a blind companion, Ibn Umm Maktum, who interrupted while he was speaking to Quraysh leaders. Allah gently corrected him - the sincere seeker matters more than the arrogant elite.",
+    themes: [
+      {
+        title: "Divine Correction",
+        explanation:
+          "The Prophet ﷺ was corrected for prioritizing the powerful over the sincere.",
+      },
+      {
+        title: "Value of Seekers",
+        explanation:
+          "One who comes eagerly seeking guidance deserves attention.",
+      },
+      {
+        title: "Human Creation",
+        explanation:
+          "From a drop, through stages, then death, then resurrection.",
+      },
+      {
+        title: "Day of Fleeing",
+        explanation:
+          "That Day, people flee from family - each person preoccupied with themselves.",
+      },
+    ],
+    insights: [
+      "Even the Prophet ﷺ was corrected - no one is above divine guidance.",
+      "Social status means nothing in Allah's eyes - sincerity is what matters.",
+      "Ibn Umm Maktum later became a mu'adhin and led Madinah in the Prophet's absence.",
+    ],
+    reflectionPrompts: [
+      "Do you prioritize impressive people over sincere seekers?",
+      "How do you respond to divine correction?",
+    ],
+    relatedSurahs: [79, 81, 82],
+  },
+
+  // Surah 81: At-Takwir (The Folding Up)
+  81: {
+    number: 81,
+    circumstances:
+      "A Makkan surah describing the cataclysmic end of the world with powerful, rapid-fire imagery. The sun folded up, stars scattered, mountains moved, pregnant camels abandoned - a sequence of impossibilities signaling the Hour's arrival.",
+    themes: [
+      {
+        title: "Cosmic Destruction",
+        explanation:
+          "Sun wrapped up, stars fall, mountains moved, seas boil over.",
+      },
+      {
+        title: "Social Chaos",
+        explanation:
+          "Pregnant camels abandoned, wild beasts gathered, souls paired.",
+      },
+      {
+        title: "Buried Girl's Voice",
+        explanation:
+          "The infant girl buried alive will be asked: for what sin was she killed?",
+      },
+      {
+        title: "Jibreel's Description",
+        explanation:
+          "The Prophet ﷺ saw him on the clear horizon - a true vision.",
+      },
+    ],
+    insights: [
+      "The buried girl receiving justice shows Allah's care for the most vulnerable.",
+      "Female infanticide was common in pre-Islamic Arabia - permanently condemned.",
+      "When the impossible becomes possible, know the Hour has arrived.",
+    ],
+    reflectionPrompts: [
+      "What injustices do you witness that will be questioned on that Day?",
+      "How do you treat society's most vulnerable?",
+    ],
+    relatedSurahs: [82, 84, 99],
+  },
+
+  // Surah 82: Al-Infitar (The Cleaving)
+  82: {
+    number: 82,
+    circumstances:
+      "A Makkan surah continuing the theme of cosmic destruction. Heaven splits, stars scatter, seas burst forth, graves overturned - then the soul will know what it put forward and left behind.",
+    themes: [
+      {
+        title: "Heaven Cleaves",
+        explanation:
+          "The sky itself breaks apart - the firmament is not permanent.",
+      },
+      {
+        title: "Recording Angels",
+        explanation:
+          "Noble scribes who know everything you do - nothing is hidden.",
+      },
+      {
+        title: "Delusion About Allah",
+        explanation:
+          "What has deceived you about your generous Lord?",
+      },
+      {
+        title: "No Soul Helps Another",
+        explanation:
+          "That Day, no soul can help another - all authority belongs to Allah.",
+      },
+    ],
+    insights: [
+      "The question 'What deceived you?' is rhetorical - we deceive ourselves.",
+      "Allah is described as generous (kareem) even while warning.",
+      "The recording angels are described as noble and honorable.",
+    ],
+    reflectionPrompts: [
+      "What has deceived you about Allah's generosity?",
+      "Knowing angels record everything, what would you change?",
+    ],
+    relatedSurahs: [81, 83, 84],
+  },
+
+  // Surah 83: Al-Mutaffifin (The Defrauders)
+  83: {
+    number: 83,
+    circumstances:
+      "Revealed between Makkah and Madinah. When the Prophet ﷺ arrived in Madinah, some merchants cheated in weights and measures. The surah condemns this fraud and contrasts the records of the wicked (Sijjin) with the righteous (Illiyyun).",
+    themes: [
+      {
+        title: "Cheating in Measures",
+        explanation:
+          "Those who take full measure but give less when selling - woe to them.",
+      },
+      {
+        title: "Sijjin and Illiyyun",
+        explanation:
+          "Two registers: wicked in Sijjin below, righteous in Illiyyun above.",
+      },
+      {
+        title: "Criminals Mocking",
+        explanation:
+          "In this world, criminals laughed at believers - roles will reverse.",
+      },
+      {
+        title: "Final Laugh",
+        explanation:
+          "On that Day, believers will laugh at disbelievers from couches.",
+      },
+    ],
+    insights: [
+      "Commercial honesty is elevated to a matter of divine judgment.",
+      "The reversal of mockery - those laughed at will laugh last.",
+      "Sijjin and Illiyyun may be places or the records themselves.",
+    ],
+    reflectionPrompts: [
+      "In what ways might you 'give less' than what's due to others?",
+      "How do you handle being mocked for your faith?",
+    ],
+    relatedSurahs: [82, 84, 104],
+  },
+
+  // Surah 84: Al-Inshiqaq (The Splitting)
+  84: {
+    number: 84,
+    circumstances:
+      "A Makkan surah about the sky splitting open and submitting to its Lord. It describes the two types of people: those receiving books in right hands (easy reckoning) and those behind their backs (calling for destruction).",
+    themes: [
+      {
+        title: "Sky Submits",
+        explanation:
+          "When the sky splits, it listens and obeys - as it must.",
+      },
+      {
+        title: "Book Placement",
+        explanation:
+          "Right hand means easy account; behind back means doom.",
+      },
+      {
+        title: "Stages of Life",
+        explanation:
+          "You will surely travel from stage to stage - constant change.",
+      },
+      {
+        title: "Endless Reward",
+        explanation:
+          "For believers, a reward uninterrupted (ghayr mamnun).",
+      },
+    ],
+    insights: [
+      "Behind the back (not left hand here) suggests trying to hide one's record.",
+      "'Stage to stage' captures life's journey - nothing stays the same.",
+      "Even the sky, so vast, submits to Allah - how can humans resist?",
+    ],
+    reflectionPrompts: [
+      "What stage of life are you in, and how are you preparing for the next?",
+      "What would receiving your book behind your back feel like?",
+    ],
+    relatedSurahs: [82, 83, 99],
+  },
+
+  // Surah 85: Al-Buruj (The Great Stars)
+  85: {
+    number: 85,
+    circumstances:
+      "A Makkan surah opening with an oath by the sky with constellations. It recounts the People of the Trench - believers who were burned alive for their faith. Despite their torture, they remained steadfast, earning eternal Paradise.",
+    themes: [
+      {
+        title: "People of the Trench",
+        explanation:
+          "Believers burned in pits for refusing to renounce faith - martyrs.",
+      },
+      {
+        title: "Watchers Cursed",
+        explanation:
+          "Those who tortured and watched are cursed - witnessing evil is complicity.",
+      },
+      {
+        title: "Allah's Qualities",
+        explanation:
+          "Forgiving, Loving (Al-Wadud), Lord of the Throne - balance of attributes.",
+      },
+      {
+        title: "Preserved Tablet",
+        explanation:
+          "The Quran is in a Preserved Tablet (Lawh Mahfuz) - eternally guarded.",
+      },
+    ],
+    insights: [
+      "Al-Wadud (The Loving) appears - Allah's love for believers affirmed.",
+      "The persecutors' sin included not just torture but watching with satisfaction.",
+      "Historical parallels with Muslim persecution provide comfort.",
+    ],
+    reflectionPrompts: [
+      "Would you maintain faith under persecution like the People of the Trench?",
+      "How does knowing Allah is Al-Wadud affect your relationship with Him?",
+    ],
+    relatedSurahs: [29, 30, 84],
+  },
+
+  // Surah 86: At-Tariq (The Night-Comer)
+  86: {
+    number: 86,
+    circumstances:
+      "A Makkan surah opening with an oath by the sky and the 'night-comer' - a piercing star. It reflects on human creation from fluid and the Quran's decisive nature. The surah is short but powerful in its imagery and message.",
+    themes: [
+      {
+        title: "The Piercing Star",
+        explanation:
+          "A celestial body that appears at night, piercing the darkness.",
+      },
+      {
+        title: "Guardian Angels",
+        explanation:
+          "Every soul has a protector over it - constantly watched.",
+      },
+      {
+        title: "Human Origin",
+        explanation:
+          "Created from fluid between backbone and ribs - humble origin.",
+      },
+      {
+        title: "Decisive Word",
+        explanation:
+          "The Quran is decisive, not jest - separating truth from falsehood.",
+      },
+    ],
+    insights: [
+      "The night-comer reminds that even in darkness, Allah's signs shine.",
+      "Human creation from fluid should humble arrogance.",
+      "The Quran is described as fasl (decisive) - not ambiguous.",
+    ],
+    reflectionPrompts: [
+      "How does your humble physical origin affect your pride?",
+      "Do you treat the Quran as decisive in your life decisions?",
+    ],
+    relatedSurahs: [85, 87, 75],
+  },
+
+  // Surah 87: Al-A'la (The Most High)
+  87: {
+    number: 87,
+    circumstances:
+      "A Makkan surah the Prophet ﷺ loved to recite in Jumu'ah and Eid prayers. It glorifies Allah's name, promises ease in memorizing revelation, and references earlier scriptures of Ibrahim and Musa. A surah of comfort and spiritual elevation.",
+    themes: [
+      {
+        title: "Glorify the Most High",
+        explanation:
+          "Sabbih - actively glorify Allah's name, the Most High.",
+      },
+      {
+        title: "Creation and Guidance",
+        explanation:
+          "He created, proportioned, decreed, and guided - comprehensive care.",
+      },
+      {
+        title: "We Will Make Easy",
+        explanation:
+          "The Quran will be made easy for you - divine assistance in memory.",
+      },
+      {
+        title: "Earlier Scriptures",
+        explanation:
+          "This is in earlier scriptures - of Ibrahim and Musa.",
+      },
+    ],
+    insights: [
+      "The Prophet ﷺ would say 'Subhana Rabbi al-A'la' - glorifying in prostration.",
+      "Memory of revelation is Allah's gift, not just human effort.",
+      "The Quran's message existed in Ibrahim's and Musa's scriptures.",
+    ],
+    reflectionPrompts: [
+      "How actively do you glorify Allah in your daily life?",
+      "What do you prioritize - the temporary or the eternal?",
+    ],
+    relatedSurahs: [86, 88, 92],
+  },
+
+  // Surah 88: Al-Ghashiyah (The Overwhelming)
+  88: {
+    number: 88,
+    circumstances:
+      "A Makkan surah also recited with Al-A'la in Friday prayers. It vividly contrasts the faces of those in Hell (downcast, exhausted) with those in Paradise (radiant, pleased). It then points to creation as evidence.",
+    themes: [
+      {
+        title: "The Overwhelming Event",
+        explanation:
+          "Has the news of the overwhelming reached you? - rhetorical impact.",
+      },
+      {
+        title: "Two Groups of Faces",
+        explanation:
+          "Humiliated and exhausted vs. pleased and radiant.",
+      },
+      {
+        title: "Creation Signs",
+        explanation:
+          "The camel, sky, mountains, earth - all point to Creator.",
+      },
+      {
+        title: "Reminder Role",
+        explanation:
+          "You are only a reminder - not a controller of people.",
+      },
+    ],
+    insights: [
+      "The camel is mentioned first - most significant for Arabian audience.",
+      "Labor in Hell is fruitless - toil without benefit is worse than torture.",
+      "The Prophet ﷺ is reminded he cannot force faith - only remind.",
+    ],
+    reflectionPrompts: [
+      "Which face will you have on that Day - and why?",
+      "Do you try to control others' faith, or simply remind?",
+    ],
+    relatedSurahs: [87, 89, 101],
+  },
+
+  // Surah 89: Al-Fajr (The Dawn)
+  89: {
+    number: 89,
+    circumstances:
+      "A Makkan surah opening with oaths by dawn and significant nights. It recounts destroyed nations ('Ad, Thamud, Pharaoh) and critiques how people respond to blessings versus trials. It ends with the soul at peace being welcomed to Paradise.",
+    themes: [
+      {
+        title: "Dawn and Nights",
+        explanation:
+          "By the dawn, ten nights, even and odd - sacred times.",
+      },
+      {
+        title: "Destroyed Tyrants",
+        explanation:
+          "'Ad with pillars, Thamud who carved rocks, Pharaoh with stakes.",
+      },
+      {
+        title: "Test of Provision",
+        explanation:
+          "When honored, says 'Allah honored me'; when restricted, says 'He humiliated me' - both wrong.",
+      },
+      {
+        title: "The Peaceful Soul",
+        explanation:
+          "O tranquil soul, return to your Lord pleased and pleasing.",
+      },
+    ],
+    insights: [
+      "Neither abundance nor restriction indicates Allah's pleasure or displeasure.",
+      "The 'ten nights' may be the first ten of Dhul Hijjah - blessed days.",
+      "'Return to your Lord' - the ultimate welcome for the serene soul.",
+    ],
+    reflectionPrompts: [
+      "Do you interpret your circumstances as signs of Allah's pleasure or displeasure?",
+      "What would it take to have a 'tranquil soul' (nafs mutma'innah)?",
+    ],
+    relatedSurahs: [88, 90, 101],
+  },
+
+  // Surah 90: Al-Balad (The City)
+  90: {
+    number: 90,
+    circumstances:
+      "A Makkan surah opening with an oath by Makkah while the Prophet ﷺ was still there, made lawful to him. It describes humanity's struggle (kabad) and the two paths - the steep road of good or the easy descent to evil.",
+    themes: [
+      {
+        title: "The Sacred City",
+        explanation:
+          "Oath by Makkah while the Prophet ﷺ dwelt there - special sanctity.",
+      },
+      {
+        title: "Human Struggle",
+        explanation:
+          "We created man in toil (kabad) - life is inherently difficult.",
+      },
+      {
+        title: "The Steep Path",
+        explanation:
+          "Freeing slaves, feeding the hungry, being patient - the hard but right road.",
+      },
+      {
+        title: "Two Hands",
+        explanation:
+          "Companions of the right vs. companions of the left - eternal division.",
+      },
+    ],
+    insights: [
+      "The 'steep path' ('aqabah) requires effort - goodness isn't easy.",
+      "Feeding during famine and caring for orphans are specifically named.",
+      "Human life is described as struggle - expectation management.",
+    ],
+    reflectionPrompts: [
+      "Are you taking the steep path or the easy descent?",
+      "How do you feed others 'during days of famine' - times of scarcity?",
+    ],
+    relatedSurahs: [89, 91, 95],
+  },
+
+  // Surah 91: Ash-Shams (The Sun)
+  91: {
+    number: 91,
+    circumstances:
+      "A Makkan surah with the longest oath sequence in the Quran - eleven oaths culminating in the soul and its moral awareness. Whoever purifies it succeeds; whoever corrupts it fails. Thamud's story illustrates corruption's consequence.",
+    themes: [
+      {
+        title: "Eleven Oaths",
+        explanation:
+          "Sun, moon, day, night, sky, earth, soul - building to moral conclusion.",
+      },
+      {
+        title: "Soul's Inspiration",
+        explanation:
+          "Allah inspired the soul with its wickedness and righteousness.",
+      },
+      {
+        title: "Purification Succeeds",
+        explanation:
+          "Who purifies it succeeds; who corrupts it fails.",
+      },
+      {
+        title: "Thamud's Hamstringing",
+        explanation:
+          "They hamstrung the she-camel - one act triggered annihilation.",
+      },
+    ],
+    insights: [
+      "The soul innately knows right from wrong - moral awareness is built-in.",
+      "Success (falah) is defined by soul purification, not worldly gain.",
+      "Thamud's destruction came from a single communal act of defiance.",
+    ],
+    reflectionPrompts: [
+      "How are you actively purifying your soul?",
+      "What small acts of corruption might have large consequences?",
+    ],
+    relatedSurahs: [90, 92, 7],
+  },
+
+  // Surah 92: Al-Lail (The Night)
+  92: {
+    number: 92,
+    circumstances:
+      "A Makkan surah contrasting two types of people through oaths by night and day. One gives, fears Allah, and believes in good - his path is eased. Another withholds, is self-sufficient, and denies - his path is hardened.",
+    themes: [
+      {
+        title: "Night and Day Oaths",
+        explanation:
+          "By the night, day, male and female - diverse creation.",
+      },
+      {
+        title: "Two Paths",
+        explanation:
+          "One who gives and fears vs. one who withholds and denies.",
+      },
+      {
+        title: "Eased vs. Hardened",
+        explanation:
+          "Allah eases the path to ease for givers; hardens for withholders.",
+      },
+      {
+        title: "Wealth Won't Help",
+        explanation:
+          "His wealth will not save him when he falls into the pit.",
+      },
+    ],
+    insights: [
+      "The surah may reference Abu Bakr freeing Bilal - generosity rewarded.",
+      "Giving leads to ease; withholding leads to difficulty - divine pattern.",
+      "The 'most righteous' will be saved - not the wealthiest.",
+    ],
+    reflectionPrompts: [
+      "Which path describes you - giving or withholding?",
+      "How has giving made your life easier in unexpected ways?",
+    ],
+    relatedSurahs: [91, 93, 89],
+  },
+
   // Surah 93: Ad-Duha (The Morning Light)
   93: {
     number: 93,
