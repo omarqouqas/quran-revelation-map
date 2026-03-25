@@ -1720,6 +1720,357 @@ export const enhancedSurahData: Record<number, EnhancedSurahData> = {
     relatedSurahs: [44, 46, 40],
   },
 
+  // Surah 46: Al-Ahqaf (The Sand Dunes)
+  46: {
+    number: 46,
+    circumstances:
+      "The seventh and final 'Ha Mim' surah. Named after the sand dunes where the people of 'Ad lived. Revealed in late Makkah, it addresses the Quraysh through the story of 'Ad's destruction and mentions a group of jinn who accepted Islam after hearing the Quran.",
+    themes: [
+      {
+        title: "Warning Through History",
+        explanation:
+          "The people of 'Ad were destroyed despite their strength - a warning to Quraysh.",
+      },
+      {
+        title: "Jinn Accept Islam",
+        explanation:
+          "A delegation of jinn heard the Quran and returned to warn their people.",
+      },
+      {
+        title: "Kindness to Parents",
+        explanation:
+          "Carry them in kindness, especially as they age - detailed commands.",
+      },
+      {
+        title: "Patience of Messengers",
+        explanation:
+          "Be patient like the messengers of firm resolve before you.",
+      },
+    ],
+    insights: [
+      "The jinn recognized the Quran as truth instantly - sometimes outsiders see what insiders miss.",
+      "The detailed description of honoring parents covers pregnancy, nursing, and old age.",
+      "The 'Ulul-Azm' (messengers of firm resolve) are the model for patience.",
+    ],
+    reflectionPrompts: [
+      "How are you caring for your parents in their vulnerability?",
+      "What can you learn from the jinn's immediate acceptance of truth?",
+    ],
+    relatedSurahs: [45, 72, 31],
+  },
+
+  // Surah 47: Muhammad
+  47: {
+    number: 47,
+    circumstances:
+      "A Madinan surah revealed after the Muslims arrived in Madinah but before Badr. Named after the Prophet ﷺ, it is also called 'Al-Qital' (Fighting) as it addresses the reality of armed conflict that the Muslims would face. It prepares the community for the challenges ahead.",
+    themes: [
+      {
+        title: "Permission to Fight",
+        explanation:
+          "Those who fight have their deeds not wasted - legitimizing defensive warfare.",
+      },
+      {
+        title: "Rivers of Paradise",
+        explanation:
+          "Detailed description of Paradise: rivers of water, milk, wine, and honey.",
+      },
+      {
+        title: "Hypocrites Exposed",
+        explanation:
+          "Some claim faith but hearts are diseased - revealed through their actions.",
+      },
+      {
+        title: "Obeying the Prophet",
+        explanation:
+          "Obedience to Muhammad ﷺ is essential - rejecting him nullifies deeds.",
+      },
+    ],
+    insights: [
+      "The four rivers of Paradise counter the hardship of desert life Muslims endured.",
+      "Hypocrites are recognized by their speech - 'You will surely know them by the tone.'",
+      "The Prophet's ﷺ name appears, emphasizing that following him is following Allah.",
+    ],
+    reflectionPrompts: [
+      "How do your actions reveal your true beliefs versus what you claim?",
+      "What does it mean practically to obey the Prophet ﷺ today?",
+    ],
+    relatedSurahs: [48, 8, 63],
+  },
+
+  // Surah 48: Al-Fath (The Victory)
+  48: {
+    number: 48,
+    circumstances:
+      "Revealed after the Treaty of Hudaybiyyah (6 AH), which initially seemed like a setback but the Quran calls it a 'clear victory.' The treaty's terms favored Quraysh superficially, but it led to exponential growth in Islam and eventually the conquest of Makkah.",
+    themes: [
+      {
+        title: "Victory in Apparent Defeat",
+        explanation:
+          "What seemed like loss was actually Allah's plan for greater success.",
+      },
+      {
+        title: "Bay'at ar-Ridwan",
+        explanation:
+          "The pledge under the tree - Allah was pleased with those who pledged.",
+      },
+      {
+        title: "Future Conquests Promised",
+        explanation:
+          "Many gains would come from this treaty - prophecy fulfilled.",
+      },
+      {
+        title: "Description of Believers",
+        explanation:
+          "Hard against disbelievers, merciful among themselves - marks of true faith.",
+      },
+    ],
+    insights: [
+      "The Prophet ﷺ called this surah 'more beloved to me than all the world contains.'",
+      "Those who pledged under the tree received divine pleasure - a unique honor.",
+      "The prophecy of entering Makkah was fulfilled two years later.",
+    ],
+    reflectionPrompts: [
+      "When have apparent setbacks turned into unexpected blessings?",
+      "Do you balance being firm for truth while being gentle with believers?",
+    ],
+    relatedSurahs: [47, 110, 61],
+  },
+
+  // Surah 49: Al-Hujurat (The Private Chambers)
+  49: {
+    number: 49,
+    circumstances:
+      "A Madinan surah addressing social ethics and community behavior. Named after the private rooms of the Prophet's ﷺ wives, where some Bedouin called out disrespectfully. It establishes principles of verification, reconciliation, and human dignity.",
+    themes: [
+      {
+        title: "Verify Before Acting",
+        explanation:
+          "When news comes from a fasiq (corrupt person), verify it before acting.",
+      },
+      {
+        title: "Reconciliation",
+        explanation:
+          "If two groups of believers fight, make peace between them.",
+      },
+      {
+        title: "Avoiding Mockery",
+        explanation:
+          "Don't mock others - they may be better than you in Allah's sight.",
+      },
+      {
+        title: "Human Brotherhood",
+        explanation:
+          "All humanity from one man and woman - the most honored is the most righteous.",
+      },
+    ],
+    insights: [
+      "The verification principle prevents rumors from destroying communities.",
+      "Suspicion, spying, and backbiting are equated with eating dead flesh.",
+      "Diversity of nations and tribes is for recognition, not discrimination.",
+    ],
+    reflectionPrompts: [
+      "How carefully do you verify information before sharing or acting?",
+      "What assumptions about others do you need to abandon?",
+    ],
+    relatedSurahs: [24, 33, 58],
+  },
+
+  // Surah 50: Qaf
+  50: {
+    number: 50,
+    circumstances:
+      "A Makkan surah named after the Arabic letter Qaf. The Prophet ﷺ frequently recited it in the Eid and Friday prayers. It addresses resurrection and the Day of Judgment with vivid imagery, emphasizing that Allah is closer than one's jugular vein.",
+    themes: [
+      {
+        title: "Closeness of Allah",
+        explanation:
+          "'We are closer to him than his jugular vein' - constant divine awareness.",
+      },
+      {
+        title: "Recording Angels",
+        explanation:
+          "Two angels record every word - nothing escapes documentation.",
+      },
+      {
+        title: "Death's Reality",
+        explanation:
+          "The stupor of death arrives - 'This is what you were trying to escape.'",
+      },
+      {
+        title: "Hell's Capacity",
+        explanation:
+          "'Are you filled?' Hell asks, 'Is there more?' - a terrifying exchange.",
+      },
+    ],
+    insights: [
+      "The jugular vein metaphor emphasizes that Allah knows our innermost thoughts.",
+      "Every utterance is recorded - this creates accountability for speech.",
+      "The Prophet ﷺ chose this surah for public gatherings due to its impact.",
+    ],
+    reflectionPrompts: [
+      "How would your speech change knowing two angels record every word?",
+      "What does Allah's closeness mean for your daily consciousness?",
+    ],
+    relatedSurahs: [39, 36, 75],
+  },
+
+  // Surah 51: Adh-Dhariyat (The Scattering Winds)
+  51: {
+    number: 51,
+    circumstances:
+      "A Makkan surah opening with oaths about cosmic phenomena. It contains the story of Ibrahim hosting angels and the destruction of the people of Lot. The famous verse 'I did not create jinn and mankind except to worship Me' defines humanity's purpose.",
+    themes: [
+      {
+        title: "Purpose of Creation",
+        explanation:
+          "Jinn and humans were created solely to worship Allah - the defining verse.",
+      },
+      {
+        title: "Ibrahim's Guests",
+        explanation:
+          "He hosted angels unknowingly, showing ideal hospitality.",
+      },
+      {
+        title: "Signs in Nature",
+        explanation:
+          "The winds, clouds, ships - all demonstrate divine power.",
+      },
+      {
+        title: "Allah Provides",
+        explanation:
+          "He is the Provider (Ar-Razzaq) - no sustenance depends on creation.",
+      },
+    ],
+    insights: [
+      "'To worship Me' is the answer to 'Why do I exist?' - life's central question answered.",
+      "Ibrahim's hospitality to strangers is the model for Muslim generosity.",
+      "Allah needs nothing from creation - worship benefits the worshipper.",
+    ],
+    reflectionPrompts: [
+      "How does knowing your purpose is worship change daily priorities?",
+      "When did you last show hospitality like Ibrahim without knowing the guest's status?",
+    ],
+    relatedSurahs: [52, 11, 15],
+  },
+
+  // Surah 52: At-Tur (The Mount)
+  52: {
+    number: 52,
+    circumstances:
+      "A Makkan surah named after Mount Sinai where Moses received revelation. It opens with powerful oaths and describes the terrors of Judgment Day alongside the bliss of Paradise. When Jubayr ibn Mut'im heard the Prophet ﷺ recite this, his heart entered Islam.",
+    themes: [
+      {
+        title: "Oaths of Certainty",
+        explanation:
+          "By the Mount, the Book, the frequented House - major oaths affirming truth.",
+      },
+      {
+        title: "Punishment Inevitable",
+        explanation:
+          "No one can avert the punishment when it comes.",
+      },
+      {
+        title: "Paradise's Companionship",
+        explanation:
+          "Families reunited in Paradise - righteous children joined to parents.",
+      },
+      {
+        title: "Prophet Not a Soothsayer",
+        explanation:
+          "Accusations of poetry and madness refuted systematically.",
+      },
+    ],
+    insights: [
+      "Jubayr's heart was conquered by this surah's power - evidence of Quran's impact.",
+      "Children's righteousness can elevate parents' ranks in Paradise.",
+      "The challenges to produce something like the Quran remain unanswered.",
+    ],
+    reflectionPrompts: [
+      "What verses have had a profound impact on your heart?",
+      "How are you raising children whose righteousness could benefit you eternally?",
+    ],
+    relatedSurahs: [51, 53, 95],
+  },
+
+  // Surah 53: An-Najm (The Star)
+  53: {
+    number: 53,
+    circumstances:
+      "A Makkan surah describing the Prophet's ﷺ ascension (Mi'raj) and his encounter with Jibreel in his true angelic form. Famous for being the first surah recited publicly in Makkah, after which both believers and disbelievers prostrated at its powerful conclusion.",
+    themes: [
+      {
+        title: "Prophet's Ascension",
+        explanation:
+          "He saw Jibreel at Sidrat al-Muntaha - the furthest boundary.",
+      },
+      {
+        title: "The Heart Did Not Lie",
+        explanation:
+          "What the Prophet ﷺ saw was true vision, not imagination.",
+      },
+      {
+        title: "False Goddesses",
+        explanation:
+          "Lat, Uzza, and Manat are mere names with no power.",
+      },
+      {
+        title: "Individual Accountability",
+        explanation:
+          "No bearer of burdens bears another's burden.",
+      },
+    ],
+    insights: [
+      "Even enemies prostrated when they heard this surah - its power transcended hostility.",
+      "The Prophet ﷺ saw Allah's greatest signs at the Lote Tree.",
+      "Intercession belongs to Allah - false gods cannot intercede.",
+    ],
+    reflectionPrompts: [
+      "What does the Mi'raj teach about the Prophet's ﷺ status?",
+      "How do you apply 'no soul bears another's burden' to your life?",
+    ],
+    relatedSurahs: [17, 81, 54],
+  },
+
+  // Surah 54: Al-Qamar (The Moon)
+  54: {
+    number: 54,
+    circumstances:
+      "A Makkan surah opening with the splitting of the moon - a miracle the Prophet ﷺ performed when the Quraysh demanded a sign. Despite witnessing it, they called it 'persistent magic.' The refrain 'We have made the Quran easy to remember' appears four times.",
+    themes: [
+      {
+        title: "The Moon Split",
+        explanation:
+          "A physical miracle witnessed by Quraysh, yet they still rejected.",
+      },
+      {
+        title: "Quran Made Easy",
+        explanation:
+          "'We have made the Quran easy for remembrance' - divine facilitation.",
+      },
+      {
+        title: "Destroyed Nations",
+        explanation:
+          "People of Noah, 'Ad, Thamud, Lot, Pharaoh - all destroyed for rejection.",
+      },
+      {
+        title: "Swiftness of Punishment",
+        explanation:
+          "When Allah's decree comes, it is like the blink of an eye.",
+      },
+    ],
+    insights: [
+      "The moon splitting was witnessed and still rejected - miracles don't guarantee faith.",
+      "The Quran's ease of memorization is unique - no other book is memorized by millions.",
+      "Each destroyed nation thought they were exceptions - a warning against arrogance.",
+    ],
+    reflectionPrompts: [
+      "Why don't miracles guarantee faith? What does guarantee it?",
+      "How are you taking advantage of the Quran being 'made easy'?",
+    ],
+    relatedSurahs: [53, 69, 77],
+  },
+
   // Surah 93: Ad-Duha (The Morning Light)
   93: {
     number: 93,
