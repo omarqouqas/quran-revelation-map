@@ -24,7 +24,6 @@ import { SearchModal } from '@/components/search';
 import { SurahExplorer } from '@/components/explorer';
 import { StoryMode, JourneySelector } from '@/components/story';
 import { LearningMode, PathSelector } from '@/components/learning';
-import { useExplorerStore } from '@/stores/useExplorerStore';
 import { useMapStore } from '@/stores/useMapStore';
 import { useStoryStore } from '@/stores/useStoryStore';
 import { useLearningStore } from '@/stores/useLearningStore';
@@ -51,8 +50,6 @@ export function QuranMapApp({ initialSurahNumber }: QuranMapAppProps) {
     onToggleSearch: () => setShowSearch((prev) => !prev),
   });
 
-  const isExplorerOpen = useExplorerStore((state) => state.isExplorerOpen);
-  const openExplorer = useExplorerStore((state) => state.openExplorer);
   const showEvents = useMapStore((state) => state.showEvents);
   const setShowEvents = useMapStore((state) => state.setShowEvents);
   const hasInteracted = useMapStore((state) => state.hasInteracted);
