@@ -7,9 +7,10 @@
 
 import { useState, useEffect, useCallback, useRef, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, X, BookOpen, Sparkles, MapPin } from 'lucide-react';
+import { Search, X, BookOpen, Sparkles, MapPin, List } from 'lucide-react';
 import { globalSearch, getAllResultsFlat, type SearchResults, type SearchResult } from '@/lib/search';
 import { useMapStore } from '@/stores/useMapStore';
+import { useExplorerStore } from '@/stores/useExplorerStore';
 import type { CompleteSurahData } from '@/data/surah-locations';
 import type { HistoricalEvent } from '@/data/events';
 
@@ -31,6 +32,7 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
   const selectSite = useMapStore((state) => state.selectSite);
   const setCurrentYear = useMapStore((state) => state.setCurrentYear);
   const setHasInteracted = useMapStore((state) => state.setHasInteracted);
+  const openExplorer = useExplorerStore((state) => state.openExplorer);
 
   // Flat list for keyboard navigation
   const flatResults = useMemo(() => {
@@ -95,6 +97,12 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
     },
     [selectSurah, selectEvent, selectSite, setCurrentYear, setHasInteracted, onClose]
   );
+
+  // Open Surah Explorer
+  const handleOpenExplorer = useCallback(() => {
+    openExplorer();
+    onClose();
+  }, [openExplorer, onClose]);
 
   // Keyboard navigation
   const handleKeyDown = useCallback(
@@ -204,6 +212,13 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
                   <p className="text-[#4B5563] text-xs mt-2">
                     Try &quot;Badr&quot;, &quot;patience&quot;, or &quot;Cave Hira&quot;
                   </p>
+                  <button
+                    onClick={handleOpenExplorer}
+                    className="mt-6 inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#1A2332] border border-[#2A3342] hover:border-[#C8A84E]/50 text-[#E8E3DB] text-sm font-medium transition-all hover:scale-[1.02]"
+                  >
+                    <List className="w-4 h-4 text-[#C8A84E]" />
+                    Browse All 114 Surahs
+                  </button>
                 </div>
               )}
 

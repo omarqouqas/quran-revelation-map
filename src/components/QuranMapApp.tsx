@@ -95,43 +95,26 @@ export function QuranMapApp({ initialSurahNumber }: QuranMapAppProps) {
             </div>
           </div>
 
-          {/* Top left buttons - Explore and Search */}
+          {/* Search button - positioned left */}
           <AnimatePresence>
             {hasInteracted && (
-              <motion.div
+              <motion.button
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.3 }}
-                className="absolute top-4 left-4 sm:left-6 flex items-center gap-2"
+                type="button"
+                onClick={() => setShowSearch(true)}
                 style={{ pointerEvents: 'auto' }}
+                className="absolute top-4 left-4 sm:left-6 group flex items-center gap-2 px-4 py-2.5 sm:px-5 sm:py-3 rounded-full bg-[#1A2332]/80 backdrop-blur-sm border border-[#C8A84E]/30 hover:border-[#C8A84E] hover:bg-[#1A2332] text-[#C8A84E] font-medium text-sm shadow-lg cursor-pointer transition-all duration-300"
+                title="Search (Cmd/Ctrl+K)"
               >
-                {/* Explore Surahs button */}
-                {!isExplorerOpen && (
-                  <button
-                    type="button"
-                    onClick={() => openExplorer()}
-                    className="group flex items-center gap-2 px-4 py-2.5 sm:px-5 sm:py-3 rounded-full bg-[#1A2332]/80 backdrop-blur-sm border border-[#C8A84E]/30 hover:border-[#C8A84E] hover:bg-[#1A2332] text-[#C8A84E] font-medium text-sm shadow-lg cursor-pointer transition-all duration-300"
-                  >
-                    <SearchIcon className="w-4 h-4 sm:w-5 sm:h-5" />
-                    <span className="hidden sm:inline">Explore Surahs</span>
-                  </button>
-                )}
-
-                {/* Quick Search button */}
-                <button
-                  type="button"
-                  onClick={() => setShowSearch(true)}
-                  className="group flex items-center gap-2 px-3 py-2.5 sm:px-4 sm:py-3 rounded-full bg-[#1A2332]/80 backdrop-blur-sm border border-[#2A3342] hover:border-[#C8A84E]/50 hover:bg-[#1A2332] text-[#E8E3DB] font-medium text-sm shadow-lg cursor-pointer transition-all duration-300"
-                  title="Quick Search (Cmd/Ctrl+K)"
-                >
-                  <SearchIcon className="w-4 h-4 sm:w-5 sm:h-5 text-[#9CA3AF] group-hover:text-[#C8A84E] transition-colors" />
-                  <span className="hidden sm:inline text-[#9CA3AF] group-hover:text-[#E8E3DB] transition-colors">Search</span>
-                  <kbd className="hidden lg:inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded bg-[#0A0F1A]/50 border border-[#2A3342] text-[10px] text-[#6B7280]">
-                    <span>⌘</span>K
-                  </kbd>
-                </button>
-              </motion.div>
+                <SearchIcon className="w-4 h-4 sm:w-5 sm:h-5" />
+                <span className="hidden sm:inline">Search</span>
+                <kbd className="hidden lg:inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded bg-[#0A0F1A]/50 border border-[#2A3342] text-[10px] text-[#C8A84E]/60">
+                  <span>⌘</span>K
+                </kbd>
+              </motion.button>
             )}
           </AnimatePresence>
         </div>
