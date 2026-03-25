@@ -4,6 +4,7 @@
  */
 
 import { getQuranMetaSurah, SURAH_MEANINGS } from '@/lib/quran-data';
+import { enhancedSurahData } from '@/data/enhanced-surah-data';
 
 /** Key geographic locations during the revelation period */
 export const LOCATIONS = {
@@ -208,15 +209,23 @@ const MADANI_THEMES = [
 ];
 
 /**
- * Get themes for a surah (custom or generated)
+ * Get themes for a surah (from enhanced data, custom, or generated)
  */
 function getThemes(surahNumber: number, isMeccan: boolean): string[] {
+  // First, try to get themes from enhanced surah data (all 114 surahs now have this)
+  const enhanced = enhancedSurahData[surahNumber];
+  if (enhanced?.themes && enhanced.themes.length > 0) {
+    // Extract just the title from each theme object
+    return enhanced.themes.map((theme) => theme.title);
+  }
+
+  // Fall back to custom location data themes
   const custom = surahLocationData[surahNumber];
   if (custom?.themes) {
     return custom.themes;
   }
 
-  // Generate default themes based on period and position
+  // Last resort: generate default themes based on period and position
   const themeSet = isMeccan ? MAKKI_THEMES : MADANI_THEMES;
   const index = surahNumber % themeSet.length;
   return themeSet[index];
