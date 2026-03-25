@@ -1330,6 +1330,396 @@ export const enhancedSurahData: Record<number, EnhancedSurahData> = {
     relatedSurahs: [36, 34, 6],
   },
 
+  // Surah 36: Ya-Sin
+  36: {
+    number: 36,
+    circumstances:
+      "Revealed in the middle Makkan period. Called 'the heart of the Quran' by the Prophet ﷺ, it addresses the fundamentals: tawhid, prophethood, and resurrection. Often recited for the dying and at funerals due to its powerful themes of life, death, and resurrection.",
+    themes: [
+      {
+        title: "Heart of the Quran",
+        explanation:
+          "Encapsulates core beliefs in tawhid, risalah, and akhirah.",
+      },
+      {
+        title: "The People of the Town",
+        explanation:
+          "Three messengers sent, all rejected - a warning to Quraysh.",
+      },
+      {
+        title: "Signs of Resurrection",
+        explanation:
+          "The dead earth reviving, the orbits of sun and moon - all point to the Hereafter.",
+      },
+      {
+        title: "Divine Power",
+        explanation:
+          "'Be, and it is' - Allah's command creates without effort.",
+      },
+    ],
+    insights: [
+      "The Prophet ﷺ encouraged reciting Ya-Sin for the dying - it eases the soul's departure.",
+      "The believing man from the edge of the city represents those who accept truth despite isolation.",
+      "Everything travels in its orbit - the universe demonstrates perfect divine order.",
+    ],
+    reflectionPrompts: [
+      "When you see nature's revival after rain, what does it remind you about resurrection?",
+      "How can you be like the believing man - supporting truth even when it's unpopular?",
+    ],
+    relatedSurahs: [35, 37, 67],
+  },
+
+  // Surah 37: As-Saffat (Those Ranged in Ranks)
+  37: {
+    number: 37,
+    circumstances:
+      "Revealed in the middle Makkan period. Named after the angels who stand in ranks worshipping Allah. The surah forcefully refutes polytheism and recounts stories of prophets who faced rejection: Noah, Abraham, Moses, Elias, Lot, and Jonah.",
+    themes: [
+      {
+        title: "Angels in Worship",
+        explanation:
+          "The unseen realm filled with obedient beings arranged in ranks.",
+      },
+      {
+        title: "Abraham's Sacrifice",
+        explanation:
+          "The story of his willingness to sacrifice his son, ransomed by Allah.",
+      },
+      {
+        title: "Prophetic Perseverance",
+        explanation:
+          "Each prophet faced mockery but remained steadfast.",
+      },
+      {
+        title: "Refutation of Polytheism",
+        explanation:
+          "False gods cannot help themselves, let alone their worshippers.",
+      },
+    ],
+    insights: [
+      "Ibrahim's dream and his son's willing submission show the ultimate test of faith.",
+      "The ransom of the sacrifice established the ritual of Eid al-Adha.",
+      "Jonah's story shows that even prophets face consequences for hasty decisions.",
+    ],
+    reflectionPrompts: [
+      "What are you willing to sacrifice for Allah's sake?",
+      "How does knowing angels worship in ranks affect your own prayer posture?",
+    ],
+    relatedSurahs: [36, 38, 21],
+  },
+
+  // Surah 38: Sad
+  38: {
+    number: 38,
+    circumstances:
+      "Revealed in the middle Makkan period when Quraysh leaders approached Abu Talib to pressure the Prophet ﷺ to stop preaching. The surah strengthens the Prophet's resolve through stories of David, Solomon, and Job - leaders and servants of Allah who faced trials.",
+    themes: [
+      {
+        title: "Arrogance of Rejection",
+        explanation:
+          "The Quraysh rejected the Prophet out of pride, not reason.",
+      },
+      {
+        title: "David's Repentance",
+        explanation:
+          "Even a great king made mistakes and sought forgiveness immediately.",
+      },
+      {
+        title: "Solomon's Test",
+        explanation:
+          "Given immense power, he remained grateful and devoted.",
+      },
+      {
+        title: "Iblis's Pride",
+        explanation:
+          "Satan's refusal to prostrate stemmed from arrogance - the root of all sin.",
+      },
+    ],
+    insights: [
+      "David's immediate repentance when corrected is the model for believers.",
+      "Solomon asked for a kingdom no one after him could have - ambition can be righteous.",
+      "Job's patience through suffering shows faith endures even when blessings are removed.",
+    ],
+    reflectionPrompts: [
+      "When corrected, do you respond with immediate repentance like David?",
+      "What does Iblis's story teach about the danger of considering yourself superior?",
+    ],
+    relatedSurahs: [37, 39, 21],
+  },
+
+  // Surah 39: Az-Zumar (The Groups)
+  39: {
+    number: 39,
+    circumstances:
+      "Revealed in the late Makkan period, near the time of the migration to Abyssinia. The surah emphasizes sincerity in worship and Allah's exclusive right to devotion. Named 'The Groups' after the description of people being led to Paradise and Hell in groups.",
+    themes: [
+      {
+        title: "Sincerity in Worship",
+        explanation:
+          "Pure devotion to Allah alone, without any partners.",
+      },
+      {
+        title: "Groups to Paradise and Hell",
+        explanation:
+          "The dramatic scene of people being led in throngs to their final abodes.",
+      },
+      {
+        title: "The Hopeful Verse",
+        explanation:
+          "'Do not despair of Allah's mercy' - even after excess in sin.",
+      },
+      {
+        title: "Night Worship",
+        explanation:
+          "The one who prays at night is not equal to the heedless.",
+      },
+    ],
+    insights: [
+      "The verse about not despairing is called the most hopeful verse in the Quran.",
+      "Standing, prostrating at night distinguishes the mindful from the unmindful.",
+      "The gates of Paradise will be opened with 'Peace be upon you' - eternal welcome.",
+    ],
+    reflectionPrompts: [
+      "What prevents you from being among those who worship at night?",
+      "How does the most hopeful verse affect your view of repentance?",
+    ],
+    relatedSurahs: [38, 40, 50],
+  },
+
+  // Surah 40: Ghafir (The Forgiver)
+  40: {
+    number: 40,
+    circumstances:
+      "First of the seven 'Ha Mim' surahs, revealed in the late Makkan period. The surah highlights Allah's forgiveness while warning of the consequences of arrogance. Features the powerful story of the believing man from Pharaoh's family who concealed his faith.",
+    themes: [
+      {
+        title: "Allah the Forgiver",
+        explanation:
+          "Opens emphasizing divine forgiveness for those who repent.",
+      },
+      {
+        title: "The Secret Believer",
+        explanation:
+          "A man from Pharaoh's family who concealed faith until he had to speak.",
+      },
+      {
+        title: "Arrogance's End",
+        explanation:
+          "Pharaoh's pride led to his destruction despite clear signs.",
+      },
+      {
+        title: "Prayer and Response",
+        explanation:
+          "'Call upon Me; I will respond' - a direct divine promise.",
+      },
+    ],
+    insights: [
+      "The believing man used wisdom - concealing faith when necessary, speaking when crucial.",
+      "His arguments were logical: 'If he is lying, his lie is upon him; if he is truthful, you benefit.'",
+      "'Call upon Me; I will respond' is among the most comforting promises in the Quran.",
+    ],
+    reflectionPrompts: [
+      "When should you conceal faith and when must you speak up?",
+      "How often do you actually call upon Allah expecting a response?",
+    ],
+    relatedSurahs: [41, 28, 39],
+  },
+
+  // Surah 41: Fussilat (Explained in Detail)
+  41: {
+    number: 41,
+    circumstances:
+      "Second of the 'Ha Mim' surahs, revealed during intense persecution. When the Prophet ﷺ recited this surah to 'Utbah ibn Rabi'ah, a Quraysh leader, he was so moved he returned to his people saying, 'Leave this man alone, for his words will have great impact.'",
+    themes: [
+      {
+        title: "Quran Explained in Detail",
+        explanation:
+          "The Book whose verses are clear in Arabic for understanding.",
+      },
+      {
+        title: "Creation in Six Days",
+        explanation:
+          "The heavens and earth created methodically, demonstrating divine order.",
+      },
+      {
+        title: "Good Repels Evil",
+        explanation:
+          "Respond to bad with good, and enemies become friends.",
+      },
+      {
+        title: "The Skins Will Testify",
+        explanation:
+          "On Judgment Day, bodies will testify against their owners.",
+      },
+    ],
+    insights: [
+      "The principle 'Good and evil are not equal; repel with what is better' transformed relationships.",
+      "Utbah, a hardened opponent, was momentarily stunned by the Quran's power.",
+      "Our own limbs become witnesses - nothing remains hidden.",
+    ],
+    reflectionPrompts: [
+      "Can you recall a time when responding to evil with good transformed a relationship?",
+      "How would you live differently if your body would testify against you?",
+    ],
+    relatedSurahs: [40, 42, 36],
+  },
+
+  // Surah 42: Ash-Shura (The Consultation)
+  42: {
+    number: 42,
+    circumstances:
+      "Third of the 'Ha Mim' surahs, revealed in the late Makkan period. Named after the verse praising those who conduct their affairs through mutual consultation (shura). The surah discusses revelation, unity, and community governance.",
+    themes: [
+      {
+        title: "Consultation (Shura)",
+        explanation:
+          "Believers conduct affairs through mutual consultation - a governance principle.",
+      },
+      {
+        title: "One Religion",
+        explanation:
+          "The same religion was ordained for Noah, Abraham, Moses, and Jesus.",
+      },
+      {
+        title: "No Compulsion",
+        explanation:
+          "The Prophet guides but cannot control hearts - Allah guides whom He wills.",
+      },
+      {
+        title: "Patience and Forgiveness",
+        explanation:
+          "Those who forgive and are patient are among the resolute.",
+      },
+    ],
+    insights: [
+      "Shura (consultation) is placed alongside prayer and charity as a mark of believers.",
+      "The religion's core never changed across prophets - only details differed.",
+      "Forgiving when wronged is described as 'truly among matters requiring resolve.'",
+    ],
+    reflectionPrompts: [
+      "How do you incorporate shura in your family and community decisions?",
+      "When was the last time you forgave someone who wronged you?",
+    ],
+    relatedSurahs: [41, 43, 3],
+  },
+
+  // Surah 43: Az-Zukhruf (The Gold Ornaments)
+  43: {
+    number: 43,
+    circumstances:
+      "Fourth of the 'Ha Mim' surahs. The surah criticizes materialistic values - gold ornaments (zukhruf) represent worldly distractions. It refutes worship of angels as daughters of Allah and addresses the Quraysh's attachment to their ancestors' ways.",
+    themes: [
+      {
+        title: "Worldly Ornaments",
+        explanation:
+          "Gold and luxury are trivial in Allah's sight - given even to disbelievers.",
+      },
+      {
+        title: "Blind Following of Ancestors",
+        explanation:
+          "The excuse 'We found our fathers upon this' is rejected.",
+      },
+      {
+        title: "Abraham's Example",
+        explanation:
+          "He rejected his father's idolatry despite family pressure.",
+      },
+      {
+        title: "Jesus Clarified",
+        explanation:
+          "He was a servant of Allah, not divine - correcting Christian beliefs.",
+      },
+    ],
+    insights: [
+      "If worldly wealth indicated divine favor, disbelievers would have been given more.",
+      "Abraham is the model of rejecting family tradition when it contradicts truth.",
+      "Jesus will testify that he never claimed divinity.",
+    ],
+    reflectionPrompts: [
+      "What 'gold ornaments' distract you from what truly matters?",
+      "Do you follow traditions because of truth or because 'that's what we've always done'?",
+    ],
+    relatedSurahs: [42, 44, 19],
+  },
+
+  // Surah 44: Ad-Dukhan (The Smoke)
+  44: {
+    number: 44,
+    circumstances:
+      "Fifth of the 'Ha Mim' surahs. Revealed during a severe famine in Makkah when the sky appeared hazy from drought. The Quraysh were suffering, and the surah speaks of the 'smoke' as both a literal and eschatological sign.",
+    themes: [
+      {
+        title: "The Smoke",
+        explanation:
+          "A sign of punishment - whether the Makkan famine or a future event.",
+      },
+      {
+        title: "Revelation on a Blessed Night",
+        explanation:
+          "The Quran was revealed on Laylat al-Qadr, the Night of Decree.",
+      },
+      {
+        title: "Pharaoh's Destruction",
+        explanation:
+          "Despite honor and luxury, arrogance led to drowning.",
+      },
+      {
+        title: "Tree of Zaqqum",
+        explanation:
+          "The hellish tree that feeds the sinful - a terrifying image.",
+      },
+    ],
+    insights: [
+      "The famine made the Quraysh see 'smoke' everywhere - a partial fulfillment.",
+      "Laylat al-Qadr is described as when every matter is decreed.",
+      "Pharaoh's resources couldn't save him - a warning to Quraysh elites.",
+    ],
+    reflectionPrompts: [
+      "How do you prepare for Laylat al-Qadr knowing every matter is decreed?",
+      "What does Pharaoh's end teach about the limits of worldly power?",
+    ],
+    relatedSurahs: [43, 45, 97],
+  },
+
+  // Surah 45: Al-Jathiyah (The Kneeling)
+  45: {
+    number: 45,
+    circumstances:
+      "Sixth of the 'Ha Mim' surahs. Named after the image of nations kneeling before their record books on Judgment Day. The surah warns against following desires and mocking divine signs.",
+    themes: [
+      {
+        title: "Nations Kneeling",
+        explanation:
+          "Every nation will kneel when called to its record on Judgment Day.",
+      },
+      {
+        title: "Following Desires",
+        explanation:
+          "Those who take their own desires as god are truly lost.",
+      },
+      {
+        title: "Signs in Creation",
+        explanation:
+          "The heavens, earth, and creatures are signs for those who reflect.",
+      },
+      {
+        title: "Recorded Deeds",
+        explanation:
+          "The Book will speak with truth - nothing was left unrecorded.",
+      },
+    ],
+    insights: [
+      "Taking desire as a deity is a profound description of spiritual slavery.",
+      "Kneeling before records - even the proudest will be humbled.",
+      "The deniers' mockery is recorded as evidence against them.",
+    ],
+    reflectionPrompts: [
+      "In what ways might you be following desires instead of guidance?",
+      "How would you feel kneeling before your own record book?",
+    ],
+    relatedSurahs: [44, 46, 40],
+  },
+
   // Surah 93: Ad-Duha (The Morning Light)
   93: {
     number: 93,
@@ -1604,45 +1994,6 @@ export const enhancedSurahData: Record<number, EnhancedSurahData> = {
       "How does knowing Allah tests within your capacity change your response to hardship?",
     ],
     relatedSurahs: [1, 3, 5],
-  },
-
-  // Surah 36: Ya-Sin
-  36: {
-    number: 36,
-    circumstances:
-      "A Makkan surah called 'the heart of the Quran' by the Prophet ﷺ who encouraged reciting it over those who are dying and for the deceased. It addresses the fundamental themes that the early Muslims faced: resurrection denial, prophetic rejection, and the evidence of Allah's power in creation. The powerful narrative of the man who came running from the city to support the messengers provides an inspiring model of faith.",
-    themes: [
-      {
-        title: "Prophetic Mission",
-        explanation:
-          "The Prophet ﷺ is confirmed as a messenger on a straight path - his role validated against deniers.",
-      },
-      {
-        title: "Resurrection Evidence",
-        explanation:
-          "Multiple signs in nature prove Allah's ability to resurrect: dead earth revived, day and night cycles, the ark of Nuh.",
-      },
-      {
-        title: "The Believing Man",
-        explanation:
-          "The unnamed man who defended the messengers and was martyred shows true faith means supporting truth regardless of cost.",
-      },
-      {
-        title: "Divine Creative Power",
-        explanation:
-          "'Be, and it is' (Kun fa-yakun) - Allah's command creates instantly; resurrection requires only His word.",
-      },
-    ],
-    insights: [
-      "The heart of the Quran addresses the heart's essential questions: Is this real? Will we return? Does my life matter?",
-      "The believing man wished his people knew of his reward - concern for others' guidance continues even after death.",
-      "Resurrection is easier for Allah than initial creation - yet we struggle to believe despite witnessing creation daily.",
-    ],
-    reflectionPrompts: [
-      "What 'dead' aspects of your spiritual life need the revival that Ya-Sin describes?",
-      "Like the man from the city, what truths do you need to support even if unpopular?",
-    ],
-    relatedSurahs: [67, 78],
   },
 
   // Surah 55: Ar-Rahman (The Most Merciful)
