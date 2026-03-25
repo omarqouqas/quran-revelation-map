@@ -21,10 +21,12 @@ interface UseKeyboardShortcutsOptions {
   enabled?: boolean;
   /** Callback when ? is pressed to show help */
   onShowHelp?: () => void;
+  /** Callback when Cmd/Ctrl+K is pressed to toggle search */
+  onToggleSearch?: () => void;
 }
 
 export function useKeyboardShortcuts(options: UseKeyboardShortcutsOptions = {}) {
-  const { enabled = true, onShowHelp } = options;
+  const { enabled = true, onShowHelp, onToggleSearch } = options;
 
   const currentYear = useMapStore((state) => state.currentYear);
   const setCurrentYear = useMapStore((state) => state.setCurrentYear);
@@ -36,7 +38,6 @@ export function useKeyboardShortcuts(options: UseKeyboardShortcutsOptions = {}) 
   const selectEvent = useMapStore((state) => state.selectEvent);
 
   const isExplorerOpen = useExplorerStore((state) => state.isExplorerOpen);
-  const openExplorer = useExplorerStore((state) => state.openExplorer);
   const closeExplorer = useExplorerStore((state) => state.closeExplorer);
 
   const handleKeyDown = useCallback(
@@ -85,11 +86,7 @@ export function useKeyboardShortcuts(options: UseKeyboardShortcutsOptions = {}) 
         case 'K':
           if (isMod) {
             e.preventDefault();
-            if (isExplorerOpen) {
-              closeExplorer();
-            } else {
-              openExplorer();
-            }
+            onToggleSearch?.();
           }
           break;
 
@@ -132,13 +129,13 @@ export function useKeyboardShortcuts(options: UseKeyboardShortcutsOptions = {}) 
       setCurrentYear,
       togglePlayback,
       isExplorerOpen,
-      openExplorer,
       closeExplorer,
       selectedSurahNumber,
       selectSurah,
       selectedEventId,
       selectEvent,
       onShowHelp,
+      onToggleSearch,
     ]
   );
 

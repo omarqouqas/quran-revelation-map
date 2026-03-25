@@ -8,7 +8,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, Sparkles, Keyboard, ArrowLeftRight, Film, User, BookOpen } from 'lucide-react';
+import { Search as SearchIcon, Sparkles, Keyboard, ArrowLeftRight, Film, User, BookOpen } from 'lucide-react';
 import { VideoBackground } from '@/components/map/VideoBackground';
 import { MapContainer } from '@/components/map/MapContainer';
 import { TimelineSlider } from '@/components/timeline/TimelineSlider';
@@ -20,6 +20,7 @@ import { LandingOverlay } from '@/components/layout/LandingOverlay';
 import { KeyboardShortcutsModal } from '@/components/layout/KeyboardShortcutsModal';
 import { OrderComparisonModal } from '@/components/layout/OrderComparisonModal';
 import { AgeExplorerModal } from '@/components/layout/AgeExplorerModal';
+import { SearchModal } from '@/components/search';
 import { SurahExplorer } from '@/components/explorer';
 import { StoryMode, JourneySelector } from '@/components/story';
 import { LearningMode, PathSelector } from '@/components/learning';
@@ -39,6 +40,7 @@ export function QuranMapApp({ initialSurahNumber }: QuranMapAppProps) {
   const [showShortcutsHelp, setShowShortcutsHelp] = useState(false);
   const [showOrderComparison, setShowOrderComparison] = useState(false);
   const [showAgeExplorer, setShowAgeExplorer] = useState(false);
+  const [showSearch, setShowSearch] = useState(false);
 
   // Sync URL with surah selection
   useSurahRouting({ initialSurahNumber });
@@ -46,6 +48,7 @@ export function QuranMapApp({ initialSurahNumber }: QuranMapAppProps) {
   // Enable keyboard shortcuts
   useKeyboardShortcuts({
     onShowHelp: () => setShowShortcutsHelp(true),
+    onToggleSearch: () => setShowSearch((prev) => !prev),
   });
 
   const isExplorerOpen = useExplorerStore((state) => state.isExplorerOpen);
@@ -105,7 +108,7 @@ export function QuranMapApp({ initialSurahNumber }: QuranMapAppProps) {
                 style={{ pointerEvents: 'auto' }}
                 className="absolute top-4 left-4 sm:left-6 group flex items-center gap-2 px-4 py-2.5 sm:px-5 sm:py-3 rounded-full bg-[#1A2332]/80 backdrop-blur-sm border border-[#C8A84E]/30 hover:border-[#C8A84E] hover:bg-[#1A2332] text-[#C8A84E] font-medium text-sm shadow-lg cursor-pointer transition-all duration-300"
               >
-                <Search className="w-4 h-4 sm:w-5 sm:h-5" />
+                <SearchIcon className="w-4 h-4 sm:w-5 sm:h-5" />
                 <span className="hidden sm:inline">Explore Surahs</span>
               </motion.button>
             )}
@@ -260,6 +263,9 @@ export function QuranMapApp({ initialSurahNumber }: QuranMapAppProps) {
         isOpen={isPathSelectorOpen}
         onClose={closePathSelector}
       />
+
+      {/* Global search modal */}
+      <SearchModal isOpen={showSearch} onClose={() => setShowSearch(false)} />
     </main>
   );
 }

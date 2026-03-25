@@ -21,6 +21,7 @@ This is **not** a Quran reader or recitation app. It's an educational tool focus
 - **Enhanced Surah Data** - 20 pilot surahs with detailed circumstances, themes with explanations, insights, and reflection prompts
 - **Interactive Timeline** - Explore revelation chronologically from 610-632 CE
 - **Geographic Map** - Hijaz region with sacred site markers (Makkah, Madinah, Cave Hira, etc.)
+- **Global Search** - Unified search (Cmd/Ctrl+K) across surahs, events, and sacred sites with keyboard navigation
 - **Surah Explorer** - View all 114 surahs with revelation order and context
 - **Age Explorer** - Enter your age to see what was revealed at that age in the Prophet's life
 - **Sacred Site Modals** - Click locations to see related events and surahs
@@ -34,7 +35,6 @@ See [IMPLEMENTATION_PLAN.md](./IMPLEMENTATION_PLAN.md) for the full roadmap.
 **Next priorities:**
 1. Enhanced Surah Data (expand to all 114 surahs)
 2. Bookmarks & Notes
-3. Search Functionality
 
 ## Tech Stack
 
@@ -70,6 +70,7 @@ src/
 │   ├── layout/          # Modals, panels, UI structure
 │   ├── learning/        # Learning paths, lessons, navigation
 │   ├── map/             # Map, markers, video background
+│   ├── search/          # Global search modal
 │   ├── share/           # Share cards and modal
 │   └── timeline/        # Timeline slider
 ├── data/
