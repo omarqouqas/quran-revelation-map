@@ -223,7 +223,14 @@ export function ExplorerFilters() {
                 </div>
               )}
 
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+              <div style={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                gap: '8px',
+                maxHeight: showAllThemes ? '300px' : 'none',
+                overflowY: showAllThemes ? 'auto' : 'visible',
+                paddingRight: showAllThemes ? '8px' : '0',
+              }}>
                 {visibleThemes.map((theme) => (
                   <button
                     key={theme}
