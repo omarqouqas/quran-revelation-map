@@ -60,6 +60,402 @@ export const enhancedSurahData: Record<number, EnhancedSurahData> = {
     relatedSurahs: [2, 112],
   },
 
+  // Surah 3: Al-Imran (The Family of Imran)
+  3: {
+    number: 3,
+    circumstances:
+      "Revealed in Madinah, primarily after the Battle of Uhud (625 CE). Part of it was revealed when a Christian delegation from Najran came to discuss theology with the Prophet ﷺ. It addresses the lessons from Uhud and engages in dialogue with the People of the Book about the nature of Prophet Isa (Jesus) and his family.",
+    themes: [
+      {
+        title: "Unity of Divine Message",
+        explanation:
+          "All prophets taught the same core message of Tawhid - there is no contradiction between them.",
+      },
+      {
+        title: "Lessons from Uhud",
+        explanation:
+          "Analyzing the setback at Uhud, emphasizing the importance of obedience to the Prophet ﷺ and patience in adversity.",
+      },
+      {
+        title: "Dialogue with Christians",
+        explanation:
+          "Clarifying the true nature of Isa and Maryam, inviting to common ground between faiths.",
+      },
+      {
+        title: "Steadfastness in Trials",
+        explanation:
+          "Patience during hardship and trusting Allah's plan, even when outcomes seem unfavorable.",
+      },
+      {
+        title: "Prohibition of Riba",
+        explanation:
+          "Economic ethics and avoiding usury, establishing foundations for Islamic finance.",
+      },
+    ],
+    insights: [
+      "Setbacks can be opportunities for growth and self-reflection.",
+      "True success is measured by faithfulness, not worldly outcomes.",
+      "Interfaith dialogue should be based on common ground - 'a word equal between us and you.'",
+    ],
+    reflectionPrompts: [
+      "How do you respond to setbacks? What lessons can be extracted from difficulties?",
+      "What common ground can you find with people of other faiths?",
+    ],
+    relatedSurahs: [2, 4, 5],
+  },
+
+  // Surah 4: An-Nisa (The Women)
+  4: {
+    number: 4,
+    circumstances:
+      "Revealed in Madinah over several years (approximately 625-627 CE), largely after Uhud when many Muslim men had been martyred, leaving widows and orphans. It established comprehensive legislation for protecting women's rights, inheritance, and family structure.",
+    themes: [
+      {
+        title: "Women's Rights",
+        explanation:
+          "Establishing inheritance rights, marriage rights, and dignified treatment for women in society.",
+      },
+      {
+        title: "Orphan Protection",
+        explanation:
+          "Just treatment and protection of property rights for orphans - a central concern after Uhud.",
+      },
+      {
+        title: "Family Law",
+        explanation:
+          "Comprehensive guidance on marriage, divorce, and domestic responsibilities.",
+      },
+      {
+        title: "Social Justice",
+        explanation:
+          "Standing for justice even against oneself or family - 'be persistently standing firm in justice.'",
+      },
+      {
+        title: "Hypocrisy Exposed",
+        explanation:
+          "Characteristics and warnings about the hypocrites who undermine the community from within.",
+      },
+    ],
+    insights: [
+      "Islam elevated women's status by granting them inheritance and property rights unprecedented in that era.",
+      "Justice must be upheld even when it's against personal or family interest.",
+      "The family unit is foundational to a healthy society and deserves detailed guidance.",
+    ],
+    reflectionPrompts: [
+      "How can you better uphold justice in your family relationships?",
+      "What responsibilities do you have toward vulnerable members of your community?",
+    ],
+    relatedSurahs: [2, 3, 5],
+  },
+
+  // Surah 5: Al-Ma'idah (The Table Spread)
+  5: {
+    number: 5,
+    circumstances:
+      "Among the last surahs revealed, mostly in Madinah (approximately 629-632 CE). Contains the famous verse revealed at Arafat during the Farewell Pilgrimage: 'This day I have perfected for you your religion.' It addresses final legislation, covenants, and relations with People of the Book.",
+    themes: [
+      {
+        title: "Fulfilling Covenants",
+        explanation:
+          "The obligation to honor commitments and contracts - 'O you who believe, fulfill your contracts.'",
+      },
+      {
+        title: "Dietary Laws",
+        explanation:
+          "Clarification of halal and haram foods, hunting regulations, and exceptions during necessity.",
+      },
+      {
+        title: "Perfection of Religion",
+        explanation:
+          "The completion of Islamic law and guidance - 'This day I have perfected for you your religion.'",
+      },
+      {
+        title: "Justice and Fairness",
+        explanation:
+          "Not letting hatred of a people lead to injustice - 'Be just; that is nearer to righteousness.'",
+      },
+      {
+        title: "Story of Isa's Disciples",
+        explanation:
+          "The table spread miracle and the faith of Isa's disciples as an example.",
+      },
+    ],
+    insights: [
+      "Covenants and promises are sacred and must be honored, even with those we disagree with.",
+      "Justice must be maintained even toward those you dislike - emotions don't override ethics.",
+      "The religion was completed and perfected - no additions or subtractions are needed.",
+    ],
+    reflectionPrompts: [
+      "What covenants or commitments in your life need more attention?",
+      "Do you maintain justice toward those you disagree with?",
+    ],
+    relatedSurahs: [2, 3, 4],
+  },
+
+  // Surah 6: Al-An'am (The Cattle)
+  6: {
+    number: 6,
+    circumstances:
+      "Revealed entirely at once in Makkah during the Year of Sorrow (619 CE), a time of immense hardship after the deaths of Khadijah and Abu Talib. It was revealed to strengthen the Prophet's ﷺ resolve with powerful arguments for Tawhid against the polytheists.",
+    themes: [
+      {
+        title: "Tawhid (Oneness of Allah)",
+        explanation:
+          "Comprehensive arguments against polytheism, establishing Allah's exclusive right to worship.",
+      },
+      {
+        title: "Signs in Creation",
+        explanation:
+          "The natural world as evidence of the Creator - gardens, stars, rain, and livestock.",
+      },
+      {
+        title: "Prophetic Mission",
+        explanation:
+          "The role and struggles of messengers throughout history, consoling the Prophet ﷺ.",
+      },
+      {
+        title: "Refutation of Shirk",
+        explanation:
+          "Logical dismantling of idol worship and associating partners with Allah.",
+      },
+      {
+        title: "Dietary Clarifications",
+        explanation:
+          "Correcting pagan superstitions about food and establishing what Allah has actually forbidden.",
+      },
+    ],
+    insights: [
+      "The natural world is full of signs pointing to the Creator for those who reflect.",
+      "Truth must be proclaimed regardless of how people respond - the messenger's duty is to convey.",
+      "Superstitions and innovations in religion must be rejected in favor of authentic revelation.",
+    ],
+    reflectionPrompts: [
+      "What signs in creation strengthen your faith?",
+      "Are there any cultural practices you follow that contradict authentic teachings?",
+    ],
+    relatedSurahs: [7, 10, 11],
+  },
+
+  // Surah 7: Al-A'raf (The Heights)
+  7: {
+    number: 7,
+    circumstances:
+      "Revealed in Makkah during the middle Makkan period. It provides extensive narratives of previous prophets and their peoples, serving as both consolation for the Prophet ﷺ and warning to the Quraysh. The 'A'raf' refers to the elevated place between Paradise and Hell.",
+    themes: [
+      {
+        title: "Stories of Prophets",
+        explanation:
+          "Detailed accounts of Adam, Nuh, Hud, Salih, Lut, Shu'ayb, and Musa - each with lessons.",
+      },
+      {
+        title: "Consequences of Rejection",
+        explanation:
+          "The fate of nations that denied their messengers - 'Ad, Thamud, people of Lut.",
+      },
+      {
+        title: "The A'raf",
+        explanation:
+          "Those on the heights between Paradise and Hell - whose good and bad deeds are equal.",
+      },
+      {
+        title: "Satan's Enmity",
+        explanation:
+          "Iblis's vow to mislead humanity from every direction - his methods and tactics exposed.",
+      },
+      {
+        title: "Human Nature",
+        explanation:
+          "The covenant taken from all souls before creation - 'Am I not your Lord?'",
+      },
+    ],
+    insights: [
+      "Every nation received guidance; rejection has inevitable consequences.",
+      "Satan's methods are consistent: false promises and gradual deviation from the straight path.",
+      "Humanity has an innate recognition of their Lord (fitrah) from the primordial covenant.",
+    ],
+    reflectionPrompts: [
+      "Which prophet's story resonates most with your current situation?",
+      "How do you guard against Satan's gradual deceptions in your life?",
+    ],
+    relatedSurahs: [6, 10, 11, 26],
+  },
+
+  // Surah 8: Al-Anfal (The Spoils of War)
+  8: {
+    number: 8,
+    circumstances:
+      "Revealed in Madinah shortly after the Battle of Badr (624 CE), Islam's first major military victory. It addresses the distribution of war spoils, the ethics of warfare, and lessons from the miraculous victory against a much larger force.",
+    themes: [
+      {
+        title: "Distribution of Spoils",
+        explanation:
+          "Rules for dividing war gains fairly - one-fifth to Allah and His messenger, the rest to the fighters.",
+      },
+      {
+        title: "Divine Assistance at Badr",
+        explanation:
+          "Angels, rain, and other miraculous aid that secured victory for the outnumbered Muslims.",
+      },
+      {
+        title: "Ethics of Warfare",
+        explanation:
+          "Rules of engagement, treatment of prisoners, and when fighting is sanctioned.",
+      },
+      {
+        title: "Qualities of Believers",
+        explanation:
+          "Faith, trust in Allah, unity, and obedience to leadership during conflict.",
+      },
+      {
+        title: "Breaking Treaties",
+        explanation:
+          "How to deal with those who violate agreements and the importance of maintaining trust.",
+      },
+    ],
+    insights: [
+      "Victory comes from Allah, not superior numbers or weapons - 'You did not kill them, but Allah killed them.'",
+      "War has ethical boundaries that must be observed even against enemies.",
+      "Internal unity is essential for external success - discord weakens the community.",
+    ],
+    reflectionPrompts: [
+      "How do you handle situations where you're outnumbered or outmatched?",
+      "What role does trust in Allah play during your struggles?",
+    ],
+    relatedSurahs: [3, 9, 47],
+  },
+
+  // Surah 9: At-Tawbah (The Repentance)
+  9: {
+    number: 9,
+    circumstances:
+      "Revealed in Madinah in 631 CE, among the last surahs revealed. Unique in not beginning with Bismillah. It was revealed after the Conquest of Makkah and addresses the final relations with polytheist tribes, hypocrites, and the Tabuk expedition.",
+    themes: [
+      {
+        title: "Annulment of Treaties",
+        explanation:
+          "Ending agreements with polytheists who repeatedly violated their commitments.",
+      },
+      {
+        title: "Exposure of Hypocrites",
+        explanation:
+          "Detailed description of hypocrite characteristics - their excuses, behavior, and fate.",
+      },
+      {
+        title: "Tabuk Expedition",
+        explanation:
+          "Distinguishing those who participated in hardship from those who stayed behind with excuses.",
+      },
+      {
+        title: "Repentance and Forgiveness",
+        explanation:
+          "Allah's mercy for those who sincerely repent - the door remains open until death.",
+      },
+      {
+        title: "Charity and Zakah",
+        explanation:
+          "Proper distribution of charity and the eight categories of zakah recipients.",
+      },
+    ],
+    insights: [
+      "True repentance requires sincerity and changed behavior, not just words.",
+      "Hypocrisy is more dangerous than open opposition - it corrodes from within.",
+      "Actions reveal true faith, especially during times of hardship when excuses are easy.",
+    ],
+    reflectionPrompts: [
+      "Are there areas in your life where actions don't match stated beliefs?",
+      "What does genuine repentance look like in your life?",
+    ],
+    relatedSurahs: [8, 47, 48],
+  },
+
+  // Surah 10: Yunus (Jonah)
+  10: {
+    number: 10,
+    circumstances:
+      "Revealed in Makkah during the late Makkan period. It emphasizes the truth of revelation, the stories of previous prophets (especially Yunus, Musa, and Nuh), and offers reassurance to the Prophet ﷺ during opposition.",
+    themes: [
+      {
+        title: "Truth of the Quran",
+        explanation:
+          "The Quran is not fabricated - a challenge is issued to produce something similar.",
+      },
+      {
+        title: "Story of Yunus",
+        explanation:
+          "His people's unique repentance that saved them from destruction - the only nation to repent in time.",
+      },
+      {
+        title: "Divine Decree",
+        explanation:
+          "Everything happens by Allah's will and knowledge - nothing occurs outside His plan.",
+      },
+      {
+        title: "Patience in Adversity",
+        explanation:
+          "Following the example of previous prophets who endured opposition with patience.",
+      },
+      {
+        title: "Inevitability of Judgment",
+        explanation:
+          "No escape from accountability - every soul will face its record.",
+      },
+    ],
+    insights: [
+      "Sincere repentance, even at the last moment, can bring salvation - Yunus's people prove this.",
+      "The Quran's eloquence and wisdom are self-evident proofs of its divine origin.",
+      "Patience during hardship is the way of all prophets - you are in noble company.",
+    ],
+    reflectionPrompts: [
+      "What can you learn from Yunus's people who repented and were saved?",
+      "How do you maintain hope when facing persistent opposition?",
+    ],
+    relatedSurahs: [6, 7, 11, 37],
+  },
+
+  // Surah 11: Hud
+  11: {
+    number: 11,
+    circumstances:
+      "Revealed in Makkah during a period of intense persecution. It presents detailed accounts of prophets Nuh, Hud, Salih, Ibrahim, Lut, and Shu'ayb, emphasizing their perseverance and the destruction of their rejecting peoples. The Prophet ﷺ said this surah and its sisters (like Al-Waqi'ah) 'turned his hair gray' due to their weight.",
+    themes: [
+      {
+        title: "Prophetic Perseverance",
+        explanation:
+          "Steadfastness despite prolonged opposition - Nuh preached for 950 years.",
+      },
+      {
+        title: "Destruction of Nations",
+        explanation:
+          "Detailed accounts of punished peoples - the flood, the scream, stones from the sky.",
+      },
+      {
+        title: "The Flood of Nuh",
+        explanation:
+          "The dialogue with his disbelieving son - family ties don't guarantee salvation.",
+      },
+      {
+        title: "Consistency of Message",
+        explanation:
+          "All prophets called to the same fundamentals - Tawhid and righteousness.",
+      },
+      {
+        title: "Warning and Hope",
+        explanation:
+          "Destruction for rejecters, but salvation always available for those who believe.",
+      },
+    ],
+    insights: [
+      "The prophetic path requires immense patience - Nuh's 950 years puts our struggles in perspective.",
+      "Family ties don't guarantee salvation; faith does - Nuh's son drowned despite his lineage.",
+      "Allah's punishment comes when all chances for repentance have been exhausted.",
+    ],
+    reflectionPrompts: [
+      "What keeps you steadfast when facing prolonged difficulty?",
+      "How do you balance hope for others' guidance with acceptance of their choices?",
+    ],
+    relatedSurahs: [7, 10, 26],
+  },
+
   // Surah 93: Ad-Duha (The Morning Light)
   93: {
     number: 93,
