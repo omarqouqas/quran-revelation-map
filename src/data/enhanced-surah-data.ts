@@ -940,6 +940,396 @@ export const enhancedSurahData: Record<number, EnhancedSurahData> = {
     relatedSurahs: [17, 23, 76],
   },
 
+  // Surah 26: Ash-Shu'ara (The Poets)
+  26: {
+    number: 26,
+    circumstances:
+      "Revealed during the middle Makkan period when the Quraysh intensified their opposition. The surah presents multiple prophet stories as evidence of the consistent pattern: messengers rejected, but truth ultimately triumphs.",
+    themes: [
+      {
+        title: "Stories of the Prophets",
+        explanation:
+          "Moses, Abraham, Noah, Hud, Salih, Lot, and Shu'ayb - each faced rejection.",
+      },
+      {
+        title: "Pattern of Rejection",
+        explanation:
+          "Every community rejected their messenger with similar excuses.",
+      },
+      {
+        title: "Divine Victory",
+        explanation:
+          "Truth triumphed in every story, providing comfort to the Prophet ﷺ.",
+      },
+      {
+        title: "Poets vs Prophets",
+        explanation:
+          "Distinguishes prophetic revelation from mere poetry that the Quraysh accused.",
+      },
+    ],
+    insights: [
+      "The repeated refrain 'Your Lord is the Almighty, the Merciful' appears eight times.",
+      "Opposition to truth follows predictable patterns across history.",
+      "Poetry can mislead, but divine revelation guides to truth.",
+    ],
+    reflectionPrompts: [
+      "Which prophet's story in this surah resonates most with challenges you face?",
+      "How do you distinguish guidance from entertainment in what you consume?",
+    ],
+    relatedSurahs: [7, 11, 27],
+  },
+
+  // Surah 27: An-Naml (The Ant)
+  27: {
+    number: 27,
+    circumstances:
+      "Revealed in the middle Makkan period. Named after the ant whose words to her colony Solomon understood. The surah highlights wisdom, knowledge, and the signs of Allah in creation.",
+    themes: [
+      {
+        title: "Solomon's Kingdom",
+        explanation:
+          "His command over jinn, birds, and understanding of all creatures.",
+      },
+      {
+        title: "The Queen of Sheba",
+        explanation:
+          "Her journey from disbelief to submission through wisdom, not force.",
+      },
+      {
+        title: "Signs in Nature",
+        explanation:
+          "Creatures like ants and hoopoes demonstrate divine wisdom.",
+      },
+      {
+        title: "Knowledge and Wisdom",
+        explanation:
+          "True knowledge leads to recognizing Allah's power.",
+      },
+    ],
+    insights: [
+      "The ant's awareness shows that even the smallest creatures have understanding.",
+      "The Queen of Sheba was convinced by evidence and reasoning, not compulsion.",
+      "Solomon's gratitude increased despite his immense blessings.",
+    ],
+    reflectionPrompts: [
+      "What can you learn from creatures often considered insignificant?",
+      "How does sincere investigation lead to truth, like the Queen of Sheba's journey?",
+    ],
+    relatedSurahs: [26, 28, 34],
+  },
+
+  // Surah 28: Al-Qasas (The Stories)
+  28: {
+    number: 28,
+    circumstances:
+      "Revealed during the middle Makkan period when persecution intensified. The detailed story of Moses' life, from infancy to prophethood, parallels the Prophet's ﷺ own journey and provides hope.",
+    themes: [
+      {
+        title: "Moses' Complete Story",
+        explanation:
+          "The most detailed account of Moses from birth to mission.",
+      },
+      {
+        title: "From Weakness to Strength",
+        explanation:
+          "Moses was vulnerable as an infant, yet Allah's plan protected him.",
+      },
+      {
+        title: "Qarun's Arrogance",
+        explanation:
+          "Wealth leads to destruction when it causes arrogance.",
+      },
+      {
+        title: "Divine Promise",
+        explanation:
+          "Allah promises the Prophet ﷺ return to his homeland (Makkah).",
+      },
+    ],
+    insights: [
+      "Moses' mother's trust in Allah during the most terrifying moment is our model.",
+      "Pharaoh's own household raised his eventual opponent - divine irony.",
+      "The verse about returning home gave the Prophet ﷺ hope during hardship.",
+    ],
+    reflectionPrompts: [
+      "When have you witnessed Allah's plan working through unlikely means?",
+      "What does Qarun's story teach about the dangers of wealth?",
+    ],
+    relatedSurahs: [26, 27, 20],
+  },
+
+  // Surah 29: Al-'Ankabut (The Spider)
+  29: {
+    number: 29,
+    circumstances:
+      "Revealed in the late Makkan period when some Muslims were being tortured. The surah addresses trials as necessary tests of faith and warns against the fragility of false supports.",
+    themes: [
+      {
+        title: "Trials Test Faith",
+        explanation:
+          "Belief must be tested; claiming faith isn't enough.",
+      },
+      {
+        title: "The Spider's Web",
+        explanation:
+          "Those who take protectors besides Allah have fragile foundations.",
+      },
+      {
+        title: "Stories of Tested Prophets",
+        explanation:
+          "Noah, Abraham, Lot - all faced trials before victory.",
+      },
+      {
+        title: "Striving and Guidance",
+        explanation:
+          "Those who strive for Allah will be guided to His paths.",
+      },
+    ],
+    insights: [
+      "The spider web metaphor: appears strong but crumbles under pressure.",
+      "Parental pressure to abandon faith is addressed directly.",
+      "The closing verse promises guidance to those who sincerely strive.",
+    ],
+    reflectionPrompts: [
+      "What false securities might you be relying on instead of Allah?",
+      "How do trials actually strengthen your faith rather than weaken it?",
+    ],
+    relatedSurahs: [30, 31, 28],
+  },
+
+  // Surah 30: Ar-Rum (The Romans)
+  30: {
+    number: 30,
+    circumstances:
+      "Revealed around 615 CE after the Persians defeated the Romans. The Quraysh rejoiced at the defeat of the People of the Book. The surah prophesied Rome's victory within 'a few years' - fulfilled in 624 CE.",
+    themes: [
+      {
+        title: "Prophecy of Roman Victory",
+        explanation:
+          "A precise prediction that came true within a decade.",
+      },
+      {
+        title: "Rise and Fall of Nations",
+        explanation:
+          "Allah controls the affairs of nations and history.",
+      },
+      {
+        title: "Signs in Creation",
+        explanation:
+          "The universe, human relationships, and diversity all point to Allah.",
+      },
+      {
+        title: "Fitrah - Natural Disposition",
+        explanation:
+          "Islam aligns with humanity's innate nature.",
+      },
+    ],
+    insights: [
+      "This prophecy was a tremendous proof when it came true at Badr's time.",
+      "The verse about creating spouses for tranquility is frequently recited at weddings.",
+      "Human diversity in languages and colors is described as a sign, not a division.",
+    ],
+    reflectionPrompts: [
+      "How do fulfilled prophecies strengthen your faith in the Quran?",
+      "What signs in your own life point you toward recognizing your Creator?",
+    ],
+    relatedSurahs: [29, 31, 85],
+  },
+
+  // Surah 31: Luqman
+  31: {
+    number: 31,
+    circumstances:
+      "Revealed in the middle Makkan period. Named after the wise sage Luqman, whose advice to his son forms the heart of the surah. It addresses proper upbringing and parent-child relationships.",
+    themes: [
+      {
+        title: "Wisdom of Luqman",
+        explanation:
+          "Timeless parental advice: tawhid, prayer, patience, humility.",
+      },
+      {
+        title: "Parent-Child Bond",
+        explanation:
+          "Honor parents, but not in disobedience to Allah.",
+      },
+      {
+        title: "Humility in Conduct",
+        explanation:
+          "Walk moderately, lower your voice - character matters.",
+      },
+      {
+        title: "Allah's Infinite Knowledge",
+        explanation:
+          "Nothing is hidden, even a mustard seed in a rock.",
+      },
+    ],
+    insights: [
+      "Luqman's first advice is about tawhid - the foundation of all wisdom.",
+      "The surah balances parental rights with limits when they contradict faith.",
+      "Walking with arrogance and raising voice are explicitly condemned.",
+    ],
+    reflectionPrompts: [
+      "Which piece of Luqman's advice do you most need to apply today?",
+      "How do you balance honoring parents while maintaining your principles?",
+    ],
+    relatedSurahs: [17, 46, 29],
+  },
+
+  // Surah 32: As-Sajdah (The Prostration)
+  32: {
+    number: 32,
+    circumstances:
+      "Revealed in the middle Makkan period. The Prophet ﷺ regularly recited this surah along with Al-Mulk before sleeping. It contains a verse of prostration about those who fall in worship when reminded of Allah's signs.",
+    themes: [
+      {
+        title: "Creation of Humanity",
+        explanation:
+          "From clay to ensouled being - our noble origin and destiny.",
+      },
+      {
+        title: "Resurrection",
+        explanation:
+          "The One who created from nothing can surely recreate.",
+      },
+      {
+        title: "Signs of the Sincere",
+        explanation:
+          "They forsake their beds to pray at night in hope and fear.",
+      },
+      {
+        title: "Meeting with Allah",
+        explanation:
+          "The reality of the afterlife that the disbelievers denied.",
+      },
+    ],
+    insights: [
+      "The description of night prayer (tahajjud) is one of the most beautiful in the Quran.",
+      "Hidden rewards await those who sacrifice sleep for worship.",
+      "The surah was part of the Prophet's ﷺ nightly routine.",
+    ],
+    reflectionPrompts: [
+      "What keeps you from establishing regular night prayer?",
+      "How does reflecting on creation strengthen your belief in resurrection?",
+    ],
+    relatedSurahs: [67, 76, 17],
+  },
+
+  // Surah 33: Al-Ahzab (The Confederates)
+  33: {
+    number: 33,
+    circumstances:
+      "Revealed in Madinah around 5 AH, primarily addressing the Battle of the Trench when multiple tribes confederated against the Muslims. Also contains legislation about the Prophet's household and social reforms.",
+    themes: [
+      {
+        title: "Battle of the Trench",
+        explanation:
+          "When all Arabia united against Madinah, Allah sent unseen forces.",
+      },
+      {
+        title: "Hypocrites Exposed",
+        explanation:
+          "Crisis revealed those with weak faith who wanted to flee.",
+      },
+      {
+        title: "Mothers of the Believers",
+        explanation:
+          "Special status and regulations for the Prophet's wives.",
+      },
+      {
+        title: "Social Reforms",
+        explanation:
+          "Adoption, hijab, and addressing the Prophet properly.",
+      },
+    ],
+    insights: [
+      "True faith is proven during crisis, not during ease.",
+      "The trench strategy showed creative problem-solving in defense.",
+      "The surah establishes that the Prophet's wives are 'mothers' to all believers.",
+    ],
+    reflectionPrompts: [
+      "How do you respond when challenges seem overwhelming?",
+      "What does the hypocrites' behavior during crisis teach about testing faith?",
+    ],
+    relatedSurahs: [59, 24, 66],
+  },
+
+  // Surah 34: Saba (Sheba)
+  34: {
+    number: 34,
+    circumstances:
+      "Revealed in the middle Makkan period. The surah discusses the kingdom of Sheba (Saba) in Yemen, which was blessed but destroyed when they became ungrateful. Contrasts with David and Solomon's gratitude.",
+    themes: [
+      {
+        title: "Grateful vs Ungrateful",
+        explanation:
+          "David and Solomon thanked Allah; Saba rejected blessings.",
+      },
+      {
+        title: "Fleeting Worldly Power",
+        explanation:
+          "Great civilizations perished when they forgot their source.",
+      },
+      {
+        title: "Resurrection Reality",
+        explanation:
+          "The disbelievers mock, but every atom is accounted for.",
+      },
+      {
+        title: "Satan's Admission",
+        explanation:
+          "On Judgment Day, Satan will disown those who followed him.",
+      },
+    ],
+    insights: [
+      "The civilization of Saba was real - archaeological evidence confirms it.",
+      "The dam burst at Ma'rib was a historical event referenced in the Quran.",
+      "Few are truly grateful - gratitude is rare and precious.",
+    ],
+    reflectionPrompts: [
+      "Which blessings do you take for granted that could be taken away?",
+      "How do you express gratitude actively, not just verbally?",
+    ],
+    relatedSurahs: [27, 21, 38],
+  },
+
+  // Surah 35: Fatir (The Originator)
+  35: {
+    number: 35,
+    circumstances:
+      "Revealed in the middle Makkan period. 'Fatir' means the One who originates creation. The surah emphasizes Allah's creative power and the consistent rejection of messengers throughout history.",
+    themes: [
+      {
+        title: "Allah the Creator",
+        explanation:
+          "Angels with multiple wings, diverse creation - all from Allah.",
+      },
+      {
+        title: "Satan's Enmity",
+        explanation:
+          "He is a clear enemy; do not follow his footsteps.",
+      },
+      {
+        title: "Inheritance of the Book",
+        explanation:
+          "Muslims inherit the scripture; some wrong themselves, some excel.",
+      },
+      {
+        title: "Equality of the Dead and Living",
+        explanation:
+          "The Prophet cannot make the dead (in heart) hear.",
+      },
+    ],
+    insights: [
+      "The diversity of mountains, fruits, and people all demonstrate divine artistry.",
+      "Three categories of Muslims: those who wrong themselves, moderate, and forerunners.",
+      "True scholars are those who fear Allah most.",
+    ],
+    reflectionPrompts: [
+      "Which category of scripture-inheritors do you fall into?",
+      "How does knowledge of Allah lead to proper fear of Him?",
+    ],
+    relatedSurahs: [36, 34, 6],
+  },
+
   // Surah 93: Ad-Duha (The Morning Light)
   93: {
     number: 93,
