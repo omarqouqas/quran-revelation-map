@@ -249,7 +249,7 @@ export function SurahDetailPanel() {
                     </h3>
                   </div>
                   <p
-                    className="text-2xl text-[#F5F0E8] leading-loose text-right mb-5"
+                    className="text-2xl text-[#F5F0E8] leading-loose text-right mb-5 pr-2"
                     style={{ fontFamily: 'var(--font-arabic)' }}
                   >
                     {openingVerse.arabic}
