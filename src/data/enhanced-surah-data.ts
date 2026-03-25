@@ -456,6 +456,490 @@ export const enhancedSurahData: Record<number, EnhancedSurahData> = {
     relatedSurahs: [7, 10, 26],
   },
 
+  // Surah 13: Ar-Ra'd (The Thunder)
+  13: {
+    number: 13,
+    circumstances:
+      "Revealed in Madinah (though some say late Makkah). Its name comes from the verse stating that thunder glorifies Allah's praise. It addresses those who demanded miracles, explaining that guidance comes through revelation, not spectacles. The surah emphasizes Allah's knowledge of all things, seen and unseen.",
+    themes: [
+      {
+        title: "Signs in Nature",
+        explanation:
+          "Thunder, lightning, rain, and growth serve as evidence of Allah's power and creative ability.",
+      },
+      {
+        title: "Guidance Through Revelation",
+        explanation:
+          "Miracles don't compel faith; the Quran itself is the sufficient miracle for sincere seekers.",
+      },
+      {
+        title: "Allah's Complete Knowledge",
+        explanation:
+          "He knows what every female carries and what the wombs gain or lose - nothing is hidden.",
+      },
+      {
+        title: "Angels Recording Deeds",
+        explanation:
+          "Guardian angels who record every action, constantly present and aware of all we do.",
+      },
+      {
+        title: "Reward for Patience",
+        explanation:
+          "Those who are patient seeking Allah's face will have the ultimate abode in Paradise.",
+      },
+    ],
+    insights: [
+      "Natural phenomena are not random but worship Allah in their own way - thunder glorifies Him.",
+      "Demanding miracles is often a sign of insincerity; the Quran suffices for those who truly seek.",
+      "Change comes from within: 'Allah will not change the condition of a people until they change themselves.'",
+    ],
+    reflectionPrompts: [
+      "When you hear thunder, do you remember it glorifies Allah?",
+      "What internal change must you make before expecting external change in your life?",
+    ],
+    relatedSurahs: [2, 6, 10],
+  },
+
+  // Surah 14: Ibrahim (Abraham)
+  14: {
+    number: 14,
+    circumstances:
+      "Revealed in Makkah during the period of persecution. Named after Ibrahim's prayer when he settled his family in the barren valley of Makkah. It addresses the nature of prophethood, gratitude versus ingratitude, and includes Ibrahim's profound supplications that Muslims still recite today.",
+    themes: [
+      {
+        title: "Light and Darkness",
+        explanation:
+          "The Quran brings people from darkness into light - a recurring metaphor for guidance.",
+      },
+      {
+        title: "Prophets Speaking Native Languages",
+        explanation:
+          "Every messenger was sent in his people's tongue for clarity - no language barrier to truth.",
+      },
+      {
+        title: "Ibrahim's Supplications",
+        explanation:
+          "His prayers for Makkah, his descendants, and all believers continue to be answered.",
+      },
+      {
+        title: "Gratitude vs. Ingratitude",
+        explanation:
+          "'If you are grateful, I will increase you' - gratitude multiplies blessings.",
+      },
+      {
+        title: "The Tree Parable",
+        explanation:
+          "Good words are like good trees with firm roots and branches in the sky; bad words like uprooted trees.",
+      },
+    ],
+    insights: [
+      "A good word is like a tree: rooted, fruitful, reaching heavenward - while bad words are like uprooted trees.",
+      "Ibrahim prayed for future generations including us - we are answers to his ancient prayers.",
+      "Gratitude multiplies blessings; ingratitude leads to severe punishment.",
+    ],
+    reflectionPrompts: [
+      "Are your words like firmly-rooted trees or like uprooted weeds?",
+      "How do you show gratitude in a way that might increase your blessings?",
+    ],
+    relatedSurahs: [2, 6, 16],
+  },
+
+  // Surah 15: Al-Hijr (The Rocky Tract)
+  15: {
+    number: 15,
+    circumstances:
+      "Revealed in Makkah, named after the rocky region where the people of Thamud (Salih's people) lived. It was revealed during a period when the Prophet ﷺ faced ridicule, and it reassures him while warning those who mock. Contains the story of Iblis's refusal to prostrate and his request for respite.",
+    themes: [
+      {
+        title: "Preservation of the Quran",
+        explanation:
+          "'We have sent down the Reminder and We will preserve it' - a divine guarantee unique to the Quran.",
+      },
+      {
+        title: "Stories of Destroyed Nations",
+        explanation:
+          "People of Lut, companions of the thicket, people of Al-Hijr - all destroyed for rejection.",
+      },
+      {
+        title: "Creation of Adam and Iblis",
+        explanation:
+          "The angels prostrated to Adam; Iblis refused out of arrogance and was expelled.",
+      },
+      {
+        title: "Iblis's Limited Power",
+        explanation:
+          "He can only mislead those who choose to follow him - no power over sincere servants.",
+      },
+      {
+        title: "Consolation for the Prophet",
+        explanation:
+          "'We know your heart is distressed by what they say' - divine acknowledgment of his pain.",
+      },
+    ],
+    insights: [
+      "The Quran's preservation is divinely guaranteed - a unique promise among all scriptures.",
+      "Iblis has no power over sincere servants - his influence requires our consent and choice.",
+      "The Prophet ﷺ was commanded to glorify and prostrate when distressed - worship as healing.",
+    ],
+    reflectionPrompts: [
+      "How does knowing the Quran is divinely preserved affect how you approach it?",
+      "When facing ridicule for your faith, how do you find consolation?",
+    ],
+    relatedSurahs: [7, 11, 26],
+  },
+
+  // Surah 16: An-Nahl (The Bee)
+  16: {
+    number: 16,
+    circumstances:
+      "Revealed in Makkah (with some Madani verses), named after the bee which Allah inspired to build hives and produce honey. One of the most comprehensive surahs cataloging Allah's blessings - from livestock to rain to the diversity of colors. Addresses gratitude and the consequences of ingratitude.",
+    themes: [
+      {
+        title: "Catalog of Blessings",
+        explanation:
+          "Livestock, crops, seas, mountains, stars, and more are enumerated as divine gifts.",
+      },
+      {
+        title: "The Bee's Inspiration",
+        explanation:
+          "Allah taught the bee to build hives and produce honey - a drink of healing for mankind.",
+      },
+      {
+        title: "Diversity as Divine Sign",
+        explanation:
+          "Variations in colors, languages, and forms are intentional signs of Allah's creativity.",
+      },
+      {
+        title: "Justice and Good Conduct",
+        explanation:
+          "The famous verse commanding justice, ihsan (excellence), and helping relatives.",
+      },
+      {
+        title: "Breaking Oaths",
+        explanation:
+          "Warning against using oaths for deception and the gravity of breaking promises.",
+      },
+    ],
+    insights: [
+      "Honey has healing properties - a scientific fact stated 1400 years before modern medicine confirmed it.",
+      "The diversity in creation (colors, languages, abilities) is intentional beauty, not random accident.",
+      "Allah commands justice, ihsan (excellence), and giving to relatives in one comprehensive verse (16:90).",
+    ],
+    reflectionPrompts: [
+      "How many blessings mentioned in this surah do you benefit from daily?",
+      "Do you practice justice, excellence, AND family generosity as one integrated command?",
+    ],
+    relatedSurahs: [6, 14, 35],
+  },
+
+  // Surah 17: Al-Isra (The Night Journey)
+  17: {
+    number: 17,
+    circumstances:
+      "Revealed in Makkah, commemorating the miraculous Night Journey (Isra) from Makkah to Jerusalem and the Ascension (Mi'raj) through the heavens, approximately one year before Hijra. This journey, occurring after the Year of Sorrow, was a divine honor when earthly support had been lost. The five daily prayers were prescribed during this journey.",
+    themes: [
+      {
+        title: "The Night Journey",
+        explanation:
+          "From Masjid al-Haram to Masjid al-Aqsa in one night - a miraculous divine gift.",
+      },
+      {
+        title: "Bani Israel's History",
+        explanation:
+          "Their rises and falls, twice corrupting the land and facing consequences.",
+      },
+      {
+        title: "Ethical Commandments",
+        explanation:
+          "A comprehensive code including parent treatment, avoiding excess, and walking with humility.",
+      },
+      {
+        title: "The Quran's Uniqueness",
+        explanation:
+          "Challenge to produce anything like it; it heals believers and increases oppressors in loss.",
+      },
+      {
+        title: "Satan's Promise",
+        explanation:
+          "He will attack from front, back, left, and right - but not from above, where Allah's mercy descends.",
+      },
+    ],
+    insights: [
+      "The journey linked Makkah and Jerusalem, uniting the entire Abrahamic prophetic legacy.",
+      "Parent treatment is listed right after Tawhid - second only to Allah's rights over us.",
+      "Walking arrogantly is forbidden: 'You will never tear the earth or reach the mountains in height.'",
+    ],
+    reflectionPrompts: [
+      "How do you treat your parents, especially in their old age?",
+      "Do you walk with humility, remembering you cannot pierce the earth or match the mountains?",
+    ],
+    relatedSurahs: [18, 53, 81],
+  },
+
+  // Surah 20: Ta-Ha
+  20: {
+    number: 20,
+    circumstances:
+      "Revealed in Makkah. It is reported that Umar ibn al-Khattab converted to Islam after hearing this surah recited by his sister. The surah primarily tells the story of Musa in great detail - from his birth, to the burning bush, to confronting Pharaoh, to the golden calf incident.",
+    themes: [
+      {
+        title: "Musa's Complete Story",
+        explanation:
+          "Birth, calling at the burning bush, miracles, confrontation with Pharaoh, and leading his people.",
+      },
+      {
+        title: "The Burning Bush",
+        explanation:
+          "Allah's direct speech to Musa: 'I am Allah, there is no god but Me, so worship Me.'",
+      },
+      {
+        title: "Pharaoh's Arrogance",
+        explanation:
+          "His claim to divinity and ultimate drowning - a warning to all tyrants.",
+      },
+      {
+        title: "The Golden Calf",
+        explanation:
+          "Samiri's deception and the people's failure during Musa's absence on the mountain.",
+      },
+      {
+        title: "Adam's Story",
+        explanation:
+          "His creation, Satan's deception, his repentance - and Allah's forgiveness and guidance.",
+      },
+    ],
+    insights: [
+      "Musa was afraid and Allah reassured him - even prophets experienced human emotions.",
+      "Pharaoh's magicians recognized truth and submitted despite Pharaoh's death threats.",
+      "Adam's sin and repentance teaches that mistakes don't define us; returning to Allah does.",
+    ],
+    reflectionPrompts: [
+      "When facing a 'Pharaoh' in your life, what gives you courage like Musa?",
+      "Have you ever recognized truth and submitted despite social pressure?",
+    ],
+    relatedSurahs: [7, 26, 28],
+  },
+
+  // Surah 21: Al-Anbiya (The Prophets)
+  21: {
+    number: 21,
+    circumstances:
+      "Revealed in Makkah, this surah mentions more prophets than almost any other - approximately 16 prophets are named or referenced. It emphasizes that all prophets shared the same essential message and faced similar challenges, providing solidarity for the Prophet ﷺ facing his own opposition.",
+    themes: [
+      {
+        title: "Unity of Prophetic Message",
+        explanation:
+          "All prophets called to the same truth: worship Allah alone with no partners.",
+      },
+      {
+        title: "Stories of Multiple Prophets",
+        explanation:
+          "Ibrahim, Lut, Nuh, Dawud, Sulayman, Ayyub, Yunus, and more - each with lessons.",
+      },
+      {
+        title: "Ibrahim and the Idols",
+        explanation:
+          "His logical dismantling of idol worship by breaking them and challenging the people.",
+      },
+      {
+        title: "Trials of Prophets",
+        explanation:
+          "Ayyub's patience in illness, Yunus's regret in the whale, Zakariyya's prayer for a child.",
+      },
+      {
+        title: "Resurrection Certainty",
+        explanation:
+          "All will return to Allah for judgment - 'as We began the first creation, We will repeat it.'",
+      },
+    ],
+    insights: [
+      "Ibrahim used reason: when the idols couldn't defend themselves, their worship was exposed as absurd.",
+      "Every prophet faced mockery and denial - opposition to truth is ancient, not a new phenomenon.",
+      "Yunus's prayer from the whale's belly ('La ilaha illa anta...') is a model supplication for distress.",
+    ],
+    reflectionPrompts: [
+      "Which prophet's trial most resembles something you're currently facing?",
+      "Can you use Ibrahim's logical approach when discussing faith with others?",
+    ],
+    relatedSurahs: [6, 11, 37],
+  },
+
+  // Surah 22: Al-Hajj (The Pilgrimage)
+  22: {
+    number: 22,
+    circumstances:
+      "One of the few surahs with both Makki and Madani verses. It addresses the rituals of Hajj, the ancient practice restored by Ibrahim. It also contains powerful imagery of the Day of Judgment (the earthquake of the Hour) and permission for self-defense, which came after years of persecution.",
+    themes: [
+      {
+        title: "The Earthquake of the Hour",
+        explanation:
+          "A terrifying description of Judgment Day's beginning that will make nursing mothers forget their infants.",
+      },
+      {
+        title: "Hajj Rituals",
+        explanation:
+          "The ancient rites established by Ibrahim and restored by Islam for all believers.",
+      },
+      {
+        title: "Permission to Fight",
+        explanation:
+          "First Quranic permission for defensive combat after years of patient endurance of oppression.",
+      },
+      {
+        title: "All Creation Prostrates",
+        explanation:
+          "Everything in heavens and earth prostrates to Allah - sun, moon, stars, mountains, trees, animals.",
+      },
+      {
+        title: "The Fly Challenge",
+        explanation:
+          "Idols cannot even create a fly; if a fly took something from them, they couldn't retrieve it.",
+      },
+    ],
+    insights: [
+      "Hajj connects Muslims to Ibrahim's legacy - ancient monotheism restored and continued.",
+      "Permission to fight was reluctant and defensive - peace was always the preferred state.",
+      "The fly parable devastates idol worship with simple, undeniable logic anyone can understand.",
+    ],
+    reflectionPrompts: [
+      "If you've performed Hajj, did you feel the connection to Ibrahim's ancient legacy?",
+      "How does the fly challenge reshape your understanding of false dependencies in your life?",
+    ],
+    relatedSurahs: [2, 3, 5],
+  },
+
+  // Surah 23: Al-Mu'minun (The Believers)
+  23: {
+    number: 23,
+    circumstances:
+      "Revealed in Makkah, it opens with a description of successful believers and their characteristics. When these opening verses were revealed, the Prophet ﷺ said whoever embodies these traits will inherit Paradise. It provides a roadmap for spiritual success.",
+    themes: [
+      {
+        title: "Characteristics of Believers",
+        explanation:
+          "Humility in prayer, avoiding vain talk, giving zakah, guarding chastity, keeping trusts and promises.",
+      },
+      {
+        title: "Stages of Human Creation",
+        explanation:
+          "From clay to sperm-drop to clot to bones to flesh - detailed embryological description.",
+      },
+      {
+        title: "Stories of Prophets",
+        explanation:
+          "Nuh, an unnamed messenger, Musa and Harun, Isa and Maryam - all faced similar rejection.",
+      },
+      {
+        title: "Denial Despite Evidence",
+        explanation:
+          "Each community rejected their messenger with similar excuses across generations.",
+      },
+      {
+        title: "Final Accountability",
+        explanation:
+          "No family ties will help on that Day; everyone stands alone before Allah.",
+      },
+    ],
+    insights: [
+      "Success (falah) begins with khushu' (humility/focus) in prayer - everything else builds on this foundation.",
+      "The Quran described embryonic development stages with remarkable accuracy 1400 years ago.",
+      "Avoiding 'laghw' (vain, useless speech and distractions) is a distinguishing trait of successful believers.",
+    ],
+    reflectionPrompts: [
+      "How many of the seven opening characteristics do you consistently practice?",
+      "What 'laghw' (useless distractions) should you turn away from?",
+    ],
+    relatedSurahs: [24, 70, 90],
+  },
+
+  // Surah 24: An-Nur (The Light)
+  24: {
+    number: 24,
+    circumstances:
+      "Revealed in Madinah after the slander incident (Ifk) against Aisha رضي الله عنها. Hypocrites spread false accusations about her honor. This surah vindicated her, established strict rules for accusations of adultery (requiring four witnesses), and provided comprehensive guidance on modesty, household etiquette, and the famous 'Light Verse.'",
+    themes: [
+      {
+        title: "Laws of Accusation",
+        explanation:
+          "Four witnesses required for adultery accusations; false accusers receive 80 lashes.",
+      },
+      {
+        title: "The Ifk Incident",
+        explanation:
+          "Vindication of Aisha and crucial lessons about the sin of spreading gossip.",
+      },
+      {
+        title: "The Light Verse",
+        explanation:
+          "'Allah is the Light of the heavens and earth' - profound mystical imagery of divine guidance.",
+      },
+      {
+        title: "Modesty Guidelines",
+        explanation:
+          "Lowering gaze, covering adornments, seeking permission before entering homes.",
+      },
+      {
+        title: "Household Etiquette",
+        explanation:
+          "Children and servants should ask permission at three times: Fajr, noon rest, and after Isha.",
+      },
+    ],
+    insights: [
+      "Spreading rumors, even without inventing them, is sinful - 'you received it with your tongues.'",
+      "The four-witness requirement makes adultery accusations nearly impossible, protecting honor.",
+      "The Light Verse inspired centuries of Islamic spirituality, philosophy, and art.",
+    ],
+    reflectionPrompts: [
+      "Do you verify information before passing it on, or do you spread rumors carelessly?",
+      "How does the imagery of Allah as Light affect your understanding of guidance?",
+    ],
+    relatedSurahs: [23, 33, 65],
+  },
+
+  // Surah 25: Al-Furqan (The Criterion)
+  25: {
+    number: 25,
+    circumstances:
+      "Revealed in Makkah, 'Al-Furqan' means the criterion that distinguishes truth from falsehood. The surah addresses objections raised by the Quraysh about the Prophet ﷺ - why does he eat food and walk in markets? Why wasn't an angel sent instead? It ends with beautiful descriptions of the 'servants of the Most Merciful.'",
+    themes: [
+      {
+        title: "The Quran as Criterion",
+        explanation:
+          "It distinguishes truth from falsehood, guidance from misguidance, for all who seek.",
+      },
+      {
+        title: "Objections Answered",
+        explanation:
+          "Why a human messenger? Why not more miracles? Why not revealed all at once? - All addressed.",
+      },
+      {
+        title: "Regret of Disbelievers",
+        explanation:
+          "They'll bite their hands wishing they had followed the Messenger and avoided bad company.",
+      },
+      {
+        title: "Servants of the Most Merciful",
+        explanation:
+          "Those who walk humbly, spend moderately, avoid shirk and murder, and pray at night.",
+      },
+      {
+        title: "Gradual Revelation",
+        explanation:
+          "The Quran was revealed gradually to strengthen the Prophet's heart and address events.",
+      },
+    ],
+    insights: [
+      "The Prophet ﷺ being human (eating, walking in markets) is a mercy, not a deficiency.",
+      "Taking wrong friends leads to eternal regret - 'Woe to me, I wish I hadn't taken so-and-so as a friend.'",
+      "The beautiful ending describes ideal believers: humble, balanced, prayerful, and ever-repentant.",
+    ],
+    reflectionPrompts: [
+      "Do your friends bring you closer to or further from guidance?",
+      "Which traits of 'Ibad ar-Rahman' (servants of the Most Merciful) do you embody?",
+    ],
+    relatedSurahs: [17, 23, 76],
+  },
+
   // Surah 93: Ad-Duha (The Morning Light)
   93: {
     number: 93,
