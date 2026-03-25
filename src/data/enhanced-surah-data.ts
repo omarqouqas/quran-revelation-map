@@ -3397,6 +3397,513 @@ export const enhancedSurahData: Record<number, EnhancedSurahData> = {
     relatedSurahs: [91, 93, 89],
   },
 
+  // Surah 95: At-Tin (The Fig)
+  95: {
+    number: 95,
+    circumstances:
+      "A Makkan surah opening with oaths by the fig, olive, Mount Sinai, and Makkah. It declares humanity created in the best form, then reduced to the lowest except believers. Short but profoundly emphasizes human potential and accountability.",
+    themes: [
+      {
+        title: "Sacred Oaths",
+        explanation:
+          "Fig, olive, Sinai, Makkah - symbols of prophetic lands and revelation.",
+      },
+      {
+        title: "Best of Forms",
+        explanation:
+          "Humans created in the finest mold - physical and spiritual potential.",
+      },
+      {
+        title: "Lowest of Low",
+        explanation:
+          "Then returned to lowest - except those who believe and do good.",
+      },
+      {
+        title: "Just Judge",
+        explanation:
+          "Is Allah not the most just of judges? Rhetorical affirmation.",
+      },
+    ],
+    insights: [
+      "The fig and olive may represent the lands of Jesus; Sinai of Moses; Makkah of Muhammad ﷺ.",
+      "Human degradation is moral, not physical - we choose to fall.",
+      "The exception for believers shows the path to maintaining excellence.",
+    ],
+    reflectionPrompts: [
+      "Are you living up to the 'best of forms' you were created in?",
+      "What causes humans to fall to the 'lowest of low'?",
+    ],
+    relatedSurahs: [90, 103, 52],
+  },
+
+  // Surah 97: Al-Qadr (The Night of Decree)
+  97: {
+    number: 97,
+    circumstances:
+      "A Makkan surah about Laylat al-Qadr - the night the Quran was first revealed. Worth more than a thousand months, angels descend with every decree. The surah inspires Muslims to seek this blessed night in the last ten of Ramadan.",
+    themes: [
+      {
+        title: "Night of Decree",
+        explanation:
+          "The Quran was sent down on this single, magnificent night.",
+      },
+      {
+        title: "Better Than 1000 Months",
+        explanation:
+          "Worship on this night exceeds 83 years of worship.",
+      },
+      {
+        title: "Angels Descend",
+        explanation:
+          "Angels and the Spirit descend with every matter decreed.",
+      },
+      {
+        title: "Peace Until Dawn",
+        explanation:
+          "The night is peace until the rising of dawn.",
+      },
+    ],
+    insights: [
+      "A single night can outweigh a lifetime - quality over quantity.",
+      "The night is hidden to encourage seeking it throughout the last ten nights.",
+      "Peace (salam) characterizes the entire night - spiritual tranquility.",
+    ],
+    reflectionPrompts: [
+      "How do you seek Laylat al-Qadr each Ramadan?",
+      "What would you ask for on a night when every decree is made?",
+    ],
+    relatedSurahs: [44, 2, 17],
+  },
+
+  // Surah 98: Al-Bayyinah (The Clear Evidence)
+  98: {
+    number: 98,
+    circumstances:
+      "A Madinan surah addressing the People of the Book who awaited a final prophet but rejected him when he came. The 'clear evidence' is Muhammad ﷺ and the purified scriptures he brought. It distinguishes the worst and best of creation.",
+    themes: [
+      {
+        title: "Clear Evidence Came",
+        explanation:
+          "The awaited messenger arrived with purified pages.",
+      },
+      {
+        title: "Awaited Then Rejected",
+        explanation:
+          "People of the Book and polytheists only divided after proof came.",
+      },
+      {
+        title: "Pure Religion",
+        explanation:
+          "Commanded only to worship Allah sincerely, establish prayer, give zakah.",
+      },
+      {
+        title: "Best and Worst",
+        explanation:
+          "Disbelievers are worst of creation; believers are best.",
+      },
+    ],
+    insights: [
+      "Division came after clarity - not from lack of evidence but rejection of it.",
+      "The religion's essence is simple: sincere worship, prayer, charity.",
+      "Being 'best of creation' requires belief and good deeds together.",
+    ],
+    reflectionPrompts: [
+      "Do you worship Allah with pure sincerity (mukhliseen)?",
+      "How do you respond when clear evidence challenges your assumptions?",
+    ],
+    relatedSurahs: [2, 3, 5],
+  },
+
+  // Surah 99: Az-Zalzalah (The Earthquake)
+  99: {
+    number: 99,
+    circumstances:
+      "A Madinan surah (some say Makkan) about the final earthquake when Earth expels its burdens and testifies about what occurred on it. Famous for: an atom's weight of good or evil will be seen - ultimate accountability.",
+    themes: [
+      {
+        title: "Earth Shakes",
+        explanation:
+          "The earth will shake with its final, violent earthquake.",
+      },
+      {
+        title: "Earth Testifies",
+        explanation:
+          "The earth will report what happened upon it - a witness.",
+      },
+      {
+        title: "Scattered Groups",
+        explanation:
+          "People will emerge in scattered groups to see their deeds.",
+      },
+      {
+        title: "Atom's Weight",
+        explanation:
+          "Even the weight of an atom in good or evil will be shown.",
+      },
+    ],
+    insights: [
+      "Nothing is too small to matter - atoms of good and evil count.",
+      "The earth itself becomes a witness - we cannot hide from our stage.",
+      "Deeds are 'shown' - we will see them, not just be told about them.",
+    ],
+    reflectionPrompts: [
+      "What 'atoms' of good are you accumulating daily?",
+      "How would you feel if the earth testified about your actions?",
+    ],
+    relatedSurahs: [81, 82, 84],
+  },
+
+  // Surah 100: Al-'Adiyat (The Charging Horses)
+  100: {
+    number: 100,
+    circumstances:
+      "A Makkan surah opening with vivid oaths about war horses - panting, striking sparks, raiding at dawn. It then pivots to critique human ingratitude and obsession with wealth, ending with the graves being overturned.",
+    themes: [
+      {
+        title: "Charging Horses",
+        explanation:
+          "Horses panting, striking fire with hooves, raiding at dawn - intense imagery.",
+      },
+      {
+        title: "Human Ingratitude",
+        explanation:
+          "Man is truly ungrateful to his Lord - a stark assessment.",
+      },
+      {
+        title: "Love of Wealth",
+        explanation:
+          "His love of wealth (khayr) is intense - misplaced priority.",
+      },
+      {
+        title: "Graves Scattered",
+        explanation:
+          "When graves are overturned and hearts' contents exposed.",
+      },
+    ],
+    insights: [
+      "The horses' loyalty contrasts with human ingratitude - animals more faithful.",
+      "'Khayr' (wealth/good) is used - showing how we misdefine 'good'.",
+      "Hearts' hidden contents become visible - no secrets remain.",
+    ],
+    reflectionPrompts: [
+      "Is your love of wealth 'intense'? How does it affect your priorities?",
+      "Are you grateful to Allah, or do you take blessings for granted?",
+    ],
+    relatedSurahs: [99, 101, 102],
+  },
+
+  // Surah 101: Al-Qari'ah (The Striking Calamity)
+  101: {
+    number: 101,
+    circumstances:
+      "A Makkan surah named after another name for Judgment Day - the striking calamity that knocks hearts with terror. It describes people like scattered moths and mountains like fluffed wool. Deeds will be weighed on scales.",
+    themes: [
+      {
+        title: "The Striking Hour",
+        explanation:
+          "What is the striking calamity? What will make you know? - building dread.",
+      },
+      {
+        title: "Scattered Moths",
+        explanation:
+          "People will be like moths scattered - confused, drawn to destruction.",
+      },
+      {
+        title: "Mountains Like Wool",
+        explanation:
+          "Mountains become like carded wool - the solid becomes insubstantial.",
+      },
+      {
+        title: "Scales of Deeds",
+        explanation:
+          "Heavy scales mean bliss; light scales mean the Pit (Hawiyah).",
+      },
+    ],
+    insights: [
+      "The moth metaphor captures human helplessness and misdirection.",
+      "Mountains symbolize permanence - even they become nothing.",
+      "'Mother' is used for Hell - a bitter irony, as mothers usually comfort.",
+    ],
+    reflectionPrompts: [
+      "What would make your scales heavy on that Day?",
+      "How attached are you to things that will become 'like wool'?",
+    ],
+    relatedSurahs: [99, 100, 88],
+  },
+
+  // Surah 102: At-Takathur (Competition in Increase)
+  102: {
+    number: 102,
+    circumstances:
+      "A Makkan surah critiquing the human obsession with accumulating more - wealth, children, status. This competition distracts until the grave. The surah warns of accountability and seeing Hell with certainty.",
+    themes: [
+      {
+        title: "Competition Distracts",
+        explanation:
+          "Rivalry in accumulation diverts you - until you visit graves.",
+      },
+      {
+        title: "Certainty Coming",
+        explanation:
+          "You will surely know - repeated for emphasis.",
+      },
+      {
+        title: "Seeing Hell",
+        explanation:
+          "You will see the Blazing Fire with the eye of certainty.",
+      },
+      {
+        title: "Questioned About Blessings",
+        explanation:
+          "You will be asked about the pleasures you enjoyed.",
+      },
+    ],
+    insights: [
+      "The Prophet ﷺ said: 'If son of Adam had two valleys of gold, he'd want a third.'",
+      "'Visiting graves' can mean dying or literally counting ancestors for pride.",
+      "Even legitimate blessings require accountability - were they used properly?",
+    ],
+    reflectionPrompts: [
+      "What 'competition in increase' distracts you from what matters?",
+      "How will you answer when asked about the blessings you enjoyed?",
+    ],
+    relatedSurahs: [100, 104, 89],
+  },
+
+  // Surah 104: Al-Humazah (The Slanderer)
+  104: {
+    number: 104,
+    circumstances:
+      "A Makkan surah condemning those who mock and slander others while hoarding wealth. It may reference specific Quraysh leaders who mocked the Prophet ﷺ. The Crusher (Hutamah) is a name for Hell that crushes and burns.",
+    themes: [
+      {
+        title: "Mockery Condemned",
+        explanation:
+          "Woe to every scorner and mocker who collects wealth and counts it.",
+      },
+      {
+        title: "Wealth Illusion",
+        explanation:
+          "He thinks his wealth will make him immortal - delusion.",
+      },
+      {
+        title: "The Crusher",
+        explanation:
+          "Hutamah - Allah's kindled fire that reaches into hearts.",
+      },
+      {
+        title: "Closed Over Them",
+        explanation:
+          "Fire in extended columns - sealed with no escape.",
+      },
+    ],
+    insights: [
+      "Mockery and wealth-obsession are linked - both come from arrogance.",
+      "The fire reaches hearts - spiritual punishment, not just physical.",
+      "Extended columns suggest permanent, inescapable imprisonment.",
+    ],
+    reflectionPrompts: [
+      "Do you ever mock others, even subtly?",
+      "What does your relationship with wealth reveal about your heart?",
+    ],
+    relatedSurahs: [102, 107, 111],
+  },
+
+  // Surah 105: Al-Fil (The Elephant)
+  105: {
+    number: 105,
+    circumstances:
+      "A Makkan surah about the Year of the Elephant (570 CE) when Abrahah's army with elephants tried to destroy the Ka'bah. Allah sent birds with stones of baked clay, destroying them. The Prophet ﷺ was born that year - divine protection.",
+    themes: [
+      {
+        title: "Did You Not See?",
+        explanation:
+          "Rhetorical reminder of a recent, known event - divine intervention.",
+      },
+      {
+        title: "Companions of the Elephant",
+        explanation:
+          "Abrahah's army came with elephants to destroy the Ka'bah.",
+      },
+      {
+        title: "Birds in Flocks",
+        explanation:
+          "Ababil birds sent carrying stones of sijjil (baked clay).",
+      },
+      {
+        title: "Like Eaten Straw",
+        explanation:
+          "The army became like devoured, trampled crop - annihilated.",
+      },
+    ],
+    insights: [
+      "The Quraysh witnessed this or heard it from parents - undeniable history.",
+      "Allah protected His House before Islam even began - providence.",
+      "The Prophet's birth year was marked by this miracle - sign of his coming.",
+    ],
+    reflectionPrompts: [
+      "How does Allah protect what He wills, even against overwhelming odds?",
+      "What 'elephants' in your life has Allah turned away?",
+    ],
+    relatedSurahs: [106, 27, 3],
+  },
+
+  // Surah 106: Quraysh
+  106: {
+    number: 106,
+    circumstances:
+      "A Makkan surah closely linked to Al-Fil - because Allah protected the Ka'bah, Quraysh enjoyed safety and trade. It reminds them to worship the Lord of this House who fed them from hunger and secured them from fear.",
+    themes: [
+      {
+        title: "Quraysh's Journeys",
+        explanation:
+          "Their winter and summer trade caravans - economic blessing.",
+      },
+      {
+        title: "Lord of This House",
+        explanation:
+          "Worship the Lord of the Ka'bah who made this possible.",
+      },
+      {
+        title: "Fed from Hunger",
+        explanation:
+          "He provided sustenance to a barren valley's inhabitants.",
+      },
+      {
+        title: "Secured from Fear",
+        explanation:
+          "Safety for trade while others faced raids - divine favor.",
+      },
+    ],
+    insights: [
+      "The surah may be connected to Al-Fil as one unit of meaning.",
+      "Quraysh's prosperity came from the Ka'bah - they owed Allah gratitude.",
+      "Basic needs (food, safety) are blessings requiring acknowledgment.",
+    ],
+    reflectionPrompts: [
+      "What blessings do you enjoy because of your location or heritage?",
+      "Are you grateful to Allah for security and provision?",
+    ],
+    relatedSurahs: [105, 29, 14],
+  },
+
+  // Surah 107: Al-Ma'un (The Small Kindnesses)
+  107: {
+    number: 107,
+    circumstances:
+      "A Makkan surah exposing those who deny the Day of Judgment through their actions - pushing away orphans, not encouraging feeding the poor. It then critiques those who pray for show while withholding small kindnesses.",
+    themes: [
+      {
+        title: "Denying Judgment",
+        explanation:
+          "The one who denies religion - do you know who that is?",
+      },
+      {
+        title: "Repelling Orphans",
+        explanation:
+          "He pushes away the orphan and doesn't encourage feeding the poor.",
+      },
+      {
+        title: "Prayer for Show",
+        explanation:
+          "Woe to those who pray but are heedless of their prayer - showing off.",
+      },
+      {
+        title: "Withholding Ma'un",
+        explanation:
+          "They refuse even small kindnesses - basic neighborly help.",
+      },
+    ],
+    insights: [
+      "Denying religion is shown through actions, not just words.",
+      "Prayer without compassion is hollow performance.",
+      "'Ma'un' - small items like salt, water, tools - refusing them reveals character.",
+    ],
+    reflectionPrompts: [
+      "Do your actions deny what your tongue affirms?",
+      "What 'small kindnesses' do you sometimes withhold?",
+    ],
+    relatedSurahs: [104, 89, 93],
+  },
+
+  // Surah 109: Al-Kafirun (The Disbelievers)
+  109: {
+    number: 109,
+    circumstances:
+      "A Makkan surah revealed when the Quraysh proposed compromise - worship their gods some days, they'd worship Allah other days. The surah firmly rejects religious syncretism: 'To you your religion, to me mine.'",
+    themes: [
+      {
+        title: "Clear Rejection",
+        explanation:
+          "I do not worship what you worship - absolute clarity.",
+      },
+      {
+        title: "No Compromise",
+        explanation:
+          "You will not worship what I worship - no middle ground on tawhid.",
+      },
+      {
+        title: "Permanent Positions",
+        explanation:
+          "I will never worship what you worship - past, present, future.",
+      },
+      {
+        title: "Separate Paths",
+        explanation:
+          "To you your religion, to me mine - peaceful but firm separation.",
+      },
+    ],
+    insights: [
+      "The repetition emphasizes that compromise on core beliefs is impossible.",
+      "The surah doesn't curse disbelievers - simply establishes clear boundaries.",
+      "Part of the Prophet's morning and evening adhkar - constant reaffirmation.",
+    ],
+    reflectionPrompts: [
+      "What core beliefs are non-negotiable for you?",
+      "How do you maintain boundaries while being respectful?",
+    ],
+    relatedSurahs: [112, 1, 6],
+  },
+
+  // Surah 111: Al-Masad (The Palm Fiber)
+  111: {
+    number: 111,
+    circumstances:
+      "A Makkan surah specifically condemning Abu Lahab (the Prophet's uncle) and his wife for their fierce opposition to Islam. When the Prophet ﷺ first called his family to Islam, Abu Lahab cursed him. This surah is the divine response.",
+    themes: [
+      {
+        title: "Abu Lahab Condemned",
+        explanation:
+          "May the hands of Abu Lahab perish - and he has perished.",
+      },
+      {
+        title: "Wealth Won't Help",
+        explanation:
+          "His wealth and what he earned will not benefit him.",
+      },
+      {
+        title: "Fire of Flames",
+        explanation:
+          "He will burn in a fire of blazing flames.",
+      },
+      {
+        title: "Wife's Role",
+        explanation:
+          "His wife, carrier of firewood, with a rope of palm fiber around her neck.",
+      },
+    ],
+    insights: [
+      "This is the only surah naming a contemporary enemy - emphasizing his infamy.",
+      "Abu Lahab lived years after this - never accepting Islam, fulfilling the prophecy.",
+      "His wife Umm Jamil threw thorns in the Prophet's path - 'firewood' symbolism.",
+    ],
+    reflectionPrompts: [
+      "What warns you about being an enemy of truth?",
+      "How did family opposition affect the Prophet ﷺ - and how did he persist?",
+    ],
+    relatedSurahs: [104, 96, 74],
+  },
+
   // Surah 93: Ad-Duha (The Morning Light)
   93: {
     number: 93,
