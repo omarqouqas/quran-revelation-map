@@ -19,15 +19,15 @@ import { SACRED_SITES, SACRED_SITE_STYLES, type SacredSite } from '@/data/sacred
 mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN || '';
 
 /** Map center coordinates (between Makkah and Madinah) */
-const MAP_CENTER: [number, number] = [39.5, 22.8];
+const MAP_CENTER: [number, number] = [39.7, 22.9];
 
 /** Initial zoom level - tighter focus on Hijaz region */
-const MAP_ZOOM = 7.2;
+const MAP_ZOOM = 7.5;
 
-/** Map bounds to restrict panning - focused on Hijaz region (Makkah-Madinah corridor) */
+/** Map bounds to restrict panning - tightly focused on Makkah-Madinah corridor */
 const MAP_BOUNDS: [[number, number], [number, number]] = [
-  [37.5, 19.5], // Southwest (covers area south of Makkah)
-  [42, 26.5],   // Northeast (covers area north of Madinah)
+  [38.5, 20.5], // Southwest (just south of Makkah)
+  [41.0, 25.5], // Northeast (just north of Madinah)
 ];
 
 /**
@@ -394,7 +394,7 @@ export function MapContainer() {
       center: MAP_CENTER,
       zoom: MAP_ZOOM,
       maxBounds: MAP_BOUNDS,
-      minZoom: 6.5,
+      minZoom: 7,
       maxZoom: 12,
       attributionControl: true,
       pitch: 40, // Tilt to show sky layer

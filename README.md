@@ -39,12 +39,13 @@ See [IMPLEMENTATION_PLAN.md](./IMPLEMENTATION_PLAN.md) for the full roadmap.
 
 ## Tech Stack
 
-- **Framework**: Next.js 14 (App Router)
+- **Framework**: Next.js 16 (App Router)
 - **Styling**: Tailwind CSS v4
 - **Maps**: Mapbox GL JS
 - **State**: Zustand
 - **Animations**: Framer Motion
 - **Icons**: Lucide React
+- **Analytics**: PostHog
 
 ## Getting Started
 
@@ -54,7 +55,7 @@ npm install
 
 # Set up environment variables
 cp .env.example .env.local
-# Add your Mapbox token to .env.local
+# Add your Mapbox token and PostHog key to .env.local
 
 # Run development server
 npm run dev

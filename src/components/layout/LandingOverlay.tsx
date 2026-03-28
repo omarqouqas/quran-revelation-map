@@ -12,15 +12,9 @@ import { useMapStore } from '@/stores/useMapStore';
 export function LandingOverlay() {
   const hasInteracted = useMapStore((state) => state.hasInteracted);
   const setHasInteracted = useMapStore((state) => state.setHasInteracted);
-  const togglePlayback = useMapStore((state) => state.togglePlayback);
-  const isPlaying = useMapStore((state) => state.isPlaying);
 
   const handleBeginJourney = () => {
     setHasInteracted(true);
-    // Start auto-play if not already playing
-    if (!isPlaying) {
-      togglePlayback();
-    }
   };
 
   return (

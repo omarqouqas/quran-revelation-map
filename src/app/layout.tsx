@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Amiri, Cormorant_Garamond, Source_Sans_3 } from 'next/font/google';
+import { PostHogProvider } from '@/components/providers/PostHogProvider';
 import './globals.css';
 
 const amiri = Amiri({
@@ -72,7 +73,7 @@ export default function RootLayout({
       <body
         className={`${amiri.variable} ${cormorantGaramond.variable} ${sourceSans.variable} font-sans antialiased`}
       >
-        {children}
+        <PostHogProvider>{children}</PostHogProvider>
       </body>
     </html>
   );
